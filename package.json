@@ -1,0 +1,21 @@
+{
+  "name": "oxford_dic",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "scrape:links": "node -e \"import('file://'+process.cwd().replace(/\\\\/g,'/')+'/src/scrape_links.js').then(m=>m.scrapeLinks('src/output/oxford_links.json'))\"",
+    "scrape:links:expand": "node -e \"import('file://'+process.cwd().replace(/\\\\/g,'/')+'/src/scrape_links.js').then(m=>m.scrapeExpandLinks('src/output/expand_oxford_links.json'))\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.12.2",
+    "express": "^5.1.0",
+    "puppeteer": "^24.21.0",
+    "sqlite3": "^5.1.7"
+  }
+}
