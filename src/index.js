@@ -124,6 +124,10 @@ app.post("/api/import-file", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.send("Welcome!");
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}`);

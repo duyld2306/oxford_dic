@@ -20,6 +20,7 @@ async function crawlWordDirect(word, maxSuffix = 5) {
   }
 
   const urls = buildUrls(word);
+  let encounteredGotoError = false;
   for (let i = 0; i < urls.length; i++) {
     const link = urls[i];
     try {
@@ -27,14 +28,15 @@ async function crawlWordDirect(word, maxSuffix = 5) {
       const resp = await page.goto(link, { waitUntil: "domcontentloaded" });
       const status = resp?.status() || 0;
       if (status >= 400) {
-        continue;
+        encounteredGotoError = true;
+        break;
       }
       const foundWord = await page.evaluate(() => {
         const el = document.querySelector("h1.headword");
         return el ? el.textContent : null;
       });
       if (!foundWord) {
-        continue;
+        break;
       }
 
       const pos = await page.evaluate(() => {
@@ -215,12 +217,15 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         phrasal_verbs,
       });
     } catch (e) {
-      // skip errors for individual pages
-      continue;
+      encounteredGotoError = true;
+      break;
     }
   }
 
   await browser.close();
+  if (encounteredGotoError) {
+    throw new Error("crawl_goto_error");
+  }
   return words;
 }
 
