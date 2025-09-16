@@ -43,6 +43,14 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         $("div.phons_n_am div.sound").first().attr("data-src-mp3") || "";
       const phonetic_am_text =
         $("div.phons_n_am span.phon").first().text() || "";
+      const variants = (() => {
+        const v = $("h1.headword").first().siblings("div.variants").first();
+        return v && v.length ? { text: v.text(), html: v.html() } : {};
+      })();
+      const grammar =
+        $("h1.headword").first().siblings("span.grammar").first().text() || "";
+      const labels =
+        $("h1.headword").first().siblings("span.labels").first().text() || "";
 
       const senses = [];
       $("li.sense").each((_, el) => {
@@ -168,6 +176,9 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         phonetic_text,
         phonetic_am,
         phonetic_am_text,
+        variants,
+        grammar,
+        labels,
         senses,
         idioms,
         phrasal_verbs,
