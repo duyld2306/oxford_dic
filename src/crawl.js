@@ -53,61 +53,62 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         $("h1.headword").first().siblings("span.labels").first().text() || "";
 
       const senses = [];
-      $("li.sense").each((_, el) => {
-        const $el = $(el);
-        const def = $el.find("span.def").first();
-        if (!def || !def.text()) return;
-        const s = {
-          symbol:
-            $el
-              .find(":scope > div.symbols span")
-              .first()
-              .attr("class")
-              ?.split("_")[1] || "",
-          labels: $el.find(":scope > span.labels").first().text() || "",
-          dis_g: $el.find(":scope > span.dis-g").first().text() || "",
-          variants: (() => {
-            const v = $el.find(":scope > div.variants").first();
-            return v && v.length ? { text: v.text(), html: v.html() } : {};
-          })(),
-          grammar: $el.find(":scope > span.grammar").first().text() || "",
-          cf: $el.find(":scope > span.cf").first().text() || "",
-          definition: def.text(),
-          synonyms: [],
-          opposites: [],
-          see_alsos: [],
-          examples: [],
-        };
-        $el.find("span.xrefs").each((_, xr) => {
-          const $xr = $(xr);
-          const type = $xr.find("span.prefix").first().text();
-          if (type === "synonym") {
-            $xr.find("a").each((_, a) => s.synonyms.push($(a).text()));
-          } else if (type === "opposite") {
-            $xr.find("a").each((_, a) => s.opposites.push($(a).text()));
-          } else if (type === "see also") {
-            $xr.find("a").each((_, a) => s.see_alsos.push($(a).text()));
-          }
+      $("li.sense")
+        .filter((_, el) => $(el).closest(".idioms").length === 0)
+        .each((_, el) => {
+          const $el = $(el);
+          const def = $el.find("span.def").first();
+          if (!def || !def.text()) return;
+          const s = {
+            symbol:
+              $el
+                .find(".sensetop > div.symbols span")
+                .first()
+                .attr("class")
+                ?.split("_")[1] || "",
+            labels: $el.find(":scope > span.labels").first().text() || "",
+            dis_g: $el.find(":scope > span.dis-g").first().text() || "",
+            variants: (() => {
+              const v = $el.find(":scope > div.variants").first();
+              return v && v.length ? { text: v.text(), html: v.html() } : {};
+            })(),
+            grammar: $el.find(":scope > span.grammar").first().text() || "",
+            cf: $el.find(":scope > span.cf").first().text() || "",
+            definition: def.text(),
+            synonyms: [],
+            opposites: [],
+            see_alsos: [],
+            examples: [],
+          };
+          $el.find("span.xrefs").each((_, xr) => {
+            const $xr = $(xr);
+            const type = $xr.find("span.prefix").first().text();
+            if (type === "synonym") {
+              $xr.find("a").each((_, a) => s.synonyms.push($(a).text()));
+            } else if (type === "opposite") {
+              $xr.find("a").each((_, a) => s.opposites.push($(a).text()));
+            } else if (type === "see also") {
+              $xr.find("a").each((_, a) => s.see_alsos.push($(a).text()));
+            }
+          });
+          $el.find("ul.examples li").each((_, ex) => {
+            const $ex = $(ex);
+            const cf = $ex.find("span.cf").first().text() || "";
+            const x = $ex.find("span.x").first().text() || "";
+            if (cf || x) s.examples.push({ cf, x });
+          });
+          senses.push(s);
         });
-        $el.find("ul.examples li").each((_, ex) => {
-          const $ex = $(ex);
-          const cf = $ex.find("span.cf").first().text() || "";
-          const x = $ex.find("span.x").first().text() || "";
-          if (cf || x) s.examples.push({ cf, x });
-        });
-        senses.push(s);
-      });
 
       const idioms = [];
       $("div.idioms span.idm-g").each((_, el) => {
         const $idm = $(el);
         const item = {
           word: $idm.find("span.idm").first().text() || "",
-          labels:
-            $idm.closest(".webtop").find("span.labels").first().text() || "",
+          labels: $idm.find(".webtop span.labels").first().text() || "",
           variants: (() => {
-            const v = $idm.closest(".webtop").find("div.variants").first();
-            return v && v.length ? { text: v.text(), html: v.html() } : "";
+            const v = $idm.find(".webtop div.variants").first();
+            return v && v.length ? { text: v.text(), html: v.html() } : {};
           })(),
           senses: [],
         };
