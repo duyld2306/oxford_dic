@@ -1,5 +1,4 @@
 import puppeteer from "puppeteer";
-import fs from "fs";
 
 async function crawlWordDirect(word, maxSuffix = 5) {
   const words = [];
@@ -20,17 +19,11 @@ async function crawlWordDirect(word, maxSuffix = 5) {
   }
 
   const urls = buildUrls(word);
-  let encounteredGotoError = false;
   for (let i = 0; i < urls.length; i++) {
     const link = urls[i];
     try {
       await new Promise((resolve) => setTimeout(resolve, 400));
-      const resp = await page.goto(link, { waitUntil: "domcontentloaded" });
-      const status = resp?.status() || 0;
-      if (status >= 400) {
-        encounteredGotoError = true;
-        break;
-      }
+      await page.goto(link, { waitUntil: "domcontentloaded" });
       const foundWord = await page.evaluate(() => {
         const el = document.querySelector("h1.headword");
         return el ? el.textContent : null;
@@ -217,15 +210,11 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         phrasal_verbs,
       });
     } catch (e) {
-      encounteredGotoError = true;
-      break;
+      throw new Error("crawl_goto_error");
     }
   }
 
   await browser.close();
-  if (encounteredGotoError) {
-    throw new Error("crawl_goto_error");
-  }
   return words;
 }
 
