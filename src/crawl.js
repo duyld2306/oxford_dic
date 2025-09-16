@@ -1,13 +1,8 @@
-import puppeteer from "puppeteer";
+import axios from "axios";
+import { load } from "cheerio";
 
 async function crawlWordDirect(word, maxSuffix = 5) {
   const words = [];
-  const browser = await puppeteer.launch({
-    headless: "new",
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
-  const page = await browser.newPage();
-  page.setDefaultNavigationTimeout(100000);
 
   function buildUrls(w) {
     const base = `https://www.oxfordlearnersdictionaries.com/definition/english/${w}`;
@@ -23,178 +18,146 @@ async function crawlWordDirect(word, maxSuffix = 5) {
     const link = urls[i];
     try {
       await new Promise((resolve) => setTimeout(resolve, 400));
-      await page.goto(link, { waitUntil: "domcontentloaded" });
-      const foundWord = await page.evaluate(() => {
-        const el = document.querySelector("h1.headword");
-        return el ? el.textContent : null;
+      const { data: html } = await axios.get(link, {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "Accept-Language": "en-US,en;q=0.9",
+        },
+        timeout: 30000,
+        validateStatus: (s) => s < 500,
       });
+      const $ = load(html || "");
+      const foundWord = $("h1.headword").first().text() || null;
       if (!foundWord) {
         break;
       }
 
-      const pos = await page.evaluate(() => {
-        const pos = document.querySelector("span.pos");
-        return pos ? pos.textContent : "";
-      });
-      const symbol = await page.evaluate(() => {
-        const s = document.querySelector("div.symbols span");
-        return s ? s.getAttribute("class").split("_")[1] : "";
-      });
-      const phonetic = await page.evaluate(() => {
-        const phon = document.querySelector("div.phons_br div.sound");
-        return phon ? phon.getAttribute("data-src-mp3") : "";
-      });
-      const phonetic_text = await page.evaluate(() => {
-        const phon = document.querySelector("div.phons_br span.phon");
-        return phon ? phon.textContent : "";
-      });
-      const phonetic_am = await page.evaluate(() => {
-        const phon = document.querySelector("div.phons_n_am div.sound");
-        return phon ? phon.getAttribute("data-src-mp3") : "";
-      });
-      const phonetic_am_text = await page.evaluate(() => {
-        const phon = document.querySelector("div.phons_n_am span.phon");
-        return phon ? phon.textContent : "";
-      });
-      const senses = await page.evaluate(() => {
-        const sensesHTML = document.querySelectorAll("li.sense");
-        const senseArray = [];
-        sensesHTML.forEach((sense) => {
-          const definition = sense.querySelector("span.def");
-          if (!definition) return;
-          const senseObj = {};
-          const symbol = sense.querySelector(":scope > div.symbols span");
-          senseObj.symbol = symbol
-            ? symbol.getAttribute("class").split("_")[1]
-            : "";
-          const labels = sense.querySelector(":scope > span.labels");
-          senseObj.labels = labels ? labels.textContent : "";
-          const disG = sense.querySelector(":scope > span.dis-g");
-          senseObj.dis_g = disG ? disG.textContent : "";
-          const variants = sense.querySelector(":scope > div.variants");
-          senseObj.variants = variants
-            ? { text: variants.textContent, html: variants.outerHTML }
-            : {};
-          const grammar = sense.querySelector(":scope > span.grammar");
-          senseObj.grammar = grammar ? grammar.textContent : "";
-          const cf = sense.querySelector(":scope > span.cf");
-          senseObj.cf = cf ? cf.textContent : "";
-          senseObj.definition = definition.textContent;
-          senseObj.synonyms = [];
-          senseObj.opposites = [];
-          senseObj.see_alsos = [];
-          sense.querySelectorAll("span.xrefs").forEach((xref) => {
-            const type = xref.querySelector("span.prefix")?.textContent;
-            if (type === "synonym") {
-              xref
-                .querySelectorAll("a")
-                .forEach((a) => senseObj.synonyms.push(a.textContent));
-            } else if (type === "opposite") {
-              xref
-                .querySelectorAll("a")
-                .forEach((a) => senseObj.opposites.push(a.textContent));
-            } else if (type === "see also") {
-              xref
-                .querySelectorAll("a")
-                .forEach((a) => senseObj.see_alsos.push(a.textContent));
-            }
-          });
-          senseObj.examples = [];
-          sense.querySelectorAll("ul.examples li").forEach((example) => {
-            const cf = example.querySelector("span.cf");
-            const x = example.querySelector("span.x");
-            const cfContent = cf ? cf.textContent : "";
-            const xContent = x ? x.textContent : "";
-            if (cfContent || xContent) {
-              senseObj.examples.push({ cf: cfContent, x: xContent });
-            }
-          });
-          senseArray.push(senseObj);
+      const pos = $("span.pos").first().text() || "";
+      const symbol =
+        $("div.symbols span").first().attr("class")?.split("_")[1] || "";
+      const phonetic =
+        $("div.phons_br div.sound").first().attr("data-src-mp3") || "";
+      const phonetic_text = $("div.phons_br span.phon").first().text() || "";
+      const phonetic_am =
+        $("div.phons_n_am div.sound").first().attr("data-src-mp3") || "";
+      const phonetic_am_text =
+        $("div.phons_n_am span.phon").first().text() || "";
+
+      const senses = [];
+      $("li.sense").each((_, el) => {
+        const $el = $(el);
+        const def = $el.find("span.def").first();
+        if (!def || !def.text()) return;
+        const s = {
+          symbol:
+            $el
+              .find(":scope > div.symbols span")
+              .first()
+              .attr("class")
+              ?.split("_")[1] || "",
+          labels: $el.find(":scope > span.labels").first().text() || "",
+          dis_g: $el.find(":scope > span.dis-g").first().text() || "",
+          variants: (() => {
+            const v = $el.find(":scope > div.variants").first();
+            return v && v.length ? { text: v.text(), html: v.html() } : {};
+          })(),
+          grammar: $el.find(":scope > span.grammar").first().text() || "",
+          cf: $el.find(":scope > span.cf").first().text() || "",
+          definition: def.text(),
+          synonyms: [],
+          opposites: [],
+          see_alsos: [],
+          examples: [],
+        };
+        $el.find("span.xrefs").each((_, xr) => {
+          const $xr = $(xr);
+          const type = $xr.find("span.prefix").first().text();
+          if (type === "synonym") {
+            $xr.find("a").each((_, a) => s.synonyms.push($(a).text()));
+          } else if (type === "opposite") {
+            $xr.find("a").each((_, a) => s.opposites.push($(a).text()));
+          } else if (type === "see also") {
+            $xr.find("a").each((_, a) => s.see_alsos.push($(a).text()));
+          }
         });
-        return senseArray;
+        $el.find("ul.examples li").each((_, ex) => {
+          const $ex = $(ex);
+          const cf = $ex.find("span.cf").first().text() || "";
+          const x = $ex.find("span.x").first().text() || "";
+          if (cf || x) s.examples.push({ cf, x });
+        });
+        senses.push(s);
       });
-      const idioms = await page.evaluate(() => {
-        const idiomsHTML = document.querySelectorAll("div.idioms span.idm-g");
-        const idiomArray = [];
-        idiomsHTML.forEach((idiom) => {
-          const idiomObj = {};
-          const word = idiom.querySelector("span.idm");
-          idiomObj.word = word ? word.textContent : "";
-          const labels = idiom.querySelector(".webtop > span.labels");
-          idiomObj.labels = labels ? labels.textContent : "";
-          const variants = idiom.querySelector(".webtop > div.variants");
-          idiomObj.variants = variants
-            ? { text: variants.textContent, html: variants.outerHTML }
-            : "";
-          const idmHTML = idiom.querySelectorAll("li.sense");
-          const senseArray = [];
-          idmHTML.forEach((sense) => {
-            const definition = sense.querySelector("span.def");
-            if (!definition) return;
-            const senseObj = {};
-            const symbol = sense.querySelector(".sensetop > div.symbols span");
-            senseObj.symbol = symbol
-              ? symbol.getAttribute("class").split("_")[1]
-              : "";
-            const labels = sense.querySelector(".sensetop > span.labels");
-            senseObj.labels = labels ? labels.textContent : "";
-            const disG = sense.querySelector(".sensetop > span.dis-g");
-            senseObj.dis_g = disG ? disG.textContent : "";
-            const variants = sense.querySelector(".sensetop > div.variants");
-            senseObj.variants = variants
-              ? { text: variants.textContent, html: variants.outerHTML }
-              : {};
-            const grammar = sense.querySelector(".sensetop > span.grammar");
-            senseObj.grammar = grammar ? grammar.textContent : "";
-            const cf = sense.querySelector(".sensetop > span.cf");
-            senseObj.cf = cf ? cf.textContent : "";
-            senseObj.definition = definition.textContent;
-            senseObj.synonyms = [];
-            senseObj.opposites = [];
-            senseObj.see_alsos = [];
-            sense.querySelectorAll("span.xrefs").forEach((xref) => {
-              const type = xref.querySelector("span.prefix")?.textContent;
+
+      const idioms = [];
+      $("div.idioms span.idm-g").each((_, el) => {
+        const $idm = $(el);
+        const item = {
+          word: $idm.find("span.idm").first().text() || "",
+          labels:
+            $idm.closest(".webtop").find("span.labels").first().text() || "",
+          variants: (() => {
+            const v = $idm.closest(".webtop").find("div.variants").first();
+            return v && v.length ? { text: v.text(), html: v.html() } : "";
+          })(),
+          senses: [],
+        };
+        $idm
+          .closest(".idm-g")
+          .find("li.sense")
+          .each((_, sEl) => {
+            const $sEl = $(sEl);
+            const def = $sEl.find("span.def").first();
+            if (!def || !def.text()) return;
+            const s = {
+              symbol:
+                $sEl
+                  .find(".sensetop > div.symbols span")
+                  .first()
+                  .attr("class")
+                  ?.split("_")[1] || "",
+              labels: $sEl.find(".sensetop > span.labels").first().text() || "",
+              dis_g: $sEl.find(".sensetop > span.dis-g").first().text() || "",
+              variants: (() => {
+                const v = $sEl.find(".sensetop > div.variants").first();
+                return v && v.length ? { text: v.text(), html: v.html() } : {};
+              })(),
+              grammar:
+                $sEl.find(".sensetop > span.grammar").first().text() || "",
+              cf: $sEl.find(".sensetop > span.cf").first().text() || "",
+              definition: def.text(),
+              synonyms: [],
+              opposites: [],
+              see_alsos: [],
+              examples: [],
+            };
+            $sEl.find("span.xrefs").each((_, xr) => {
+              const $xr = $(xr);
+              const type = $xr.find("span.prefix").first().text();
               if (type === "synonym") {
-                xref
-                  .querySelectorAll("a")
-                  .forEach((a) => senseObj.synonyms.push(a.textContent));
+                $xr.find("a").each((_, a) => s.synonyms.push($(a).text()));
               } else if (type === "opposite") {
-                xref
-                  .querySelectorAll("a")
-                  .forEach((a) => senseObj.opposites.push(a.textContent));
+                $xr.find("a").each((_, a) => s.opposites.push($(a).text()));
               } else if (type === "see also") {
-                xref
-                  .querySelectorAll("a")
-                  .forEach((a) => senseObj.see_alsos.push(a.textContent));
+                $xr.find("a").each((_, a) => s.see_alsos.push($(a).text()));
               }
             });
-            senseObj.examples = [];
-            sense.querySelectorAll("ul.examples li").forEach((example) => {
-              const x = example.querySelector("span.x");
-              if (x) senseObj.examples.push(x.textContent);
+            $sEl.find("ul.examples li").each((_, ex) => {
+              const x = $(ex).find("span.x").first().text();
+              if (x) s.examples.push(x);
             });
-            senseArray.push(senseObj);
+            item.senses.push(s);
           });
-          idiomObj.senses = senseArray;
-          idiomArray.push(idiomObj);
-        });
-        return idiomArray;
+        idioms.push(item);
       });
-      const phrasal_verbs = await page.evaluate(() => {
-        const pvsHTML = document.querySelectorAll(
-          ".phrasal_verb_links ul.pvrefs li"
-        );
-        const pvArray = [];
-        pvsHTML.forEach((pv) => {
-          const pvObj = {};
-          const word = pv.querySelector("a");
-          if (word) {
-            pvObj.word = word.textContent;
-            pvObj.link = word.href;
-          }
-          pvArray.push(pvObj);
-        });
-        return pvArray;
+
+      const phrasal_verbs = [];
+      $(".phrasal_verb_links ul.pvrefs li").each((_, li) => {
+        const a = $(li).find("a").first();
+        if (a && a.length) {
+          phrasal_verbs.push({ word: a.text(), link: a.attr("href") });
+        }
       });
 
       words.push({
@@ -210,11 +173,9 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         phrasal_verbs,
       });
     } catch (e) {
-      throw new Error("crawl_goto_error");
+      throw new Error("crawl_request_error");
     }
   }
-
-  await browser.close();
   return words;
 }
 
