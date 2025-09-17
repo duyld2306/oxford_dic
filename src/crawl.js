@@ -61,18 +61,38 @@ async function crawlWordDirect(word, maxSuffix = 5) {
           const s = {
             symbol:
               $el
-                .find(".sensetop > div.symbols span")
+                .find(
+                  ".sensetop > div.symbols span, .sensetop ~ div.symbols span"
+                )
                 .first()
                 .attr("class")
                 ?.split("_")[1] || "",
-            labels: $el.find(":scope > span.labels").first().text() || "",
-            dis_g: $el.find(":scope > span.dis-g").first().text() || "",
+            labels:
+              $el
+                .find(".sensetop > span.labels, .sensetop ~ span.labels")
+                .first()
+                .text() || "",
+            dis_g:
+              $el
+                .find(".sensetop > span.dis-g, .sensetop ~ span.dis-g")
+                .first()
+                .text() || "",
             variants: (() => {
-              const v = $el.find(":scope > div.variants").first();
+              const v = $el
+                .find(".sensetop > div.variants, .sensetop ~ div.variants")
+                .first();
               return v && v.length ? { text: v.text(), html: v.html() } : {};
             })(),
-            grammar: $el.find(":scope > span.grammar").first().text() || "",
-            cf: $el.find(":scope > span.cf").first().text() || "",
+            grammar:
+              $el
+                .find(".sensetop > span.grammar, .sensetop ~ span.grammar")
+                .first()
+                .text() || "",
+            cf:
+              $el
+                .find(".sensetop > span.cf, .sensetop ~ span.cf")
+                .first()
+                .text() || "",
             definition: def.text(),
             synonyms: [],
             opposites: [],
@@ -125,19 +145,38 @@ async function crawlWordDirect(word, maxSuffix = 5) {
             const s = {
               symbol:
                 $sEl
-                  .find(".sensetop > div.symbols span")
+                  .find(
+                    ".sensetop > div.symbols span, .sensetop ~ div.symbols span"
+                  )
                   .first()
                   .attr("class")
                   ?.split("_")[1] || "",
-              labels: $sEl.find(".sensetop > span.labels").first().text() || "",
-              dis_g: $sEl.find(".sensetop > span.dis-g").first().text() || "",
+              labels:
+                $sEl
+                  .find(".sensetop > span.labels, .sensetop ~ span.labels")
+                  .first()
+                  .text() || "",
+              dis_g:
+                $sEl
+                  .find(".sensetop > span.dis-g, .sensetop ~ span.dis-g")
+                  .first()
+                  .text() || "",
               variants: (() => {
-                const v = $sEl.find(".sensetop > div.variants").first();
+                const v = $sEl
+                  .find(".sensetop > div.variants, .sensetop ~ div.variants")
+                  .first();
                 return v && v.length ? { text: v.text(), html: v.html() } : {};
               })(),
               grammar:
-                $sEl.find(".sensetop > span.grammar").first().text() || "",
-              cf: $sEl.find(".sensetop > span.cf").first().text() || "",
+                $sEl
+                  .find(".sensetop > span.grammar, .sensetop ~ span.grammar")
+                  .first()
+                  .text() || "",
+              cf:
+                $sEl
+                  .find(".sensetop > span.cf, .sensetop ~ span.cf")
+                  .first()
+                  .text() || "",
               definition: def.text(),
               synonyms: [],
               opposites: [],
