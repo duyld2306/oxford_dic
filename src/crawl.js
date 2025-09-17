@@ -17,7 +17,6 @@ async function crawlWordDirect(word, maxSuffix = 5) {
   for (let i = 0; i < urls.length; i++) {
     const link = urls[i];
     try {
-      await new Promise((resolve) => setTimeout(resolve, 400));
       const { data: html } = await axios.get(link, {
         headers: {
           "User-Agent":
@@ -91,12 +90,16 @@ async function crawlWordDirect(word, maxSuffix = 5) {
               $xr.find("a").each((_, a) => s.see_alsos.push($(a).text()));
             }
           });
-          $el.find("ul.examples li").each((_, ex) => {
-            const $ex = $(ex);
-            const cf = $ex.find("span.cf").first().text() || "";
-            const x = $ex.find("span.x").first().text() || "";
-            if (cf || x) s.examples.push({ cf, x });
-          });
+          $el
+            .find("ul.examples li")
+            .filter((_, el) => $(el).closest(".idioms").length === 0)
+            .each((_, ex) => {
+              const $ex = $(ex);
+              const cf = $ex.find("span.cf").first().text() || "";
+              const labels = $ex.find("span.labels").first().text() || "";
+              const x = $ex.find("span.x").first().text() || "";
+              if (cf || labels || x) s.examples.push({ cf, labels, x });
+            });
           senses.push(s);
         });
 
