@@ -1,72 +1,64 @@
-import sqlite3 from "sqlite3";
-import path from "path";
-import fs from "fs";
+import { MongoClient } from "mongodb";
 
-const DB_FILENAME = path.resolve(process.cwd(), "words.sqlite");
+// Use the provided MongoDB Atlas URI
+const MONGO_URI =
+  "mongodb+srv://ledacduyy_db_user:z26eNCj52nghHgwo@oxford-dic.h4p0zyz.mongodb.net/?retryWrites=true&w=majority&appName=oxford-dic";
 
-function ensureDatabaseFileExists() {
-  const dir = path.dirname(DB_FILENAME);
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
-  if (!fs.existsSync(DB_FILENAME)) {
-    fs.writeFileSync(DB_FILENAME, "");
-  }
+// Choose a database and collection name
+const DB_NAME = "oxford-dic";
+const COLLECTION_NAME = "words";
+
+let client = null;
+let collection = null;
+
+export async function initDb() {
+  if (collection) return;
+  client = new MongoClient(MONGO_URI, { serverSelectionTimeoutMS: 30000 });
+  await client.connect();
+  const db = client.db(DB_NAME);
+  collection = db.collection(COLLECTION_NAME);
 }
 
-let dbInstance = null;
-
-function getDb() {
-  if (dbInstance) return dbInstance;
-  ensureDatabaseFileExists();
-  sqlite3.verbose();
-  dbInstance = new sqlite3.Database(DB_FILENAME);
-  return dbInstance;
+export async function getWord(word) {
+  if (!collection) await initDb();
+  const key = String(word || "").toLowerCase();
+  const doc = await collection.findOne(
+    { _id: key },
+    { projection: { data: 1 } }
+  );
+  if (!doc) return null;
+  return { word: key, json: JSON.stringify(doc.data || []) };
 }
 
-export function initDb() {
-  const db = getDb();
-  db.serialize(() => {
-    db.run(
-      "CREATE TABLE IF NOT EXISTS words (word TEXT PRIMARY KEY, json TEXT NOT NULL, created_at TEXT NOT NULL, updated_at TEXT NOT NULL)"
-    );
-    db.run("CREATE INDEX IF NOT EXISTS idx_words_word ON words(word)");
-  });
-}
-
-export function getWord(word) {
-  const db = getDb();
-  return new Promise((resolve, reject) => {
-    db.get(
-      "SELECT word, json FROM words WHERE word = ?",
-      [word.toLowerCase()],
-      (err, row) => {
-        if (err) return reject(err);
-        resolve(row || null);
-      }
-    );
-  });
-}
-
-export function upsertWord(word, jsonData) {
-  const db = getDb();
+export async function upsertWord(word, jsonData) {
+  if (!collection) await initDb();
+  const key = String(word || "").toLowerCase();
   const nowIso = new Date().toISOString();
-  const jsonString =
-    typeof jsonData === "string" ? jsonData : JSON.stringify(jsonData);
-  return new Promise((resolve, reject) => {
-    db.run(
-      "INSERT INTO words(word, json, created_at, updated_at) VALUES(?, ?, ?, ?) ON CONFLICT(word) DO UPDATE SET json = excluded.json, updated_at = excluded.updated_at",
-      [word.toLowerCase(), jsonString, nowIso, nowIso],
-      function (err) {
-        if (err) return reject(err);
-        resolve(true);
-      }
-    );
-  });
+  const data = Array.isArray(jsonData)
+    ? jsonData
+    : JSON.parse(String(jsonData || "[]"));
+  await collection.updateOne(
+    { _id: key },
+    {
+      $set: {
+        data,
+        updatedAt: nowIso,
+      },
+      $setOnInsert: {
+        createdAt: nowIso,
+      },
+    },
+    { upsert: true }
+  );
+  return true;
 }
 
-export function closeDb() {
-  if (!dbInstance) return;
-  dbInstance.close();
-  dbInstance = null;
+export async function closeDb() {
+  if (client) {
+    try {
+      await client.close();
+    } catch (_) {}
+  }
+  client = null;
+  collection = null;
 }

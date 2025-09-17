@@ -1,5 +1,6 @@
 import axios from "axios";
 import { load } from "cheerio";
+import { ObjectId } from "mongodb";
 
 async function crawlWordDirect(word, maxSuffix = 5) {
   const words = [];
@@ -118,7 +119,8 @@ async function crawlWordDirect(word, maxSuffix = 5) {
               const cf = $ex.find("span.cf").first().text() || "";
               const labels = $ex.find("span.labels").first().text() || "";
               const x = $ex.find("span.x").first().text() || "";
-              if (cf || labels || x) s.examples.push({ cf, labels, x });
+              if (cf || labels || x)
+                s.examples.push({ cf, labels, en: x, vi: "" });
             });
           senses.push(s);
         });
@@ -196,7 +198,7 @@ async function crawlWordDirect(word, maxSuffix = 5) {
             });
             $sEl.find("ul.examples li").each((_, ex) => {
               const x = $(ex).find("span.x").first().text();
-              if (x) s.examples.push(x);
+              if (x) s.examples.push({ en: x, vi: "" });
             });
             item.senses.push(s);
           });
@@ -211,7 +213,24 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         }
       });
 
-      words.push({
+      // Assign ObjectIds as requested:
+      // - one ObjectId for each word entry
+      // - each idiom has an ObjectId
+      // - each sense (both main senses and idiom senses) has an ObjectId
+      // - each example (both main senses and idiom senses) has an ObjectId
+
+      const assignIdsToSenses = (arr) =>
+        arr.map((s) => ({
+          _id: new ObjectId(),
+          ...s,
+          examples: (s.examples || []).map((ex) => ({
+            _id: new ObjectId(),
+            ...ex,
+          })),
+        }));
+
+      const wordDoc = {
+        _id: new ObjectId(),
         word: foundWord,
         pos,
         symbol,
@@ -222,10 +241,16 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         variants,
         grammar,
         labels,
-        senses,
-        idioms,
+        senses: assignIdsToSenses(senses),
+        idioms: (idioms || []).map((idm) => ({
+          _id: new ObjectId(),
+          ...idm,
+          senses: assignIdsToSenses(idm.senses || []),
+        })),
         phrasal_verbs,
-      });
+      };
+
+      words.push(wordDoc);
     } catch (e) {
       throw new Error("crawl_request_error");
     }

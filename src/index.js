@@ -1,5 +1,5 @@
 import express from "express";
-import { initDb, getWord, upsertWord } from "./db.js";
+import { initDb, getWord, upsertWord, closeDb } from "./db.js";
 import { crawlWordDirect } from "./crawl.js";
 import fs from "fs";
 import path from "path";
@@ -7,7 +7,7 @@ import path from "path";
 const app = express();
 app.use(express.json());
 
-initDb();
+await initDb();
 
 function validateWord(q) {
   if (!q || typeof q !== "string") return null;
@@ -129,6 +129,19 @@ app.get("/", (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server listening on http://localhost:${port}`);
+});
+
+process.on("SIGINT", async () => {
+  try {
+    await closeDb();
+  } catch (_) {}
+  server.close(() => process.exit(0));
+});
+process.on("SIGTERM", async () => {
+  try {
+    await closeDb();
+  } catch (_) {}
+  server.close(() => process.exit(0));
 });
