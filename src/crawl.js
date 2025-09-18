@@ -113,7 +113,11 @@ async function crawlWordDirect(word, maxSuffix = 5) {
           });
           $el
             .find("ul.examples li")
-            .filter((_, el) => $(el).closest(".idioms").length === 0)
+            .filter(
+              (_, el) =>
+                $(el).closest(".idioms").length === 0 &&
+                $(el).closest(".collapse").length === 0
+            )
             .each((_, ex) => {
               const $ex = $(ex);
               const cf = $ex.find("span.cf").first().text() || "";
@@ -196,10 +200,13 @@ async function crawlWordDirect(word, maxSuffix = 5) {
                 $xr.find("a").each((_, a) => s.see_alsos.push($(a).text()));
               }
             });
-            $sEl.find("ul.examples li").each((_, ex) => {
-              const x = $(ex).find("span.x").first().text();
-              if (x) s.examples.push({ en: x, vi: "" });
-            });
+            $sEl
+              .find("ul.examples li")
+              .filter((_, el) => $(el).closest(".collapse").length === 0)
+              .each((_, ex) => {
+                const x = $(ex).find("span.x").first().text();
+                if (x) s.examples.push({ en: x, vi: "" });
+              });
             item.senses.push(s);
           });
         idioms.push(item);
