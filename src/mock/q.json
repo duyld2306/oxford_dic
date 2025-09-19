@@ -1,0 +1,5211 @@
+[
+  {
+    "word": "qualification",
+    "pos": "noun",
+    "symbol": "b1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qua/quali/qualification__gb_1.mp3",
+    "phonetic_text": "/ˌkwɒlɪfɪˈkeɪʃn/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qua/quali/qualification__us_4.mp3",
+    "phonetic_am_text": "/ˌkwɑːlɪfɪˈkeɪʃn/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "b1",
+        "labels": "(British English)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable, usually plural]",
+        "cf": "",
+        "definition": "an exam that you have passed or a course of study that you have successfully completed",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "academic/educational/professional/vocational qualifications",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a coaching/teaching/nursing qualification",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He left school with no formal qualifications.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "to have qualifications",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "to gain/get/obtain/possess/achieve qualifications",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "In this job, experience counts for more than paper qualifications.",
+            "vi": ""
+          },
+          {
+            "cf": "qualification in something",
+            "labels": "",
+            "en": "Too many school-leavers lack basic qualifications in English and Maths.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a skill or type of experience that you need for a particular job or activity",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "What qualifications do radio presenters require?",
+            "vi": ""
+          },
+          {
+            "cf": "qualification for something",
+            "labels": "",
+            "en": "Previous teaching experience is a necessary qualification for this job.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable, uncountable]",
+        "cf": "",
+        "definition": "information that you add to a statement to limit the effect that it has or the way it is applied",
+        "synonyms": [
+          "proviso"
+        ],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I accept his theories, but not without certain qualifications.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The plan was approved without qualification.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[uncountable]",
+        "cf": "",
+        "definition": "the fact of passing an exam, completing a course of training or reaching the standard necessary to do a job or take part in a competition",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Nurses in training should be given a guarantee of employment following qualification.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "A victory in this game will earn them qualification for the World Cup.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "qualified",
+    "pos": "adjective",
+    "symbol": "b1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qua/quali/qualified__gb_1.mp3",
+    "phonetic_text": "/ˈkwɒlɪfaɪd/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qua/quali/qualified__us_4.mp3",
+    "phonetic_am_text": "/ˈkwɑːlɪfaɪd/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "having passed the exams or completed the training that are necessary in order to do a particular job; having the experience to do a particular job",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a qualified teacher",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a qualified instructor/accountant/nurse/doctor",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "qualified staff/personnel",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "to be highly qualified",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "to be suitably/fully qualified",
+            "vi": ""
+          },
+          {
+            "cf": "qualified for something",
+            "labels": "",
+            "en": "She's extremely well qualified for the job.",
+            "vi": ""
+          },
+          {
+            "cf": "qualified to do something",
+            "labels": "",
+            "en": "I'm not qualified to teach in state schools.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[not before noun]",
+        "cf": "qualified to do something",
+        "definition": "having the practical knowledge or skills to do something",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I don't know much about it, so I don't feel qualified to comment.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I'm not technically qualified to say anything.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "His supporters say he is uniquely qualified to lead the country out of the crisis.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "(of approval, support, etc.)",
+        "variants": {},
+        "grammar": "[usually before noun]",
+        "cf": "",
+        "definition": "limited in some way",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The plan was given only qualified support.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The project was only a qualified success.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It was met with qualified enthusiasm.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The proposals received heavily qualified approval.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "qualify",
+    "pos": "verb",
+    "symbol": "b1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qua/quali/qualify__gb_1.mp3",
+    "phonetic_text": "/ˈkwɒlɪfaɪ/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qua/quali/qualify__us_1.mp3",
+    "phonetic_am_text": "/ˈkwɑːlɪfaɪ/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[intransitive]",
+        "cf": "",
+        "definition": "to reach the standard of ability or knowledge needed to do a particular job, for example by completing a course of study or passing exams",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "How long does it take to qualify?",
+            "vi": ""
+          },
+          {
+            "cf": "qualify as something",
+            "labels": "",
+            "en": "He qualified as a doctor last year.",
+            "vi": ""
+          },
+          {
+            "cf": "qualify in something",
+            "labels": "",
+            "en": "She spent seven years qualifying in law.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[transitive]",
+        "cf": "",
+        "definition": "to give somebody the skills and knowledge they need to do something",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "qualify somebody for something",
+            "labels": "",
+            "en": "This training course will qualify you for a better job.",
+            "vi": ""
+          },
+          {
+            "cf": "qualify somebody to do something",
+            "labels": "",
+            "en": "The test qualifies you to drive heavy vehicles.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[intransitive]",
+        "cf": "",
+        "definition": "to be of a high enough standard to enter a competition; to defeat another person or team in order to enter or continue in a competition",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He failed to qualify.",
+            "vi": ""
+          },
+          {
+            "cf": "qualify for something",
+            "labels": "",
+            "en": "South Korea qualified for the finals when they beat Italy 6–1.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They qualified for the World Cup.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[intransitive, transitive]",
+        "cf": "",
+        "definition": "to have or give somebody the right to do something",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "To qualify, you must have lived in this country for at least three years.",
+            "vi": ""
+          },
+          {
+            "cf": "qualify for something",
+            "labels": "",
+            "en": "If you live in the area, you qualify for a parking permit.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "In order to qualify for scholarships, students must demonstrate potential for academic excellence.",
+            "vi": ""
+          },
+          {
+            "cf": "qualify somebody",
+            "labels": "",
+            "en": "Your educational background, interests and family history are some of the things that might qualify you.",
+            "vi": ""
+          },
+          {
+            "cf": "qualify somebody for something",
+            "labels": "",
+            "en": "Paying a fee doesn't automatically qualify you for membership.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[intransitive, transitive]",
+        "cf": "",
+        "definition": "to have the right qualities to be described as a particular thing",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "qualify (as something)",
+            "labels": "",
+            "en": "Do you think this dress qualifies as evening wear?",
+            "vi": ""
+          },
+          {
+            "cf": "qualify something (as something)",
+            "labels": "",
+            "en": "It's an old building, but that doesn't qualify it as an ancient monument!",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[transitive]",
+        "cf": "qualify something",
+        "definition": "to add something to a previous statement to make the meaning less strong or less general",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I want to qualify what I said earlier—I didn't mean he couldn't do the job, only that he would need supervision.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "(of a word)",
+        "variants": {},
+        "grammar": "[transitive]",
+        "cf": "qualify something",
+        "definition": "to describe another word in a particular way",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "In ‘the open door’, ‘open’ is an adjective qualifying ‘door’.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quality",
+    "pos": "noun",
+    "symbol": "a2",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qua/quali/quality__gb_3.mp3",
+    "phonetic_text": "/ˈkwɒləti/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qua/quali/quality__us_2.mp3",
+    "phonetic_am_text": "/ˈkwɑːləti/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[uncountable, countable]",
+        "cf": "",
+        "definition": "the standard of something when it is compared to other things like it; how good or bad something is",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "air quality"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Improving the quality of care for nursing home residents is a priority.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "When costs are cut product quality suffers.",
+            "vi": ""
+          },
+          {
+            "cf": "of… quality",
+            "labels": "",
+            "en": "The soil here is of poor quality.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The food is fresh and of good quality.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "His goal was of top quality.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "goods of a high quality",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "high-quality goods",
+            "vi": ""
+          },
+          {
+            "cf": "in quality",
+            "labels": "",
+            "en": "a decline in water quality",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We have seen a marked improvement in the quality of service provided.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[uncountable]",
+        "cf": "",
+        "definition": "a high standard",
+        "synonyms": [
+          "excellence"
+        ],
+        "opposites": [],
+        "see_alsos": [
+          "total quality management"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We aim to provide quality at reasonable prices.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They need to decrease costs while maintaining quality.",
+            "vi": ""
+          },
+          {
+            "cf": "of quality",
+            "labels": "",
+            "en": "contemporary writers of quality ",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Get it right, even if it takes time; it's quality not quantity that matters.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a thing that is part of a person’s character, especially something good",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "personal qualities such as honesty and generosity",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "to have leadership qualities",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She has all the qualities of a good teacher.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It's hard to find people with the right qualities for the job.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He has a lot of good qualities.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable, uncountable]",
+        "cf": "",
+        "definition": "a feature of somebody/something, especially one that makes them different from somebody/something else",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the special quality of light and shade in her paintings",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "His voice has a rich, melodic quality.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(British English)",
+        "dis_g": "",
+        "variants": {
+          "text": "(also more frequent quality newspaper)",
+          "html": "(also <span class=\"v-g\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">more frequent</span> <span class=\"v\">quality newspaper</span></span>)"
+        },
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a newspaper that deals seriously with issues and has a high standard of editing and comment",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quality",
+    "pos": "adjective",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qua/quali/quality__gb_3.mp3",
+    "phonetic_text": "/ˈkwɒləti/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qua/quali/quality__us_2.mp3",
+    "phonetic_am_text": "/ˈkwɑːləti/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[only before noun]",
+        "cf": "",
+        "definition": "used especially by people trying to sell goods or services to say that something is of a high quality",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We specialize in quality furniture.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "quality service at a competitive price",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Try our top range of quality products.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We offer a quality service to all customers.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(British English, slang)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "very good",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "‘What was the film like?’ ‘Quality!’",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quantity",
+    "pos": "noun",
+    "symbol": "a2",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qua/quant/quantity__gb_3.mp3",
+    "phonetic_text": "/ˈkwɒntəti/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qua/quant/quantity__us_1.mp3",
+    "phonetic_am_text": "/ˈkwɑːntəti/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable, uncountable]",
+        "cf": "",
+        "definition": "an amount or a number of something",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "quantity of something",
+            "labels": "",
+            "en": "a large/small quantity of something",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "vast/huge quantities of food",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "enormous/massive/considerable/substantial quantities of something",
+            "vi": ""
+          },
+          {
+            "cf": "in… quantities ",
+            "labels": "",
+            "en": "a product that is cheap to produce in large quantities",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Lamb is consumed in large quantities in rural areas.",
+            "vi": ""
+          },
+          {
+            "cf": "in… quantity",
+            "labels": "",
+            "en": "Is it available in sufficient quantity?",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[uncountable]",
+        "cf": "",
+        "definition": "the measurement of something by saying how much of it there is",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The data is limited in terms of both quality and quantity.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable, uncountable]",
+        "cf": "",
+        "definition": "a large amount or number of something",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "quantity of something",
+            "labels": "",
+            "en": "The police found a quantity of stolen cash at his home.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I was overwhelmed by the sheer quantity of information available.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She felt daunted by the quantity of books she was expected to read for the course.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Their latest album isn't selling in anything like the quantities that their first one did.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "A quantity of jewellery was taken during the burglary.",
+            "vi": ""
+          },
+          {
+            "cf": "in quantity",
+            "labels": "",
+            "en": "It's cheaper to buy goods in quantity.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "an unknown quantity",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "a person or thing whose qualities or abilities are not yet known",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": []
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quarter",
+    "pos": "noun",
+    "symbol": "a1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qua/quart/quarter__gb_1.mp3",
+    "phonetic_text": "/ˈkwɔːtə(r)/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qua/quart/quarter__us_3.mp3",
+    "phonetic_am_text": "/ˈkwɔːrtər/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {
+          "text": "(also fourth especially in North American English)",
+          "html": "(also <span class=\"v-g\"><span class=\"v\">fourth</span> <span class=\"labels\" hclass=\"labels\" htag=\"span\">especially in North American English</span></span>)"
+        },
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "one of four equal parts of something",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "quarter of something",
+            "labels": "",
+            "en": "a quarter of an hour/a century",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a quarter of a mile/million",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Almost a quarter of respondents reported employment discrimination.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "three quarters of all potential customers",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The programme lasted an hour and a quarter.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Cut the apple into quarters.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The theatre was about three quarters full.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(especially North American English)",
+            "en": "He completed his last work a quarter century ago.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a period of 15 minutes either before or after every hour",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It’s (a) quarter to four now—I’ll meet you at (a) quarter past.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(North American English also)",
+            "en": "It's quarter of four now—I'll meet you at quarter after.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a period of three months, used especially as a period for which bills are paid or a company’s income is calculated",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The rent is due at the end of each quarter.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Our gas bill for the last quarter was much higher than usual.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Sales were down 10% in the first quarter of 2024.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable, usually singular]",
+        "cf": "",
+        "definition": "a district or part of a town",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the historic quarter of the city",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "As a student in Paris, she loved the Latin quarter.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The robbery took place in a normally quiet quarter of the town.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a person or group of people, especially as a source of help, information or a reaction",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Support for the plan came from an unexpected quarter.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The news was greeted with dismay in some quarters.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The move was met with complaints from all quarters (= from everyone).",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a coin of the US and Canada worth 25 cents",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {
+          "text": "quarters",
+          "html": "<span class=\"v-g\"><span class=\"v\">quarters</span></span>"
+        },
+        "grammar": "[plural]",
+        "cf": "",
+        "definition": "rooms that are provided for soldiers, servants, etc. to live in",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We were moved to more comfortable living quarters.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the servants'/officers' quarters",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "the period of time twice a month when we can see a quarter of the moon",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The moon is in its first quarter.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "one of the four periods of time into which a game of American football is divided",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Ford scored the winning touchdown early in the fourth quarter.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(British English)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a unit for measuring weight, a quarter of a pound; 4 ounces",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a unit for measuring weight, 28 pounds in the UK or 25 pounds in the US; a quarter of a hundredweight",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      },
+      {
+        "symbol": "",
+        "labels": "(literary)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[uncountable]",
+        "cf": "",
+        "definition": "kind treatment of an enemy or opponent who is in your power",
+        "synonyms": [
+          "mercy"
+        ],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "His rivals knew that they could expect no quarter from such a ruthless adversary.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "at/from close quarters",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "very near",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "fighting at close quarters",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quarter",
+    "pos": "verb",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qua/quart/quarter__gb_1.mp3",
+    "phonetic_text": "/ˈkwɔːtə(r)/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qua/quart/quarter__us_3.mp3",
+    "phonetic_am_text": "/ˈkwɔːrtər/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "quarter something",
+        "definition": "to cut or divide something into four parts",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She peeled and quartered an apple.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(formal)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "quarter somebody (+ adv./prep.)",
+        "definition": "to provide somebody with a place to eat and sleep",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The soldiers were quartered in the town.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "queen",
+    "pos": "noun",
+    "symbol": "a2",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/que/queen/queen_1_gb_1.mp3",
+    "phonetic_text": "/kwiːn/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/que/queen/queen__us_1.mp3",
+    "phonetic_am_text": "/kwiːn/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "the female ruler of an independent state that has a royal family",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She was crowned queen at the age of fifteen.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "kings and queens",
+            "vi": ""
+          },
+          {
+            "cf": "queen of…",
+            "labels": "",
+            "en": "the Queen of Norway",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Queen Victoria",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {
+          "text": "(also queen consort)",
+          "html": "(also <span class=\"v-g\"><span class=\"v\">queen consort</span></span>)"
+        },
+        "grammar": "",
+        "cf": "",
+        "definition": "the wife of a king",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Henry VII and his queen, Elizabeth of York",
+            "vi": ""
+          },
+          {
+            "cf": "queen of…",
+            "labels": "",
+            "en": "The King and Queen of Denmark attended the wedding.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "queen (of something)",
+        "definition": "a woman, place or thing that is thought to be one of the best in a particular group or area",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "drama queen"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the queen of fashion",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a movie queen",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Venice, queen of the Adriatic",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "a woman or girl chosen to perform official duties at a festival or celebration",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "beauty queen",
+          "pearly queen"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a carnival queen",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a May queen (= at a festival to celebrate the coming of spring)",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a homecoming queen",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She was nominated for prom queen in high school.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "the most powerful piece used in the game of chess that can move any number of squares in any direction",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "a playing card with the picture of a queen on it",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "a large female insect that lays eggs for the whole group",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The bees swarmed around their queen.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(taboo, offensive, slang)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "an offensive word for a gay man who behaves like a woman",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "drag queen"
+        ],
+        "examples": []
+      }
+    ],
+    "idioms": [
+      {
+        "word": "the uncrowned king/queen (of something)",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "the person considered to be the best, most famous or successful in a particular place or area of activity",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": []
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "Queen",
+    "pos": "",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/que/queen/queen__gb_3.mp3",
+    "phonetic_text": "/kwiːn/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/que/queen/queen_1_us_1.mp3",
+    "phonetic_am_text": "/kwiːn/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "a successful British pop group formed in 1971. Its singer was Freddie Mercury and its albums A Night at the Opera (1975), The Game (1980) and Innuendo (1991) as well as the song Bohemian Rhapsody (1975) were all No. 1 in Britain. The 2002 musical We Will Rock You is based on the group's music.",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "Queen Victoria",
+    "pos": "",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/que/queen/queen_victoria_1_gb_1.mp3",
+    "phonetic_text": "/ˌkwiːn vɪkˈtɔːriə/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/que/queen/queen_victoria_1_us_1.mp3",
+    "phonetic_am_text": "/ˌkwiːn vɪkˈtɔːriə/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "(1819-1901) a British queen who ruled from 1837 to 1901. She was the granddaughter of King George III and became queen after the death of King William IV. Her rule was the second-longest of any British king or queen, and happened at the same time as Britain's greatest period of world power and industrial development. In 1840 she married her cousin Prince Albert of Saxe-Coburg-Gotha. They had nine children. After Albert's death Victoria took no further part in public affairs, but was persuaded to return by her prime minister Benjamin Disraeli, who gained for her the title Empress of India. She is often remembered as a bad-tempered old woman. However in her early life she was a happy and enthusiastic queen who was very popular with ordinary people.",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "query",
+    "pos": "noun",
+    "symbol": "c1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/que/query/query__gb_1.mp3",
+    "phonetic_text": "/ˈkwɪəri/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/que/query/query__us_1_rr.mp3",
+    "phonetic_am_text": "/ˈkwɪri/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "c1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "a question, especially one asking for information or expressing a doubt about something",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Our assistants will be happy to answer your queries.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "If you have a query about your insurance policy, contact our helpline.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "c1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "a question mark to show that something has not been finished or decided",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Put a query against Jack's name—I'm not sure if he's coming.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "query",
+    "pos": "verb",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/que/query/query__gb_1.mp3",
+    "phonetic_text": "/ˈkwɪəri/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/que/query/query__us_1_rr.mp3",
+    "phonetic_am_text": "/ˈkwɪri/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "to express doubt about whether something is correct or not or what something means",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "query something",
+            "labels": "",
+            "en": "We queried the bill as it seemed far too high.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I'm not in a position to query their decision.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He hoped his expense account would not be queried too closely.",
+            "vi": ""
+          },
+          {
+            "cf": "query what, whether, etc…",
+            "labels": "",
+            "en": "Both novels query what it means to be American.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "to ask a question; to put a question to somebody",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "+ speech",
+            "labels": "",
+            "en": "‘Who will be leading the team?’ queried Simon.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "‘Why ever not?’ she queried.",
+            "vi": ""
+          },
+          {
+            "cf": "query somebody",
+            "labels": "(especially North American English)",
+            "en": "I queried a few people on the subject.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quest",
+    "pos": "noun",
+    "symbol": "c1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/que/quest/quest__gb_1.mp3",
+    "phonetic_text": "/kwest/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/que/quest/quest__us_1.mp3",
+    "phonetic_am_text": "/kwest/",
+    "variants": {},
+    "grammar": "",
+    "labels": "(formal or literary)",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "a long search for something, especially for some quality such as happiness",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "quest for something",
+            "labels": "",
+            "en": "the quest for happiness/knowledge/truth",
+            "vi": ""
+          },
+          {
+            "cf": "in quest of something",
+            "labels": "",
+            "en": "He set off in quest of adventure.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a quest narrative/novel/story",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quest",
+    "pos": "verb",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/que/quest/quest__gb_1.mp3",
+    "phonetic_text": "/kwest/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/que/quest/quest__us_1.mp3",
+    "phonetic_am_text": "/kwest/",
+    "variants": {},
+    "grammar": "[intransitive]",
+    "labels": "(formal or literary)",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "quest (for something)",
+        "definition": "to search for something that is difficult to find",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "question",
+    "pos": "noun",
+    "symbol": "a1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/que/quest/question__gb_2.mp3",
+    "phonetic_text": "/ˈkwestʃən/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/que/quest/question__us_4.mp3",
+    "phonetic_am_text": "/ˈkwestʃən/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a sentence, phrase or word that asks for information",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "indirect question",
+          "leading question",
+          "question tag",
+          "wh-question",
+          "yes-no question"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "You didn't answer my question.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "You will have the opportunity to ask questions.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Does anyone have any questions?",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(formal)",
+            "en": "I would now like to pose two questions:…",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "That's a very interesting question.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The question is, how much are they going to pay you?",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The big question is, why did they do it?",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(formal)",
+            "en": "The question arises as to whether or not he knew of the situation.",
+            "vi": ""
+          },
+          {
+            "cf": "question of something",
+            "labels": "",
+            "en": "The key question of what caused the leak remains unanswered.",
+            "vi": ""
+          },
+          {
+            "cf": "question about something",
+            "labels": "",
+            "en": "Can I ask you a question about your first novel?",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(formal)",
+            "en": "He put a question to the minister about the recent reforms.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I hope the police don't ask any awkward questions.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "This is a difficult question to answer.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The short answer to your question is yes.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The government doesn’t have the answers to these difficult questions.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "In an interview try to ask open questions that don't just need ‘Yes’ or ‘No’ as an answer.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I paid cash, no questions asked.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a task or request for information that is intended to test your knowledge or understanding, for example in an exam or a competition",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Question 3 was very difficult.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I couldn't do Question 6.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "You must answer all ten questions.",
+            "vi": ""
+          },
+          {
+            "cf": "question on something",
+            "labels": "",
+            "en": "In the exam there's sure to be a question on energy.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a matter or topic that needs to be discussed or dealt with",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "This is an issue that raises many important questions.",
+            "vi": ""
+          },
+          {
+            "cf": "question of something",
+            "labels": "",
+            "en": "Let's look at the question of security.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Finally we shall deal with the question of cost.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The question that needs to be addressed is one of funding.",
+            "vi": ""
+          },
+          {
+            "cf": "question about something",
+            "labels": "",
+            "en": "Questions remain about how she was appointed.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The case raises serious questions about the company's conduct.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Which route is better remains an open question (= it is not decided).",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The film doesn't answer all the questions it raises.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The research is asking the wrong questions.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The new play poses some challenging questions.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[uncountable, countable]",
+        "cf": "",
+        "definition": "doubt or not being certain about something",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "His suitability for the job is open to question.",
+            "vi": ""
+          },
+          {
+            "cf": "beyond question",
+            "labels": "",
+            "en": "Her honesty is beyond question.",
+            "vi": ""
+          },
+          {
+            "cf": "without question",
+            "labels": "",
+            "en": "Her version of events was accepted without question.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "This case brings into question the whole purpose of the law.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The authenticity of the painting has been thrown into question.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The safety of the system has recently come into question.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "His ability has never been called into question.",
+            "vi": ""
+          },
+          {
+            "cf": "question as to/about something",
+            "labels": "",
+            "en": "I did have some questions as to his motive in coming.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She's a great dancer—there's no question about that.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "beg the question",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "to make somebody want to ask a question that has not yet been answered",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "All of which begs the question as to who will fund the project.",
+                "vi": ""
+              }
+            ]
+          },
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "to talk about something as if it were definitely true, even though it might not be",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "These assumptions beg the question that children learn languages more easily than adults.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "good question!",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used to show that you do not know the answer to a question",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "‘How much is all this going to cost?’ ‘Good question!’",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "in question",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "that is being discussed",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "On the day in question we were in Cardiff.",
+                "vi": ""
+              }
+            ]
+          },
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "in doubt; uncertain",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "The future of public transport is not in question.",
+                "vi": ""
+              },
+              {
+                "en": "His sincerity is not in question.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "just/merely/only a question of (doing) something",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used to say that something is not difficult to predict, explain, do, etc.",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "It's merely a question of time before the business collapses.",
+                "vi": ""
+              },
+              {
+                "en": "It's just a question of deciding what you really want.",
+                "vi": ""
+              },
+              {
+                "en": "Now it's just a question of getting the wording right.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "a moot point/question",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(British English, North American English)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "a matter about which there may be difference of opinion or a lack of understanding",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "Whether this should be enforced by law or not is a moot point.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "a moot question/point",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "a matter about which there may be difference of opinion or a lack of understanding",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "Whether this should be enforced by law or not is a moot question.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "out of the question",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "impossible or not allowed and therefore not worth discussing",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "Another trip abroad this year is out of the question.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "pop the question",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "to ask somebody to marry you",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": []
+          }
+        ]
+      },
+      {
+        "word": "there is/was no question of something happening/of somebody doing something",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "there is/was no possibility of something",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "There was no question of his/him cancelling the trip so near the departure date.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "question",
+    "pos": "verb",
+    "symbol": "a2",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/que/quest/question__gb_2.mp3",
+    "phonetic_text": "/ˈkwestʃən/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/que/quest/question__us_4.mp3",
+    "phonetic_am_text": "/ˈkwestʃən/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[often passive]",
+        "cf": "",
+        "definition": "to ask somebody questions about something, especially officially",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "cross-question"
+        ],
+        "examples": [
+          {
+            "cf": "question somebody",
+            "labels": "",
+            "en": "Police are keen to question any witnesses.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Two men are being questioned by police.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Over half of those questioned said they rarely took any exercise.",
+            "vi": ""
+          },
+          {
+            "cf": "question somebody about something",
+            "labels": "",
+            "en": "She was arrested and questioned about the fire.",
+            "vi": ""
+          },
+          {
+            "cf": "question somebody on something",
+            "labels": "",
+            "en": "The students were questioned on the books they had been studying.",
+            "vi": ""
+          },
+          {
+            "cf": "+ speech",
+            "labels": "",
+            "en": "‘What's wrong?’ she questioned.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "to have or express doubts about something",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "question something",
+            "labels": "",
+            "en": "I just accepted what he told me. I never thought to question it.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "No one has ever questioned her judgement.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "At times I question the wisdom of that decision.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I seriously question his ability to do his job.",
+            "vi": ""
+          },
+          {
+            "cf": "question whether, what, etc…",
+            "labels": "",
+            "en": "He questioned whether the accident was solely the lorry driver's fault.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "questionnaire",
+    "pos": "noun",
+    "symbol": "b2",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/que/quest/questionnaire__gb_2.mp3",
+    "phonetic_text": "/ˌkwestʃəˈneə(r)/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/que/quest/questionnaire__us_1.mp3",
+    "phonetic_am_text": "/ˌkwestʃəˈner/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "a written list of questions that are answered by a number of people so that information can be collected from the answers",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "(British English)",
+            "en": "to fill in a questionnaire",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(especially North American English)",
+            "en": "to fill out a questionnaire",
+            "vi": ""
+          },
+          {
+            "cf": "questionnaire on/about something",
+            "labels": "",
+            "en": "Local companies were asked to complete a questionnaire about their exports.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "queue",
+    "pos": "noun",
+    "symbol": "b1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/que/queue/queue__gb_1.mp3",
+    "phonetic_text": "/kjuː/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/que/queue/queue__us_1.mp3",
+    "phonetic_am_text": "/kjuː/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "b1",
+        "labels": "(British English)",
+        "dis_g": "",
+        "variants": {
+          "text": "(North American English line)",
+          "html": "(<span class=\"v-g\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English</span> <span class=\"v\">line</span></span>)"
+        },
+        "grammar": "",
+        "cf": "",
+        "definition": "a line of people, cars, etc. waiting for something or to do something",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "There were long queues at polling stations.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the bus queue",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the front/head/back/end of the queue",
+            "vi": ""
+          },
+          {
+            "cf": "queue for something",
+            "labels": "",
+            "en": "I had to join a queue for the toilets.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Patients face lengthy queues for treatment.",
+            "vi": ""
+          },
+          {
+            "cf": "queue of somebody/something",
+            "labels": "",
+            "en": "There was a queue of traffic waiting to turn right.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "There's a queue of people trying to get in.",
+            "vi": ""
+          },
+          {
+            "cf": "in a queue",
+            "labels": "",
+            "en": "How long were you in the queue?",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Shoppers had to wait in long queues.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I have to stand in a queue at immigration.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I took my place in the queue.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(computing)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "a list of items of data stored in a particular order",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      }
+    ],
+    "idioms": [
+      {
+        "word": "jump the queue",
+        "labels": "(British English)",
+        "variants": {
+          "text": "(US English jump the line)",
+          "html": "(<span class=\"v-g\" id=\"queue_vg_2\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">US English</span> <span class=\"v\" id=\"queue_v_2\">jump the line</span></span>)"
+        },
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "to go to the front of a line of people without waiting for your turn",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": []
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "queue",
+    "pos": "verb",
+    "symbol": "b1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/que/queue/queue__gb_1.mp3",
+    "phonetic_text": "/kjuː/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/que/queue/queue__us_1.mp3",
+    "phonetic_am_text": "/kjuː/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "b1",
+        "labels": "(British English)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[intransitive]",
+        "cf": "",
+        "definition": "to wait in a line of people, vehicles, etc. in order to do something, get something or go somewhere",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "queue (up)",
+            "labels": "",
+            "en": "People queued up outside.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Hundreds of voters queued patiently.",
+            "vi": ""
+          },
+          {
+            "cf": "queue (up) for something",
+            "labels": "",
+            "en": "Queue here for taxis.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We had to queue up for an hour for the tickets.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "You have to queue to get in at weekends.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(computing)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[transitive, intransitive]",
+        "cf": "queue (something)",
+        "definition": "to add tasks to other tasks so that they are ready to be done in order; to come together to be done in order",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The system queues the jobs before they are processed.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": [
+      "be queuing up"
+    ]
+  },
+  {
+    "word": "quick",
+    "pos": "adjective",
+    "symbol": "a1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qui/quick/quick__gb_1.mp3",
+    "phonetic_text": "/kwɪk/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qui/quick/quick__us_1.mp3",
+    "phonetic_am_text": "/kwɪk/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "done with speed; taking or lasting a short time",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "double quick"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a quick look/check/search",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She gave him a quick glance.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Let's take a quick break.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "There's no quick fix for this problem.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Just a quick note to say thanks for lunch yesterday.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Let me just ask one quick question.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Thanks for the quick response.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "These cakes are very quick and easy to make.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Do you want to grab a quick coffee?",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It's quicker by train.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Are you sure this is the quickest way?",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Have you finished already? That was quick!",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "His quick thinking saved her life.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He fired three shots in quick succession.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "moving or doing something fast",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a quick learner",
+            "vi": ""
+          },
+          {
+            "cf": "quick to do something",
+            "labels": "",
+            "en": "The kids were quick to learn.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She was quick (= too quick) to point out the mistakes I'd made.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Don't be too quick to dismiss science fiction. ",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Don't be so quick to judge unless you know all the facts. ",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Her quick hands suddenly stopped moving.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Try to be quick! We're late already.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Once again, his quick wits (= ability to think quickly) got him out of an awkward situation.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(North American English, informal)",
+            "en": "He's a quick study (= he learns quickly).",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[only before noun]",
+        "cf": "",
+        "definition": "happening very soon or without delay",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We need to make a quick decision.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The company wants quick results.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The doctor said she'd make a quick recovery.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "be quick/fast on the draw",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "to be quick to understand or react in a new situation",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "You can't fool him—he's always quick on the draw.",
+                "vi": ""
+              }
+            ]
+          },
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "to be quick at pulling out a gun in order to shoot it",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": []
+          }
+        ]
+      },
+      {
+        "word": "be quick/slow on the uptake",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "to be quick/slow to understand something",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "Is he always this slow on the uptake?",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "have a quick/short temper",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "to become angry easily",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [
+              "quick-tempered",
+              "short-tempered"
+            ],
+            "examples": []
+          }
+        ]
+      },
+      {
+        "word": "make a fast/quick buck",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal, often disapproving)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "to earn money quickly and easily",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "This is a long-term project. We are not out to make a quick buck.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "quick and dirty",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used to describe something that is usually complicated, but is being done quickly and simply in this case",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "Read our quick-and-dirty guide to creating a website.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "quick/slow off the mark",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "fast/slow in reacting to a situation",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "If you’re quick off the mark in answering these questions, you could win a prize.",
+                "vi": ""
+              },
+              {
+                "en": "The government was slow off the mark in responding to the crisis.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quick",
+    "pos": "adverb",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qui/quick/quick__gb_1.mp3",
+    "phonetic_text": "/kwɪk/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qui/quick/quick__us_1.mp3",
+    "phonetic_am_text": "/kwɪk/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "quickly; fast",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Come as quick as you can!",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Let's see who can get there quickest.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It's another of his schemes to get rich quick.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(North American English, informal)",
+            "en": "You had to learn real quick to get along.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {
+          "text": "quick-",
+          "html": "<span class=\"v-g\"><span class=\"v\">quick-</span></span>"
+        },
+        "grammar": "",
+        "cf": "",
+        "definition": "doing the thing mentioned quickly",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "quick-thinking",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "quick-growing",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "(as) quick as a flash",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "very quickly",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "Quick as a flash she was at his side.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quick",
+    "pos": "noun",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qui/quick/quick__gb_1.mp3",
+    "phonetic_text": "/kwɪk/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qui/quick/quick__us_1.mp3",
+    "phonetic_am_text": "/kwɪk/",
+    "variants": {
+      "text": "the quick",
+      "html": "<span class=\"v-g\" id=\"quick_vg_2\"><span class=\"v\" id=\"quick_v_2\">the quick</span></span>"
+    },
+    "grammar": "[singular]",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "the soft, sensitive area under your nails",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She has bitten her nails down to the quick.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "cut somebody to the quick",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "to upset somebody very much by doing or saying something unkind",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "His accusations cut me to the quick.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quickly",
+    "pos": "adverb",
+    "symbol": "a1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qui/quick/quickly__gb_1.mp3",
+    "phonetic_text": "/ˈkwɪkli/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qui/quick/quickly__us_3.mp3",
+    "phonetic_am_text": "/ˈkwɪkli/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "fast",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She walked quickly away.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The disease spreads quickly.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The last few weeks have gone quickly (= the time seems to have passed quickly).",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The tool makes it possible to create websites quickly and easily.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He worked quickly and efficiently.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "soon; after a short time",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "to act/respond quickly",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The authorities moved quickly to quell the violence.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "'Hey, I was just kidding,' he said quickly.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He replied to my letter very quickly.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It quickly became clear that she was dying.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We'll repair it as quickly as possible.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I quickly realized that this was a big mistake.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We all quickly learned that success comes only with hard work.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He quickly found work as a shop assistant.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Things quickly turned ugly.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He scored a stunning goal, quickly followed by another.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": " She quickly established a reputation as a painter.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "When they saw how much money they could save, they quickly changed their minds",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quiet",
+    "pos": "adjective",
+    "symbol": "a1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qui/quiet/quiet__gb_2.mp3",
+    "phonetic_text": "/ˈkwaɪət/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qui/quiet/quiet__us_1.mp3",
+    "phonetic_am_text": "/ˈkwaɪət/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "making very little noise",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "her quiet voice",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a quieter, more efficient engine",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Could you keep the kids quiet while I'm on the phone?",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He went very quiet (= did not say much) so I knew he was upset.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "‘Be quiet,’ said the teacher.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She crept downstairs (as) quiet as a mouse.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We were all quiet for a moment.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "without many people or much noise or activity",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a quiet street/town",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It is a quiet place with just a handful of shops, bars and restaurants.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They lead a quiet life.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": " After a month of political tensions, things are relatively quiet.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Business is usually quieter at this time of year.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They had a quiet wedding.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The hotel is in a quiet location near the sea.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The negotiations were quiet and hurried.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "peaceful; without being interrupted",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "to have a quiet coffee",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They were enjoying a quiet moment by the lake.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I was looking forward to a quiet evening at home.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "(of a person)",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "tending not to talk very much",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She was quiet and shy.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "(of a feeling or an attitude)",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "definite but not expressed in an obvious way",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He had an air of quiet authority.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "keep quiet about something | keep something quiet",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "to say nothing about something; to keep something secret",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "I've decided to resign but I'd rather you kept quiet about it.",
+                "vi": ""
+              },
+              {
+                "en": "This story is too big to be kept quiet.",
+                "vi": ""
+              },
+              {
+                "en": "We'll have to keep this quiet—if it gets out, we'll all be in a lot of trouble.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quiet",
+    "pos": "noun",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qui/quiet/quiet__gb_2.mp3",
+    "phonetic_text": "/ˈkwaɪət/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qui/quiet/quiet__us_1.mp3",
+    "phonetic_am_text": "/ˈkwaɪət/",
+    "variants": {},
+    "grammar": "[uncountable]",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "the state of being calm and without much noise",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the quiet of his own room",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the quiet of the early morning",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I go to the library for a little peace and quiet.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "on the quiet",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "without telling anyone",
+            "synonyms": [
+              "secretly"
+            ],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "He’d been meeting her on the quiet.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quiet",
+    "pos": "verb",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qui/quiet/quiet__gb_2.mp3",
+    "phonetic_text": "/ˈkwaɪət/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qui/quiet/quiet__us_1.mp3",
+    "phonetic_am_text": "/ˈkwaɪət/",
+    "variants": {},
+    "grammar": "[intransitive, transitive]",
+    "labels": "(especially North American English)",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "to become calmer or less noisy; to make somebody/something calmer or less noisy",
+        "synonyms": [
+          "calm down"
+        ],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "quiet (down)",
+            "labels": "",
+            "en": "The demonstrators quieted down when the police arrived.",
+            "vi": ""
+          },
+          {
+            "cf": "quiet somebody/something (down)",
+            "labels": "",
+            "en": "He's very good at quieting the kids.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quietly",
+    "pos": "adverb",
+    "symbol": "a2",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qui/quiet/quietly__gb_1.mp3",
+    "phonetic_text": "/ˈkwaɪətli/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qui/quiet/quietly__us_3.mp3",
+    "phonetic_am_text": "/ˈkwaɪətli/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "in a way that makes very little noise",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "to ask/speak/talk quietly",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "to move/stand quietly",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a quietly spoken woman",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "‘I'm sorry,’ he said quietly.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "in a peaceful way; without being interrupted",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I spent a few hours quietly relaxing.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He noticed the woman sitting quietly at the bar.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "without many people or much noise or activity",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Sometimes a business begins quietly, as a hobby maybe, in a spare bedroom.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "in a definite, but not obvious, way",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He is quietly confident that they can succeed (= he is confident, but he is not talking about it too much).",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quit",
+    "pos": "verb",
+    "symbol": "b1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qui/quit_/quit__gb_1.mp3",
+    "phonetic_text": "/kwɪt/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qui/quit_/quit__us_1.mp3",
+    "phonetic_am_text": "/kwɪt/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "b1",
+        "labels": "(informal)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[intransitive, transitive]",
+        "cf": "",
+        "definition": "to leave your job, school, etc.",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "If I don't get more money I'll quit.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He quit in protest over the decision. ",
+            "vi": ""
+          },
+          {
+            "cf": "quit as something",
+            "labels": "",
+            "en": "He has decided to quit as manager of the team.",
+            "vi": ""
+          },
+          {
+            "cf": "quit something",
+            "labels": "",
+            "en": "to quit your job",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He quit the show last year because of bad health.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(North American English)",
+            "en": "She quit school at 16.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I am considering quitting my job to start a business.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "(especially North American English, informal)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[transitive, intransitive]",
+        "cf": "",
+        "definition": "to stop doing something",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "quit doing something",
+            "labels": "",
+            "en": "I've quit teaching.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "You don't know me, so quit trying to act like you do.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She finally quit working at age 76.",
+            "vi": ""
+          },
+          {
+            "cf": "quit something",
+            "labels": "",
+            "en": "Just quit it!",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We only just started. We're not going to quit now.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[transitive, intransitive]",
+        "cf": "quit (something)",
+        "definition": "to leave the place where you live",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We decided it was time to quit the city.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The landlord gave them all notice to quit.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I decide to quit town and lie low for a while.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[intransitive, transitive]",
+        "cf": "quit (something)",
+        "definition": "to close a computer program or application",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I quit the app and restarted it.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quite",
+    "pos": "adverb",
+    "symbol": "a1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/qui/quite/quite__gb_1.mp3",
+    "phonetic_text": "/kwaɪt/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/qui/quite/quite__us_1.mp3",
+    "phonetic_am_text": "/kwaɪt/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a1",
+        "labels": "(British English)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "to some degree",
+        "synonyms": [
+          "fairly",
+          "pretty"
+        ],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "quite good/interesting/common/difficult",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I quite like opera.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I quite enjoyed the film to be honest.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He plays quite well.",
+            "vi": ""
+          },
+          {
+            "cf": "quite a…",
+            "labels": "",
+            "en": "He's quite a good player.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We had to wait quite a long time.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "to the greatest possible degree",
+        "synonyms": [
+          "completely",
+          "absolutely",
+          "entirely"
+        ],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "quite amazing/delicious/empty/perfect",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The two species are in fact quite different from one another.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He made it quite clear that he never wanted to see her again.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Quite frankly, I don't blame you.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I've had quite enough of your tantrums.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Are you quite sure?",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I quite agree.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Quite apart from all the work, he had financial problems.",
+            "vi": ""
+          },
+          {
+            "cf": "not quite",
+            "labels": "",
+            "en": "Unfortunately it is not quite as simple as that.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I don't quite know what to do next.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I'm sorry, I don't quite understand.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(British English)",
+            "en": "The theatre was not quite (= was almost) full.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It's like being in the Alps, but not quite.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I've never quite understood why she's so successful.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "‘I almost think she prefers animals to people.’ ‘Quite right too,’ said Bill.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I'm sorry to be so difficult.’ ‘That's quite all right.’",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "to a great degree; very; really",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I'm quite happy to wait for you here.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "You'll be quite comfortable here.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I can see it quite clearly.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(North American English)",
+            "en": "‘You've no intention of coming back?’ ‘I'm quite sorry, but no, I have not.’",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(British English)",
+        "dis_g": "",
+        "variants": {
+          "text": "(also formal quite so)",
+          "html": "(also <span class=\"v-g\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">formal</span> <span class=\"v\">quite so</span></span>)"
+        },
+        "grammar": "",
+        "cf": "",
+        "definition": "used to agree with somebody or show that you understand them",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "‘He's bound to feel shaken after his accident.’ ‘Quite.’",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "‘It’s not something we want to have talked about.’ ‘Quite so.’",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "quite a/the something",
+        "labels": "informal",
+        "variants": {
+          "text": "(also informal quite some something)",
+          "html": "(also <span class=\"v-g\" id=\"quite_vg_2\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">informal</span> <span class=\"v\" id=\"quite_v_2\">quite some something</span></span>)"
+        },
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used to show that a person or thing is particularly impressive or unusual in some way",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "This is quite a different problem.",
+                "vi": ""
+              },
+              {
+                "en": "She's quite a beauty.",
+                "vi": ""
+              },
+              {
+                "en": "We found it quite a change when we moved to London.",
+                "vi": ""
+              },
+              {
+                "en": "He's quite the little gentleman, isn't he?",
+                "vi": ""
+              },
+              {
+                "en": "It must be quite some car.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "quite the contrary",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used to emphasize that the opposite of what has been said is true",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "I don't find him funny at all. Quite the contrary.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "quite a few",
+        "labels": "British English also",
+        "variants": {
+          "text": "(British English also a good few, a fair few)",
+          "html": "(<span class=\"v-g\" id=\"quite_vg_5\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"quite_v_4\">a good few</span></span>, <span class=\"v-g\" id=\"quite_vg_6\"><span class=\"v\" id=\"quite_v_5\">a fair few</span></span>)"
+        },
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "a fairly large number",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "I've been there quite a few times.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "quite a lot (of something)",
+        "labels": "also British English, informal",
+        "variants": {
+          "text": "(also British English, informal quite a bit)",
+          "html": "(<span class=\"v-g\" id=\"quite_vg_3\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">also British English, informal</span> <span class=\"v\" id=\"quite_v_3\">quite a bit</span></span>)"
+        },
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "a large number or amount of something",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "They drank quite a lot of wine.",
+                "vi": ""
+              },
+              {
+                "en": "There's quite a lot of work still to do.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "quite some something",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "a large amount of something",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "She hasn't been seen for quite some time.",
+                "vi": ""
+              }
+            ]
+          },
+          {
+            "symbol": "",
+            "labels": "(informal)",
+            "dis_g": "",
+            "variants": {
+              "text": "(also quite a/the something)",
+              "html": "(also <span class=\"v-g\"><span class=\"v\">quite a/the something</span></span>)"
+            },
+            "grammar": "",
+            "cf": "",
+            "definition": "used to show that a person or thing is particularly impressive or unusual in some way",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": []
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quota",
+    "pos": "noun",
+    "symbol": "c1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/quo/quota/quota__gb_1.mp3",
+    "phonetic_text": "/ˈkwəʊtə/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/quo/quota/quota__us_1.mp3",
+    "phonetic_am_text": "/ˈkwəʊtə/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "c1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "quota (on something)",
+        "definition": "a limited number or amount of people or things that is officially allowed",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "to introduce a strict import quota on grain",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "an amount of something that somebody expects or needs to have or achieve",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I'm going home now—I've done my quota of work for the day.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "to get your full quota of sleep",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(politics)",
+        "dis_g": "(in a system of proportional representation)",
+        "variants": {},
+        "grammar": "[singular]",
+        "cf": "",
+        "definition": "a fixed number of votes that a candidate needs in order to be elected",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He was 76 votes short of the quota.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quotation",
+    "pos": "noun",
+    "symbol": "b1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/quo/quota/quotation__gb_2.mp3",
+    "phonetic_text": "/kwəʊˈteɪʃn/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/quo/quota/quotation__us_2.mp3",
+    "phonetic_am_text": "/kwəʊˈteɪʃn/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "b1",
+        "labels": "(rather formal)",
+        "dis_g": "",
+        "variants": {
+          "text": "(also rather informal quote)",
+          "html": "(also <span class=\"v-g\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">rather informal</span> <span class=\"v\">quote</span></span>)"
+        },
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a group of words or a short piece of writing taken from a book, play, speech, etc. and repeated because it is interesting or useful",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "misquotation"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a dictionary of quotations",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Two short quotations will illustrate my point.",
+            "vi": ""
+          },
+          {
+            "cf": "quotation from something",
+            "labels": "",
+            "en": "The book began with a quotation from Goethe.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a direct quotation from a recent speech by the president",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[uncountable]",
+        "cf": "",
+        "definition": "the act of repeating something interesting or useful that another person has written or said",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The writer illustrates his point by quotation from a number of sources.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(rather formal)",
+        "dis_g": "",
+        "variants": {
+          "text": "(also rather informal quote)",
+          "html": "(also <span class=\"v-g\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">rather informal</span> <span class=\"v\">quote</span></span>)"
+        },
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a statement of how much money a particular piece of work will cost",
+        "synonyms": [
+          "estimate"
+        ],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "You need to get a written quotation before they start work.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We’ll give you a free quotation for replacing your windows.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(finance)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a statement of the current value of goods or shares",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the latest quotations from the Stock Exchange",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It was the first football club to have a full stock market quotation.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quote",
+    "pos": "verb",
+    "symbol": "b1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/quo/quote/quote__gb_2.mp3",
+    "phonetic_text": "/kwəʊt/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/quo/quote/quote__us_1.mp3",
+    "phonetic_am_text": "/kwəʊt/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[transitive, intransitive]",
+        "cf": "",
+        "definition": "to repeat the exact words that another person has said or written",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "misquote"
+        ],
+        "examples": [
+          {
+            "cf": "quote something",
+            "labels": "",
+            "en": "to quote Shakespeare",
+            "vi": ""
+          },
+          {
+            "cf": "quote something from something",
+            "labels": "",
+            "en": "He quoted a passage from the minister's speech.",
+            "vi": ""
+          },
+          {
+            "cf": "quote from something",
+            "labels": "",
+            "en": "They quoted from the Bible.",
+            "vi": ""
+          },
+          {
+            "cf": "quote somebody/something in something",
+            "labels": "",
+            "en": "Quote this reference number in all correspondence.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He was widely quoted in the American media.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The figures quoted in this article refer only to Britain.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Jude is one of three people quoted in the story.",
+            "vi": ""
+          },
+          {
+            "cf": "quote somebody",
+            "labels": "",
+            "en": "to quote an expert/an official/a source",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The minister claimed he had been selectively quoted.",
+            "vi": ""
+          },
+          {
+            "cf": "quote somebody as doing something",
+            "labels": "",
+            "en": "The President was quoted in the press as saying that he disagreed with the decision.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She said, and I quote, ‘Life is meaningless without love.’",
+            "vi": ""
+          },
+          {
+            "cf": "quote somebody on something",
+            "labels": "",
+            "en": "‘It will all be gone tomorrow.’ ‘Can I quote you on that?’",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Don't quote me on this (= this is not an official statement), but I think he is going to resign.",
+            "vi": ""
+          },
+          {
+            "cf": "quote + speech",
+            "labels": "",
+            "en": "‘The man who is tired of London is tired of life,’ he quoted.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[transitive]",
+        "cf": "",
+        "definition": "to mention an example of something to support what you are saying",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "quote (somebody) something",
+            "labels": "",
+            "en": "Can you quote me an instance of when this happened?",
+            "vi": ""
+          },
+          {
+            "cf": "quote something as something",
+            "labels": "",
+            "en": "an example that is often quoted as evidence of mismanagement",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[transitive, intransitive]",
+        "cf": "",
+        "definition": "to tell a customer how much money you will charge them for a job, service or product",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "quote something",
+            "labels": "",
+            "en": "The agent is quoting a guide price of €250 000.",
+            "vi": ""
+          },
+          {
+            "cf": "quote something for (doing) something",
+            "labels": "",
+            "en": "The price they quoted for the kitchen was too high.",
+            "vi": ""
+          },
+          {
+            "cf": "quote somebody something",
+            "labels": "",
+            "en": "A garage quoted him £80.",
+            "vi": ""
+          },
+          {
+            "cf": "quote somebody something for (doing) something",
+            "labels": "",
+            "en": "They quoted us £300 for installing a shower unit.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(finance)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[transitive]",
+        "cf": "quote something (at something)",
+        "definition": "to give a market price for shares, gold or foreign money",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Yesterday the pound was quoted at $1.8285, unchanged from Monday.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(finance)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[transitive]",
+        "cf": "quote something",
+        "definition": "to give the prices for a business company’s shares on a stock exchange",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Several football clubs are now quoted on the Stock Exchange.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "publicly quoted companies",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "quote (… unquote)",
+        "labels": "",
+        "variants": {
+          "text": "(also quote, unquote)",
+          "html": "(also <span class=\"v-g\" id=\"quote_vg_2\"><span class=\"v\" id=\"quote_v_5\">quote, unquote</span></span>)"
+        },
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used to show the beginning (and end) of a word, phrase, etc. that has been said or written by somebody else",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "It was quote, ‘the hardest decision of my life’, unquote, and one that he lived to regret.",
+                "vi": ""
+              },
+              {
+                "en": "now that the, quote, unquote, ‘real story’ has begun",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "quote",
+    "pos": "noun",
+    "symbol": "b1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/q/quo/quote/quote__gb_2.mp3",
+    "phonetic_text": "/kwəʊt/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/q/quo/quote/quote__us_1.mp3",
+    "phonetic_am_text": "/kwəʊt/",
+    "variants": {},
+    "grammar": "",
+    "labels": "(rather informal)",
+    "senses": [
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {
+          "text": "(also rather formal quotation)",
+          "html": "(also <span class=\"v-g\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">rather formal</span> <span class=\"v\">quotation</span></span>)"
+        },
+        "grammar": "",
+        "cf": "",
+        "definition": "a group of words or a short piece of writing taken from a book, play, speech, etc. and repeated because it is interesting or useful",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The essay was full of quotes.",
+            "vi": ""
+          },
+          {
+            "cf": "quote from something",
+            "labels": "",
+            "en": "a quote from a New York Times article",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The text begins with a quote from Oscar Wilde.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {
+          "text": "(also rather formal quotation)",
+          "html": "(also <span class=\"v-g\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">rather formal</span> <span class=\"v\">quotation</span></span>)"
+        },
+        "grammar": "",
+        "cf": "",
+        "definition": "a statement of how much money a particular piece of work will cost",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Their quote for the job was way too high.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {
+          "text": "quotes",
+          "html": "<span class=\"v-g\"><span class=\"v\">quotes</span></span>"
+        },
+        "grammar": "[plural]",
+        "cf": "",
+        "definition": "a pair of marks (‘  ’) or ( “ ” ) placed around a word, sentence, etc. to show that it is what somebody said or wrote, that it is a title or that you are using it in an unusual way",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "in quotes",
+            "labels": "",
+            "en": "If you take text from other sources, place it in quotes.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  }
+]

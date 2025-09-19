@@ -6,6 +6,8 @@ import {
   closeDb,
   getExampleViByIds,
   updateExampleViIfMissing,
+  importJsonData,
+  importMultipleJsonFiles,
 } from "./db.js";
 import { crawlWordDirect } from "./crawl.js";
 import fs from "fs";
@@ -86,6 +88,75 @@ app.post("/api/examples/vi/update", async (req, res) => {
   } catch (err) {
     console.error(err);
     return res.status(500).json({ updated: 0, skipped: 0 });
+  }
+});
+
+// POST /api/import/json - Import single JSON file
+app.post("/api/import/json", async (req, res) => {
+  try {
+    const { filePath } = req.body;
+    if (!filePath) {
+      return res.status(400).json({
+        success: false,
+        error: "filePath is required",
+      });
+    }
+
+    const result = await importJsonData(filePath);
+    return res.json({
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    console.error("Import JSON error:", error);
+    return res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+// POST /api/import/multiple - Import multiple JSON files from directory
+app.post("/api/import/multiple", async (req, res) => {
+  try {
+    const { directoryPath = "./src/mock" } = req.body;
+
+    const result = await importMultipleJsonFiles(directoryPath);
+    return res.json({
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    console.error("Import multiple JSON error:", error);
+    return res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+// GET /api/import/status - Get import status and available files
+app.get("/api/import/status", async (req, res) => {
+  try {
+    const mockDir = "./src/mock";
+    const files = fs
+      .readdirSync(mockDir)
+      .filter((file) => file.endsWith(".json"))
+      .sort();
+
+    return res.json({
+      success: true,
+      data: {
+        availableFiles: files,
+        totalFiles: files.length,
+      },
+    });
+  } catch (error) {
+    console.error("Get import status error:", error);
+    return res.status(500).json({
+      success: false,
+      error: error.message,
+    });
   }
 });
 
