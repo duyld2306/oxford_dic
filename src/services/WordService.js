@@ -1,5 +1,5 @@
 import WordModel from "../models/Word.js";
-import { crawlWordDirect } from "../crawl.js";
+import { crawlWordDirect } from "../utils/crawl.js";
 
 class WordService {
   constructor() {
@@ -96,53 +96,26 @@ class WordService {
     }
   }
 
-  // Search words by text (full text search)
-  async searchByText(searchText, limit = 20) {
+  // Lấy example vi theo ids
+  async getExampleViByIds(ids) {
     try {
-      const searchQuery = String(searchText || "").trim();
-      if (!searchQuery) {
-        return {
-          success: false,
-          error: "Search text is required",
-          data: [],
-        };
-      }
-
-      const results = await this.wordModel.searchByText(searchQuery, limit);
-
-      return {
-        success: true,
-        data: {
-          query: searchQuery,
-          count: results.length,
-          words: results,
-        },
-      };
+      if (!Array.isArray(ids) || ids.length === 0) return [];
+      return await this.wordModel.getExampleViByIds(ids);
     } catch (error) {
-      console.error("WordService.searchByText error:", error);
-      return {
-        success: false,
-        error: error.message,
-        data: [],
-      };
+      console.error("WordService.getExampleViByIds error:", error);
+      return [];
     }
   }
 
-  // Get word statistics
-  async getStats() {
+  // Update example vi nếu đang rỗng
+  async updateExampleViIfMissing(updates) {
     try {
-      const stats = await this.wordModel.getStats();
-      return {
-        success: true,
-        data: stats,
-      };
+      if (!Array.isArray(updates) || updates.length === 0)
+        return { updated: 0, skipped: 0 };
+      return await this.wordModel.updateExampleViIfMissing(updates);
     } catch (error) {
-      console.error("WordService.getStats error:", error);
-      return {
-        success: false,
-        error: error.message,
-        data: null,
-      };
+      console.error("WordService.updateExampleViIfMissing error:", error);
+      return { updated: 0, skipped: 0 };
     }
   }
 

@@ -109,16 +109,6 @@ class DatabaseConfig {
       console.log("✅ Database disconnected");
     }
   }
-
-  async healthCheck() {
-    try {
-      if (!this.isConnected) return false;
-      await this.db.admin().ping();
-      return true;
-    } catch (error) {
-      return false;
-    }
-  }
 }
 
 // Singleton instance

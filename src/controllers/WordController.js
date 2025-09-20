@@ -48,10 +48,49 @@ class WordController {
     }
   }
 
+  // POST /api/examples/vi
+  async getExamplesVi(req, res) {
+    try {
+      const { ids } = req.body || {};
+      if (!Array.isArray(ids) || ids.length === 0) {
+        return res.status(400).json({ success: false, data: [] });
+      }
+      const data = await this.wordService.getExampleViByIds(ids);
+      return res.json({ success: true, data });
+    } catch (error) {
+      console.error("WordController.getExamplesVi error:", error);
+      return res.status(500).json({
+        success: false,
+        error: "Internal server error",
+        data: [],
+      });
+    }
+  }
+
+  // POST /api/examples/vi/update
+  async updateExamplesVi(req, res) {
+    try {
+      const { updates } = req.body || {};
+      if (!Array.isArray(updates) || updates.length === 0) {
+        return res.status(400).json({ success: false, updated: 0, skipped: 0 });
+      }
+      const result = await this.wordService.updateExampleViIfMissing(updates);
+      return res.json({ success: true, ...result });
+    } catch (error) {
+      console.error("WordController.updateExamplesVi error:", error);
+      return res.status(500).json({
+        success: false,
+        updated: 0,
+        skipped: 0,
+        error: "Internal server error",
+      });
+    }
+  }
+
   // GET /api/search?q=hang&type=prefix
   async search(req, res) {
     try {
-      const { q: query, type = "prefix", limit = 20 } = req.query;
+      const { q: query, limit = 20 } = req.query;
 
       if (!query) {
         return res.status(400).json({
@@ -68,18 +107,10 @@ class WordController {
         });
       }
 
-      let result;
-      if (type === "text") {
-        result = await this.wordService.searchByText(
-          validatedQuery,
-          parseInt(limit)
-        );
-      } else {
-        result = await this.wordService.searchByPrefix(
-          validatedQuery,
-          parseInt(limit)
-        );
-      }
+      const result = await this.wordService.searchByPrefix(
+        validatedQuery,
+        parseInt(limit)
+      );
 
       if (!result.success) {
         return res.status(400).json({
@@ -95,31 +126,6 @@ class WordController {
       });
     } catch (error) {
       console.error("WordController.search error:", error);
-      return res.status(500).json({
-        success: false,
-        error: "Internal server error",
-      });
-    }
-  }
-
-  // GET /api/stats
-  async getStats(req, res) {
-    try {
-      const result = await this.wordService.getStats();
-
-      if (!result.success) {
-        return res.status(500).json({
-          success: false,
-          error: result.error,
-        });
-      }
-
-      return res.json({
-        success: true,
-        data: result.data,
-      });
-    } catch (error) {
-      console.error("WordController.getStats error:", error);
       return res.status(500).json({
         success: false,
         error: "Internal server error",

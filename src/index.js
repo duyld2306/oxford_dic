@@ -1,165 +1,24 @@
 import express from "express";
 import compression from "compression";
-import {
-  initDb,
-  getWord,
-  upsertWord,
-  closeDb,
-  getExampleViByIds,
-  updateExampleViIfMissing,
-  importJsonData,
-  importMultipleJsonFiles,
-} from "./db.js";
-import { crawlWordDirect } from "./crawl.js";
-import fs from "fs";
+import cors from "cors";
+import database from "./config/database.js";
+import wordRoutes from "./routes/wordRoutes.js";
+import importRoutes from "./routes/importRoutes.js";
 
 const app = express();
+
+// Middleware
 app.use(compression());
-app.use(express.json());
+app.use(cors());
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true }));
 
-await initDb();
+// Initialize database
+await database.connect();
 
-function validateWord(q) {
-  if (!q || typeof q !== "string") return null;
-  const cleaned = q.trim().toLowerCase();
-  if (!cleaned.match(/^[a-z-]+$/i)) return null;
-  return cleaned;
-}
-
-app.get("/api/lookup", async (req, res) => {
-  try {
-    const w = validateWord(req.query.word);
-    if (!w) {
-      return res.status(400).json({ data: null });
-    }
-
-    const cached = await getWord(w);
-    if (cached) {
-      const arr = JSON.parse(cached.json);
-      return res.json({
-        data: {
-          word: w,
-          quantity: Array.isArray(arr) ? arr.length : 0,
-          data: arr,
-        },
-      });
-    }
-
-    const data = await crawlWordDirect(w, 5);
-    if (!data || data.length === 0) {
-      return res.status(404).json({ data: null });
-    }
-    await upsertWord(w, data);
-    return res.json({ data: { word: w, quantity: data.length, data } });
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ data: null });
-  }
-});
-
-// POST /api/examples/vi
-// body: { ids: ["654...", ...] }
-// Returns: { data: [{ _id, vi }] }
-app.post("/api/examples/vi", async (req, res) => {
-  try {
-    const { ids } = req.body || {};
-    if (!Array.isArray(ids) || ids.length === 0) {
-      return res.status(400).json({ data: [] });
-    }
-    const data = await getExampleViByIds(ids);
-    return res.json({ data });
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ data: [] });
-  }
-});
-
-// POST /api/examples/vi/update
-// body: { updates: [{ _id: "654...", vi: "bản dịch" }, ...] }
-// Only updates when existing vi is empty
-// Returns: { updated, skipped }
-app.post("/api/examples/vi/update", async (req, res) => {
-  try {
-    const { updates } = req.body || {};
-    if (!Array.isArray(updates) || updates.length === 0) {
-      return res.status(400).json({ updated: 0, skipped: 0 });
-    }
-    const result = await updateExampleViIfMissing(updates);
-    return res.json(result);
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ updated: 0, skipped: 0 });
-  }
-});
-
-// POST /api/import/json - Import single JSON file
-app.post("/api/import/json", async (req, res) => {
-  try {
-    const { filePath } = req.body;
-    if (!filePath) {
-      return res.status(400).json({
-        success: false,
-        error: "filePath is required",
-      });
-    }
-
-    const result = await importJsonData(filePath);
-    return res.json({
-      success: true,
-      data: result,
-    });
-  } catch (error) {
-    console.error("Import JSON error:", error);
-    return res.status(500).json({
-      success: false,
-      error: error.message,
-    });
-  }
-});
-
-// POST /api/import/multiple - Import multiple JSON files from directory
-app.post("/api/import/multiple", async (req, res) => {
-  try {
-    const { directoryPath = "./src/mock" } = req.body;
-
-    const result = await importMultipleJsonFiles(directoryPath);
-    return res.json({
-      success: true,
-      data: result,
-    });
-  } catch (error) {
-    console.error("Import multiple JSON error:", error);
-    return res.status(500).json({
-      success: false,
-      error: error.message,
-    });
-  }
-});
-
-// GET /api/import/status - Get import status and available files
-app.get("/api/import/status", async (req, res) => {
-  try {
-    const mockDir = "./src/mock";
-    const files = fs
-      .readdirSync(mockDir)
-      .filter((file) => file.endsWith(".json"))
-      .sort();
-
-    return res.json({
-      success: true,
-      data: {
-        availableFiles: files,
-        totalFiles: files.length,
-      },
-    });
-  } catch (error) {
-    console.error("Get import status error:", error);
-    return res.status(500).json({
-      success: false,
-      error: error.message,
-    });
-  }
-});
+// Routes
+app.use("/api", wordRoutes);
+app.use("/api/import", importRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome!");
@@ -167,18 +26,21 @@ app.get("/", (req, res) => {
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
-  console.log(`Server listening on http://localhost:${port}`);
+  console.log(`🚀 Server listening on http://localhost:${port}`);
 });
 
-process.on("SIGINT", async () => {
+// Graceful shutdown
+const gracefulShutdown = async (signal) => {
+  console.log(`\n🛑 Received ${signal}. Starting graceful shutdown...`);
   try {
-    await closeDb();
-  } catch (_) {}
-  server.close(() => process.exit(0));
-});
-process.on("SIGTERM", async () => {
-  try {
-    await closeDb();
-  } catch (_) {}
-  server.close(() => process.exit(0));
-});
+    await database.disconnect();
+    console.log("✅ Database disconnected");
+    process.exit(0);
+  } catch (error) {
+    console.error("❌ Error during shutdown:", error);
+    process.exit(1);
+  }
+};
+
+process.on("SIGINT", () => gracefulShutdown("SIGINT"));
+process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
