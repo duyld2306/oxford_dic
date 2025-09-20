@@ -1,0 +1,2856 @@
+[
+  {
+    "word": "yard",
+    "pos": "noun",
+    "symbol": "b1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yar/yard_/yard__gb_1.mp3",
+    "phonetic_text": "/jɑːd/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yar/yard_/yard__us_1.mp3",
+    "phonetic_am_text": "/jɑːrd/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "b1",
+        "labels": "(North American English)",
+        "dis_g": "",
+        "variants": {
+          "text": "(British English garden)",
+          "html": "(<span class=\"v-g\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English</span> <span class=\"v\">garden</span></span>)"
+        },
+        "grammar": "",
+        "cf": "",
+        "definition": "a piece of land next to or around your house where you can grow flowers, fruit, vegetables, etc., usually with a lawn (= an area of grass)",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "backyard (1)"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They have a gorgeous old oak tree in their front yard.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "My next-door neighbor was watering her yard.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b2",
+        "labels": "(British English)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "an area outside a building, usually with a hard surface and a surrounding wall",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "backyard (2)"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The prisoners were made to line up in the prison yard.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The children were playing in the yard at the front of the school.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "an area of land used for a special purpose or business",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "knacker’s yard",
+          "lumberyard",
+          "marshalling yard",
+          "salvage yard",
+          "timber yard"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a boat yard",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "(in Britain and North America)",
+        "variants": {
+          "text": "(abbreviation yd)",
+          "html": "(abbreviation <span class=\"v-g\"><span class=\"v\">yd</span></span>)"
+        },
+        "grammar": "",
+        "cf": "",
+        "definition": "a unit for measuring length, equal to 3 feet (36 inches) or 0.9144 of a metre",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They still live within yards of each other.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a beautiful white dress with yards and yards of fabric",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The accident happened less than 50 yards from his home.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(specialist)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "a long piece of wood fastened to a mast that supports a sail on a boat or ship",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      }
+    ],
+    "idioms": [
+      {
+        "word": "give somebody an inch (and they’ll take a mile/yard)",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(saying)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used to say that if you allow some people a small amount of freedom or power they will see you as weak and try to take a lot more",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": []
+          }
+        ]
+      },
+      {
+        "word": "the whole nine yards",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal, especially North American English)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "everything, or a situation which includes everything",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "When Dan cooks dinner he always goes the whole nine yards, with three courses and a choice of dessert.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "yeah",
+    "pos": "exclamation",
+    "symbol": "a1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yea/yeah_/yeah__gb_1.mp3",
+    "phonetic_text": "/jeə/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yea/yeah_/yeah__us_1.mp3",
+    "phonetic_am_text": "/jeə/",
+    "variants": {},
+    "grammar": "",
+    "labels": "(informal)",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "yes",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      }
+    ],
+    "idioms": [
+      {
+        "word": "oh yeah?",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used when you are commenting on what somebody has just said",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "‘We're off to France soon.’ ‘Oh yeah? When's that?’",
+                "vi": ""
+              },
+              {
+                "en": "‘I'm going to be rich one day.’ ‘Oh yeah?’ (= I don't believe you.)",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "yeah, right",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used to say that you do not believe what somebody has just said, disagree with it, or are not interested in it",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "‘You'll be fine.’ ‘Yeah, right.’",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "year",
+    "pos": "noun",
+    "symbol": "a1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yea/year_/year__gb_1.mp3",
+    "phonetic_text": "/jɪə(r)/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yea/year_/year__us_1.mp3",
+    "phonetic_am_text": "/jɪr/",
+    "variants": {
+      "text": "(abbreviation yr)",
+      "html": "(abbreviation <span class=\"v-g\" id=\"year_vg_1\"><span class=\"v\" id=\"year_v_1\">yr</span></span>)"
+    },
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {
+          "text": "(also calendar year)",
+          "html": "(also <span class=\"v-g\"><span class=\"v\" href=\"calendaryear_e\" tofix=\"\">calendar year</span></span>)"
+        },
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "the period from 1 January to 31 December, that is 365 or 366 days, divided into 12 months",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "leap year",
+          "new year"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Elections take place every year.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I lost my job earlier this year.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "next/last year",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She died the following year.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Three million tourists visit Yellowstone every year.",
+            "vi": ""
+          },
+          {
+            "cf": "in the year…",
+            "labels": "",
+            "en": "She was born in the year 1865.",
+            "vi": ""
+          },
+          {
+            "cf": "in… years ",
+            "labels": "",
+            "en": "The crowd was much smaller than in previous years.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "In the past few years, she has become one of our top-selling authors.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The museum is open all year round (= during the whole year).",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a period of twelve months, measured from any particular time",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "gap year",
+          "light year",
+          "off year"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It's exactly a year since I started working here.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She gave up teaching three years ago.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They got married two years later.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The autobiography could only be published 100 years after his death.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I hope to retire in two years' time.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Where do you think you will be five years from now?",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Seeds can live in the soil for many years.",
+            "vi": ""
+          },
+          {
+            "cf": "in the… year (of something)",
+            "labels": "",
+            "en": "in the first year of their marriage",
+            "vi": ""
+          },
+          {
+            "cf": "in… years",
+            "labels": "",
+            "en": "Production has declined in recent years.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "His early years were spent in San Francisco.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We have high hopes for the coming year (= the next twelve months).",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the pre-war/war/post-war years (= the period before/during/after the war)",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I have happy memories of my years in Poland (= the time I spent there).",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable, usually plural]",
+        "cf": "",
+        "definition": "age; time of life",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He was 14 years old when it happened.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She looks young for her years.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They were both only 20 years of age.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a twenty-year-old man",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He died in his sixtieth year.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She's getting on in years (= is no longer young).",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a period of twelve months connected with a particular activity",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "academic year",
+          "financial year"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the tax/fiscal year",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the school year",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a1",
+        "labels": "(especially British English)",
+        "dis_g": "(at a school, etc.)",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a level that you stay in for one year; a student at a particular level",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "in year…",
+            "labels": "",
+            "en": "We started German in year seven.",
+            "vi": ""
+          },
+          {
+            "cf": "in somebody's year",
+            "labels": "",
+            "en": "She was in my year at school.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The project is the work of a group of year-seven pupils.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The first years do French.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a2",
+        "labels": "(informal)",
+        "dis_g": "",
+        "variants": {
+          "text": "years",
+          "html": "<span class=\"v-g\"><span class=\"v\">years</span></span>"
+        },
+        "grammar": "[plural]",
+        "cf": "",
+        "definition": "a long time",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It's years since we last met.",
+            "vi": ""
+          },
+          {
+            "cf": "for years",
+            "labels": "",
+            "en": "They haven't seen each other for years and years.",
+            "vi": ""
+          },
+          {
+            "cf": "in years",
+            "labels": "",
+            "en": "That's the best movie I've seen in years.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It's the first time we've met in years.",
+            "vi": ""
+          },
+          {
+            "cf": "over the years",
+            "labels": "",
+            "en": "We've had a lot of fun over the years.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "(further) along/down the road | years down the road",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "at some time in the future",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "There are certain to be more job losses further down the road.",
+                "vi": ""
+              },
+              {
+                "en": "Will this movie still be funny a few years down the road?",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "somebody’s declining years",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(literary)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "the last years of somebody’s life",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": []
+          }
+        ]
+      },
+      {
+        "word": "donkey’s (years)",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(British English, informal)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "a very long time",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "We've known each other for donkey's years.",
+                "vi": ""
+              },
+              {
+                "en": "I met him once, but that was donkey’s years ago.",
+                "vi": ""
+              },
+              {
+                "en": "This technology has been around for donkey's.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "man, woman, car, etc. of the year",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "a person or thing that people decide is the best in a particular field in a particular year",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "He was chosen as TV personality of the year.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "not/never in a hundred, etc. years",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used to emphasize that you will/would never do something",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "I'd never have thought of that in a million years.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "of advanced years | somebody’s advanced age",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used in polite expressions to describe somebody as ‘very old’",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "He was a man of advanced years.",
+                "vi": ""
+              },
+              {
+                "en": "Even at my advanced age I still know how to enjoy myself!",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "put years on somebody",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "to make somebody feel or look older",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "The illness put years on him.",
+                "vi": ""
+              },
+              {
+                "en": "His wife's death has put years on him.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "the seven-year itch",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal, humorous)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "the desire for new sexual experience that is thought to be felt after seven years of marriage",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": []
+          }
+        ]
+      },
+      {
+        "word": "since/from the year dot",
+        "labels": "(British English)",
+        "variants": {
+          "text": "(North American English since/from the year one)",
+          "html": "(<span class=\"v-g\" id=\"year_vg_4\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English</span> <span class=\"v\" id=\"year_v_4\">since/from the year one</span></span>)"
+        },
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "since a very long time ago",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "I've been going there every summer since the year dot.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "take years off somebody",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "to make somebody feel or look younger",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "That haircut takes years off her.",
+                "vi": ""
+              },
+              {
+                "en": "Careful make-up and styling can take years off you.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "the turn of the century/year",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "the time when a new century/year starts",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "It was built at the turn of the century.",
+                "vi": ""
+              },
+              {
+                "en": "The team are unbeaten since the turn of the year.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "year after year",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "every year for many years",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "People return year after year.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "year by year",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "as the years pass; each year",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "Year by year their affection for each other grew stronger.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "year in, year out",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "every year",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": []
+          }
+        ]
+      },
+      {
+        "word": "year of grace | year of our Lord",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(formal)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "any particular year after the birth of Christ",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": []
+          }
+        ]
+      },
+      {
+        "word": "year on year",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "each year, compared with the last year",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "Spending has increased year on year.",
+                "vi": ""
+              },
+              {
+                "en": "a year-on-year increase in spending",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "yell",
+    "pos": "verb",
+    "symbol": "c1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yel/yell_/yell__gb_1.mp3",
+    "phonetic_text": "/jel/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yel/yell_/yell__us_1.mp3",
+    "phonetic_am_text": "/jel/",
+    "variants": {},
+    "grammar": "[intransitive, transitive]",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "to shout loudly, for example because you are angry, excited, frightened or in pain",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "yell (at somebody/something)",
+            "labels": "",
+            "en": "He yelled at the other driver.",
+            "vi": ""
+          },
+          {
+            "cf": "yell at somebody to do something",
+            "labels": "",
+            "en": "She yelled at the child to get down from the wall.",
+            "vi": ""
+          },
+          {
+            "cf": "yell with something",
+            "labels": "",
+            "en": "They yelled with excitement.",
+            "vi": ""
+          },
+          {
+            "cf": "yell out (in something)",
+            "labels": "",
+            "en": "She yelled out in pain.",
+            "vi": ""
+          },
+          {
+            "cf": "+ speech",
+            "labels": "",
+            "en": "‘Be careful!’ he yelled.",
+            "vi": ""
+          },
+          {
+            "cf": "yell something (at somebody/something)",
+            "labels": "",
+            "en": "The crowd yelled encouragement at the players.",
+            "vi": ""
+          },
+          {
+            "cf": "yell out something",
+            "labels": "",
+            "en": "He yelled out her name.",
+            "vi": ""
+          },
+          {
+            "cf": "yell for something",
+            "labels": "",
+            "en": "He yelled for help.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "yell",
+    "pos": "noun",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yel/yell_/yell__gb_1.mp3",
+    "phonetic_text": "/jel/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yel/yell_/yell__us_1.mp3",
+    "phonetic_am_text": "/jel/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "a loud shout of pain, excitement, etc.",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "to let out/give a yell",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a yell of delight",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She awoke with a yell.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(North American English)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "an organized shout of support for a team at a sports event",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "yellow",
+    "pos": "adjective",
+    "symbol": "a1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yel/yello/yellow__gb_2.mp3",
+    "phonetic_text": "/ˈjeləʊ/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yel/yello/yellow__us_3.mp3",
+    "phonetic_am_text": "/ˈjeləʊ/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "having the colour of lemons or butter",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "pale yellow flowers",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a bright yellow waterproof jacket",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Her teeth were rather yellow.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She wore a pale yellow dress.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The leaves turn yellow in November.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(taboo, offensive)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "a very offensive word used to describe the light brown skin of people from some East Asian countries",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      },
+      {
+        "symbol": "",
+        "labels": "(informal, disapproving)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "easily frightened ",
+        "synonyms": [
+          "cowardly"
+        ],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "yellow",
+    "pos": "noun",
+    "symbol": "a1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yel/yello/yellow__gb_2.mp3",
+    "phonetic_text": "/ˈjeləʊ/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yel/yello/yellow__us_3.mp3",
+    "phonetic_am_text": "/ˈjeləʊ/",
+    "variants": {},
+    "grammar": "[uncountable, countable]",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "the colour of lemons or butter",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She was dressed in yellow.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the reds and yellows of the trees",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The hall is decorated in pale yellow.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "yellow",
+    "pos": "verb",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yel/yello/yellow__gb_2.mp3",
+    "phonetic_text": "/ˈjeləʊ/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yel/yello/yellow__us_3.mp3",
+    "phonetic_am_text": "/ˈjeləʊ/",
+    "variants": {},
+    "grammar": "[intransitive, transitive]",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "to become yellow; to make something become yellow",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The cream paint was beginning to yellow.",
+            "vi": ""
+          },
+          {
+            "cf": "be yellowed (with something)",
+            "labels": "",
+            "en": "The paper was yellowed with age.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "yesterday",
+    "pos": "adverb",
+    "symbol": "a1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yes/yeste/yesterday__gb_1.mp3",
+    "phonetic_text": "/ˈjestədeɪ/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yes/yeste/yesterday__us_1_rr.mp3",
+    "phonetic_am_text": "/ˈjestərdeɪ/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "on the day before today",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "A company spokeswoman said yesterday that no final decision had been made yet.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "yesterday morning/afternoon/evening",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The company yesterday announced a $40 million deal.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "To think I was lying on a beach only the day before yesterday.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I can remember our wedding as if it were yesterday.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They arrived yesterday.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Where were you yesterday morning?",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Figures released yesterday show 4,944 people were awaiting surgery.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "not be born yesterday",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used to say that you are not stupid enough to believe what somebody is telling you",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "Oh yeah? I wasn't born yesterday, you know.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "yesterday",
+    "pos": "noun",
+    "symbol": "a1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yes/yeste/yesterday__gb_1.mp3",
+    "phonetic_text": "/ˈjestədeɪ/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yes/yeste/yesterday__us_1_rr.mp3",
+    "phonetic_am_text": "/ˈjestərdeɪ/",
+    "variants": {},
+    "grammar": "[uncountable]",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "the day before today",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Yesterday was Sunday.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "What happened at yesterday's meeting?",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The events of yesterday were clearly still troubling her.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She died in the early hours of yesterday.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He threatened to resign from the coalition if no agreement was reached by yesterday.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {
+          "text": "(also yesterdays [plural])",
+          "html": "(also <span class=\"v-g\"><span class=\"v\">yesterdays</span> <span class=\"grammar\" htag=\"span\" hclass=\"grammar\">[plural]</span></span>)"
+        },
+        "grammar": "",
+        "cf": "",
+        "definition": "the recent past",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Yesterday's students are today's employees.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "All her yesterdays had vanished without a trace.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "yesterday",
+    "pos": "adjective",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yes/yeste/yesterday__gb_1.mp3",
+    "phonetic_text": "/ˈjestədeɪ/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yes/yeste/yesterday__us_1_rr.mp3",
+    "phonetic_am_text": "/ˈjestərdeɪ/",
+    "variants": {},
+    "grammar": "[not before noun]",
+    "labels": "(informal, often humorous)",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "no longer fashionable or new",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Email—that's so yesterday!",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "PCs are so yesterday.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "yet",
+    "pos": "adverb",
+    "symbol": "a2",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yet/yet__/yet__gb_1.mp3",
+    "phonetic_text": "/jet/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yet/yet__/yet__us_1.mp3",
+    "phonetic_am_text": "/jet/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "used in negative sentences and questions to talk about something that has not happened but that you expect to happen",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "(British English)",
+            "en": "I haven't received a letter from him yet.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(North American English)",
+            "en": "I didn't receive a letter from him yet.",
+            "vi": ""
+          },
+          {
+            "cf": "not yet",
+            "labels": "",
+            "en": "‘Are you ready?’ ‘No, not yet.’",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We don't yet know what really happened.",
+            "vi": ""
+          },
+          {
+            "cf": "have yet to do something",
+            "labels": "",
+            "en": "We have yet to decide what action to take (= We have not decided what action to take).",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "now; as soon as this",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Don't go yet.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We don't need to start yet.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "used to emphasize an increase in number or amount or the number of times something happens",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "yet more…",
+            "labels": "",
+            "en": "snow, snow and yet more snow",
+            "vi": ""
+          },
+          {
+            "cf": "yet another…",
+            "labels": "",
+            "en": "yet another diet book",
+            "vi": ""
+          },
+          {
+            "cf": "yet again",
+            "labels": "",
+            "en": "Prices were cut yet again (= once more, after many other times). ",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "the best, longest, etc. something yet",
+        "definition": "used to emphasize that something is the best, longest, etc. thing of its kind made, produced, written, etc. until now/then",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the most comprehensive study yet of his music",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It was the tallest building yet constructed anywhere.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "from now until the period of time mentioned has passed",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He'll be busy for ages yet.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They won't arrive for at least two hours yet.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "could, might, may, etc. do something yet",
+        "definition": "used to say that something could, might, etc. happen in the future, even though it seems unlikely",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "We may win yet.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(formal)",
+            "en": "She could yet surprise us all.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "yet worse, more importantly, etc.",
+        "definition": "used to emphasize an increase in the degree of something (= how bad, important, etc. it is)",
+        "synonyms": [
+          "even",
+          "still"
+        ],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a recent and yet more improbable theory",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "as yet",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "until now or until a particular time in the past",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "an as yet unpublished report",
+                "vi": ""
+              },
+              {
+                "en": "As yet little was known of the causes of the disease.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "better yet",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used to say that while one thing is good, another thing is even better",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "You can see and, better yet, hear the effects of these changes on their website.",
+                "vi": ""
+              },
+              {
+                "en": "I wanted to make my parents proud by becoming a lawyer or, better yet, a doctor.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "not just yet",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "not now but probably quite soon",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "I can't give you the money just yet.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "so near and yet so far",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used to comment on something that was almost successful but in fact failed",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": []
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "yet",
+    "pos": "conjunction",
+    "symbol": "b2",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yet/yet__/yet__gb_1.mp3",
+    "phonetic_text": "/jet/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yet/yet__/yet__us_1.mp3",
+    "phonetic_am_text": "/jet/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "despite what has just been said",
+        "synonyms": [
+          "nevertheless"
+        ],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It's a small car, yet it's surprisingly spacious.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He has a good job, and yet he never seems to have any money.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "yield",
+    "pos": "noun",
+    "symbol": "c1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yie/yield/yield__gb_2.mp3",
+    "phonetic_text": "/jiːld/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yie/yield/yield__us_1.mp3",
+    "phonetic_am_text": "/jiːld/",
+    "variants": {},
+    "grammar": "[countable, uncountable]",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "the total amount of crops, profits, etc. that are produced",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a high crop yield",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a reduction in milk yield",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "This will give a yield of 10% on your investment.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "yield",
+    "pos": "verb",
+    "symbol": "c1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/yie/yield/yield__gb_2.mp3",
+    "phonetic_text": "/jiːld/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/yie/yield/yield__us_1.mp3",
+    "phonetic_am_text": "/jiːld/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "c1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[transitive]",
+        "cf": "yield something",
+        "definition": "to produce or provide something, for example a profit, result or crop",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Higher-rate deposit accounts yield good returns.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The research has yielded useful information.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "These trees no longer yield fruit.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The project is expected to yield good returns in future.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "c1",
+        "labels": "(formal)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[intransitive]",
+        "cf": "",
+        "definition": "to stop resisting something/somebody; to agree to do something that you do not want to do",
+        "synonyms": [
+          "give way"
+        ],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "After a long siege, the town was forced to yield.",
+            "vi": ""
+          },
+          {
+            "cf": "yield to something/somebody",
+            "labels": "",
+            "en": "He reluctantly yielded to their demands.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I yielded to temptation and had a chocolate bar.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(formal)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[transitive]",
+        "cf": "yield something/somebody (up) (to somebody)",
+        "definition": "to allow somebody to win, have or take control of something that has been yours until now",
+        "synonyms": [
+          "surrender"
+        ],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He refused to yield up his gun.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(figurative)",
+            "en": "The universe is slowly yielding up its secrets.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "archaeological remains which are yielding up secrets from long ago",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[intransitive]",
+        "cf": "",
+        "definition": "to move, bend or break because of pressure",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Despite our attempts to break it, the lock would not yield.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "(North American English, Irish English)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[intransitive]",
+        "cf": "yield (to somebody/something)",
+        "definition": "to allow vehicles on a bigger road to go first",
+        "synonyms": [
+          "give way"
+        ],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Yield to oncoming traffic.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a yield sign",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": [
+      "yield to"
+    ]
+  },
+  {
+    "word": "young",
+    "pos": "adjective",
+    "symbol": "a1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/you/young/young_1_gb_1.mp3",
+    "phonetic_text": "/jʌŋ/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/you/young/young__us_1.mp3",
+    "phonetic_am_text": "/jʌŋ/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "having lived or existed for only a short time; not fully developed",
+        "synonyms": [],
+        "opposites": [
+          "old"
+        ],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Young babies need to be wrapped up warmly.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a young country",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Caterpillars eat the young leaves of this plant.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It's a young wine, not really up to drinking yet.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The night is still young (= it has only just started).",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Small businesses, especially young ones, tend to operate on a tight budget. ",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "not yet old; not as old as others",
+        "synonyms": [],
+        "opposites": [
+          "old"
+        ],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "young people",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They sent many young men and women off to war.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "My son's thirteen but he's young for his age (= not as developed as other boys of the same age).",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I'm too young to remember much about the 1990s.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They married young (= at an early age).",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "My mother died young.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She looks much younger than her 39 years. ",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I don't know how families with young children manage to cope.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a young girl/boy/adult/person",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "In his younger days he played rugby for Wales.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I am the youngest of four sisters.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "talented young football players",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I met the young Michelle Obama at Princeton.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Her grandchildren keep her young (= keep her feeling young).",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "consisting of young people or young children; with a low average age",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They have a young family.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a young audience",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "This cottage would be perfect for a couple with a young family.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "suitable or appropriate for young people",
+        "synonyms": [
+          "youthful"
+        ],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "young fashion",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The clothes she wears are much too young for her.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "young man/lady/woman",
+        "definition": "used to show that you are angry or annoyed with a particular young person",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I think you owe me an apology, young lady!",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {
+          "text": "the younger",
+          "html": "<span class=\"v-g\"><span class=\"v\">the younger</span></span>"
+        },
+        "grammar": "",
+        "cf": "",
+        "definition": "used before or after a person’s name to show the difference between them and an older relative",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the younger Kennedy",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "(British English, formal)",
+            "en": "William Pitt the younger",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "be getting younger",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used to say that people seem to be doing something at a younger age than they used to, or that they seem younger because you are now older",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "The band's fans are getting younger.",
+                "vi": ""
+              },
+              {
+                "en": "Why do police officers seem to be getting younger?",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "not be getting any younger",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used when you are commenting that time is passing and that you are growing older",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "We need to start thinking about our retirement. We’re not getting any younger, you know.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "(have) an old head on young shoulders",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "used to describe a young person who acts in a more sensible way than you would expect for a person of their age",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": []
+          }
+        ]
+      },
+      {
+        "word": "young at heart",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "thinking and behaving like a young person even when you are old",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "My father is 76 but he’s still young at heart.",
+                "vi": ""
+              },
+              {
+                "en": "He's over 70, but he's young at heart.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "you’re only young once",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(saying)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "young people should enjoy themselves as much as possible, because they will have to work and worry later in their lives",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": []
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "young",
+    "pos": "noun",
+    "symbol": "b1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/you/young/young_1_gb_1.mp3",
+    "phonetic_text": "/jʌŋ/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/you/young/young__us_1.mp3",
+    "phonetic_am_text": "/jʌŋ/",
+    "variants": {},
+    "grammar": "[plural]",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {
+          "text": "the young",
+          "html": "<span class=\"v-g\"><span class=\"v\">the young</span></span>"
+        },
+        "grammar": "",
+        "cf": "",
+        "definition": "young people considered as a group",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It's a movie that will appeal to the young.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It's a book for young and old alike.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "young animals of a particular type or that belong to a particular mother",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a mother bird feeding her young",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Young in the nest may compete for food.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "youngster",
+    "pos": "noun",
+    "symbol": "c1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/you/young/youngster__gb_1.mp3",
+    "phonetic_text": "/ˈjʌŋstə(r)/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/you/young/youngster__us_1.mp3",
+    "phonetic_am_text": "/ˈjʌŋstər/",
+    "variants": {},
+    "grammar": "",
+    "labels": "(informal)",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "a young person or a child",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The camp is for youngsters aged 8 to 14.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "youth",
+    "pos": "noun",
+    "symbol": "b1",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/y/you/youth/youth__gb_1.mp3",
+    "phonetic_text": "/juːθ/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/y/you/youth/youth__us_1.mp3",
+    "phonetic_am_text": "/juːθ/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[uncountable]",
+        "cf": "",
+        "definition": "the time of life when a person is young, especially the time before a child becomes an adult",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "in somebody's youth",
+            "labels": "",
+            "en": "He had been a talented musician in his youth.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She regrets that she spent her youth travelling and not studying.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "to relive/recapture your youth",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "He joked that being good at cards was the sign of a misspent youth (= having wasted his time when he was young).",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b1",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[uncountable]",
+        "cf": "",
+        "definition": "the quality or state of being young",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "She brings to the job a rare combination of youth and experience.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "His youth gives him an advantage over the other runners.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {
+          "text": "(also the youth)",
+          "html": "(also <span class=\"v-g\"><span class=\"v\">the youth</span></span>)"
+        },
+        "grammar": "[plural]",
+        "cf": "",
+        "definition": "young people considered as a group",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the nation’s youth",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Many people think the youth of today are not taught proper standards of behaviour.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "training for unemployed youth",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "an increase in youth unemployment",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "contemporary youth culture",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a youth worker (= somebody who works with young people)",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Youth and adults tend to see things very differently.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "b2",
+        "labels": "(often disapproving)",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "[countable]",
+        "cf": "",
+        "definition": "a young man",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The fight was started by a gang of youths.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  }
+]

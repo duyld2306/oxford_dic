@@ -1,0 +1,382 @@
+[
+  {
+    "word": "zero",
+    "pos": "number",
+    "symbol": "a2",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/z/zer/zero_/zero__gb_1.mp3",
+    "phonetic_text": "/ˈzɪərəʊ/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/z/zer/zero_/zero__us_1_rr.mp3",
+    "phonetic_am_text": "/ˈzɪrəʊ/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "a2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {
+          "text": "(British English also nought)",
+          "html": "(<span class=\"v-g\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\">nought</span></span>)"
+        },
+        "grammar": "",
+        "cf": "",
+        "definition": "0",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "Five, four, three, two, one, zero… We have lift-off.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "a temperature, pressure, etc. that is equal to zero on a scale",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "It was ten degrees below zero last night (= −10°C).",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "The thermometer had fallen to zero.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "a2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "the lowest possible amount or level; nothing at all",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "I rated my chances as zero.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "zero inflation",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "zero",
+    "pos": "verb",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/z/zer/zero_/zero__gb_1.mp3",
+    "phonetic_text": "/ˈzɪərəʊ/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/z/zer/zero_/zero__us_1_rr.mp3",
+    "phonetic_am_text": "/ˈzɪrəʊ/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "zero something",
+        "definition": "to turn an instrument, control, etc. to zero",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": []
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": [
+      "zero in on"
+    ]
+  },
+  {
+    "word": "zone",
+    "pos": "noun",
+    "symbol": "b2",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/z/zon/zone_/zone__gb_1.mp3",
+    "phonetic_text": "/zəʊn/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/z/zon/zone_/zone__us_1.mp3",
+    "phonetic_am_text": "/zəʊn/",
+    "variants": {},
+    "grammar": "",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "b2",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "an area or a region with a particular feature or use",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "danger zone",
+          "hot zone",
+          "no-fly zone",
+          "red zone",
+          "time zone"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a war/combat/demilitarized/exclusion zone",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a danger zone",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "a pedestrian zone (= where vehicles may not go)",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "They have called for a 100-mile buffer zone (= protected area) around the island to protect the seals.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "an earthquake zone",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "one of the areas that a larger area is divided into for the purpose of organization",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "postal charges to countries in zone 2",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "an area or a part of an object, especially one that is different from everything that is around it",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [
+          "crumple zone",
+          "friend zone"
+        ],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "When the needle enters the red zone the engine is too hot.",
+            "vi": ""
+          },
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the erogenous zones of the body",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "one of the parts that the earth’s surface is divided into by imaginary lines that are parallel to the equator",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "",
+            "labels": "",
+            "en": "the northern/southern temperate zone",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [
+      {
+        "word": "in the zone",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "(informal)",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "in a state in which you feel confident and are performing at your best",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [
+              "comfort zone"
+            ],
+            "examples": [
+              {
+                "en": "When I'm in the zone, writing is the most satisfying thing in the world.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "word": "a/the twilight world (of something) | the twilight zone",
+        "labels": "",
+        "variants": {},
+        "senses": [
+          {
+            "symbol": "",
+            "labels": "",
+            "dis_g": "",
+            "variants": {},
+            "grammar": "",
+            "cf": "",
+            "definition": "a state in which things are strange, mysterious or secret; a state that exists on the dividing line between two things",
+            "synonyms": [],
+            "opposites": [],
+            "see_alsos": [],
+            "examples": [
+              {
+                "en": "the twilight world of the occult",
+                "vi": ""
+              },
+              {
+                "en": "The dissidents lived in a twilight world of hushed voices and secret meetings.",
+                "vi": ""
+              },
+              {
+                "en": "the twilight zone between living and merely existing",
+                "vi": ""
+              },
+              {
+                "en": "They lived in the twilight zone on the fringes of society.",
+                "vi": ""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "phrasal_verbs": []
+  },
+  {
+    "word": "zone",
+    "pos": "verb",
+    "symbol": "",
+    "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/z/zon/zone_/zone__gb_1.mp3",
+    "phonetic_text": "/zəʊn/",
+    "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/z/zon/zone_/zone__us_1.mp3",
+    "phonetic_am_text": "/zəʊn/",
+    "variants": {},
+    "grammar": "[usually passive]",
+    "labels": "",
+    "senses": [
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "to keep an area of land to be used for a particular purpose",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "be zoned (for something)",
+            "labels": "",
+            "en": "The town centre was zoned for office development.",
+            "vi": ""
+          }
+        ]
+      },
+      {
+        "symbol": "",
+        "labels": "",
+        "dis_g": "",
+        "variants": {},
+        "grammar": "",
+        "cf": "",
+        "definition": "to divide an area of land into smaller areas",
+        "synonyms": [],
+        "opposites": [],
+        "see_alsos": [],
+        "examples": [
+          {
+            "cf": "be zoned (into something)",
+            "labels": "",
+            "en": "The park has been zoned into four distinct areas.",
+            "vi": ""
+          }
+        ]
+      }
+    ],
+    "idioms": [],
+    "phrasal_verbs": [
+      "zone out"
+    ]
+  }
+]

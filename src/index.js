@@ -1,4 +1,5 @@
 import express from "express";
+import compression from "compression";
 import {
   initDb,
   getWord,
@@ -11,9 +12,9 @@ import {
 } from "./db.js";
 import { crawlWordDirect } from "./crawl.js";
 import fs from "fs";
-import path from "path";
 
 const app = express();
+app.use(compression());
 app.use(express.json());
 
 await initDb();
