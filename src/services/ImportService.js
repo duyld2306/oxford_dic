@@ -24,6 +24,69 @@ class ImportService {
       .trim();
   }
 
+  // Đệ quy thêm _id cho mọi object con trong wordData
+  addMissingIdsRecursively(obj, visited = new Set()) {
+    if (!obj || typeof obj !== "object") return;
+    if (visited.has(obj)) return; // Ngăn lặp vô hạn với object tham chiếu lặp
+    visited.add(obj);
+
+    // Chỉ thêm _id cho object là dữ liệu từ điển (bỏ qua các object rỗng, các trường đặc biệt)
+    if (!Array.isArray(obj) && !obj._id) obj._id = new ObjectId();
+
+    // Các trường không cần đệ quy vào (chỉ là dữ liệu phụ, không phải object từ điển)
+    const skipKeys = [
+      "variants",
+      "synonyms",
+      "opposites",
+      "see_alsos",
+      "labels",
+      "cf",
+      "grammar",
+      "definition",
+      "en",
+      "vi",
+      "word",
+      "pos",
+      "symbol",
+      "phonetic",
+      "phonetic_text",
+      "phonetic_am",
+      "phonetic_am_text",
+      "createdAt",
+      "updatedAt",
+      "source",
+      "examples",
+      "dis_g",
+      "score",
+      "count",
+      "data",
+      "idioms",
+      "phrasal_verbs",
+      "senses",
+      "_id",
+    ];
+
+    for (const key of Object.keys(obj)) {
+      if (skipKeys.includes(key)) continue;
+      const value = obj[key];
+      if (Array.isArray(value)) {
+        for (const item of value) {
+          this.addMissingIdsRecursively(item, visited);
+        }
+      } else if (value && typeof value === "object") {
+        this.addMissingIdsRecursively(value, visited);
+      }
+    }
+    // Luôn đệ quy vào các mảng đặc biệt (senses, idioms, examples)
+    for (const arrKey of ["senses", "idioms", "examples"]) {
+      if (Array.isArray(obj[arrKey])) {
+        for (const item of obj[arrKey]) {
+          this.addMissingIdsRecursively(item, visited);
+        }
+      }
+    }
+  }
+
   // Group words by their normalized form
   groupWordsByNormalizedForm(words) {
     const groups = {};
@@ -38,10 +101,8 @@ class ImportService {
         groups[normalized] = [];
       }
 
-      // Add ObjectId to each word entry if not present
-      if (!wordData._id) {
-        wordData._id = new ObjectId();
-      }
+      // Đệ quy thêm _id cho mọi object con
+      this.addMissingIdsRecursively(wordData);
 
       groups[normalized].push(wordData);
     }
