@@ -44,14 +44,3 @@ const gracefulShutdown = async (signal) => {
 
 process.on("SIGINT", () => gracefulShutdown("SIGINT"));
 process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
-
-async function pingDB() {
-  try {
-    const collection = database.getCollection();
-    await collection.findOne({});
-    console.log(`[${new Date().toISOString()}] Ping DB to keep alive`);
-  } catch (err) {
-    console.error("Ping DB error:", err.message);
-  }
-}
-setInterval(pingDB, 5 * 60 * 1000); // Ping DB every 5 minutes

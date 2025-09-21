@@ -55,7 +55,12 @@ async function crawlWordDirect(word, maxSuffix = 5) {
 
       const senses = [];
       $("li.sense")
-        .filter((_, el) => $(el).closest(".idioms").length === 0)
+        .filter(
+          (_, el) =>
+            $(el).closest(".idioms").length === 0 &&
+            $(el).closest(".collapse").length === 0 &&
+            $(el).closest(".pv-g").length === 0
+        )
         .each((_, el) => {
           const $el = $(el);
           const def = $el.find("span.def").first();
@@ -129,6 +134,89 @@ async function crawlWordDirect(word, maxSuffix = 5) {
             });
           senses.push(s);
         });
+
+      const phrasal_verb_senses = [];
+      $("span.pv-g").each((_, el) => {
+        const $pvs = $(el);
+        const item = {
+          word: $pvs.find("span.pv").first().text() || "",
+          labels: $pvs.find(".webtop span.labels").first().text() || "",
+          variants: (() => {
+            const v = $pvs.find(".webtop div.variants").first();
+            return v && v.length ? { text: v.text(), html: v.html() } : {};
+          })(),
+          senses: [],
+        };
+        $pvs
+          .closest(".pv-g")
+          .find("li.sense")
+          .each((_, sEl) => {
+            const $sEl = $(sEl);
+            const def = $sEl.find("span.def").first();
+            if (!def || !def.text()) return;
+            const s = {
+              symbol:
+                $sEl
+                  .find(
+                    ".sensetop > div.symbols span, .sensetop ~ div.symbols span"
+                  )
+                  .first()
+                  .attr("class")
+                  ?.split("_")[1] || "",
+              labels:
+                $sEl
+                  .find(".sensetop > span.labels, .sensetop ~ span.labels")
+                  .first()
+                  .text() || "",
+              dis_g:
+                $sEl
+                  .find(".sensetop > span.dis-g, .sensetop ~ span.dis-g")
+                  .first()
+                  .text() || "",
+              variants: (() => {
+                const v = $sEl
+                  .find(".sensetop > div.variants, .sensetop ~ div.variants")
+                  .first();
+                return v && v.length ? { text: v.text(), html: v.html() } : {};
+              })(),
+              grammar:
+                $sEl
+                  .find(".sensetop > span.grammar, .sensetop ~ span.grammar")
+                  .first()
+                  .text() || "",
+              cf:
+                $sEl
+                  .find(".sensetop > span.cf, .sensetop ~ span.cf")
+                  .first()
+                  .text() || "",
+              definition: def.text(),
+              synonyms: [],
+              opposites: [],
+              see_alsos: [],
+              examples: [],
+            };
+            $sEl.find("span.xrefs").each((_, xr) => {
+              const $xr = $(xr);
+              const type = $xr.find("span.prefix").first().text();
+              if (type === "synonym") {
+                $xr.find("a").each((_, a) => s.synonyms.push($(a).text()));
+              } else if (type === "opposite") {
+                $xr.find("a").each((_, a) => s.opposites.push($(a).text()));
+              } else if (type === "see also") {
+                $xr.find("a").each((_, a) => s.see_alsos.push($(a).text()));
+              }
+            });
+            $sEl
+              .find("ul.examples li")
+              .filter((_, el) => $(el).closest(".collapse").length === 0)
+              .each((_, ex) => {
+                const x = $(ex).find("span.x").first().text();
+                if (x) s.examples.push({ en: x, vi: "" });
+              });
+            item.senses.push(s);
+          });
+        phrasal_verb_senses.push(item);
+      });
 
       const idioms = [];
       $("div.idioms span.idm-g").each((_, el) => {
@@ -250,6 +338,11 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         grammar,
         labels,
         senses: assignIdsToSenses(senses),
+        phrasal_verb_senses: (phrasal_verb_senses || []).map((pv) => ({
+          _id: new ObjectId(),
+          ...pv,
+          senses: assignIdsToSenses(pv.senses || []),
+        })),
         idioms: (idioms || []).map((idm) => ({
           _id: new ObjectId(),
           ...idm,
