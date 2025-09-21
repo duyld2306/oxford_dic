@@ -6,7 +6,8 @@ async function crawlWordDirect(word, maxSuffix = 5) {
   const words = [];
 
   function buildUrls(w) {
-    const base = `https://www.oxfordlearnersdictionaries.com/definition/english/${w}`;
+    const slug = String(w).trim().replace(/\s+/g, "-").toLowerCase();
+    const base = `https://www.oxfordlearnersdictionaries.com/definition/english/${slug}`;
     const urls = [];
     for (let i = 1; i <= maxSuffix; i++) {
       urls.push(`${base}_${i}`);
