@@ -51,7 +51,12 @@ async function crawlWordDirect(word, maxSuffix = 5) {
       const grammar =
         $("h1.headword").first().siblings("span.grammar").first().text() || "";
       const labels =
-        $("h1.headword").first().siblings("span.labels").first().text() || "";
+        $("h1.headword")
+          .first()
+          .siblings("span.labels")
+          .filter((_, el) => $(el).closest(".variants").length === 0)
+          .first()
+          .text() || "";
 
       const senses = [];
       $("li.sense")
@@ -77,6 +82,7 @@ async function crawlWordDirect(word, maxSuffix = 5) {
             labels:
               $el
                 .find(".sensetop > span.labels, .sensetop ~ span.labels")
+                .filter((_, el) => $(el).closest(".variants").length === 0)
                 .first()
                 .text() || "",
             dis_g:
@@ -127,7 +133,12 @@ async function crawlWordDirect(word, maxSuffix = 5) {
             .each((_, ex) => {
               const $ex = $(ex);
               const cf = $ex.find("span.cf").first().text() || "";
-              const labels = $ex.find("span.labels").first().text() || "";
+              const labels =
+                $ex
+                  .find("span.labels")
+                  .filter((_, el) => $(el).closest(".variants").length === 0)
+                  .first()
+                  .text() || "";
               const x = $ex.find("span.x").first().text() || "";
               if (cf || labels || x)
                 s.examples.push({ cf, labels, en: x, vi: "" });
@@ -138,9 +149,27 @@ async function crawlWordDirect(word, maxSuffix = 5) {
       const phrasal_verb_senses = [];
       $("span.pv-g").each((_, el) => {
         const $pvs = $(el);
+        const pv = $pvs.find("span.pv").first();
+        let word = "";
+        if (pv.find(".pvarr").length > 0) {
+          // Có chứa .pvarr → thay thành ↔
+          word = pv
+            .html()
+            .replace(/<span class="pvarr">([^<]*)<\/span>/g, " ↔ $1")
+            .replace(/<[^>]+>/g, "") // bỏ thẻ HTML
+            .trim();
+        } else {
+          // Bình thường
+          word = pv.text().trim();
+        }
         const item = {
-          word: $pvs.find("span.pv").first().text() || "",
-          labels: $pvs.find(".webtop span.labels").first().text() || "",
+          word,
+          labels:
+            $pvs
+              .find(".webtop span.labels")
+              .filter((_, el) => $(el).closest(".variants").length === 0)
+              .first()
+              .text() || "",
           variants: (() => {
             const v = $pvs.find(".webtop div.variants").first();
             return v && v.length ? { text: v.text(), html: v.html() } : {};
@@ -166,6 +195,7 @@ async function crawlWordDirect(word, maxSuffix = 5) {
               labels:
                 $sEl
                   .find(".sensetop > span.labels, .sensetop ~ span.labels")
+                  .filter((_, el) => $(el).closest(".variants").length === 0)
                   .first()
                   .text() || "",
               dis_g:
@@ -223,7 +253,12 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         const $idm = $(el);
         const item = {
           word: $idm.find("span.idm").first().text() || "",
-          labels: $idm.find(".webtop span.labels").first().text() || "",
+          labels:
+            $idm
+              .find(".webtop span.labels")
+              .filter((_, el) => $(el).closest(".variants").length === 0)
+              .first()
+              .text() || "",
           variants: (() => {
             const v = $idm.find(".webtop div.variants").first();
             return v && v.length ? { text: v.text(), html: v.html() } : {};
@@ -249,6 +284,7 @@ async function crawlWordDirect(word, maxSuffix = 5) {
               labels:
                 $sEl
                   .find(".sensetop > span.labels, .sensetop ~ span.labels")
+                  .filter((_, el) => $(el).closest(".variants").length === 0)
                   .first()
                   .text() || "",
               dis_g:
@@ -305,7 +341,7 @@ async function crawlWordDirect(word, maxSuffix = 5) {
       $(".phrasal_verb_links ul.pvrefs li").each((_, li) => {
         const a = $(li).find("a").first();
         if (a && a.length) {
-          phrasal_verbs.push({ word: a.text(), link: a.attr("href") });
+          phrasal_verbs.push(a.text());
         }
       });
 
