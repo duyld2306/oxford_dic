@@ -42,21 +42,19 @@ class WordService {
         };
       }
 
-      // Save to database for future use. Use stable key from crawled result if present
-      const first =
-        Array.isArray(crawledData) && crawledData.length > 0
-          ? crawledData[0]
-          : null;
-      const upsertKey =
-        first && first._id
-          ? String(first._id).trim().toLowerCase()
-          : normalizedWord;
-      await this.wordModel.upsert(upsertKey, crawledData);
+      // Save to database: upsert each crawled entry by its own _id (which is normalized foundWord)
+      for (const entry of crawledData) {
+        if (!entry || !entry._id) continue;
+        const docKey = String(entry._id || "")
+          .trim()
+          .toLowerCase();
+        await this.wordModel.upsert(docKey, [entry]);
+      }
 
       return {
         success: true,
         data: {
-          word: upsertKey,
+          word: normalizedWord,
           quantity: crawledData.length,
           data: crawledData,
           source: "crawled",

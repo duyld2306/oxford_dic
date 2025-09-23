@@ -18,7 +18,8 @@ class WordModel {
     await this.init();
     const raw = String(word || "").trim();
     if (!raw) return null;
-    const key = raw.toLowerCase();
+    // normalize: collapse multiple spaces -> single space, then lowercase
+    const key = raw.replace(/\s+/g, " ").toLowerCase();
     const dashed = key.replace(/\s+/g, "-");
     const candidates = Array.from(new Set([key, dashed]));
 

@@ -27,6 +27,7 @@ async function crawlWordDirect(word, maxSuffix = 5) {
 
   const urls = buildUrls(word);
   const relateWords = new Set([normalizePhrase(word), toDash(word)]);
+  const words = [];
   for (let i = 0; i < urls.length; i++) {
     const link = urls[i];
     try {
@@ -377,12 +378,12 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         }));
 
       const mainNormalized = normalizePhrase(foundWord);
-      const wordDoc = {
-        _id: new ObjectId(),
+      const entry = {
+        // use normalized foundWord (lowercased) as the document _id
+        _id: normalizePhrase(foundWord).toLowerCase(),
         word: foundWord,
-        relate_word: Array.from(relateWords).filter(
-          (v) => v && v !== mainNormalized
-        ),
+        // relate_word will be finalized after collecting all pages
+        relate_word: [],
         pos,
         symbol,
         phonetic,
@@ -406,14 +407,22 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         phrasal_verbs,
       };
 
-      // return only the first found document (avoid duplicates for variants)
-      return [wordDoc];
+      words.push(entry);
     } catch (e) {
       throw new Error("crawl_request_error");
     }
   }
-  // nothing found
-  return [];
+  if (words.length === 0) return [];
+
+  // finalize relate_word per entry based on discovered variants
+  const allVariants = Array.from(relateWords).filter(Boolean);
+  for (const w of words) {
+    const mainNorm = normalizePhrase(w.word);
+    const mainDash = toDash(w.word);
+    w.relate_word = allVariants.filter((v) => v !== mainNorm && v !== mainDash);
+  }
+
+  return words;
 }
 
 export { crawlWordDirect };
