@@ -382,8 +382,8 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         // use normalized foundWord (lowercased) as the document _id
         _id: normalizePhrase(foundWord).toLowerCase(),
         word: foundWord,
-        // relate_word will be finalized after collecting all pages
-        relate_word: [],
+        // relate_words will be finalized after collecting all pages
+        relate_words: [],
         pos,
         symbol,
         phonetic,
@@ -414,12 +414,14 @@ async function crawlWordDirect(word, maxSuffix = 5) {
   }
   if (words.length === 0) return [];
 
-  // finalize relate_word per entry based on discovered variants
+  // finalize relate_words per entry based on discovered variants
   const allVariants = Array.from(relateWords).filter(Boolean);
   for (const w of words) {
     const mainNorm = normalizePhrase(w.word);
     const mainDash = toDash(w.word);
-    w.relate_word = allVariants.filter((v) => v !== mainNorm && v !== mainDash);
+    w.relate_words = allVariants.filter(
+      (v) => v !== mainNorm && v !== mainDash
+    );
   }
 
   return words;

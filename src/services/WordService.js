@@ -51,7 +51,32 @@ class WordService {
         first && first.word
           ? String(first.word).trim().replace(/\s+/g, " ").toLowerCase()
           : normalizedWord;
-      await this.wordModel.upsert(canonicalKey, crawledData);
+      // compute top-level relate_words as union of all entry.relate_words + entry.word variants
+      const allVariants = new Set();
+      for (const e of crawledData) {
+        if (e && typeof e.word === "string") {
+          allVariants.add(
+            String(e.word).trim().replace(/\s+/g, " ").toLowerCase()
+          );
+          allVariants.add(
+            String(e.word).trim().replace(/\s+/g, "-").toLowerCase()
+          );
+        }
+        if (e && Array.isArray(e.relate_words)) {
+          for (const v of e.relate_words) {
+            if (v) allVariants.add(String(v).trim().toLowerCase());
+          }
+        }
+      }
+      // remove the canonical key itself from relate_words
+      allVariants.delete(canonicalKey);
+      const relate_words = Array.from(allVariants).filter(Boolean);
+
+      // pass an object where `data` is the crawled array and include relate_words for top-level storage
+      await this.wordModel.upsert(canonicalKey, {
+        data: crawledData,
+        relate_words,
+      });
 
       return {
         success: true,

@@ -25,17 +25,19 @@ class WordModel {
 
     // Try multiple lookup strategies:
     // 1) top-level _id
-    // 2) any element in data.relate_word
-    // 3) any element in data.word
+    // 2) top-level relate_words array (new)
+    // 3) any element in data.relate_word (backcompat)
+    // 4) any element in data.word
     const doc = await this.collection.findOne(
       {
         $or: [
           { _id: { $in: candidates } },
+          { relate_words: { $in: candidates } },
           { "data.relate_word": { $in: candidates } },
           { "data.word": { $in: candidates } },
         ],
       },
-      { projection: { data: 1, createdAt: 1, updatedAt: 1 } }
+      { projection: { data: 1, relate_words: 1, createdAt: 1, updatedAt: 1 } }
     );
 
     return doc;
@@ -84,13 +86,19 @@ class WordModel {
     const key = String(word || "").toLowerCase();
     const nowIso = new Date().toISOString();
 
+    // If caller provided a top-level relate_words array inside `data` object
+    // (or as a separate property), use it to set the top-level field as well.
+    const topLevel = {};
+    if (data && Array.isArray(data.relate_words)) {
+      topLevel.relate_words = Array.from(
+        new Set(data.relate_words.filter(Boolean))
+      );
+    }
+
     const result = await this.collection.updateOne(
       { _id: key },
       {
-        $set: {
-          data,
-          updatedAt: nowIso,
-        },
+        $set: Object.assign({ data, updatedAt: nowIso }, topLevel),
         $setOnInsert: {
           createdAt: nowIso,
         },
