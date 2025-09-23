@@ -42,19 +42,21 @@ class WordService {
         };
       }
 
-      // Save to database: upsert each crawled entry by its own _id (which is normalized foundWord)
-      for (const entry of crawledData) {
-        if (!entry || !entry._id) continue;
-        const docKey = String(entry._id || "")
-          .trim()
-          .toLowerCase();
-        await this.wordModel.upsert(docKey, [entry]);
-      }
+      // Save to database as a single document keyed by the first crawled page's normalized word
+      const first =
+        Array.isArray(crawledData) && crawledData.length > 0
+          ? crawledData[0]
+          : null;
+      const canonicalKey =
+        first && first.word
+          ? String(first.word).trim().replace(/\s+/g, " ").toLowerCase()
+          : normalizedWord;
+      await this.wordModel.upsert(canonicalKey, crawledData);
 
       return {
         success: true,
         data: {
-          word: normalizedWord,
+          word: canonicalKey,
           quantity: crawledData.length,
           data: crawledData,
           source: "crawled",
