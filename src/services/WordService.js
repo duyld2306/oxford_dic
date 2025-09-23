@@ -12,13 +12,10 @@ class WordService {
       const normalizedWord = String(word || "")
         .trim()
         .toLowerCase();
-      if (!normalizedWord) {
-        throw new Error("Word is required");
-      }
+      if (!normalizedWord) throw new Error("Word is required");
 
-      // Try to get from database first
+      // 1) Try DB first
       const dbResult = await this.wordModel.findByWord(normalizedWord);
-
       if (dbResult) {
         return {
           success: true,
@@ -31,69 +28,43 @@ class WordService {
         };
       }
 
-      // If not found in database, try crawling
-      const crawledData = await crawlWordDirect(normalizedWord, 5);
-
-      if (!crawledData || crawledData.length === 0) {
-        return {
-          success: false,
-          error: "Word not found",
-          data: null,
-        };
+      // 2) Crawl when missing
+      const crawled = await crawlWordDirect(normalizedWord, 5);
+      if (
+        !crawled ||
+        !Array.isArray(crawled.words) ||
+        crawled.words.length === 0
+      ) {
+        return { success: false, error: "Word not found", data: null };
       }
 
-      // Save to database as a single document keyed by the first crawled page's normalized word
-      const first =
-        Array.isArray(crawledData) && crawledData.length > 0
-          ? crawledData[0]
-          : null;
+      const words = crawled.words;
+      const variants = Array.isArray(crawled.variants) ? crawled.variants : [];
+
+      const first = words[0] || null;
       const canonicalKey =
         first && first.word
           ? String(first.word).trim().replace(/\s+/g, " ").toLowerCase()
           : normalizedWord;
-      // compute top-level relate_words as union of all entry.relate_words + entry.word variants
-      const allVariants = new Set();
-      for (const e of crawledData) {
-        if (e && typeof e.word === "string") {
-          allVariants.add(
-            String(e.word).trim().replace(/\s+/g, " ").toLowerCase()
-          );
-          allVariants.add(
-            String(e.word).trim().replace(/\s+/g, "-").toLowerCase()
-          );
-        }
-        if (e && Array.isArray(e.relate_words)) {
-          for (const v of e.relate_words) {
-            if (v) allVariants.add(String(v).trim().toLowerCase());
-          }
-        }
-      }
-      // remove the canonical key itself from relate_words
-      allVariants.delete(canonicalKey);
-      const relate_words = Array.from(allVariants).filter(Boolean);
 
-      // pass an object where `data` is the crawled array and include relate_words for top-level storage
+      // Persist as single document: top-level relate_words + data array
       await this.wordModel.upsert(canonicalKey, {
-        data: crawledData,
-        relate_words,
+        data: words,
+        relate_words: variants,
       });
 
       return {
         success: true,
         data: {
           word: canonicalKey,
-          quantity: crawledData.length,
-          data: crawledData,
+          quantity: words.length,
+          data: words,
           source: "crawled",
         },
       };
     } catch (error) {
       console.error("WordService.getWord error:", error);
-      return {
-        success: false,
-        error: error.message,
-        data: null,
-      };
+      return { success: false, error: error.message, data: null };
     }
   }
 

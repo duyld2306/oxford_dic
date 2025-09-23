@@ -86,10 +86,21 @@ class WordModel {
     const key = String(word || "").toLowerCase();
     const nowIso = new Date().toISOString();
 
-    // If caller provided a top-level relate_words array inside `data` object
-    // (or as a separate property), use it to set the top-level field as well.
+    // Support two shapes for `data` parameter:
+    // - legacy: data is the array of entries
+    // - new: data is an object { data: [...entries], relate_words: [...] }
+    let dbData = data;
     const topLevel = {};
-    if (data && Array.isArray(data.relate_words)) {
+    if (data && Array.isArray(data.data)) {
+      // new shape
+      dbData = data.data;
+      if (Array.isArray(data.relate_words)) {
+        topLevel.relate_words = Array.from(
+          new Set(data.relate_words.filter(Boolean))
+        );
+      }
+    } else if (data && Array.isArray(data.relate_words)) {
+      // caller passed relate_words together with raw array or other shape
       topLevel.relate_words = Array.from(
         new Set(data.relate_words.filter(Boolean))
       );
@@ -98,7 +109,7 @@ class WordModel {
     const result = await this.collection.updateOne(
       { _id: key },
       {
-        $set: Object.assign({ data, updatedAt: nowIso }, topLevel),
+        $set: Object.assign({ data: dbData, updatedAt: nowIso }, topLevel),
         $setOnInsert: {
           createdAt: nowIso,
         },
