@@ -16,10 +16,24 @@ class WordModel {
   // Get word by exact match
   async findByWord(word) {
     await this.init();
-    const key = String(word || "").toLowerCase();
+    const raw = String(word || "").trim();
+    if (!raw) return null;
+    const key = raw.toLowerCase();
+    const dashed = key.replace(/\s+/g, "-");
+    const candidates = Array.from(new Set([key, dashed]));
 
+    // Try multiple lookup strategies:
+    // 1) top-level _id
+    // 2) any element in data.relate_word
+    // 3) any element in data.word
     const doc = await this.collection.findOne(
-      { _id: key },
+      {
+        $or: [
+          { _id: { $in: candidates } },
+          { "data.relate_word": { $in: candidates } },
+          { "data.word": { $in: candidates } },
+        ],
+      },
       { projection: { data: 1, createdAt: 1, updatedAt: 1 } }
     );
 

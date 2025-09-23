@@ -3,7 +3,17 @@ import { load } from "cheerio";
 import { ObjectId } from "mongodb";
 
 async function crawlWordDirect(word, maxSuffix = 5) {
-  const words = [];
+  // helpers for variant normalization
+  function normalizePhrase(w) {
+    return String(w || "")
+      .trim()
+      .replace(/\s+/g, " ");
+  }
+  function toDash(w) {
+    return String(w || "")
+      .trim()
+      .replace(/\s+/g, "-");
+  }
 
   function buildUrls(w) {
     const slug = String(w).trim().replace(/\s+/g, "-").toLowerCase();
@@ -16,6 +26,7 @@ async function crawlWordDirect(word, maxSuffix = 5) {
   }
 
   const urls = buildUrls(word);
+  const relateWords = new Set([normalizePhrase(word), toDash(word)]);
   for (let i = 0; i < urls.length; i++) {
     const link = urls[i];
     try {
@@ -33,6 +44,10 @@ async function crawlWordDirect(word, maxSuffix = 5) {
       if (!foundWord) {
         break;
       }
+
+      // collect variants discovered on page
+      relateWords.add(normalizePhrase(foundWord));
+      relateWords.add(toDash(foundWord));
 
       const pos = $("span.pos").first().text() || "";
       const symbol =
@@ -361,9 +376,13 @@ async function crawlWordDirect(word, maxSuffix = 5) {
           })),
         }));
 
+      const mainNormalized = normalizePhrase(foundWord);
       const wordDoc = {
         _id: new ObjectId(),
         word: foundWord,
+        relate_word: Array.from(relateWords).filter(
+          (v) => v && v !== mainNormalized
+        ),
         pos,
         symbol,
         phonetic,
@@ -387,12 +406,14 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         phrasal_verbs,
       };
 
-      words.push(wordDoc);
+      // return only the first found document (avoid duplicates for variants)
+      return [wordDoc];
     } catch (e) {
       throw new Error("crawl_request_error");
     }
   }
-  return words;
+  // nothing found
+  return [];
 }
 
 export { crawlWordDirect };

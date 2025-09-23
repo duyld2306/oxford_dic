@@ -10,8 +10,8 @@ class WordService {
   async getWord(word) {
     try {
       const normalizedWord = String(word || "")
-        .toLowerCase()
-        .trim();
+        .trim()
+        .toLowerCase();
       if (!normalizedWord) {
         throw new Error("Word is required");
       }
@@ -42,13 +42,21 @@ class WordService {
         };
       }
 
-      // Save to database for future use
-      await this.wordModel.upsert(normalizedWord, crawledData);
+      // Save to database for future use. Use stable key from crawled result if present
+      const first =
+        Array.isArray(crawledData) && crawledData.length > 0
+          ? crawledData[0]
+          : null;
+      const upsertKey =
+        first && first._id
+          ? String(first._id).trim().toLowerCase()
+          : normalizedWord;
+      await this.wordModel.upsert(upsertKey, crawledData);
 
       return {
         success: true,
         data: {
-          word: normalizedWord,
+          word: upsertKey,
           quantity: crawledData.length,
           data: crawledData,
           source: "crawled",
