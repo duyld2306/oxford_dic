@@ -47,20 +47,21 @@ class WordService {
           ? String(first.word).trim().replace(/\s+/g, " ").toLowerCase()
           : normalizedWord;
 
-      // Normalize helper: convert dashes to spaces then collapse whitespace
-      const normalizeForCompare = (s) =>
+      // Normalize helper: collapse whitespace and lowercase (do NOT replace dashes)
+      // This makes dashed variants (e.g. "hang-out") distinct from spaced canonical ("hang out").
+      const normalizeSpaceOnly = (s) =>
         String(s || "")
-          .replace(/-/g, " ")
           .trim()
           .replace(/\s+/g, " ")
           .toLowerCase();
 
-      // Build relate_words: dedupe and exclude any variant that is equivalent to canonical
+      // Build relate_words: dedupe and exclude any variant whose spaces-only normalized
+      // form equals the canonical key. Keep dashed forms if present.
       const relateSet = new Set();
       for (const v of variants) {
         if (!v) continue;
-        const vNorm = normalizeForCompare(v);
-        if (vNorm === canonicalKey) continue; // skip variants that are same as canonical
+        const vNorm = normalizeSpaceOnly(v);
+        if (vNorm === canonicalKey) continue; // skip exact-space-equivalent variants
         relateSet.add(String(v).trim());
       }
       const relate_words = Array.from(relateSet);
