@@ -147,6 +147,25 @@ class WordModel {
           ],
         },
       },
+      {
+        $unionWith: {
+          coll: this.collection.collectionName,
+          pipeline: [
+            { $unwind: "$data" },
+            { $unwind: "$data.phrasal_verb_senses" },
+            { $unwind: "$data.phrasal_verb_senses.examples" },
+            {
+              $match: { "data.phrasal_verb_senses.examples._id": { $in: ids } },
+            },
+            {
+              $project: {
+                _id: "$data.phrasal_verb_senses.examples._id",
+                vi: "$data.phrasal_verb_senses.examples.vi",
+              },
+            },
+          ],
+        },
+      },
       { $group: { _id: "$_id", vi: { $first: "$vi" } } },
     ];
     const cursor = this.collection.aggregate(pipeline, { allowDiskUse: true });
@@ -186,6 +205,7 @@ class WordModel {
           $set: {
             "data.$[].senses.$[].examples.$[e].vi": viText,
             "data.$[].idioms.$[].senses.$[].examples.$[e].vi": viText,
+            "data.$[].phrasal_verb_senses.$[].examples.$[e].vi": viText,
           },
         },
         {

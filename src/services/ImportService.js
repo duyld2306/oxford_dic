@@ -182,6 +182,7 @@ class ImportService {
                   updatedAt: nowIso,
                 },
                 $setOnInsert: {
+                  variant: [],
                   createdAt: nowIso,
                 },
               },
