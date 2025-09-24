@@ -1,6 +1,9 @@
 import { ObjectId } from "mongodb";
 import database from "../config/database.js";
 
+// escape string to be used inside RegExp
+const escapeForRegex = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 class WordModel {
   constructor() {
     this.collection = null;
@@ -16,39 +19,56 @@ class WordModel {
   // Get word by exact match
   async findByWord(word) {
     await this.init();
-    const key = String(word || "").toLowerCase();
+    const key = String(word || "").trim();
+    if (!key) return null;
+
+    // normalized lookup key (_id is stored as lowercase normalized)
+    const lowerKey = key.replace(/\s+/g, " ").toLowerCase();
+
+    // try exact _id match first, then by top-level `variants` array (case-insensitive element match)
+    const re = new RegExp(`^${escapeForRegex(key)}$`, "i");
 
     const doc = await this.collection.findOne(
-      { _id: key },
-      { projection: { data: 1, createdAt: 1, updatedAt: 1 } }
+      {
+        $or: [{ _id: lowerKey }, { variants: { $elemMatch: { $regex: re } } }],
+      },
+      {
+        projection: {
+          _id: 1,
+          data: 1,
+          variants: 1,
+          createdAt: 1,
+          updatedAt: 1,
+        },
+      }
     );
 
     return doc;
   }
 
+  // (removed) findByVariant - use findByWord instead which already checks top-level variants case-insensitively
+
   // Search words by prefix (case insensitive)
   async searchByPrefix(prefix, limit = 20) {
     await this.init();
-    const searchPrefix = String(prefix || "").toLowerCase();
-
+    const searchPrefix = String(prefix || "").trim();
     if (!searchPrefix) return [];
 
+    // Case-insensitive regex anchored at start
+    const regex = new RegExp(
+      `^${searchPrefix.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`,
+      "i"
+    );
+
     const pipeline = [
-      {
-        $match: {
-          "data.word": {
-            $regex: `^${searchPrefix}`,
-            $options: "i",
-          },
-        },
-      },
       { $unwind: "$data" },
       {
         $match: {
-          "data.word": {
-            $regex: `^${searchPrefix}`,
-            $options: "i",
-          },
+          $or: [
+            { "data.word": { $regex: regex } },
+            { _id: { $regex: regex } },
+            { variants: { $elemMatch: { $regex: regex } } },
+          ],
         },
       },
       {
@@ -60,6 +80,7 @@ class WordModel {
       { $sort: { word: 1 } },
       { $limit: limit },
     ];
+
     return await this.collection.aggregate(pipeline).toArray();
   }
 
@@ -69,16 +90,19 @@ class WordModel {
     const key = String(word || "").toLowerCase();
     const nowIso = new Date().toISOString();
 
+    // Accept two shapes: legacy `data` is array, or new shape { data: [...], variants: [...] }
+    let dbData = data;
+    const topLevel = {};
+    if (data && Array.isArray(data.data)) {
+      dbData = data.data;
+      if (Array.isArray(data.variants)) topLevel.variants = data.variants;
+    }
+
     const result = await this.collection.updateOne(
       { _id: key },
       {
-        $set: {
-          data,
-          updatedAt: nowIso,
-        },
-        $setOnInsert: {
-          createdAt: nowIso,
-        },
+        $set: Object.assign({ data: dbData, updatedAt: nowIso }, topLevel),
+        $setOnInsert: { createdAt: nowIso },
       },
       { upsert: true }
     );

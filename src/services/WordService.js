@@ -1,5 +1,6 @@
 import WordModel from "../models/Word.js";
 import { crawlWordDirect } from "../utils/crawl.js";
+import { normalizeKey, buildVariantsFromPages } from "../utils/variants.js";
 
 class WordService {
   constructor() {
@@ -32,9 +33,9 @@ class WordService {
       }
 
       // If not found in database, try crawling
-      const crawledData = await crawlWordDirect(normalizedWord, 5);
+      const crawledPages = await crawlWordDirect(normalizedWord, 5);
 
-      if (!crawledData || crawledData.length === 0) {
+      if (!crawledPages || crawledPages.length === 0) {
         return {
           success: false,
           error: "Word not found",
@@ -42,15 +43,27 @@ class WordService {
         };
       }
 
-      // Save to database for future use
-      await this.wordModel.upsert(normalizedWord, crawledData);
+      // Build top-level variants array from crawled pages (preserve original casing)
+      const finalVariants = buildVariantsFromPages(crawledPages);
+
+      // canonical key: first crawled page's found word normalized
+      const canonicalRaw =
+        (finalVariants && finalVariants[0]) || normalizedWord;
+      const canonicalKey = normalizeKey(canonicalRaw);
+
+      // Save to database for future use with shape { data: [...], variants: [...] }
+      await this.wordModel.upsert(canonicalKey, {
+        data: crawledPages,
+        variants: finalVariants,
+      });
 
       return {
         success: true,
         data: {
-          word: normalizedWord,
-          quantity: crawledData.length,
-          data: crawledData,
+          word: canonicalKey,
+          quantity: crawledPages.length,
+          data: crawledPages,
+          variants: finalVariants,
           source: "crawled",
         },
       };
