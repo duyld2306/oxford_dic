@@ -47,11 +47,26 @@ class WordService {
           ? String(first.word).trim().replace(/\s+/g, " ").toLowerCase()
           : normalizedWord;
 
+      // Normalize helper: convert dashes to spaces then collapse whitespace
+      const normalizeForCompare = (s) =>
+        String(s || "")
+          .replace(/-/g, " ")
+          .trim()
+          .replace(/\s+/g, " ")
+          .toLowerCase();
+
+      // Build relate_words: dedupe and exclude any variant that is equivalent to canonical
+      const relateSet = new Set();
+      for (const v of variants) {
+        if (!v) continue;
+        const vNorm = normalizeForCompare(v);
+        if (vNorm === canonicalKey) continue; // skip variants that are same as canonical
+        relateSet.add(String(v).trim());
+      }
+      const relate_words = Array.from(relateSet);
+
       // Persist as single document: top-level relate_words + data array
-      await this.wordModel.upsert(canonicalKey, {
-        data: words,
-        relate_words: variants,
-      });
+      await this.wordModel.upsert(canonicalKey, { data: words, relate_words });
 
       return {
         success: true,
