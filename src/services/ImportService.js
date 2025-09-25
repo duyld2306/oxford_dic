@@ -61,6 +61,7 @@ class ImportService {
       "count",
       "data",
       "idioms",
+      "phrasal_verb_senses",
       "phrasal_verbs",
       "senses",
       "_id",
@@ -134,9 +135,16 @@ class ImportService {
       };
 
       // Save each group to database
-      for (const [normalizedWord, wordData] of Object.entries(groupedWords)) {
+      for (const [normalizedWord, wordDataRaw] of Object.entries(
+        groupedWords
+      )) {
         try {
           const nowIso = new Date().toISOString();
+
+          const wordData = wordDataRaw.map((entry) => ({
+            ...entry,
+            phrasal_verb_senses: [],
+          }));
 
           // Check if word already exists
           const existingWord = await this.collection.findOne({

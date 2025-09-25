@@ -205,7 +205,8 @@ class WordModel {
           $set: {
             "data.$[].senses.$[].examples.$[e].vi": viText,
             "data.$[].idioms.$[].senses.$[].examples.$[e].vi": viText,
-            "data.$[].phrasal_verb_senses.$[].examples.$[e].vi": viText,
+            "data.$[].phrasal_verb_senses.$[].senses.$[].examples.$[e].vi":
+              viText,
           },
         },
         {
