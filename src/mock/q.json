@@ -4463,7 +4463,7 @@
     "idioms": [
       {
         "word": "quite a/the something",
-        "labels": "informal",
+        "labels": "",
         "variants": {
           "text": "(also informal quite some something)",
           "html": "(also <span class=\"v-g\" id=\"quite_vg_2\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">informal</span> <span class=\"v\" id=\"quite_v_2\">quite some something</span></span>)"
@@ -4532,7 +4532,7 @@
       },
       {
         "word": "quite a few",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also a good few, a fair few)",
           "html": "(<span class=\"v-g\" id=\"quite_vg_5\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"quite_v_4\">a good few</span></span>, <span class=\"v-g\" id=\"quite_vg_6\"><span class=\"v\" id=\"quite_v_5\">a fair few</span></span>)"
@@ -4560,7 +4560,7 @@
       },
       {
         "word": "quite a lot (of something)",
-        "labels": "also British English, informal",
+        "labels": "",
         "variants": {
           "text": "(also British English, informal quite a bit)",
           "html": "(<span class=\"v-g\" id=\"quite_vg_3\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">also British English, informal</span> <span class=\"v\" id=\"quite_v_3\">quite a bit</span></span>)"

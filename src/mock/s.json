@@ -2216,7 +2216,7 @@
     "idioms": [
       {
         "word": "be plain sailing",
-        "labels": "North American English",
+        "labels": "",
         "variants": {
           "text": "(North American English be clear/smooth sailing)",
           "html": "(<span class=\"v-g\" id=\"sailing_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English</span> <span class=\"v\" id=\"sailing_v_1\">be clear/smooth sailing</span></span>)"
@@ -3251,7 +3251,7 @@
       },
       {
         "word": "take something with a pinch of salt",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also take something with a grain of salt)",
           "html": "(<span class=\"v-g\" id=\"salt_vg_3\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"salt_v_2\">take something with a grain of salt</span></span>)"
@@ -7035,7 +7035,7 @@
       },
       {
         "word": "I dare say",
-        "labels": "especially in British English",
+        "labels": "",
         "variants": {
           "text": "(also I daresay especially in British English)",
           "html": "(also <span class=\"v-g\" id=\"say_vg_2\"><span class=\"v\" id=\"say_v_2\">I daresay</span> <span class=\"labels\" hclass=\"labels\" htag=\"span\">especially in British English</span></span>)"
@@ -20234,7 +20234,7 @@
       },
       {
         "word": "seeing that…",
-        "labels": "informal",
+        "labels": "",
         "variants": {
           "text": "(also informal seeing as (how)…)",
           "html": "(also <span class=\"v-g\" id=\"see_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">informal</span> <span class=\"v\" id=\"see_v_1\">seeing as (how)…</span></span>)"
@@ -43471,7 +43471,7 @@
     "idioms": [
       {
         "word": "at short notice | at a moment’s notice",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also on short notice)",
           "html": "(<span class=\"v-g\" id=\"short_vg_4\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"short_v_4\">on short notice</span></span>)"
@@ -44039,7 +44039,7 @@
     "idioms": [
       {
         "word": "be caught short",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also be taken short)",
           "html": "(<span class=\"v-g\" id=\"short_vg_3\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"short_v_3\">be taken short</span></span>)"
@@ -46152,7 +46152,7 @@
       },
       {
         "word": "rub shoulders with somebody",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also rub elbows with somebody)",
           "html": "(<span class=\"v-g\" id=\"shoulder_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"shoulder_v_1\">rub elbows with somebody</span></span>)"
@@ -47459,7 +47459,7 @@
       },
       {
         "word": "show your hand/cards",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also tip your hand)",
           "html": "(<span class=\"v-g\" id=\"show_vg_3\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"show_v_2\">tip your hand</span></span>)"
@@ -49887,7 +49887,7 @@
       },
       {
         "word": "fall sick",
-        "labels": "old-fashioned",
+        "labels": "",
         "variants": {
           "text": "(also old-fashioned take sick)",
           "html": "(also <span class=\"v-g\" id=\"sick_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">old-fashioned</span> <span class=\"v\" id=\"sick_v_1\">take sick</span></span>)"
@@ -51676,7 +51676,7 @@
       },
       {
         "word": "side of the fence",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also side of the aisle)",
           "html": "(<span class=\"v-g\" id=\"side_vg_3\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"side_v_2\">side of the aisle</span></span>)"
@@ -58481,7 +58481,7 @@
       },
       {
         "word": "(in) single file",
-        "labels": "old-fashioned",
+        "labels": "",
         "variants": {
           "text": "(also old-fashioned (in) Indian file)",
           "html": "(also <span class=\"v-g\" id=\"single_vg_4\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">old-fashioned</span> <span class=\"v\" id=\"single_v_4\">(in) Indian file</span></span>)"
@@ -65755,7 +65755,7 @@
       },
       {
         "word": "a slice/piece/share of the pie",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also a slice/share of the cake)",
           "html": "(<span class=\"v-g\" id=\"slice_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">British English also</span> <span class=\"v\" id=\"slice_v_1\">a slice/share of the cake</span></span>)"
@@ -69233,7 +69233,7 @@
       },
       {
         "word": "the small/early hours",
-        "labels": "also especially Scottish English",
+        "labels": "",
         "variants": {
           "text": "(also especially Scottish English the wee small hours, especially North American English the wee hours)",
           "html": "(<span class=\"v-g\" id=\"small_vg_3\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">also especially Scottish English</span> <span class=\"v\" id=\"small_v_3\">the wee small hours</span></span>, <span class=\"v-g\" id=\"small_vg_4\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">especially North American English</span> <span class=\"v\" id=\"small_v_4\">the wee hours</span></span>)"
@@ -74749,7 +74749,7 @@
     "idioms": [
       {
         "word": "have a soft spot for somebody/something",
-        "labels": "also Indian English",
+        "labels": "",
         "variants": {
           "text": "(also Indian English have a soft corner for somebody/something)",
           "html": "(<span class=\"v-g\" id=\"soft_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">also Indian English</span> <span class=\"v\" id=\"soft_v_1\">have a soft corner for somebody/something</span></span>)"
@@ -82086,7 +82086,7 @@
     "idioms": [
       {
         "word": "be in a good, bad, dark, etc. place",
-        "labels": "less frequent",
+        "labels": "",
         "variants": {
           "text": "(also less frequent be in a good, bad, dark, etc. space)",
           "html": "(also <span class=\"v-g\" id=\"space_vg_2\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">less frequent</span> <span class=\"v\" id=\"space_v_2\">be in a good, bad, dark, etc. space</span></span>)"
@@ -92443,7 +92443,7 @@
       },
       {
         "word": "have a soft spot for somebody/something",
-        "labels": "also Indian English",
+        "labels": "",
         "variants": {
           "text": "(also Indian English have a soft corner for somebody/something)",
           "html": "(<span class=\"v-g\" id=\"spot_vg_2\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">also Indian English</span> <span class=\"v\" id=\"spot_v_2\">have a soft corner for somebody/something</span></span>)"
@@ -102060,7 +102060,7 @@
     "idioms": [
       {
         "word": "be starving (for something)",
-        "labels": "especially in North American English",
+        "labels": "",
         "variants": {
           "text": "(also be starved especially in North American English)",
           "html": "(also <span class=\"v-g\" id=\"starve_vg_2\"><span class=\"v\" id=\"starve_v_2\">be starved</span> <span class=\"labels\" htag=\"span\" hclass=\"labels\">especially in North American English</span></span>)"
@@ -105712,7 +105712,7 @@
     "idioms": [
       {
         "word": "be/get (all) steamed up (about/over something)",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also be steamed (about something))",
           "html": "(<span class=\"v-g\" id=\"steam_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"steam_v_1\">be steamed (about something)</span></span>)"
@@ -120798,7 +120798,7 @@
       },
       {
         "word": "pull strings (for somebody)",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also pull wires)",
           "html": "(<span class=\"v-g\" id=\"string_vg_3\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"string_v_3\">pull wires</span></span>)"
@@ -128173,7 +128173,7 @@
       },
       {
         "word": "a resounding success",
-        "labels": "also informal",
+        "labels": "",
         "variants": {
           "text": "(also also informal a roaring success)",
           "html": "(also <span class=\"v-g\" id=\"success_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">also informal</span> <span class=\"v\" id=\"success_v_1\">a roaring success</span></span>)"
@@ -140734,7 +140734,7 @@
       },
       {
         "word": "sweep something under the carpet",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also sweep something under the rug)",
           "html": "(<span class=\"v-g\" id=\"sweep_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"sweep_v_1\">sweep something under the rug</span></span>)"

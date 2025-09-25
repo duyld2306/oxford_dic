@@ -263,7 +263,7 @@
     "idioms": [
       {
         "word": "have a dog in the fight",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also have a dog in the race/hunt)",
           "html": "(<span class=\"v-g\" id=\"race_vg_2\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"race_v_2\">have a dog in the race/hunt</span></span>)"
@@ -17122,7 +17122,7 @@
       },
       {
         "word": "like a broken record",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also like a stuck record)",
           "html": "(<span class=\"v-g\" id=\"record_vg_2\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"record_v_2\">like a stuck record</span></span>)"
@@ -46382,7 +46382,7 @@
       },
       {
         "word": "push all the (right) buttons",
-        "labels": "especially in British English",
+        "labels": "",
         "variants": {
           "text": "(also press all the (right) buttons especially in British English)",
           "html": "(also <span class=\"v-g\" id=\"right_vg_6\"><span class=\"v\" id=\"right_v_9\">press all the (right) buttons</span> <span class=\"labels\" hclass=\"labels\" htag=\"span\">especially in British English</span></span>)"
@@ -54362,7 +54362,7 @@
       },
       {
         "word": "like a cat on a hot tin roof ",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also like a cat on hot bricks)",
           "html": "(<span class=\"v-g\" id=\"roof_vg_3\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"roof_v_3\">like a cat on hot bricks</span></span>)"
@@ -59231,7 +59231,7 @@
       },
       {
         "word": "rub shoulders with somebody",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also rub elbows with somebody)",
           "html": "(<span class=\"v-g\" id=\"rub_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"rub_v_1\">rub elbows with somebody</span></span>)"

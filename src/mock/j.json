@@ -1443,7 +1443,7 @@
     "idioms": [
       {
         "word": "asleep on the job | asleep at the wheel",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also asleep at the switch)",
           "html": "(<span class=\"v-g\" id=\"job_vg_2\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"job_v_2\">asleep at the switch</span></span>)"
@@ -5412,7 +5412,7 @@
       },
       {
         "word": "jump to it",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also hop to it)",
           "html": "(<span class=\"v-g\" id=\"jump_vg_5\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"jump_v_5\">hop to it</span></span>)"
@@ -7209,7 +7209,7 @@
       },
       {
         "word": "just the ticket",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also just the job)",
           "html": "(<span class=\"v-g\" id=\"ticket_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"ticket_v_1\">just the job</span></span>)"

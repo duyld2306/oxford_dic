@@ -1,46 +1,14 @@
-import express from "express";
-import compression from "compression";
-import cors from "cors";
 import database from "./config/database.js";
-import wordRoutes from "./routes/wordRoutes.js";
-import importRoutes from "./routes/importRoutes.js";
+import createApp from "./app.js";
+import env from "./config/env.js";
 
-const app = express();
+const app = createApp();
 
-// Middleware
-app.use(compression());
-app.use(cors());
-app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ extended: true }));
-
-// Initialize database
+// Initialize database connection before starting
 await database.connect();
 
-// Routes
-app.use("/api", wordRoutes);
-app.use("/api/import", importRoutes);
-
-app.get("/", (req, res) => {
-  res.send("Welcome!");
+const server = app.listen(env.PORT, () => {
+  console.log(`🚀 Server listening on http://localhost:${env.PORT}`);
 });
 
-const port = process.env.PORT || 4000;
-const server = app.listen(port, () => {
-  console.log(`🚀 Server listening on http://localhost:${port}`);
-});
-
-// Graceful shutdown
-const gracefulShutdown = async (signal) => {
-  console.log(`\n🛑 Received ${signal}. Starting graceful shutdown...`);
-  try {
-    await database.disconnect();
-    console.log("✅ Database disconnected");
-    process.exit(0);
-  } catch (error) {
-    console.error("❌ Error during shutdown:", error);
-    process.exit(1);
-  }
-};
-
-process.on("SIGINT", () => gracefulShutdown("SIGINT"));
-process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
+// Note: graceful shutdown intentionally omitted from this entrypoint.

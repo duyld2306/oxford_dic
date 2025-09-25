@@ -1524,7 +1524,7 @@
       },
       {
         "word": "half past one, two, etc.",
-        "labels": "also British English, informal",
+        "labels": "",
         "variants": {
           "text": "(also British English, informal half one, two, etc.)",
           "html": "(<span class=\"v-g\" id=\"half_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">also British English, informal</span> <span class=\"v\" id=\"half_v_1\">half one, two, etc.</span></span>)"
@@ -4721,7 +4721,7 @@
       },
       {
         "word": "show your hand/cards",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also tip your hand)",
           "html": "(<span class=\"v-g\" id=\"show_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"show_v_1\">tip your hand</span></span>)"
@@ -7776,7 +7776,7 @@
     "idioms": [
       {
         "word": "(not) a happy camper",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also (not) a happy bunny)",
           "html": "(<span class=\"v-g\" id=\"happy_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"happy_v_1\">(not) a happy bunny</span></span>)"
@@ -15168,7 +15168,7 @@
       },
       {
         "word": "use your head",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also use your loaf)",
           "html": "(<span class=\"v-g\" id=\"head_vg_8\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">British English also</span> <span class=\"v\" id=\"head_v_9\">use your loaf</span></span>)"
@@ -17826,7 +17826,7 @@
       },
       {
         "word": "by heart",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also off by heart)",
           "html": "(<span class=\"v-g\" id=\"heart_vg_2\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">British English also</span> <span class=\"v\" id=\"heart_v_2\">off by heart</span></span>)"
@@ -29046,7 +29046,7 @@
     "idioms": [
       {
         "word": "hip, hip, hooray!",
-        "labels": "less frequent",
+        "labels": "",
         "variants": {
           "text": "(also less frequent hip, hip, hurrah/hurray!)",
           "html": "(also <span class=\"v-g\" id=\"hip_vg_3\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">less frequent</span> <span class=\"v\" id=\"hip_v_3\">hip, hip, hurrah/hurray!</span></span>)"
@@ -39445,7 +39445,7 @@
       },
       {
         "word": "flog a dead horse",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also beat a dead horse)",
           "html": "(<span class=\"v-g\" id=\"horse_vg_4\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"horse_v_3\">beat a dead horse</span></span>)"
@@ -41305,7 +41305,7 @@
       },
       {
         "word": "like a cat on a hot tin roof ",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also like a cat on hot bricks)",
           "html": "(<span class=\"v-g\" id=\"hot_vg_2\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"hot_v_2\">like a cat on hot bricks</span></span>)"
@@ -42096,7 +42096,7 @@
       },
       {
         "word": "the small/early hours",
-        "labels": "also especially Scottish English",
+        "labels": "",
         "variants": {
           "text": "(also especially Scottish English the wee small hours, especially North American English the wee hours)",
           "html": "(<span class=\"v-g\" id=\"hour_vg_7\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">also especially Scottish English</span> <span class=\"v\" id=\"hour_v_7\">the wee small hours</span></span>, <span class=\"v-g\" id=\"hour_vg_8\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">especially North American English</span> <span class=\"v\" id=\"hour_v_8\">the wee hours</span></span>)"
@@ -44028,7 +44028,7 @@
     "idioms": [
       {
         "word": "eat humble pie",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also eat crow)",
           "html": "(<span class=\"v-g\" id=\"humble_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"humble_v_1\">eat crow</span></span>)"
@@ -45235,7 +45235,7 @@
       },
       {
         "word": "have a dog in the fight",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also have a dog in the race/hunt)",
           "html": "(<span class=\"v-g\" id=\"hunt_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"hunt_v_1\">have a dog in the race/hunt</span></span>)"

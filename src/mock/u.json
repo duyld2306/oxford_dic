@@ -10477,7 +10477,7 @@
       },
       {
         "word": "use your head",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also use your loaf)",
           "html": "(<span class=\"v-g\" id=\"use_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">British English also</span> <span class=\"v\" id=\"use_v_1\">use your loaf</span></span>)"
@@ -10690,7 +10690,7 @@
     "idioms": [
       {
         "word": "be no use (to somebody)",
-        "labels": "formal",
+        "labels": "",
         "variants": {
           "text": "(also formal be of no use)",
           "html": "(also <span class=\"v-g\" id=\"use_vg_2\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">formal</span> <span class=\"v\" id=\"use_v_2\">be of no use</span></span>)"

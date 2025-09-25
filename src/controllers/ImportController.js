@@ -7,67 +7,31 @@ class ImportController {
 
   // POST /api/import/json - Import single JSON file
   async importJson(req, res) {
-    try {
-      const { filePath } = req.body;
-      if (!filePath) {
-        return res.status(400).json({
-          success: false,
-          error: "filePath is required",
-        });
-      }
-
-      const result = await this.importService.importJsonData(filePath);
-      return res.json({
-        success: true,
-        data: result,
-      });
-    } catch (error) {
-      console.error("ImportController.importJson error:", error);
-      return res.status(500).json({
-        success: false,
-        error: error.message,
-      });
+    const { filePath } = req.body;
+    if (!filePath) {
+      const err = new Error("filePath is required");
+      err.status = 400;
+      throw err;
     }
+
+    const result = await this.importService.importJsonData(filePath);
+    return res.json({ success: true, data: result });
   }
 
   // POST /api/import/multiple - Import multiple JSON files from directory
   async importMultiple(req, res) {
-    try {
-      const { directoryPath = "./src/mock" } = req.body;
-
-      const result = await this.importService.importMultipleJsonFiles(
-        directoryPath
-      );
-      return res.json({
-        success: true,
-        data: result,
-      });
-    } catch (error) {
-      console.error("ImportController.importMultiple error:", error);
-      return res.status(500).json({
-        success: false,
-        error: error.message,
-      });
-    }
+    const { directoryPath = "./src/mock" } = req.body;
+    const result = await this.importService.importMultipleJsonFiles(
+      directoryPath
+    );
+    return res.json({ success: true, data: result });
   }
 
   // GET /api/import/status - Get import status and available files
   async getStatus(req, res) {
-    try {
-      const { directoryPath = "./src/mock" } = req.query;
-      const result = await this.importService.getImportStatus(directoryPath);
-
-      return res.json({
-        success: true,
-        data: result,
-      });
-    } catch (error) {
-      console.error("ImportController.getStatus error:", error);
-      return res.status(500).json({
-        success: false,
-        error: error.message,
-      });
-    }
+    const { directoryPath = "./src/mock" } = req.query;
+    const result = await this.importService.getImportStatus(directoryPath);
+    return res.json({ success: true, data: result });
   }
 }
 

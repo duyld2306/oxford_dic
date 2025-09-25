@@ -4845,7 +4845,7 @@
       },
       {
         "word": "late in the day",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also late in the game)",
           "html": "(<span class=\"v-g\" id=\"late_vg_2\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"late_v_1\">late in the game</span></span>)"
@@ -18046,7 +18046,7 @@
     "idioms": [
       {
         "word": "on the level",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also on the up and up)",
           "html": "(<span class=\"v-g\" id=\"level_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"level_v_1\">on the up and up</span></span>)"
@@ -28306,7 +28306,7 @@
       },
       {
         "word": "be in the firing line",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also be on the firing line)",
           "html": "(<span class=\"v-g\" id=\"line_vg_7\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"line_v_4\">be on the firing line</span></span>)"
@@ -28967,7 +28967,7 @@
       },
       {
         "word": "toe the (party) line",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also toe the mark)",
           "html": "(<span class=\"v-g\" id=\"toe_vg_2\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"toe_v_2\">toe the mark</span></span>)"
@@ -45419,7 +45419,7 @@
       },
       {
         "word": "third time lucky",
-        "labels": "US English",
+        "labels": "",
         "variants": {
           "text": "(US English third time is the charm)",
           "html": "(<span class=\"v-g\" id=\"third_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">US English</span> <span class=\"v\" id=\"third_v_1\">third time is the charm</span></span>)"

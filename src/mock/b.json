@@ -22375,7 +22375,7 @@
     "idioms": [
       {
         "word": "round the bend/twist",
-        "labels": "North American English",
+        "labels": "",
         "variants": {
           "text": "(North American English around the bend)",
           "html": "(<span class=\"v-g\" id=\"bend_vg_2\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English</span> <span class=\"v\" id=\"bend_v_2\">around the bend</span></span>)"
@@ -27057,7 +27057,7 @@
     "idioms": [
       {
         "word": "be/get too big for your boots",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also be/get too big for your britches)",
           "html": "(<span class=\"v-g\" id=\"big_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"big_v_1\">be/get too big for your britches</span></span>)"
@@ -37290,7 +37290,7 @@
       },
       {
         "word": "blow that for a lark",
-        "labels": "taboo",
+        "labels": "",
         "variants": {
           "text": "(also taboo sod that for a lark)",
           "html": "(also <span class=\"v-g\" id=\"lark_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">taboo</span> <span class=\"v\" id=\"blow_v_4\">sod that for a lark</span></span>)"
@@ -37368,7 +37368,7 @@
       },
       {
         "word": "blow your top",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also blow your stack)",
           "html": "(<span class=\"v-g\" id=\"blow_vg_2\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"blow_v_2\">blow your stack</span></span>)"
@@ -37476,7 +37476,7 @@
       },
       {
         "word": "puff and blow",
-        "labels": "informal",
+        "labels": "",
         "variants": {
           "text": "(also puff and pant informal)",
           "html": "(also <span class=\"v-g\" id=\"blow_vg_3\"><span class=\"v\" id=\"blow_v_3\">puff and pant</span> <span class=\"labels\" htag=\"span\" hclass=\"labels\">informal</span></span>)"
@@ -43216,7 +43216,7 @@
       },
       {
         "word": "be/get too big for your boots",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also be/get too big for your britches)",
           "html": "(<span class=\"v-g\" id=\"boot_vg_7\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"boot_v_7\">be/get too big for your britches</span></span>)"
@@ -43302,7 +43302,7 @@
       },
       {
         "word": "lick somebody’s boots",
-        "labels": "British English, taboo, slang",
+        "labels": "",
         "variants": {
           "text": "(British English, taboo, slang lick somebody’s arse)",
           "html": "(<span class=\"v-g\" id=\"lick_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">British English, taboo, slang</span> <span class=\"v\" id=\"lick_v_1\">lick somebody’s arse</span></span>)"
@@ -53671,7 +53671,7 @@
       },
       {
         "word": "like a cat on a hot tin roof ",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also like a cat on hot bricks)",
           "html": "(<span class=\"v-g\" id=\"cat_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">British English also</span> <span class=\"v\" id=\"cat_v_1\">like a cat on hot bricks</span></span>)"
@@ -54023,7 +54023,7 @@
       },
       {
         "word": "burn your bridges",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also burn your boats)",
           "html": "(<span class=\"v-g\" id=\"burn_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">British English also</span> <span class=\"v\" id=\"burn_v_1\">burn your boats</span></span>)"
@@ -56477,7 +56477,7 @@
     "idioms": [
       {
         "word": "like a broken record",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also like a stuck record)",
           "html": "(<span class=\"v-g\" id=\"broken_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"broken_v_1\">like a stuck record</span></span>)"
@@ -60803,7 +60803,7 @@
     "idioms": [
       {
         "word": "burn your bridges",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also burn your boats)",
           "html": "(<span class=\"v-g\" id=\"burn_vg_3\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"burn_v_3\">burn your boats</span></span>)"
@@ -63854,7 +63854,7 @@
       },
       {
         "word": "push all the (right) buttons",
-        "labels": "especially in British English",
+        "labels": "",
         "variants": {
           "text": "(also press all the (right) buttons especially in British English)",
           "html": "(also <span class=\"v-g\" id=\"button_vg_1\"><span class=\"v\" id=\"button_v_1\">press all the (right) buttons</span> <span class=\"labels\" hclass=\"labels\" htag=\"span\">especially in British English</span></span>)"
@@ -63882,7 +63882,7 @@
       },
       {
         "word": "push somebody’s buttons",
-        "labels": "especially in British English",
+        "labels": "",
         "variants": {
           "text": "(also press somebody’s buttons especially in British English)",
           "html": "(also <span class=\"v-g\" id=\"button_vg_2\"><span class=\"v\" id=\"button_v_2\">press somebody’s buttons</span> <span class=\"labels\" htag=\"span\" hclass=\"labels\">especially in British English</span></span>)"

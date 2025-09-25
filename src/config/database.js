@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+import env from "./env.js";
 
 class DatabaseConfig {
   constructor() {
@@ -12,19 +13,16 @@ class DatabaseConfig {
     if (this.isConnected) return;
 
     try {
-      const MONGO_URI =
-        process.env.MONGO_URI ||
-        "mongodb+srv://ledacduyy_db_user:z26eNCj52nghHgwo@oxford-dic.h4p0zyz.mongodb.net/?retryWrites=true&w=majority&appName=oxford-dic";
-
-      const DB_NAME = process.env.DB_NAME || "oxford-dic";
-      const COLLECTION_NAME = process.env.COLLECTION_NAME || "words";
+      const MONGO_URI = env.MONGO_URI || process.env.MONGO_URI || "";
+      const DB_NAME = env.DB_NAME || process.env.DB_NAME || "oxford-dic";
+      const COLLECTION_NAME =
+        env.COLLECTION_NAME || process.env.COLLECTION_NAME || "words";
 
       this.client = new MongoClient(MONGO_URI, {
-        serverSelectionTimeoutMS: 30000,
+        serverSelectionTimeoutMS: 5000,
         maxPoolSize: 10,
         minPoolSize: 5,
         maxIdleTimeMS: 30000,
-        serverSelectionTimeoutMS: 5000,
         socketTimeoutMS: 45000,
       });
 

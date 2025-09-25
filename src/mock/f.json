@@ -4756,7 +4756,7 @@
       },
       {
         "word": "fair’s fair",
-        "labels": "British English also",
+        "labels": "(informal)",
         "variants": {
           "text": "(British English also fair dos/do’s)",
           "html": "(<span class=\"v-g\" id=\"fair_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"fair_v_1\">fair dos/do’s</span></span>)"
@@ -10106,7 +10106,7 @@
       },
       {
         "word": "so far",
-        "labels": "formal",
+        "labels": "",
         "variants": {
           "text": "(also formal thus far)",
           "html": "(also <span class=\"v-g\" id=\"far_vg_2\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">formal</span> <span class=\"v\" id=\"far_v_2\">thus far</span></span>)"
@@ -18277,7 +18277,7 @@
     "idioms": [
       {
         "word": "bad/ill feeling",
-        "labels": "especially in North American English",
+        "labels": "",
         "variants": {
           "text": "(also bad/ill feelings especially in North American English)",
           "html": "(also <span class=\"v-g\" id=\"feeling_vg_2\"><span class=\"v\" id=\"feeling_v_2\">bad/ill feelings</span> <span class=\"labels\" hclass=\"labels\" htag=\"span\">especially in North American English</span></span>)"
@@ -19033,7 +19033,7 @@
       },
       {
         "word": "side of the fence",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also side of the aisle)",
           "html": "(<span class=\"v-g\" id=\"fence_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"fence_v_1\">side of the aisle</span></span>)"
@@ -19661,7 +19661,7 @@
       },
       {
         "word": "quite a few",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also a good few, a fair few)",
           "html": "(<span class=\"v-g\" id=\"few_vg_5\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">British English also</span> <span class=\"v\" id=\"few_v_5\">a good few</span></span>, <span class=\"v-g\" id=\"few_vg_6\"><span class=\"v\" id=\"few_v_6\">a fair few</span></span>)"
@@ -21970,7 +21970,7 @@
       },
       {
         "word": "have a dog in the fight",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also have a dog in the race/hunt)",
           "html": "(<span class=\"v-g\" id=\"fight_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"fight_v_1\">have a dog in the race/hunt</span></span>)"
@@ -23222,7 +23222,7 @@
     "idioms": [
       {
         "word": "(in) single file",
-        "labels": "old-fashioned",
+        "labels": "",
         "variants": {
           "text": "(also old-fashioned (in) Indian file)",
           "html": "(also <span class=\"v-g\" id=\"file_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">old-fashioned</span> <span class=\"v\" id=\"file_v_1\">(in) Indian file</span></span>)"
@@ -28641,7 +28641,7 @@
       },
       {
         "word": "baptism of fire",
-        "labels": "less frequent",
+        "labels": "",
         "variants": {
           "text": "(also less frequent baptism by fire)",
           "html": "(also <span class=\"v-g\" id=\"fire_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">less frequent</span> <span class=\"v\" id=\"fire_v_1\">baptism by fire</span></span>)"
@@ -28903,7 +28903,7 @@
       },
       {
         "word": "set the world on fire",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also set the world alight)",
           "html": "(<span class=\"v-g\" id=\"world_vg_3\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"world_v_3\">set the world alight</span></span>)"
@@ -35724,7 +35724,7 @@
       },
       {
         "word": "flat broke",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also stony broke)",
           "html": "(<span class=\"v-g\" id=\"flat_vg_6\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">British English also</span> <span class=\"v\" id=\"flat_v_6\">stony broke</span></span>)"
@@ -46684,7 +46684,7 @@
     "idioms": [
       {
         "word": "be in for it",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also be for it)",
           "html": "(<span class=\"v-g\" id=\"for_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"for_v_1\">be for it</span></span>)"
@@ -60149,7 +60149,7 @@
       },
       {
         "word": "cash up front",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also cash down)",
           "html": "(<span class=\"v-g\" id=\"front_vg_8\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">British English also</span> <span class=\"v\" id=\"front_v_10\">cash down</span></span>)"
@@ -60202,7 +60202,7 @@
       },
       {
         "word": "front and centre",
-        "labels": "US English",
+        "labels": "",
         "variants": {
           "text": "(US English front and center)",
           "html": "(<span class=\"v-g\" id=\"front_vg_12\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">US English</span> <span class=\"v\" id=\"front_v_11\">front and center</span></span>)"
@@ -62503,7 +62503,7 @@
       },
       {
         "word": "to the full",
-        "labels": "North American English usually",
+        "labels": "",
         "variants": {
           "text": "(North American English usually to the fullest)",
           "html": "(<span class=\"v-g\" id=\"full_vg_2\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English usually</span> <span class=\"v\" id=\"full_v_2\">to the fullest</span></span>)"

@@ -2899,7 +2899,7 @@
       },
       {
         "word": "the writing is on the wall | see the writing on the wall",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also the handwriting on the wall)",
           "html": "(<span class=\"v-g\" id=\"writing_vg_2\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"writing_v_2\">the handwriting on the wall</span></span>)"
@@ -9711,7 +9711,7 @@
     "idioms": [
       {
         "word": "across the way",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also over the way)",
           "html": "(<span class=\"v-g\" id=\"way_vg_4\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"way_v_4\">over the way</span></span>)"
@@ -19194,7 +19194,7 @@
       },
       {
         "word": "pretty much/well",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also pretty nearly)",
           "html": "(<span class=\"v-g\" id=\"well_vg_6\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"well_v_6\">pretty nearly</span></span>)"
@@ -22068,7 +22068,7 @@
     "idioms": [
       {
         "word": "asleep at the wheel | asleep on the job",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also asleep at the switch)",
           "html": "(<span class=\"v-g\" id=\"wheel_vg_3\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"wheel_v_3\">asleep at the switch</span></span>)"
@@ -40021,7 +40021,7 @@
       },
       {
         "word": "set the world on fire",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also set the world alight)",
           "html": "(<span class=\"v-g\" id=\"world_vg_4\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"world_v_4\">set the world alight</span></span>)"
@@ -42365,7 +42365,7 @@
       },
       {
         "word": "if the worst comes to the worst",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also if worst comes to worst)",
           "html": "(<span class=\"v-g\" id=\"worst_vg_2\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"worst_v_2\">if worst comes to worst</span></span>)"
@@ -45085,7 +45085,7 @@
       },
       {
         "word": "the writing is on the wall | see the writing on the wall",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also the handwriting on the wall)",
           "html": "(<span class=\"v-g\" id=\"writing_vg_3\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"writing_v_3\">the handwriting on the wall</span></span>)"

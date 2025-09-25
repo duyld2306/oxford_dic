@@ -1903,7 +1903,7 @@
       },
       {
         "word": "I dare say",
-        "labels": "especially in British English",
+        "labels": "",
         "variants": {
           "text": "(also I daresay especially in British English)",
           "html": "(also <span class=\"v-g\" id=\"dare_vg_1\"><span class=\"v\" id=\"dare_v_1\">I daresay</span> <span class=\"labels\" hclass=\"labels\" htag=\"span\">especially in British English</span></span>)"
@@ -5086,7 +5086,7 @@
       },
       {
         "word": "late in the day",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also late in the game)",
           "html": "(<span class=\"v-g\" id=\"late_vg_1\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"day_v_4\">late in the game</span></span>)"
@@ -6584,7 +6584,7 @@
       },
       {
         "word": "flog a dead horse",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also beat a dead horse)",
           "html": "(<span class=\"v-g\" id=\"dead_vg_4\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"dead_v_6\">beat a dead horse</span></span>)"
@@ -6754,7 +6754,7 @@
     "idioms": [
       {
         "word": "in the dead of night",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also at dead of night)",
           "html": "(<span class=\"v-g\" id=\"dead_vg_3\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"dead_v_3\">at dead of night</span></span>)"
@@ -40205,7 +40205,7 @@
       },
       {
         "word": "within touching distance (of something)",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also within spitting distance)",
           "html": "(<span class=\"v-g\" id=\"distance_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">British English also</span> <span class=\"v\" id=\"distance_v_1\">within spitting distance</span></span>)"
@@ -44876,7 +44876,7 @@
       },
       {
         "word": "go to the dogs",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also go to hell in a handbasket)",
           "html": "(<span class=\"v-g\" id=\"dog_vg_2\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">North American English also</span> <span class=\"v\" id=\"dog_v_2\">go to hell in a handbasket</span></span>)"
@@ -44924,7 +44924,7 @@
       },
       {
         "word": "have a dog in the fight",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also have a dog in the race/hunt)",
           "html": "(<span class=\"v-g\" id=\"dog_vg_3\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"dog_v_4\">have a dog in the race/hunt</span></span>)"
@@ -51572,7 +51572,7 @@
     "idioms": [
       {
         "word": "(go) down the drain",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also (go) down the plughole)",
           "html": "(<span class=\"v-g\" id=\"drain_vg_4\"><span class=\"labels\" htag=\"span\" hclass=\"labels\">British English also</span> <span class=\"v\" id=\"drain_v_4\">(go) down the plughole</span></span>)"

@@ -8348,7 +8348,7 @@
       },
       {
         "word": "get it",
-        "labels": "North American English also",
+        "labels": "",
         "variants": {
           "text": "(North American English also catch hell)",
           "html": "(<span class=\"v-g\" id=\"get_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English also</span> <span class=\"v\" id=\"get_v_1\">catch hell</span></span>)"
@@ -17534,7 +17534,7 @@
       },
       {
         "word": "good for you, somebody, them, etc.",
-        "labels": "especially Australian English",
+        "labels": "",
         "variants": {
           "text": "(especially Australian English good on you, etc.)",
           "html": "(<span class=\"v-g\" id=\"good_vg_1\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">especially Australian English</span> <span class=\"v\" id=\"good_v_1\">good on you, etc.</span></span>)"
@@ -17897,7 +17897,7 @@
       },
       {
         "word": "for good",
-        "labels": "British English also",
+        "labels": "",
         "variants": {
           "text": "(British English also for good and all)",
           "html": "(<span class=\"v-g\" id=\"good_vg_3\"><span class=\"labels\" hclass=\"labels\" htag=\"span\">British English also</span> <span class=\"v\" id=\"good_v_3\">for good and all</span></span>)"

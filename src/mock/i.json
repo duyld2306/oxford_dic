@@ -3385,7 +3385,7 @@
     "idioms": [
       {
         "word": "bad/ill feeling",
-        "labels": "especially in North American English",
+        "labels": "",
         "variants": {
           "text": "(also bad/ill feelings especially in North American English)",
           "html": "(also <span class=\"v-g\" id=\"ill_vg_3\"><span class=\"v\" id=\"ill_v_2\">bad/ill feelings</span> <span class=\"labels\" htag=\"span\" hclass=\"labels\">especially in North American English</span></span>)"
@@ -3442,7 +3442,7 @@
       },
       {
         "word": "ill/bad feeling",
-        "labels": "especially in North American English",
+        "labels": "",
         "variants": {
           "text": "(also ill/bad feelings especially in North American English)",
           "html": "(also <span class=\"v-g\" id=\"ill_vg_2\"><span class=\"v\" id=\"ill_v_3\">ill/bad feelings</span> <span class=\"labels\" hclass=\"labels\" htag=\"span\">especially in North American English</span></span>)"
