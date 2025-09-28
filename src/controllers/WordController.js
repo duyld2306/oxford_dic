@@ -83,6 +83,39 @@ class WordController {
 
     return res.json({ success: true, data: result.data });
   }
+
+  // POST /api/senses/definition
+  async updateSenseDefinitions(req, res) {
+    const payload = req.body;
+    if (!payload) {
+      const err = new Error('Request body is required');
+      err.status = 400;
+      throw err;
+    }
+
+    const updates = Array.isArray(payload) ? payload : [payload];
+    if (updates.length === 0) {
+      const err = new Error('No updates provided');
+      err.status = 400;
+      throw err;
+    }
+
+    const result = await this.wordService.updateSenseDefinitions(updates);
+    return res.json({ success: true, ...result });
+  }
+
+  // POST /api/senses/definition/short
+  async getSenseDefinitionShort(req, res) {
+    const { ids } = req.body || {};
+    if (!Array.isArray(ids) || ids.length === 0) {
+      const err = new Error('ids array is required');
+      err.status = 400;
+      throw err;
+    }
+
+    const data = await this.wordService.getSenseDefinitionShortByIds(ids);
+    return res.json({ success: true, data });
+  }
 }
 
 export default WordController;

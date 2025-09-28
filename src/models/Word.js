@@ -218,6 +218,122 @@ class WordModel {
     }
     return { updated, skipped };
   }
+
+  // Update sense-level Vietnamese definitions by sense _id
+  // updates: [{ _id, definition_vi?, definition_vi_short? }, ...]
+  async updateSenseDefinitions(updates) {
+    await this.init();
+    const list = Array.isArray(updates) ? updates : [updates];
+    let updated = 0;
+    let skipped = 0;
+
+    for (const item of list) {
+      if (!item || !item._id) {
+        skipped++;
+        continue;
+      }
+
+      let senseId;
+      try {
+        senseId = item._id instanceof ObjectId ? item._id : new ObjectId(String(item._id));
+      } catch (e) {
+        skipped++;
+        continue;
+      }
+
+      const setObj = {};
+      if (typeof item.definition_vi === 'string') setObj['data.$[].senses.$[s].definition_vi'] = item.definition_vi;
+      if (typeof item.definition_vi_short === 'string') setObj['data.$[].senses.$[s].definition_vi_short'] = item.definition_vi_short;
+      if (typeof item.definition_vi === 'string') setObj['data.$[].idioms.$[].senses.$[s].definition_vi'] = item.definition_vi;
+      if (typeof item.definition_vi_short === 'string') setObj['data.$[].idioms.$[].senses.$[s].definition_vi_short'] = item.definition_vi_short;
+      if (typeof item.definition_vi === 'string') setObj['data.$[].phrasal_verb_senses.$[].senses.$[s].definition_vi'] = item.definition_vi;
+      if (typeof item.definition_vi_short === 'string') setObj['data.$[].phrasal_verb_senses.$[].senses.$[s].definition_vi_short'] = item.definition_vi_short;
+
+      if (Object.keys(setObj).length === 0) {
+        skipped++;
+        continue;
+      }
+
+      const res = await this.collection.updateMany(
+        {},
+        { $set: setObj },
+        { arrayFilters: [{ 's._id': senseId }] }
+      );
+
+      if ((res.modifiedCount || 0) > 0) updated += res.modifiedCount;
+      else skipped++;
+    }
+
+    return { updated, skipped };
+  }
+
+  // Get sense-level definition_vi_short for given sense _id list
+  async getSenseDefinitionShortByIds(idList) {
+    await this.init();
+    const ids = (Array.isArray(idList) ? idList : [])
+      .filter(Boolean)
+      .map((v) => (v instanceof ObjectId ? v : new ObjectId(String(v))));
+    if (ids.length === 0) return [];
+
+    const pipeline = [
+      { $unwind: "$data" },
+      { $unwind: "$data.senses" },
+      { $match: { "data.senses._id": { $in: ids } } },
+      {
+        $project: {
+          _id: "$data.senses._id",
+          definition_vi_short: "$data.senses.definition_vi_short",
+          definition_vi: "$data.senses.definition_vi",
+        },
+      },
+      {
+        $unionWith: {
+          coll: this.collection.collectionName,
+          pipeline: [
+            { $unwind: "$data" },
+            { $unwind: "$data.idioms" },
+            { $unwind: "$data.idioms.senses" },
+            { $match: { "data.idioms.senses._id": { $in: ids } } },
+            {
+              $project: {
+                _id: "$data.idioms.senses._id",
+                definition_vi_short: "$data.idioms.senses.definition_vi_short",
+                definition_vi: "$data.idioms.senses.definition_vi",
+              },
+            },
+          ],
+        },
+      },
+      {
+        $unionWith: {
+          coll: this.collection.collectionName,
+          pipeline: [
+            { $unwind: "$data" },
+            { $unwind: "$data.phrasal_verb_senses" },
+            { $unwind: "$data.phrasal_verb_senses.senses" },
+            {
+              $match: {
+                "data.phrasal_verb_senses.senses._id": { $in: ids },
+              },
+            },
+            {
+              $project: {
+                _id: "$data.phrasal_verb_senses.senses._id",
+                definition_vi_short:
+                  "$data.phrasal_verb_senses.senses.definition_vi_short",
+                definition_vi: "$data.phrasal_verb_senses.senses.definition_vi",
+              },
+            },
+          ],
+        },
+      },
+      { $group: { _id: "$_id", definition_vi_short: { $first: "$definition_vi_short" }, definition_vi: { $first: "$definition_vi" } } },
+    ];
+
+    const cursor = this.collection.aggregate(pipeline, { allowDiskUse: true });
+    const results = await cursor.toArray();
+    return results.map((r) => ({ _id: r._id, definition_vi_short: r.definition_vi_short || "", definition_vi: r.definition_vi || "" }));
+  }
 }
 
 export default WordModel;

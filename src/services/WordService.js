@@ -132,6 +132,29 @@ class WordService {
     }
   }
 
+  // Update sense-level translations for given sense ids
+  async updateSenseDefinitions(updates) {
+    try {
+      const list = Array.isArray(updates) ? updates : [updates];
+      if (list.length === 0) return { updated: 0, skipped: 0 };
+      return await this.wordModel.updateSenseDefinitions(list);
+    } catch (error) {
+      console.error('WordService.updateSenseDefinitions error:', error);
+      return { updated: 0, skipped: 0 };
+    }
+  }
+
+  // Get definition_vi_short for sense ids
+  async getSenseDefinitionShortByIds(ids) {
+    try {
+      if (!Array.isArray(ids) || ids.length === 0) return [];
+      return await this.wordModel.getSenseDefinitionShortByIds(ids);
+    } catch (error) {
+      console.error('WordService.getSenseDefinitionShortByIds error:', error);
+      return [];
+    }
+  }
+
   // Validate word input
   validateWord(word) {
     if (!word || typeof word !== "string") return null;

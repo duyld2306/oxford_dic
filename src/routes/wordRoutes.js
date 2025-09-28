@@ -15,5 +15,7 @@ router.post(
   asyncHandler(wordController.updateExamplesVi.bind(wordController))
 );
 router.get("/search", asyncHandler(wordController.search.bind(wordController)));
+router.post('/senses/definition', asyncHandler(wordController.updateSenseDefinitions.bind(wordController)));
+router.post('/senses/definition/short', asyncHandler(wordController.getSenseDefinitionShort.bind(wordController)));
 
 export default router;
