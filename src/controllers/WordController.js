@@ -84,6 +84,18 @@ class WordController {
     return res.json({ success: true, data: result.data });
   }
 
+  // GET /api/all?page=&per_page=
+  async listAll(req, res) {
+    const { page = 1, per_page = 100 } = req.query || {};
+    const result = await this.wordService.getAll(page, per_page);
+    if (!result.success) {
+      const err = new Error(result.error || 'Failed to get data');
+      err.status = 500;
+      throw err;
+    }
+    return res.json({ success: true, data: result.data });
+  }
+
   // POST /api/senses/definition
   async updateSenseDefinitions(req, res) {
     const payload = req.body;

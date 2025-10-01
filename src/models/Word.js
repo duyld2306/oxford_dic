@@ -110,6 +110,29 @@ class WordModel {
     return result;
   }
 
+  // Paginate all documents
+  // returns { total, docs }
+  async paginate(page = 1, perPage = 100) {
+    await this.init();
+    const safePage = Math.max(1, parseInt(page, 10) || 1);
+    const safePer = Math.max(1, parseInt(perPage, 10) || 100);
+    const skip = (safePage - 1) * safePer;
+
+    const projection = {
+      _id: 1,
+      data: 1,
+      variants: 1,
+      createdAt: 1,
+      updatedAt: 1,
+      symbol: 1,
+    };
+
+    const cursor = this.collection.find({}, { projection }).sort({ _id: 1 }).skip(skip).limit(safePer);
+    const docs = await cursor.toArray();
+    const total = await this.collection.countDocuments();
+    return { total, docs };
+  }
+
   // Lấy example vi theo ids
   async getExampleViByIds(idList) {
     await this.init();

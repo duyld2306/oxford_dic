@@ -2,6 +2,19 @@ import axios from "axios";
 import { load } from "cheerio";
 import { ObjectId } from "mongodb";
 
+// Priority order for symbol selection
+const SYMBOL_ORDER = ["a1", "a2", "b1", "b2", "c1"];
+
+function chooseTopSymbol(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return "";
+  const cleaned = arr.map((s) => (s || "").trim()).filter((s) => s !== "");
+  if (cleaned.length === 0) return "";
+  for (const s of SYMBOL_ORDER) {
+    if (cleaned.includes(s)) return s;
+  }
+  return cleaned[0] || "";
+}
+
 async function crawlWordDirect(word, maxSuffix = 5) {
   const words = [];
 
@@ -36,7 +49,13 @@ async function crawlWordDirect(word, maxSuffix = 5) {
 
       const pos = $("span.pos").first().text() || "";
       const symbol =
-        $("div.symbols span").first().attr("class")?.split("_")[1] || "";
+        $("div.symbols")
+          .filter((_, el) => $(el).siblings("h1.headword").length > 0) // có h1.headword là sibling
+          .first() // lấy div.symbols đầu tiên thỏa điều kiện
+          .find("span")
+          .first()
+          .attr("class")
+          ?.split("_")[1] || "";
       const phonetic =
         $("div.phons_br div.sound").first().attr("data-src-mp3") || "";
       const phonetic_text = $("div.phons_br span.phon").first().text() || "";

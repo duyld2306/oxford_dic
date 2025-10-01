@@ -1,6 +1,10 @@
 import WordModel from "../models/Word.js";
 import { crawlWordDirect } from "../utils/crawl.js";
-import { normalizeKey, buildVariantsFromPages } from "../utils/variants.js";
+import {
+  normalizeKey,
+  buildVariantsFromPages,
+  buildTopSymbolFromPages,
+} from "../utils/variants.js";
 
 class WordService {
   constructor() {
@@ -51,10 +55,14 @@ class WordService {
         (finalVariants && finalVariants[0]) || normalizedWord;
       const canonicalKey = normalizeKey(canonicalRaw);
 
-      // Save to database for future use with shape { data: [...], variants: [...] }
+      // Compute top-level symbol from page-level symbols collected during crawl
+      const topSymbol = buildTopSymbolFromPages(crawledPages);
+
+      // Save to database for future use with shape { data: [...], variants: [...], symbol }
       await this.wordModel.upsert(canonicalKey, {
         data: crawledPages,
         variants: finalVariants,
+        symbol: topSymbol,
       });
 
       return {
@@ -139,7 +147,7 @@ class WordService {
       if (list.length === 0) return { updated: 0, skipped: 0 };
       return await this.wordModel.updateSenseDefinitions(list);
     } catch (error) {
-      console.error('WordService.updateSenseDefinitions error:', error);
+      console.error("WordService.updateSenseDefinitions error:", error);
       return { updated: 0, skipped: 0 };
     }
   }
@@ -150,7 +158,7 @@ class WordService {
       if (!Array.isArray(ids) || ids.length === 0) return [];
       return await this.wordModel.getSenseDefinitionShortByIds(ids);
     } catch (error) {
-      console.error('WordService.getSenseDefinitionShortByIds error:', error);
+      console.error("WordService.getSenseDefinitionShortByIds error:", error);
       return [];
     }
   }
@@ -161,6 +169,27 @@ class WordService {
     const cleaned = word.trim().toLowerCase();
     if (!cleaned.match(/^[a-z\s-]+$/i)) return null;
     return cleaned;
+  }
+
+  // Get all documents with pagination
+  async getAll(page = 1, per_page = 100) {
+    try {
+      const p = Math.max(1, parseInt(page, 10) || 1);
+      const per = Math.max(1, parseInt(per_page, 10) || 100);
+      const result = await this.wordModel.paginate(p, per);
+      return {
+        success: true,
+        data: {
+          total: result.total,
+          page: p,
+          per_page: per,
+          data: result.docs,
+        },
+      };
+    } catch (error) {
+      console.error('WordService.getAll error:', error);
+      return { success: false, error: error.message };
+    }
   }
 }
 

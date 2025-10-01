@@ -30,4 +30,23 @@ function buildVariantsFromPages(pages) {
   }
   return final;
 }
-export { normalizeKey, buildVariantsFromPages, appendCounterpart };
+
+function buildTopSymbolFromPages(pages) {
+  const SYMBOL_ORDER = ["a1", "a2", "b1", "b2", "c1"];
+  if (!Array.isArray(pages)) return "";
+  const collected = pages
+    .map((p) => (p && typeof p.symbol === "string" ? p.symbol.trim() : ""))
+    .filter((s) => s !== "");
+  if (collected.length === 0) return "";
+  for (const s of SYMBOL_ORDER) {
+    if (collected.includes(s)) return s;
+  }
+  return collected[0] || "";
+}
+
+export {
+  normalizeKey,
+  buildVariantsFromPages,
+  appendCounterpart,
+  buildTopSymbolFromPages,
+};
