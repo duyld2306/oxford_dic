@@ -89,7 +89,7 @@ class WordController {
     const { page = 1, per_page = 100 } = req.query || {};
     const result = await this.wordService.getAll(page, per_page);
     if (!result.success) {
-      const err = new Error(result.error || 'Failed to get data');
+      const err = new Error(result.error || "Failed to get data");
       err.status = 500;
       throw err;
     }
@@ -100,14 +100,14 @@ class WordController {
   async updateSenseDefinitions(req, res) {
     const payload = req.body;
     if (!payload) {
-      const err = new Error('Request body is required');
+      const err = new Error("Request body is required");
       err.status = 400;
       throw err;
     }
 
     const updates = Array.isArray(payload) ? payload : [payload];
     if (updates.length === 0) {
-      const err = new Error('No updates provided');
+      const err = new Error("No updates provided");
       err.status = 400;
       throw err;
     }
@@ -120,7 +120,7 @@ class WordController {
   async getSenseDefinitionShort(req, res) {
     const { ids } = req.body || {};
     if (!Array.isArray(ids) || ids.length === 0) {
-      const err = new Error('ids array is required');
+      const err = new Error("ids array is required");
       err.status = 400;
       throw err;
     }

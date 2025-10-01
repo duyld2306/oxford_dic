@@ -187,7 +187,7 @@ class WordService {
         },
       };
     } catch (error) {
-      console.error('WordService.getAll error:', error);
+      console.error("WordService.getAll error:", error);
       return { success: false, error: error.message };
     }
   }

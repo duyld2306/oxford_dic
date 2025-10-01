@@ -127,7 +127,11 @@ class WordModel {
       symbol: 1,
     };
 
-    const cursor = this.collection.find({}, { projection }).sort({ _id: 1 }).skip(skip).limit(safePer);
+    const cursor = this.collection
+      .find({}, { projection })
+      .sort({ _id: 1 })
+      .skip(skip)
+      .limit(safePer);
     const docs = await cursor.toArray();
     const total = await this.collection.countDocuments();
     return { total, docs };
@@ -258,19 +262,34 @@ class WordModel {
 
       let senseId;
       try {
-        senseId = item._id instanceof ObjectId ? item._id : new ObjectId(String(item._id));
+        senseId =
+          item._id instanceof ObjectId
+            ? item._id
+            : new ObjectId(String(item._id));
       } catch (e) {
         skipped++;
         continue;
       }
 
       const setObj = {};
-      if (typeof item.definition_vi === 'string') setObj['data.$[].senses.$[s].definition_vi'] = item.definition_vi;
-      if (typeof item.definition_vi_short === 'string') setObj['data.$[].senses.$[s].definition_vi_short'] = item.definition_vi_short;
-      if (typeof item.definition_vi === 'string') setObj['data.$[].idioms.$[].senses.$[s].definition_vi'] = item.definition_vi;
-      if (typeof item.definition_vi_short === 'string') setObj['data.$[].idioms.$[].senses.$[s].definition_vi_short'] = item.definition_vi_short;
-      if (typeof item.definition_vi === 'string') setObj['data.$[].phrasal_verb_senses.$[].senses.$[s].definition_vi'] = item.definition_vi;
-      if (typeof item.definition_vi_short === 'string') setObj['data.$[].phrasal_verb_senses.$[].senses.$[s].definition_vi_short'] = item.definition_vi_short;
+      if (typeof item.definition_vi === "string")
+        setObj["data.$[].senses.$[s].definition_vi"] = item.definition_vi;
+      if (typeof item.definition_vi_short === "string")
+        setObj["data.$[].senses.$[s].definition_vi_short"] =
+          item.definition_vi_short;
+      if (typeof item.definition_vi === "string")
+        setObj["data.$[].idioms.$[].senses.$[s].definition_vi"] =
+          item.definition_vi;
+      if (typeof item.definition_vi_short === "string")
+        setObj["data.$[].idioms.$[].senses.$[s].definition_vi_short"] =
+          item.definition_vi_short;
+      if (typeof item.definition_vi === "string")
+        setObj["data.$[].phrasal_verb_senses.$[].senses.$[s].definition_vi"] =
+          item.definition_vi;
+      if (typeof item.definition_vi_short === "string")
+        setObj[
+          "data.$[].phrasal_verb_senses.$[].senses.$[s].definition_vi_short"
+        ] = item.definition_vi_short;
 
       if (Object.keys(setObj).length === 0) {
         skipped++;
@@ -280,7 +299,7 @@ class WordModel {
       const res = await this.collection.updateMany(
         {},
         { $set: setObj },
-        { arrayFilters: [{ 's._id': senseId }] }
+        { arrayFilters: [{ "s._id": senseId }] }
       );
 
       if ((res.modifiedCount || 0) > 0) updated += res.modifiedCount;
@@ -350,12 +369,22 @@ class WordModel {
           ],
         },
       },
-      { $group: { _id: "$_id", definition_vi_short: { $first: "$definition_vi_short" }, definition_vi: { $first: "$definition_vi" } } },
+      {
+        $group: {
+          _id: "$_id",
+          definition_vi_short: { $first: "$definition_vi_short" },
+          definition_vi: { $first: "$definition_vi" },
+        },
+      },
     ];
 
     const cursor = this.collection.aggregate(pipeline, { allowDiskUse: true });
     const results = await cursor.toArray();
-    return results.map((r) => ({ _id: r._id, definition_vi_short: r.definition_vi_short || "", definition_vi: r.definition_vi || "" }));
+    return results.map((r) => ({
+      _id: r._id,
+      definition_vi_short: r.definition_vi_short || "",
+      definition_vi: r.definition_vi || "",
+    }));
   }
 }
 
