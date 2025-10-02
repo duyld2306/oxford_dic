@@ -26,13 +26,10 @@ class WordService {
 
       if (dbResult) {
         return {
-          success: true,
-          data: {
-            word: normalizedWord,
-            quantity: Array.isArray(dbResult.data) ? dbResult.data.length : 0,
-            data: dbResult.data || [],
-            source: "database",
-          },
+          word: normalizedWord,
+          quantity: Array.isArray(dbResult.data) ? dbResult.data.length : 0,
+          data: dbResult.data || [],
+          source: "database",
         };
       }
 
@@ -40,11 +37,9 @@ class WordService {
       const crawledPages = await crawlWordDirect(normalizedWord, 5);
 
       if (!crawledPages || crawledPages.length === 0) {
-        return {
-          success: false,
-          error: "Word not found",
-          data: null,
-        };
+        const err = new Error("Word not found");
+        err.status = 404;
+        throw err;
       }
 
       // Build top-level variants array from crawled pages (preserve original casing)
@@ -66,22 +61,16 @@ class WordService {
       });
 
       return {
-        success: true,
-        data: {
-          word: canonicalKey,
-          quantity: crawledPages.length,
-          data: crawledPages,
-          variants: finalVariants,
-          source: "crawled",
-        },
+        word: canonicalKey,
+        quantity: crawledPages.length,
+        data: crawledPages,
+        variants: finalVariants,
+        source: "crawled",
       };
     } catch (error) {
       console.error("WordService.getWord error:", error);
-      return {
-        success: false,
-        error: error.message,
-        data: null,
-      };
+      // rethrow to be handled by controller/error middleware
+      throw error;
     }
   }
 
@@ -90,30 +79,21 @@ class WordService {
     try {
       const searchPrefix = String(prefix || "").trim();
       if (!searchPrefix) {
-        return {
-          success: false,
-          error: "Search prefix is required",
-          data: [],
-        };
+        const err = new Error("Search prefix is required");
+        err.status = 400;
+        throw err;
       }
 
       const results = await this.wordModel.searchByPrefix(searchPrefix, limit);
 
       return {
-        success: true,
-        data: {
-          prefix: searchPrefix,
-          count: results.length,
-          words: results,
-        },
+        prefix: searchPrefix,
+        count: results.length,
+        words: results,
       };
     } catch (error) {
       console.error("WordService.searchByPrefix error:", error);
-      return {
-        success: false,
-        error: error.message,
-        data: [],
-      };
+      throw error;
     }
   }
 
@@ -178,17 +158,14 @@ class WordService {
       const per = Math.max(1, parseInt(per_page, 10) || 100);
       const result = await this.wordModel.paginate(p, per);
       return {
-        success: true,
-        data: {
-          total: result.total,
-          page: p,
-          per_page: per,
-          data: result.docs,
-        },
+        total: result.total,
+        page: p,
+        per_page: per,
+        data: result.docs,
       };
     } catch (error) {
       console.error("WordService.getAll error:", error);
-      return { success: false, error: error.message };
+      throw error;
     }
   }
 }

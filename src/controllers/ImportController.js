@@ -15,7 +15,8 @@ class ImportController {
     }
 
     const result = await this.importService.importJsonData(filePath);
-    return res.json({ success: true, data: result });
+    // Return import summary as meta at top-level
+    return res.apiSuccess({ data: null, meta: result }, 201);
   }
 
   // POST /api/import/multiple - Import multiple JSON files from directory
@@ -24,14 +25,15 @@ class ImportController {
     const result = await this.importService.importMultipleJsonFiles(
       directoryPath
     );
-    return res.json({ success: true, data: result });
+    // Return import summary as meta at top-level
+    return res.apiSuccess({ data: null, meta: result }, 201);
   }
 
   // GET /api/import/status - Get import status and available files
   async getStatus(req, res) {
     const { directoryPath = "./src/mock" } = req.query;
     const result = await this.importService.getImportStatus(directoryPath);
-    return res.json({ success: true, data: result });
+    return res.apiSuccess({ data: result }, 200);
   }
 }
 

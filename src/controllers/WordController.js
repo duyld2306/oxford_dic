@@ -22,13 +22,8 @@ class WordController {
     }
 
     const result = await this.wordService.getWord(validatedWord);
-    if (!result.success) {
-      const err = new Error(result.error || "Word not found");
-      err.status = 404;
-      throw err;
-    }
-
-    return res.json({ success: true, data: result.data });
+    // result: { word, quantity, data, source, variants? }
+    return res.apiSuccess({ data: result }, 200);
   }
 
   // POST /api/examples/vi
@@ -40,7 +35,7 @@ class WordController {
       throw err;
     }
     const data = await this.wordService.getExampleViByIds(ids);
-    return res.json({ success: true, data });
+    return res.apiSuccess({ data }, 200);
   }
 
   // POST /api/examples/vi/update
@@ -52,7 +47,8 @@ class WordController {
       throw err;
     }
     const result = await this.wordService.updateExampleViIfMissing(updates);
-    return res.json({ success: true, ...result });
+    // result contains { updated, skipped }
+    return res.apiSuccess({ data: null, meta: result }, 200);
   }
 
   // GET /api/search?q=hang&type=prefix
@@ -75,25 +71,32 @@ class WordController {
       validatedQuery,
       parseInt(limit)
     );
-    if (!result.success) {
-      const err = new Error(result.error || "Search failed");
-      err.status = 400;
-      throw err;
-    }
-
-    return res.json({ success: true, data: result.data });
+    // result: { prefix, count, words }
+    return res.apiSuccess(
+      {
+        data: result.words,
+        meta: { prefix: result.prefix, count: result.count },
+      },
+      200
+    );
   }
 
   // GET /api/all?page=&per_page=
   async listAll(req, res) {
     const { page = 1, per_page = 100 } = req.query || {};
     const result = await this.wordService.getAll(page, per_page);
-    if (!result.success) {
-      const err = new Error(result.error || "Failed to get data");
-      err.status = 500;
-      throw err;
-    }
-    return res.json({ success: true, data: result.data });
+    // result: { total, page, per_page, data }
+    return res.apiSuccess(
+      {
+        data: result.data,
+        meta: {
+          total: result.total,
+          page: result.page,
+          per_page: result.per_page,
+        },
+      },
+      200
+    );
   }
 
   // POST /api/senses/definition
@@ -113,7 +116,7 @@ class WordController {
     }
 
     const result = await this.wordService.updateSenseDefinitions(updates);
-    return res.json({ success: true, ...result });
+    return res.apiSuccess({ data: null, meta: result }, 200);
   }
 
   // POST /api/senses/definition/short
@@ -126,7 +129,7 @@ class WordController {
     }
 
     const data = await this.wordService.getSenseDefinitionShortByIds(ids);
-    return res.json({ success: true, data });
+    return res.apiSuccess({ data }, 200);
   }
 }
 

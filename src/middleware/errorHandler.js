@@ -6,5 +6,11 @@ export default function errorHandler(err, req, res, next) {
     err && err.status && Number(err.status) >= 400 ? Number(err.status) : 500;
   const message = err && err.message ? err.message : "Internal server error";
 
-  res.status(status).json({ success: false, error: message });
+  if (res && typeof res.apiError === "function") {
+    return res.apiError(message, status, err.details || undefined);
+  }
+
+  res
+    .status(status)
+    .json({ success: false, status_code: status, data: null, message });
 }
