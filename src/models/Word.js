@@ -46,10 +46,8 @@ class WordModel {
     return doc;
   }
 
-  // (removed) findByVariant - use findByWord instead which already checks top-level variants case-insensitively
-
   // Search words by prefix (case insensitive)
-  async searchByPrefix(prefix, limit = 20) {
+  async searchByPrefix(prefix, current = 1, limit = 20) {
     await this.init();
     const searchPrefix = String(prefix || "").trim();
     if (!searchPrefix) return [];
@@ -73,15 +71,32 @@ class WordModel {
       },
       {
         $group: {
-          _id: "$data.word",
-          word: { $first: "$data.word" },
+          _id: null,
+          words: { $addToSet: "$data.word" }, // gom thành mảng, loại trùng
         },
       },
-      { $sort: { word: 1 } },
-      { $limit: limit },
+      {
+        $project: {
+          _id: 0,
+          words: { $sortArray: { input: "$words", sortBy: -1 } },
+          total: { $size: "$words" },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          total: 1,
+          words: {
+            $slice: ["$words", (current - 1) * limit, limit],
+          },
+        },
+      },
     ];
 
-    return await this.collection.aggregate(pipeline).toArray();
+    const result = await this.collection.aggregate(pipeline).toArray();
+    return result.length > 0
+      ? { total: result[0].total, words: result[0].words }
+      : [];
   }
 
   // Upsert word data

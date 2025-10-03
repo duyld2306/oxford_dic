@@ -53,7 +53,7 @@ class WordController {
 
   // GET /api/search?q=hang&type=prefix
   async search(req, res) {
-    const { q: query, limit = 20 } = req.query;
+    const { q: query, current = 1, limit = 20 } = req.query;
     if (!query) {
       const err = new Error("Query parameter 'q' is required");
       err.status = 400;
@@ -69,13 +69,19 @@ class WordController {
 
     const result = await this.wordService.searchByPrefix(
       validatedQuery,
+      parseInt(current),
       parseInt(limit)
     );
     // result: { prefix, count, words }
     return res.apiSuccess(
       {
         data: result.words,
-        meta: { prefix: result.prefix, count: result.count },
+        meta: {
+          prefix: result.prefix,
+          total: result.total,
+          current,
+          limit,
+        },
       },
       200
     );

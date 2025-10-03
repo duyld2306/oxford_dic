@@ -75,7 +75,7 @@ class WordService {
   }
 
   // Search words by prefix
-  async searchByPrefix(prefix, limit = 20) {
+  async searchByPrefix(prefix, current = 1, limit = 20) {
     try {
       const searchPrefix = String(prefix || "").trim();
       if (!searchPrefix) {
@@ -84,12 +84,16 @@ class WordService {
         throw err;
       }
 
-      const results = await this.wordModel.searchByPrefix(searchPrefix, limit);
+      const result = await this.wordModel.searchByPrefix(
+        searchPrefix,
+        current,
+        limit
+      );
 
       return {
         prefix: searchPrefix,
-        count: results.length,
-        words: results,
+        total: result.total,
+        words: result.words,
       };
     } catch (error) {
       console.error("WordService.searchByPrefix error:", error);
