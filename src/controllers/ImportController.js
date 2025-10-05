@@ -28,13 +28,6 @@ class ImportController {
     // Return import summary as meta at top-level
     return res.apiSuccess({ data: null, meta: result }, 201);
   }
-
-  // GET /api/import/status - Get import status and available files
-  async getStatus(req, res) {
-    const { directoryPath = "./src/mock" } = req.query;
-    const result = await this.importService.getImportStatus(directoryPath);
-    return res.apiSuccess({ data: result }, 200);
-  }
 }
 
 export default ImportController;

@@ -13,9 +13,5 @@ router.post(
   "/multiple",
   asyncHandler(importController.importMultiple.bind(importController))
 );
-router.get(
-  "/status",
-  asyncHandler(importController.getStatus.bind(importController))
-);
 
 export default router;

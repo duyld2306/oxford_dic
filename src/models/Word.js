@@ -111,6 +111,9 @@ class WordModel {
     if (data && Array.isArray(data.data)) {
       dbData = data.data;
       if (Array.isArray(data.variants)) topLevel.variants = data.variants;
+      if (typeof data.symbol === "string") topLevel.symbol = data.symbol;
+      if (Array.isArray(data.parts_of_speech))
+        topLevel.parts_of_speech = data.parts_of_speech;
     }
 
     const result = await this.collection.updateOne(

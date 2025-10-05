@@ -44,9 +44,18 @@ function buildTopSymbolFromPages(pages) {
   return collected[0] || "";
 }
 
+function buildPartsOfSpeechFromPages(pages) {
+  if (!Array.isArray(pages)) return [];
+  const partsOfSpeech = pages
+    .map((p) => (p && typeof p.pos === "string" ? p.pos.trim() : ""))
+    .filter((s) => s !== "");
+  return Array.from(new Set(partsOfSpeech)).sort();
+}
+
 export {
   normalizeKey,
   buildVariantsFromPages,
   appendCounterpart,
   buildTopSymbolFromPages,
+  buildPartsOfSpeechFromPages,
 };

@@ -89,8 +89,28 @@ class WordController {
 
   // GET /api/all?page=&per_page=
   async listAll(req, res) {
-    const { page = 1, per_page = 100 } = req.query || {};
-    const result = await this.wordService.getAll(page, per_page);
+    let {
+      page = 1,
+      per_page = 100,
+      q = "",
+      symbol = "",
+      parts_of_speech = "",
+    } = req.query || {};
+    if (String(q).trim() !== "") q = String(q).trim();
+    if (symbol && !["a1", "a2", "b1", "b2", "c1", "other"].includes(symbol)) {
+      const err = new Error("sym phải thuộc [a1, a2, b1, b2, c1, other]");
+      err.status = 400;
+      throw err;
+    }
+
+    // parts_of_speech expected as JSON.stringify(sortedArray)
+    const result = await this.wordService.getAll({
+      page,
+      per_page,
+      q,
+      symbol,
+      parts_of_speech,
+    });
     // result: { total, page, per_page, data }
     return res.apiSuccess(
       {
@@ -103,6 +123,12 @@ class WordController {
       },
       200
     );
+  }
+
+  // GET /api/get-parts-of-speech
+  async getPartsOfSpeech(req, res) {
+    const list = await this.wordService.getDistinctPartsOfSpeech();
+    return res.apiSuccess({ data: list }, 200);
   }
 
   // POST /api/senses/definition

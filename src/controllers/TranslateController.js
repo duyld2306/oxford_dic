@@ -133,13 +133,13 @@ class TranslateController {
       const listLines = items
         .map((it, idx) => {
           const ctx = it.context ? ` | context: ${it.context}` : "";
-          return `${idx + 1}. id: ${it.id} | text: ${it.text}${ctx}`;
+          return `${idx + 1}. _id: ${it._id} | text: ${it.text}${ctx}`;
         })
         .join("\n");
 
       const instr = `Hãy dịch danh sách câu sau sang tiếng Việt. Nếu có ngữ cảnh thì ưu tiên áp dụng.\n${
         globalContext ? `Ngữ cảnh chung: ${globalContext}\n` : ""
-      }\nDanh sách:\n${listLines}\n\nYêu cầu đầu ra: Trả về JSON array thuần với mỗi phần tử là {\"id\": string, \"vi\": string}. Không thêm bất kỳ ký tự nào ngoài JSON.`;
+      }\nDanh sách:\n${listLines}\n\nYêu cầu đầu ra: Trả về JSON array thuần với mỗi phần tử là {\"_id\": string, \"vi\": string}. Không thêm bất kỳ ký tự nào ngoài JSON.`;
 
       const resp = await client.chat.completions.create({
         model: MODEL,

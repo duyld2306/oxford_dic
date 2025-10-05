@@ -10,6 +10,10 @@ router.get(
   "/list-words",
   asyncHandler(wordController.listAll.bind(wordController))
 );
+router.get(
+  "/parts-of-speech",
+  asyncHandler(wordController.getPartsOfSpeech.bind(wordController))
+);
 router.post(
   "/examples/vi",
   asyncHandler(wordController.getExamplesVi.bind(wordController))

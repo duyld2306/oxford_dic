@@ -2,6 +2,11 @@ import fs from "fs";
 import path from "path";
 import { ObjectId } from "mongodb";
 import database from "../config/database.js";
+import {
+  buildTopSymbolFromPages,
+  buildPartsOfSpeechFromPages,
+  buildVariantsFromPages,
+} from "../utils/variants.js";
 
 class ImportService {
   constructor() {
@@ -36,6 +41,7 @@ class ImportService {
     // Các trường không cần đệ quy vào (chỉ là dữ liệu phụ, không phải object từ điển)
     const skipKeys = [
       "variants",
+      "parts_of_speech",
       "synonyms",
       "opposites",
       "see_alsos",
@@ -164,11 +170,22 @@ class ImportService {
             );
 
             if (newWordData.length > 0) {
+              // Compute merged data to determine top symbol and parts_of_speech
+              const mergedData = existingData.concat(newWordData);
+              const variants = buildVariantsFromPages(mergedData);
+              const topSymbol = buildTopSymbolFromPages(mergedData);
+              const partsOfSpeech = buildPartsOfSpeechFromPages(mergedData);
+
               await this.collection.updateOne(
                 { _id: normalizedWord },
                 {
                   $push: { data: { $each: newWordData } },
-                  $set: { updatedAt: nowIso },
+                  $set: {
+                    updatedAt: nowIso,
+                    variants,
+                    symbol: topSymbol, // always set symbol (may be empty string)
+                    parts_of_speech: partsOfSpeech,
+                  },
                 }
               );
               results.imported++;
@@ -182,15 +199,22 @@ class ImportService {
             }
           } else {
             // Word doesn't exist, create new entry
+            // Compute symbol and parts_of_speech from the incoming wordData
+            const variants = buildVariantsFromPages(wordData);
+            const topSymbol = buildTopSymbolFromPages(wordData);
+            const partsOfSpeech = buildPartsOfSpeechFromPages(wordData);
+
             await this.collection.updateOne(
               { _id: normalizedWord },
               {
                 $set: {
                   data: wordData,
                   updatedAt: nowIso,
+                  variants,
+                  symbol: topSymbol,
+                  parts_of_speech: partsOfSpeech,
                 },
                 $setOnInsert: {
-                  variant: [],
                   createdAt: nowIso,
                 },
               },
@@ -268,24 +292,6 @@ class ImportService {
       return results;
     } catch (error) {
       throw new Error(`Failed to import multiple JSON files: ${error.message}`);
-    }
-  }
-
-  // Get import status and available files
-  async getImportStatus(directoryPath = "./src/mock") {
-    try {
-      const files = fs
-        .readdirSync(directoryPath)
-        .filter((file) => file.endsWith(".json"))
-        .sort();
-
-      return {
-        availableFiles: files,
-        totalFiles: files.length,
-        directory: directoryPath,
-      };
-    } catch (error) {
-      throw new Error(`Failed to get import status: ${error.message}`);
     }
   }
 }

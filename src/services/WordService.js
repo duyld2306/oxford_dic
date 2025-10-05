@@ -4,11 +4,66 @@ import {
   normalizeKey,
   buildVariantsFromPages,
   buildTopSymbolFromPages,
+  buildPartsOfSpeechFromPages,
 } from "../utils/variants.js";
 
 class WordService {
   constructor() {
     this.wordModel = new WordModel();
+  }
+
+  // Get all distinct parts_of_speech arrays from DB and return formatted list
+  async getDistinctPartsOfSpeech() {
+    try {
+      await this.wordModel.init();
+      // Aggregate distinct arrays by joined-string key to dedupe exact arrays
+      // Only consider documents where parts_of_speech is an array to avoid conversion errors
+      const pipeline = [
+        { $match: { parts_of_speech: { $type: "array" } } },
+        {
+          $project: {
+            parts_of_speech: 1,
+            // join array elements with a separator to create a stable key
+            key: {
+              $reduce: {
+                input: "$parts_of_speech",
+                initialValue: "",
+                in: {
+                  $cond: [
+                    { $eq: ["$$value", ""] },
+                    "$$this",
+                    { $concat: ["$$value", "||", "$$this"] },
+                  ],
+                },
+              },
+            },
+          },
+        },
+        {
+          $group: {
+            _id: "$key",
+            parts: { $first: "$parts_of_speech" },
+          },
+        },
+        { $project: { _id: 0, parts: 1 } },
+      ];
+
+      const rows = await this.wordModel.collection
+        .aggregate(pipeline)
+        .toArray();
+      // Format: [{ label: parts.join("+"), value: JSON.stringify(parts) }]
+      return rows.map((r) => ({
+        label: Array.isArray(r.parts)
+          ? r.parts.length > 0
+            ? r.parts.join(" + ")
+            : "Other"
+          : "",
+        value: JSON.stringify(Array.isArray(r.parts) ? r.parts : []),
+      }));
+    } catch (error) {
+      console.error("WordService.getDistinctPartsOfSpeech error:", error);
+      return [];
+    }
   }
 
   // Get word by exact match with caching
@@ -53,11 +108,15 @@ class WordService {
       // Compute top-level symbol from page-level symbols collected during crawl
       const topSymbol = buildTopSymbolFromPages(crawledPages);
 
-      // Save to database for future use with shape { data: [...], variants: [...], symbol }
+      // Build parts_of_speech array from crawledPages
+      const partsOfSpeech = buildPartsOfSpeechFromPages(crawledPages);
+
+      // Save to database for future use with shape { data: [...], variants: [...], symbol, parts_of_speech }
       await this.wordModel.upsert(canonicalKey, {
         data: crawledPages,
         variants: finalVariants,
         symbol: topSymbol,
+        parts_of_speech: partsOfSpeech,
       });
 
       return {
@@ -65,6 +124,8 @@ class WordService {
         quantity: crawledPages.length,
         data: crawledPages,
         variants: finalVariants,
+        symbol: topSymbol,
+        parts_of_speech: partsOfSpeech,
         source: "crawled",
       };
     } catch (error) {
@@ -156,16 +217,76 @@ class WordService {
   }
 
   // Get all documents with pagination
-  async getAll(page = 1, per_page = 100) {
+  async getAll({
+    page = 1,
+    per_page = 100,
+    q = "",
+    symbol = "",
+    parts_of_speech = "",
+  }) {
     try {
       const p = Math.max(1, parseInt(page, 10) || 1);
       const per = Math.max(1, parseInt(per_page, 10) || 100);
-      const result = await this.wordModel.paginate(p, per);
+
+      // build mongo query
+      const query = {};
+
+      // helper to escape user input for regex
+      const escapeForRegex = (s) =>
+        String(s || "").replace(/[.*+?^${}()|[\\]\\]/g, "\\$&");
+
+      if (q) {
+        query._id = { $regex: escapeForRegex(q), $options: "i" };
+      }
+
+      // parts_of_speech filter: expected as JSON.stringify(sortedArray)
+      if (parts_of_speech && String(parts_of_speech).trim() !== "") {
+        try {
+          const parsed = JSON.parse(parts_of_speech);
+          if (Array.isArray(parsed)) {
+            // exact match of top-level array (order matters)
+            query.parts_of_speech = parsed;
+          }
+        } catch (e) {
+          // ignore parse errors and do not filter
+        }
+      }
+
+      const SYMBOL_ORDER = ["a1", "a2", "b1", "b2", "c1"];
+      if (symbol === "other") {
+        query.symbol = { $nin: SYMBOL_ORDER };
+      } else if (SYMBOL_ORDER.includes(symbol)) {
+        query.symbol = symbol;
+      }
+
+      // Use collection directly for filtered pagination
+      await this.wordModel.init();
+      const skip = (p - 1) * per;
+
+      const projection = {
+        _id: 1,
+        data: 1,
+        variants: 1,
+        createdAt: 1,
+        updatedAt: 1,
+        symbol: 1,
+        parts_of_speech: 1,
+      };
+
+      const cursor = this.wordModel.collection
+        .find(query, { projection })
+        .sort({ _id: 1 })
+        .skip(skip)
+        .limit(per);
+
+      const docs = await cursor.toArray();
+      const total = await this.wordModel.collection.countDocuments(query);
+
       return {
-        total: result.total,
+        total,
         page: p,
         per_page: per,
-        data: result.docs,
+        data: docs,
       };
     } catch (error) {
       console.error("WordService.getAll error:", error);
