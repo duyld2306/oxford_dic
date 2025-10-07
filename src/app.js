@@ -21,6 +21,11 @@ const createApp = () => {
   app.use("/api/import", importRoutes);
   app.use("/api/translate", translateRoutes);
 
+  // Keep-alive ping endpoint
+  app.get("/api/ping", (req, res) => {
+    res.status(200).json({ status: "ok", time: new Date().toISOString() });
+  });
+
   app.get("/", (req, res) => res.send("Welcome!"));
 
   // 404 handler for unknown routes

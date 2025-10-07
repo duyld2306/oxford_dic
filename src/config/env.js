@@ -10,9 +10,6 @@ const config = {
   MONGO_URI: process.env.MONGO_URI || "",
   DB_NAME: process.env.DB_NAME || "oxford-dic",
   COLLECTION_NAME: process.env.COLLECTION_NAME || "words",
-  KEEP_ALIVE_INTERVAL_MS: process.env.KEEP_ALIVE_INTERVAL_MS
-    ? Number(process.env.KEEP_ALIVE_INTERVAL_MS)
-    : 5 * 60 * 1000, // default 5 minutes
 };
 
 export default config;
