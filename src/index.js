@@ -1,11 +1,15 @@
 import database from "./config/database.js";
 import createApp from "./app.js";
 import env from "./config/env.js";
+import initService from "./services/InitService.js";
 
 const app = createApp();
 
 // Initialize database connection before starting
 await database.connect();
+
+// Run initialization tasks (create default admin, etc.)
+await initService.initialize();
 
 const server = app.listen(env.PORT, () => {
   console.log(`🚀 Server listening on http://localhost:${env.PORT}`);

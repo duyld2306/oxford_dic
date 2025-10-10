@@ -4,13 +4,33 @@ import cors from "cors";
 import wordRoutes from "./routes/wordRoutes.js";
 import translateRoutes from "./routes/translateRoutes.js";
 import importRoutes from "./routes/importRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 import errorHandler from "./middleware/errorHandler.js";
 import responseHandler from "./middleware/responseHandler.js";
 
 const createApp = () => {
   const app = express();
   app.use(compression());
-  app.use(cors());
+
+  // CORS configuration - allow Next.js frontend
+  app.use(
+    cors({
+      origin: [process.env.CLIENT_URL],
+      credentials: true,
+      methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      allowedHeaders: [
+        "Content-Type",
+        "Authorization",
+        "X-Requested-With",
+        "Accept",
+        "Origin",
+      ],
+      exposedHeaders: ["Content-Range", "X-Content-Range"],
+      maxAge: 86400, // 24 hours
+    })
+  );
+
   app.use(express.json({ limit: "10mb" }));
   app.use(express.urlencoded({ extended: true }));
 
@@ -20,6 +40,8 @@ const createApp = () => {
   app.use("/api", wordRoutes);
   app.use("/api/import", importRoutes);
   app.use("/api/translate", translateRoutes);
+  app.use("/api/auth", authRoutes);
+  app.use("/api/users", userRoutes);
 
   // Keep-alive ping endpoint
   app.get("/api/ping", (req, res) => {

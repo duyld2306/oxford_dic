@@ -86,11 +86,7 @@ class TranslateController {
         err && err.status && Number(err.status) >= 400
           ? Number(err.status)
           : 500;
-      return res.apiError(
-        msg,
-        status,
-        err && err.stack ? { stack: err.stack } : undefined
-      );
+      return res.apiError(msg, status);
     }
   }
 
@@ -169,11 +165,7 @@ class TranslateController {
         err && err.status && Number(err.status) >= 400
           ? Number(err.status)
           : 500;
-      return res.apiError(
-        msg,
-        status,
-        err && err.stack ? { stack: err.stack } : undefined
-      );
+      return res.apiError(msg, status);
     }
   }
 }
