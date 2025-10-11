@@ -13,10 +13,9 @@ class DatabaseConfig {
     if (this.isConnected) return;
 
     try {
-      const MONGO_URI = env.MONGO_URI || process.env.MONGO_URI || "";
-      const DB_NAME = env.DB_NAME || process.env.DB_NAME || "oxford-dic";
-      const COLLECTION_NAME =
-        env.COLLECTION_NAME || process.env.COLLECTION_NAME || "words";
+      const MONGO_URI = env.MONGO_URI;
+      const DB_NAME = env.DB_NAME;
+      const COLLECTION_NAME = env.COLLECTION_NAME;
 
       this.client = new MongoClient(MONGO_URI, {
         serverSelectionTimeoutMS: 5000,

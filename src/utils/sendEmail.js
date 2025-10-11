@@ -9,8 +9,8 @@ class EmailService {
   async init() {
     if (this.transporter) return;
 
-    const emailUser = env.EMAIL_USER || process.env.EMAIL_USER;
-    const emailPass = env.EMAIL_PASS || process.env.EMAIL_PASS;
+    const emailUser = env.EMAIL_USER;
+    const emailPass = env.EMAIL_PASS;
 
     if (!emailUser || !emailPass) {
       console.warn(
@@ -46,7 +46,7 @@ class EmailService {
     }
 
     try {
-      const emailUser = env.EMAIL_USER || process.env.EMAIL_USER;
+      const emailUser = env.EMAIL_USER;
 
       const mailOptions = {
         from: `"Oxford Dictionary" <${emailUser}>`,
@@ -66,8 +66,7 @@ class EmailService {
   }
 
   async sendVerificationEmail(email, token) {
-    const clientUrl =
-      env.CLIENT_URL || process.env.CLIENT_URL || "http://localhost:3000";
+    const clientUrl = env.CLIENT_URL;
     const verificationUrl = `${clientUrl}/verify/${token}`;
 
     const html = `
@@ -126,8 +125,7 @@ class EmailService {
   }
 
   async sendPasswordResetEmail(email, token) {
-    const clientUrl =
-      env.CLIENT_URL || process.env.CLIENT_URL || "http://localhost:3000";
+    const clientUrl = env.CLIENT_URL;
     const resetUrl = `${clientUrl}/reset-password/${token}`;
 
     const html = `

@@ -4,6 +4,8 @@ import RefreshTokenModel from "../models/RefreshToken.js";
 import emailService from "../utils/sendEmail.js";
 import asyncHandler from "../middleware/asyncHandler.js";
 import env from "../config/env.js";
+import API_RESPONSES from "../../constants/apiResponses.js";
+import { respond } from "../utils/respond.js";
 
 const userModel = new UserModel();
 const refreshTokenModel = new RefreshTokenModel();
@@ -50,13 +52,11 @@ class AuthController {
       // Record lastVerificationSent timestamp
       await userModel.setLastVerificationSent(user._id, new Date());
 
-      res.apiSuccess({
+      return respond.success(res, "AUTH.REGISTER_SUCCESS", {
         _id: user._id,
         email: user.email,
         fullname: user.fullname,
         isVerified: user.isVerified,
-        message:
-          "User registered successfully. Please check your email to verify your account.",
       });
     } catch (error) {
       if (error.status === 400) {
@@ -71,7 +71,7 @@ class AuthController {
     const { token } = req.params;
 
     if (!token) {
-      return res.apiError("Verification token is required", 400);
+      return respond.error(res, "VALIDATION.REQUIRE_VERIFICATION_TOKEN");
     }
 
     try {
@@ -84,11 +84,11 @@ class AuthController {
 
       const user = await userModel.findById(decoded.userId);
       if (!user) {
-        return res.apiError("User not found", 404);
+        return respond.error(res, "USER.USER_NOT_FOUND");
       }
 
       if (user.isVerified) {
-        return res.apiError("Email already verified", 400);
+        return respond.error(res, "AUTH.EMAIL_ALREADY_VERIFIED");
       }
 
       await userModel.verifyUser(decoded.userId);
@@ -118,19 +118,11 @@ class AuthController {
 
     const user = await userModel.findByEmail(email.toLowerCase().trim());
     if (!user) {
-      return res.apiError(
-        "Invalid email or password",
-        401,
-        "INVALID_CREDENTIALS"
-      );
+      return respond.error(res, "AUTH.INVALID_CREDENTIALS");
     }
 
     if (!user.isVerified) {
-      return res.apiError(
-        "Please verify your email before logging in",
-        401,
-        "EMAIL_NOT_VERIFIED"
-      );
+      return respond.error(res, "AUTH.EMAIL_NOT_VERIFIED");
     }
 
     const isPasswordValid = await userModel.comparePassword(
@@ -138,16 +130,12 @@ class AuthController {
       user.password
     );
     if (!isPasswordValid) {
-      return res.apiError(
-        "Invalid email or password",
-        401,
-        "INVALID_CREDENTIALS"
-      );
+      return respond.error(res, "AUTH.INVALID_CREDENTIALS");
     }
 
     // Generate tokens
     const jwtSecret = env.JWT_SECRET;
-    const jwtRefreshSecret = env.JWT_REFRESH_SECRET;
+    const jwtRefreshSecret = env.JWT_SECRET;
     const accessTokenExpire = env.ACCESS_TOKEN_EXPIRE;
     const refreshTokenExpire = env.REFRESH_TOKEN_EXPIRE;
 
@@ -179,8 +167,7 @@ class AuthController {
     // Return user without password
     const { password: _, ...userWithoutPassword } = user;
 
-    res.apiSuccess({
-      message: "Login successful",
+    return respond.success(res, "AUTH.LOGIN_SUCCESS", {
       user: userWithoutPassword,
       accessToken,
       refreshToken,
@@ -192,11 +179,11 @@ class AuthController {
     const { refreshToken } = req.body;
 
     if (!refreshToken) {
-      return res.apiError("Refresh token is required", 400);
+      return respond.error(res, "VALIDATION.REQUIRE_REFRESH_TOKEN");
     }
 
     try {
-      const jwtRefreshSecret = env.JWT_REFRESH_SECRET;
+      const jwtRefreshSecret = env.JWT_SECRET;
       const decoded = jwt.verify(refreshToken, jwtRefreshSecret);
 
       if (decoded.type !== "refresh") {
@@ -211,11 +198,11 @@ class AuthController {
 
       const user = await userModel.findByIdSafe(decoded.userId);
       if (!user) {
-        return res.apiError("User not found", 401);
+        return respond.error(res, "USER.USER_NOT_FOUND");
       }
 
       if (!user.isVerified) {
-        return res.apiError("User not verified", 401);
+        return respond.error(res, "AUTH.EMAIL_NOT_VERIFIED");
       }
 
       // Generate new access token
@@ -254,7 +241,7 @@ class AuthController {
     const { refreshToken } = req.body;
 
     if (!refreshToken) {
-      return res.apiError("Refresh token is required", 400);
+      return respond.error(res, "VALIDATION.REQUIRE_REFRESH_TOKEN");
     }
 
     await refreshTokenModel.deleteByToken(refreshToken);
@@ -269,7 +256,7 @@ class AuthController {
     const { email } = req.body;
 
     if (!email) {
-      return res.apiError("Email is required", 400);
+      return respond.error(res, "VALIDATION.REQUIRE_EMAIL");
     }
 
     // Always return success to prevent email enumeration
@@ -307,11 +294,11 @@ class AuthController {
     const { password } = req.body;
 
     if (!token) {
-      return res.apiError("Reset token is required", 400);
+      return respond.error(res, "VALIDATION.REQUIRE_RESET_TOKEN");
     }
 
     if (!password) {
-      return res.apiError("Password is required", 400);
+      return respond.error(res, "VALIDATION.REQUIRE_PASSWORD");
     }
 
     if (password.length < 6) {
@@ -328,11 +315,11 @@ class AuthController {
 
       const user = await userModel.findById(decoded.userId);
       if (!user) {
-        return res.apiError("User not found", 404);
+        return respond.error(res, "USER.USER_NOT_FOUND");
       }
 
       if (!user.isVerified) {
-        return res.apiError("User not verified", 400);
+        return respond.error(res, "AUTH.EMAIL_NOT_VERIFIED");
       }
 
       // Update password
@@ -360,16 +347,16 @@ class AuthController {
     const { email } = req.body;
 
     if (!email) {
-      return res.apiError("Email is required", 400);
+      return respond.error(res, "VALIDATION.REQUIRE_EMAIL");
     }
 
     const user = await userModel.findByEmail(email.toLowerCase().trim());
     if (!user) {
-      return res.apiError("User not found", 404);
+      return respond.error(res, "USER.USER_NOT_FOUND");
     }
 
     if (user.isVerified) {
-      return res.apiError("Email already verified", 400);
+      return respond.error(res, "AUTH.EMAIL_ALREADY_VERIFIED");
     }
 
     const lastSent = user.lastVerificationSent
@@ -377,11 +364,12 @@ class AuthController {
       : null;
     if (lastSent) {
       const diffMs = Date.now() - lastSent.getTime();
-      if (diffMs < 60 * 60 * 1000) {
-        // Rate limit: less than 60 minutes since last send
+      if (diffMs < 60 * 1000) {
+        // Rate limit: less than 1 minute since last send
         return res.apiError(
-          "Verification email sent too recently. Please wait at least 60 minutes before requesting another.",
-          429
+          "Verification email sent too recently",
+          API_RESPONSES.ERROR.SYSTEM.TOO_MANY_REQUESTS.status_code,
+          API_RESPONSES.ERROR.SYSTEM.TOO_MANY_REQUESTS.error_code
         );
       }
     }

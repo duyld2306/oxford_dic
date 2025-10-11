@@ -3,6 +3,7 @@ import UserModel from "../models/User.js";
 import WordModel from "../models/Word.js";
 import asyncHandler from "../middleware/asyncHandler.js";
 import RefreshTokenModel from "../models/RefreshToken.js";
+import { respond } from "../utils/respond.js";
 
 const userModel = new UserModel();
 const wordModel = new WordModel();
@@ -207,10 +208,10 @@ class UserController {
 
     const user = await userModel.findByIdSafe(userId);
     if (!user) {
-      return res.apiError("User not found", 404);
+      return respond.error(res, "USER.USER_NOT_FOUND");
     }
 
-    res.apiSuccess(user);
+    res.apiSuccess({ data: user });
   });
 
   // PUT /api/users/profile
@@ -241,15 +242,12 @@ class UserController {
     const result = await userModel.updateById(userId, updateData);
 
     if (result.matchedCount === 0) {
-      return res.apiError("User not found", 404);
+      return respond.error(res, "USER.USER_NOT_FOUND");
     }
 
     const updatedUser = await userModel.findByIdSafe(userId);
 
-    res.apiSuccess({
-      data: updatedUser,
-      message: "Profile updated successfully",
-    });
+    return respond.success(res, "USER.PROFILE_UPDATED", updatedUser);
   });
 
   // POST /api/users/change-password
@@ -278,7 +276,7 @@ class UserController {
     // Get user including password
     const user = await userModel.findById(userId);
     if (!user) {
-      return res.apiError("User not found", 404);
+      return respond.error(res, "USER.USER_NOT_FOUND");
     }
 
     const isMatch = await userModel.comparePassword(

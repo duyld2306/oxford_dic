@@ -13,7 +13,6 @@ const config = {
 
   // JWT Configuration
   JWT_SECRET: process.env.JWT_SECRET || "",
-  JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET || "",
 
   // Email Configuration
   EMAIL_USER: process.env.EMAIL_USER || "",
