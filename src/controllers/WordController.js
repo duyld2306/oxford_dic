@@ -125,6 +125,32 @@ class WordController {
     );
   }
 
+  // GET /api/list-words-for-search?q=&page=&per_page=
+  async listWordsForSearch(req, res) {
+    let { page = 1, per_page = 100, q = "" } = req.query || {};
+    if (String(q).trim() !== "") q = String(q).trim();
+
+    const result = await this.wordService.getAllForSearch({
+      page,
+      per_page,
+      q,
+    });
+
+    const ids = result.data ?? [];
+
+    return res.apiSuccess(
+      {
+        data: ids,
+        meta: {
+          total: result.total,
+          page: result.page,
+          per_page: result.per_page,
+        },
+      },
+      200
+    );
+  }
+
   // GET /api/get-parts-of-speech
   async getPartsOfSpeech(req, res) {
     const list = await this.wordService.getDistinctPartsOfSpeech();

@@ -11,6 +11,10 @@ router.get(
   asyncHandler(wordController.listAll.bind(wordController))
 );
 router.get(
+  "/list-words-for-search",
+  asyncHandler(wordController.listWordsForSearch.bind(wordController))
+);
+router.get(
   "/parts-of-speech",
   asyncHandler(wordController.getPartsOfSpeech.bind(wordController))
 );

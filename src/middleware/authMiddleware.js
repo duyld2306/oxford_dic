@@ -105,12 +105,30 @@ const adminMiddleware = (req, res, next) => {
     return respond.error(res, "USER.USER_NOT_FOUND");
   }
 
-  if (req.user.role !== "admin") {
+  if (req.user.role !== "admin" && req.user.role !== "superadmin") {
     return respond.error(res, "AUTH.ADMIN_ACCESS_REQUIRED");
   }
 
   next();
 };
 
-export { authMiddleware, optionalAuthMiddleware, adminMiddleware };
+// Superadmin role middleware (requires auth middleware to run first)
+const superadminMiddleware = (req, res, next) => {
+  if (!req.user) {
+    return respond.error(res, "USER.USER_NOT_FOUND");
+  }
+
+  if (req.user.role !== "superadmin") {
+    return respond.error(res, "AUTH.SUPERADMIN_ACCESS_REQUIRED");
+  }
+
+  next();
+};
+
+export {
+  authMiddleware,
+  optionalAuthMiddleware,
+  adminMiddleware,
+  superadminMiddleware,
+};
 export default authMiddleware;

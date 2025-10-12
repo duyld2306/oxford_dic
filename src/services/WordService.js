@@ -293,6 +293,45 @@ class WordService {
       throw error;
     }
   }
+
+  // Specialized, lightweight search for UI search/autocomplete
+  // Returns only array of _id strings and pagination meta. Does NOT modify getAll()
+  async getAllForSearch({ page = 1, per_page = 50, q = "" }) {
+    try {
+      const p = Math.max(1, parseInt(page, 10) || 1);
+      const per = Math.max(1, parseInt(per_page, 10) || 50);
+
+      // helper to escape user input for regex
+      const escapeForRegex = (s) =>
+        String(s || "").replace(/[.*+?^${}()|[\\]\\]/g, "\\$&");
+
+      // prefix-only anchored, case-insensitive
+      const query = {
+        _id: { $regex: `^${escapeForRegex(q)}`, $options: "i" },
+      };
+
+      await this.wordModel.init();
+      const skip = (p - 1) * per;
+
+      // Only project _id to minimize IO
+      const cursor = this.wordModel.collection
+        .find(query, { projection: { _id: 1 } })
+        .sort({ _id: 1 })
+        .skip(skip)
+        .limit(per);
+
+      const rows = await cursor.toArray();
+      const total = await this.wordModel.collection.countDocuments(query);
+
+      // map ObjectId or string _id to string
+      const ids = rows.map((r) => (r && r._id ? String(r._id) : ""));
+
+      return { total, page: p, per_page: per, data: ids };
+    } catch (error) {
+      console.error("WordService.getAllForSearch error:", error);
+      throw error;
+    }
+  }
 }
 
 export default WordService;

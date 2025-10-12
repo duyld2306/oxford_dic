@@ -12,29 +12,40 @@ class InitService {
       const existingAdmin = await userModel.findByEmail(adminEmail);
 
       if (existingAdmin) {
-        console.log("✅ Default admin account already exists");
+        // If exists but not superadmin, upgrade to superadmin
+        if (existingAdmin.role !== "superadmin") {
+          console.log("🔧 Upgrading admin account to superadmin...");
+          await userModel.updateById(existingAdmin._id, { role: "superadmin" });
+          console.log("✅ Admin account upgraded to superadmin");
+        } else {
+          console.log("✅ Default superadmin account already exists");
+        }
         return;
       }
 
-      // Create default admin account
-      console.log("🔧 Creating default admin account...");
-      
+      // Create default superadmin account
+      console.log("🔧 Creating default superadmin account...");
+
       const adminUser = await userModel.create({
         email: adminEmail,
         password: adminPassword,
-        role: "admin",
+        role: "superadmin",
         fullname: "System Administrator",
       });
 
       // Auto-verify the admin account
       await userModel.verifyUser(adminUser._id);
 
-      console.log("✅ Default admin account created successfully");
+      console.log("✅ Default superadmin account created successfully");
       console.log(`   Email: ${adminEmail}`);
       console.log(`   Password: ${adminPassword}`);
+      console.log(`   Role: superadmin`);
       console.log("   ⚠️  Please change the password after first login!");
     } catch (error) {
-      console.error("❌ Failed to create default admin account:", error.message);
+      console.error(
+        "❌ Failed to create default superadmin account:",
+        error.message
+      );
       // Don't throw - allow the application to continue even if admin creation fails
     }
   }

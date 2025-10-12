@@ -59,11 +59,57 @@ const API_RESPONSES = {
         message: "Admin access required",
         status_code: 403,
       },
+      SUPERADMIN_ACCESS_REQUIRED: {
+        error_code: "SUPERADMIN_ACCESS_REQUIRED",
+        message: "Superadmin access required",
+        status_code: 403,
+      },
     },
     USER: {
       USER_NOT_FOUND: {
         error_code: "USER_NOT_FOUND",
         message: "User not found",
+        status_code: 404,
+      },
+    },
+    GROUP_WORD: {
+      NOT_FOUND: {
+        error_code: "GROUP_WORD_NOT_FOUND",
+        message: "Group word not found",
+        status_code: 404,
+      },
+      LIMIT_REACHED: {
+        error_code: "GROUP_WORD_LIMIT_REACHED",
+        message: "Cannot create more than 20 group words",
+        status_code: 400,
+      },
+      NOT_EMPTY: {
+        error_code: "GROUP_WORD_NOT_EMPTY",
+        message: "Cannot delete group word with words in it",
+        status_code: 400,
+      },
+    },
+    CATEGORY: {
+      NOT_FOUND: {
+        error_code: "CATEGORY_NOT_FOUND",
+        message: "Category not found",
+        status_code: 404,
+      },
+      LIMIT_REACHED: {
+        error_code: "CATEGORY_LIMIT_REACHED",
+        message: "Cannot create more than 20 categories",
+        status_code: 400,
+      },
+      NOT_EMPTY: {
+        error_code: "CATEGORY_NOT_EMPTY",
+        message: "Cannot delete category with words in it",
+        status_code: 400,
+      },
+    },
+    WORD: {
+      NOT_FOUND: {
+        error_code: "WORD_NOT_FOUND",
+        message: "Word not found",
         status_code: 404,
       },
     },
@@ -96,6 +142,21 @@ const API_RESPONSES = {
       REQUIRE_VERIFICATION_TOKEN: {
         error_code: "REQUIRE_VERIFICATION_TOKEN",
         message: "Verification token is required",
+        status_code: 400,
+      },
+      REQUIRED_FIELDS: {
+        error_code: "REQUIRED_FIELDS",
+        message: "Required fields are missing",
+        status_code: 400,
+      },
+      INVALID_ID: {
+        error_code: "INVALID_ID",
+        message: "Invalid ID format",
+        status_code: 400,
+      },
+      INVALID_ROLE: {
+        error_code: "INVALID_ROLE",
+        message: "Invalid role. Must be 'admin' or 'user'",
         status_code: 400,
       },
     },

@@ -10,6 +10,9 @@ class UserModel {
   // Allowed gender values
   static ALLOWED_GENDERS = ["male", "female", "other"];
 
+  // Allowed role values
+  static ALLOWED_ROLES = ["superadmin", "admin", "user"];
+
   async init() {
     if (!this.collection) {
       await database.connect();
@@ -158,6 +161,12 @@ class UserModel {
     );
   }
 
+  async comparePassword(plainPassword, hashedPassword) {
+    // Ensure DB initialized (not strictly necessary for bcrypt but kept for parity)
+    await this.init();
+    return await bcrypt.compare(plainPassword, hashedPassword);
+  }
+
   async updatePassword(id, newPassword) {
     await this.init();
     const objectId = id instanceof ObjectId ? id : new ObjectId(id);
@@ -174,62 +183,6 @@ class UserModel {
         },
       }
     );
-  }
-
-  async addToFavorites(userId, wordIds) {
-    await this.init();
-    const objectId = userId instanceof ObjectId ? userId : new ObjectId(userId);
-    const wordObjectIds = wordIds.map((id) =>
-      id instanceof ObjectId ? id : new ObjectId(id)
-    );
-
-    return await this.collection.updateOne(
-      { _id: objectId },
-      {
-        $addToSet: { favorites: { $each: wordObjectIds } },
-        $set: { updatedAt: new Date() },
-      }
-    );
-  }
-
-  async removeFromFavorites(userId, wordIds) {
-    await this.init();
-    const objectId = userId instanceof ObjectId ? userId : new ObjectId(userId);
-    const wordObjectIds = wordIds.map((id) =>
-      id instanceof ObjectId ? id : new ObjectId(id)
-    );
-
-    return await this.collection.updateOne(
-      { _id: objectId },
-      {
-        $pull: { favorites: { $in: wordObjectIds } },
-        $set: { updatedAt: new Date() },
-      }
-    );
-  }
-
-  async getFavorites(userId, page = 1, limit = 20) {
-    await this.init();
-    const objectId = userId instanceof ObjectId ? userId : new ObjectId(userId);
-
-    const user = await this.collection.findOne(
-      { _id: objectId },
-      { projection: { favorites: 1 } }
-    );
-
-    if (!user || !user.favorites) {
-      return { favorites: [], total: 0 };
-    }
-
-    const skip = (page - 1) * limit;
-    const total = user.favorites.length;
-    const favorites = user.favorites.slice(skip, skip + limit);
-
-    return { favorites, total };
-  }
-
-  async comparePassword(plainPassword, hashedPassword) {
-    return await bcrypt.compare(plainPassword, hashedPassword);
   }
 
   // Get user without password field
@@ -250,6 +203,37 @@ class UserModel {
     return await this.collection.findOne(
       { email },
       { projection: { password: 0 } }
+    );
+  }
+
+  // Update user role (only superadmin can do this)
+  async updateRole(userId, newRole) {
+    await this.init();
+    const objectId = userId instanceof ObjectId ? userId : new ObjectId(userId);
+
+    // Validate role
+    if (!UserModel.ALLOWED_ROLES.includes(newRole)) {
+      const error = new Error("Invalid role value");
+      error.status = 400;
+      throw error;
+    }
+
+    // Prevent changing superadmin role
+    const user = await this.findById(objectId);
+    if (user && user.role === "superadmin") {
+      const error = new Error("Cannot change superadmin role");
+      error.status = 403;
+      throw error;
+    }
+
+    return await this.collection.updateOne(
+      { _id: objectId },
+      {
+        $set: {
+          role: newRole,
+          updatedAt: new Date(),
+        },
+      }
     );
   }
 }
