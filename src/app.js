@@ -6,6 +6,7 @@ import translateRoutes from "./routes/translateRoutes.js";
 import importRoutes from "./routes/importRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import flashcardRoutes from "./routes/flashcardRoutes.js";
 import errorHandler from "./middleware/errorHandler.js";
 import responseHandler from "./middleware/responseHandler.js";
 
@@ -42,6 +43,7 @@ const createApp = () => {
   app.use("/api/translate", translateRoutes);
   app.use("/api/auth", authRoutes);
   app.use("/api/users", userRoutes);
+  app.use("/api/users", flashcardRoutes);
 
   // Keep-alive ping endpoint
   app.get("/api/ping", (req, res) => {
