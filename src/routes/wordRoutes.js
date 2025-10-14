@@ -1,6 +1,7 @@
 import express from "express";
 import WordController from "../controllers/WordController.js";
 import asyncHandler from "../middleware/asyncHandler.js";
+import { optionalAuthMiddleware } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 const wordController = new WordController();
@@ -8,6 +9,7 @@ const wordController = new WordController();
 router.get("/lookup", asyncHandler(wordController.lookup.bind(wordController)));
 router.get(
   "/list-words",
+  optionalAuthMiddleware,
   asyncHandler(wordController.listAll.bind(wordController))
 );
 router.get(

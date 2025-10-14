@@ -136,6 +136,22 @@ class UserModel {
     );
   }
 
+  // Set or unset isVerified flag for a user
+  async setVerified(id, flag) {
+    await this.init();
+    const objectId = id instanceof ObjectId ? id : new ObjectId(id);
+
+    return await this.collection.updateOne(
+      { _id: objectId },
+      {
+        $set: {
+          isVerified: !!flag,
+          updatedAt: new Date(),
+        },
+      }
+    );
+  }
+
   // Set the lastVerificationSent timestamp for a user
   async setLastVerificationSent(id, date) {
     await this.init();

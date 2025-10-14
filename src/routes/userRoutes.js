@@ -10,6 +10,9 @@ const userController = new UserController();
 // All user routes require authentication
 router.use(authMiddleware);
 
+// Superadmin-only: list users with pagination and search
+router.get("/list", superadminMiddleware, userController.listUsers);
+
 // GET /api/users/profile - Get user profile
 router.get("/profile", userController.getProfile);
 
@@ -78,5 +81,8 @@ router.delete("/favorites", userController.removeFavorite);
 
 // POST /api/users/assign-role - Assign role to user (superadmin only)
 router.post("/assign-role", superadminMiddleware, userController.assignRole);
+
+// POST /api/users/set-verified - Superadmin only
+router.post("/set-verified", superadminMiddleware, userController.setVerified);
 
 export default router;

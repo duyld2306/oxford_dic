@@ -29,6 +29,10 @@ class UserController {
   // PUT /api/users/profile
   updateProfile = asyncHandler(async (req, res) => {
     const userId = req.userId;
+    // Do not allow updating profile fields for superadmin accounts via this endpoint
+    if (req.user && req.user.role === "superadmin") {
+      return res.apiError("Updating profile for superadmin is forbidden", 403);
+    }
     const { fullname, gender, phone_number } = req.body;
     // Validate gender if provided
     if (gender !== undefined && gender !== null) {
@@ -843,6 +847,120 @@ class UserController {
     });
   });
 
+  // GET /api/users/list - Superadmin only: list users with pagination and name/email search
+  listUsers = asyncHandler(async (req, res) => {
+    const page = Math.max(1, parseInt(req.query.page, 10) || 1);
+    const per_page = Math.max(1, parseInt(req.query.per_page, 10) || 100);
+    const name = String(req.query.name || "").trim();
+    const roleFilter = String(req.query.role || "").trim();
+    const isVerifiedRaw = req.query.isVerified;
+
+    let isVerifiedFilter = null;
+    if (isVerifiedRaw !== undefined) {
+      if (isVerifiedRaw === "true" || isVerifiedRaw === true)
+        isVerifiedFilter = true;
+      else if (isVerifiedRaw === "false" || isVerifiedRaw === false)
+        isVerifiedFilter = false;
+      else return res.apiError("Invalid isVerified value", 400);
+    }
+
+    // Build query: search fullname OR email (case-insensitive, partial)
+    const query = {};
+    if (name) {
+      const escaped = name.replace(/[.*+?^${}()|[\\]\\]/g, "\\$&");
+      query.$or = [
+        { fullname: { $regex: escaped, $options: "i" } },
+        { email: { $regex: escaped, $options: "i" } },
+      ];
+    }
+
+    // role filter
+    if (roleFilter) {
+      if (["user", "admin", "superadmin"].includes(roleFilter)) {
+        query.role = roleFilter;
+      } else {
+        return res.apiError("Invalid role filter", 400);
+      }
+    }
+
+    // isVerified filter
+    if (isVerifiedFilter !== null) {
+      query.isVerified = isVerifiedFilter;
+    }
+
+    await userModel.init();
+
+    const skip = (page - 1) * per_page;
+
+    // Only expose safe fields
+    const projection = {
+      _id: 1,
+      email: 1,
+      fullname: 1,
+      role: 1,
+      gender: 1,
+      isVerified: 1,
+      createdAt: 1,
+      updatedAt: 1,
+    };
+
+    const cursor = userModel.collection
+      .find(query, { projection })
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(per_page);
+
+    const rows = await cursor.toArray();
+    const total = await userModel.collection.countDocuments(query);
+
+    // Map _id to string for consistency
+    const users = rows.map((u) => ({
+      ...u,
+      _id: String(u._id),
+    }));
+
+    res.apiSuccess({
+      data: users,
+      meta: { total, page, per_page },
+      message: "",
+      error_code: "",
+    });
+  });
+
+  // POST /api/users/set-verified - Superadmin only: set isVerified (true/false) for a user
+  setVerified = asyncHandler(async (req, res) => {
+    const { user_id, isVerified } = req.body;
+
+    if (!user_id || typeof isVerified === "undefined") {
+      return respond.error(res, "VALIDATION.REQUIRED_FIELDS");
+    }
+
+    let userObjectId;
+    try {
+      userObjectId = new ObjectId(user_id);
+    } catch (error) {
+      return respond.error(res, "VALIDATION.INVALID_ID");
+    }
+
+    // Prevent changing verification for superadmin accounts (safety)
+    const targetUser = await userModel.findById(userObjectId);
+    if (!targetUser) return respond.error(res, "USER.USER_NOT_FOUND");
+    if (targetUser.role === "superadmin") {
+      return res.apiError(
+        "Cannot change verification status of superadmin",
+        403
+      );
+    }
+
+    await userModel.setVerified(userObjectId, !!isVerified);
+
+    res.apiSuccess({
+      data: null,
+      message: "Verification status updated",
+      error_code: "",
+    });
+  });
+
   // DELETE /api/users/favorites - Remove word from group
   removeFavorite = asyncHandler(async (req, res) => {
     const userId = req.userId;
@@ -852,10 +970,9 @@ class UserController {
       return respond.error(res, "VALIDATION.REQUIRED_FIELDS");
     }
 
-    let groupObjectId, wordObjectId;
+    let groupObjectId;
     try {
       groupObjectId = new ObjectId(group_word_id);
-      wordObjectId = new ObjectId(word_id);
     } catch (error) {
       return respond.error(res, "VALIDATION.INVALID_ID");
     }
@@ -870,7 +987,7 @@ class UserController {
     }
 
     // Remove word from group_word
-    await groupWordModel.removeWord(groupObjectId, wordObjectId, userId);
+    await groupWordModel.removeWord(groupObjectId, word_id, userId);
 
     res.apiSuccess({
       data: null,

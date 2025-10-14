@@ -1,8 +1,10 @@
 import WordService from "../services/WordService.js";
+import CategoryModel from "../models/Category.js";
 
 class WordController {
   constructor() {
     this.wordService = new WordService();
+    this.categoryModel = new CategoryModel();
   }
 
   // GET /api/lookup?word=hang
@@ -112,9 +114,27 @@ class WordController {
       parts_of_speech,
     });
     // result: { total, page, per_page, data }
+    // Attach category_ids for each word similar to favorites endpoint
+    const docs = result.data || [];
+    let wordsWithCategories = docs;
+
+    // If request is authenticated, attach category_ids for that user
+    if (req.userId) {
+      const wordIdsInPage = docs.map((w) => w._id);
+      const wordCategoryMap = await this.categoryModel.getCategoriesByWordIds(
+        wordIdsInPage,
+        req.userId
+      );
+
+      wordsWithCategories = docs.map((word) => ({
+        ...word,
+        category_ids: wordCategoryMap[word._id] || [],
+      }));
+    }
+
     return res.apiSuccess(
       {
-        data: result.data,
+        data: wordsWithCategories,
         meta: {
           total: result.total,
           page: result.page,
