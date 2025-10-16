@@ -55,14 +55,20 @@ class WordController {
 
   // GET /api/search?q=hang&type=prefix
   async search(req, res) {
-    const { q: query, current = 1, limit = 20 } = req.query;
-    if (!query) {
+    const { q, current = 1, limit = 20, type = "word" } = req.query;
+    if (!q) {
       const err = new Error("Query parameter 'q' is required");
       err.status = 400;
       throw err;
     }
 
-    const validatedQuery = this.wordService.validateWord(query);
+    if (!["word", "idiom"].includes(type)) {
+      const err = new Error("type must be either 'word' or 'idiom'");
+      err.status = 400;
+      throw err;
+    }
+
+    const validatedQuery = this.wordService.validateWord(q);
     if (!validatedQuery) {
       const err = new Error("Invalid query format");
       err.status = 400;
@@ -72,17 +78,34 @@ class WordController {
     const result = await this.wordService.searchByPrefix(
       validatedQuery,
       parseInt(current),
-      parseInt(limit)
+      parseInt(limit),
+      type
     );
-    // result: { prefix, count, words }
+    // result: { prefix, total, words } where words is an array of { _id, word, isIdiom, documentId }
+
+    // Format the response as required
+    let formattedData;
+    if (type === "idiom") {
+      // For idiom search or default, we need to use documentId as _id
+      formattedData = result.words.map((item) => ({
+        _id: item.documentId,
+        word: item.word,
+        pos: item.pos,
+        isIdiom: item.isIdiom,
+      }));
+    } else {
+      // For word search, the _id is already the word itself
+      formattedData = result.words;
+    }
+
     return res.apiSuccess(
       {
-        data: result.words,
+        data: formattedData,
         meta: {
           prefix: result.prefix,
           total: result.total,
-          current,
-          limit,
+          page: parseInt(current),
+          per_page: parseInt(limit),
         },
       },
       200

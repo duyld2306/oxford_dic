@@ -49,14 +49,19 @@ class WordModel {
   // Search words by prefix (case insensitive)
   async searchByPrefix(prefix, current = 1, limit = 20) {
     await this.init();
-    const searchPrefix = String(prefix || "").trim();
-    if (!searchPrefix) return [];
 
-    // Case-insensitive regex anchored at start
-    const regex = new RegExp(
-      `^${searchPrefix.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`,
-      "i"
-    );
+    let searchPrefix = String(prefix || "")
+      .replace(/[^a-z-]+/gi, " ") // Loại bỏ ký tự không phải chữ hoặc "-", thay bằng space
+      .replace(/\s+/g, " ") // Gom nhiều space thành 1
+      .replace(/-+/g, "-") // Gom nhiều dấu '-' liên tiếp thành 1
+      .replace(/^-+|-+$/g, "") // Xóa '-' ở đầu hoặc cuối chuỗi
+      .trim(); // Xóa space 2 đầu
+
+    if (!searchPrefix) {
+      return { total: 0, words: [] };
+    }
+
+    const regex = new RegExp(`^${searchPrefix}`, "i");
 
     const pipeline = [
       { $unwind: "$data" },
@@ -96,7 +101,98 @@ class WordModel {
     const result = await this.collection.aggregate(pipeline).toArray();
     return result.length > 0
       ? { total: result[0].total, words: result[0].words }
-      : [];
+      : { total: 0, words: [] };
+  }
+
+  async searchByIdiomsOnly(prefix, current = 1, limit = 20) {
+    await this.init();
+
+    let searchPrefix = String(prefix || "").trim();
+    if (!searchPrefix) return { total: 0, words: [] };
+
+    // 🧹 Làm sạch input: chỉ giữ lại chữ (hoa + thường)
+    searchPrefix = searchPrefix
+      .replace(/[^A-Za-z]+/g, " ") // Loại bỏ ký tự không phải chữ
+      .replace(/\s+/g, " ") // Gom nhiều space
+      .trim();
+
+    // 🔍 Chuyển các khoảng trắng thành ".*" để match đa token
+    const regexPattern = searchPrefix.replace(/\s+/g, ".*");
+    const regex = new RegExp(regexPattern, "i"); // "i" => không phân biệt hoa/thường
+
+    const pipeline = [
+      { $unwind: "$data" },
+      { $unwind: "$data.idioms" },
+      {
+        $match: {
+          "data.idioms.word": { $regex: regex },
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+          word: "$data.idioms.word",
+          pos: "$data.pos",
+          isIdiom: { $literal: true },
+          documentId: "$_id",
+        },
+      },
+      {
+        $group: {
+          _id: "$word",
+          doc: { $first: "$$ROOT" },
+        },
+      },
+      { $sort: { _id: 1 } },
+      {
+        $group: {
+          _id: null,
+          words: { $push: "$doc" },
+          total: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          total: 1,
+          words: { $slice: ["$words", (current - 1) * limit, limit] },
+        },
+      },
+    ];
+
+    const result = await this.collection.aggregate(pipeline).toArray();
+
+    if (!result.length || !result[0].words) {
+      return { total: 0, words: [] };
+    }
+
+    // 2️⃣ Sort logic ở NodeJS (ưu tiên match mạnh hơn)
+    const words = result[0].words.sort((a, b) => {
+      const aWord = a.word.toLowerCase();
+      const bWord = b.word.toLowerCase();
+      const exact = searchPrefix.toLowerCase();
+
+      // Ưu tiên: trùng toàn cụm
+      if (aWord === exact && bWord !== exact) return -1;
+      if (bWord === exact && aWord !== exact) return 1;
+
+      // Ưu tiên: có cụm liền nhau
+      const aHasPhrase = aWord.includes(exact);
+      const bHasPhrase = bWord.includes(exact);
+      if (aHasPhrase && !bHasPhrase) return -1;
+      if (!aHasPhrase && bHasPhrase) return 1;
+
+      // Giữ nguyên thứ tự còn lại
+      return 0;
+    });
+
+    // 3️⃣ Cắt phân trang
+    const paginated = words.slice((current - 1) * limit, current * limit);
+
+    return {
+      total: result[0].total,
+      words: paginated,
+    };
   }
 
   // Upsert word data

@@ -135,8 +135,8 @@ class WordService {
     }
   }
 
-  // Search words by prefix
-  async searchByPrefix(prefix, current = 1, limit = 20) {
+  // Search words by prefix including idioms
+  async searchByPrefix(prefix, current = 1, limit = 20, type = null) {
     try {
       const searchPrefix = String(prefix || "").trim();
       if (!searchPrefix) {
@@ -145,17 +145,41 @@ class WordService {
         throw err;
       }
 
-      const result = await this.wordModel.searchByPrefix(
-        searchPrefix,
-        current,
-        limit
-      );
+      let result;
+      if (type === "idiom") {
+        // Search only in idioms
+        result = await this.wordModel.searchByIdiomsOnly(
+          searchPrefix,
+          current,
+          limit
+        );
 
-      return {
-        prefix: searchPrefix,
-        total: result.total,
-        words: result.words,
-      };
+        return {
+          prefix: searchPrefix,
+          total: result.total,
+          words: result.words,
+        };
+      } else {
+        // Search only in _id and variants
+        result = await this.wordModel.searchByPrefix(
+          searchPrefix,
+          current,
+          limit
+        );
+
+        // Transform the result to match the expected format
+        const formattedWords = result.words.map((word) => ({
+          _id: word, // For word search, the word itself is the _id
+          word: word,
+          isIdiom: false,
+        }));
+
+        return {
+          prefix: searchPrefix,
+          total: result.total,
+          words: formattedWords,
+        };
+      }
     } catch (error) {
       console.error("WordService.searchByPrefix error:", error);
       throw error;
