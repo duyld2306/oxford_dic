@@ -169,30 +169,42 @@ async function crawlWordDirect(word, maxSuffix = 5) {
       $("span.pv-g").each((_, el) => {
         const $pvs = $(el);
         const pv = $pvs.find("span.pv").first();
+
+        // --- Lưu variants trước khi tách khỏi DOM ---
+        const v = pv.find("div.variants").first();
+        const variantsData =
+          v && v.length ? { text: v.text().trim(), html: v.html().trim() } : {};
+
+        // --- Gỡ bỏ variants khỏi pv (để không dính vào .text()) ---
+        pv.find("div.variants").remove();
+
+        // --- Lấy word ---
         let word = "";
         if (pv.find(".pvarr").length > 0) {
           // Có chứa .pvarr → thay thành ↔
           word = pv
             .html()
             .replace(/<span class="pvarr">([^<]*)<\/span>/g, " ↔ $1")
-            .replace(/<[^>]+>/g, "") // bỏ thẻ HTML
+            .replace(/<[^>]+>/g, "") // bỏ thẻ HTML còn sót
             .trim();
         } else {
-          // Bình thường
           word = pv.text().trim();
         }
+
+        // --- Lấy labels ---
+        const labels =
+          $pvs
+            .find(".webtop span.labels")
+            .filter((_, el) => $(el).closest(".variants").length === 0)
+            .first()
+            .text()
+            .trim() || "";
+
+        // --- Kết quả cuối ---
         const item = {
           word,
-          labels:
-            $pvs
-              .find(".webtop span.labels")
-              .filter((_, el) => $(el).closest(".variants").length === 0)
-              .first()
-              .text() || "",
-          variants: (() => {
-            const v = $pvs.find(".webtop div.variants").first();
-            return v && v.length ? { text: v.text(), html: v.html() } : {};
-          })(),
+          labels,
+          variants: variantsData,
           senses: [],
         };
         $pvs

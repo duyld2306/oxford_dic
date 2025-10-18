@@ -1,7 +1,10 @@
 import express from "express";
 import WordController from "../controllers/WordController.js";
 import asyncHandler from "../middleware/asyncHandler.js";
-import { optionalAuthMiddleware } from "../middleware/authMiddleware.js";
+import {
+  optionalAuthMiddleware,
+  adminMiddleware,
+} from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 const wordController = new WordController();
