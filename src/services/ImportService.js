@@ -1,23 +1,17 @@
 import fs from "fs";
 import path from "path";
 import { ObjectId } from "mongodb";
-import database from "../config/database.js";
+import { BaseService } from "./BaseService.js";
+import { WordRepository } from "../repositories/WordRepository.js";
 import {
   buildTopSymbolFromPages,
   buildPartsOfSpeechFromPages,
   buildVariantsFromPages,
 } from "../utils/variants.js";
 
-class ImportService {
-  constructor() {
-    this.collection = null;
-  }
-
-  async init() {
-    if (!this.collection) {
-      await database.connect();
-      this.collection = database.getCollection();
-    }
+class ImportService extends BaseService {
+  constructor(wordRepository = null, dependencies = {}) {
+    super(wordRepository || new WordRepository(), dependencies);
   }
 
   // Normalize word to group similar words (e.g., -ability, ability-, ability -> ability)
@@ -119,9 +113,9 @@ class ImportService {
 
   // Import data from JSON file and save to database
   async importJsonData(filePath) {
-    await this.init();
+    return this.execute(async () => {
+      await this.repository.init();
 
-    try {
       // Read and parse JSON file
       const fileContent = fs.readFileSync(filePath, "utf8");
       const words = JSON.parse(fileContent);
@@ -129,6 +123,8 @@ class ImportService {
       if (!Array.isArray(words)) {
         throw new Error("JSON file must contain an array of word objects");
       }
+
+      this.log("info", `Importing ${words.length} words from ${filePath}`);
 
       // Group words by normalized form
       const groupedWords = this.groupWordsByNormalizedForm(words);
@@ -153,7 +149,7 @@ class ImportService {
           }));
 
           // Check if word already exists
-          const existingWord = await this.collection.findOne({
+          const existingWord = await this.repository.collection.findOne({
             _id: normalizedWord,
           });
 
@@ -176,7 +172,7 @@ class ImportService {
               const topSymbol = buildTopSymbolFromPages(mergedData);
               const partsOfSpeech = buildPartsOfSpeechFromPages(mergedData);
 
-              await this.collection.updateOne(
+              await this.repository.collection.updateOne(
                 { _id: normalizedWord },
                 {
                   $push: { data: { $each: newWordData } },
@@ -189,12 +185,14 @@ class ImportService {
                 }
               );
               results.imported++;
-              console.log(
-                `✅ Merged ${newWordData.length} new entries for word: ${normalizedWord}`
+              this.log(
+                "info",
+                `Merged ${newWordData.length} new entries for word: ${normalizedWord}`
               );
             } else {
-              console.log(
-                `⏭️  Skipped word: ${normalizedWord} (no new entries)`
+              this.log(
+                "info",
+                `Skipped word: ${normalizedWord} (no new entries)`
               );
             }
           } else {
@@ -204,7 +202,7 @@ class ImportService {
             const topSymbol = buildTopSymbolFromPages(wordData);
             const partsOfSpeech = buildPartsOfSpeechFromPages(wordData);
 
-            await this.collection.updateOne(
+            await this.repository.collection.updateOne(
               { _id: normalizedWord },
               {
                 $set: {
@@ -221,8 +219,9 @@ class ImportService {
               { upsert: true }
             );
             results.imported++;
-            console.log(
-              `✅ Created new word: ${normalizedWord} with ${wordData.length} entries`
+            this.log(
+              "info",
+              `Created new word: ${normalizedWord} with ${wordData.length} entries`
             );
           }
         } catch (error) {
@@ -230,34 +229,36 @@ class ImportService {
             word: normalizedWord,
             error: error.message,
           });
-          console.error(
-            `❌ Error processing word ${normalizedWord}:`,
-            error.message
+          this.log(
+            "error",
+            `Error processing word ${normalizedWord}: ${error.message}`
           );
         }
       }
 
+      this.log(
+        "info",
+        `Import completed: ${results.imported}/${results.groupedWords} words imported`
+      );
       return results;
-    } catch (error) {
-      throw new Error(`Failed to import JSON data: ${error.message}`);
-    }
+    }, "importJsonData");
   }
 
   // Import multiple JSON files (a.json, b.json, etc.)
   async importMultipleJsonFiles(directoryPath = "./src/mock") {
-    await this.init();
+    return this.execute(async () => {
+      await this.repository.init();
 
-    const results = {
-      totalFiles: 0,
-      successfulFiles: 0,
-      failedFiles: [],
-      totalWords: 0,
-      totalGroupedWords: 0,
-      totalImported: 0,
-      allErrors: [],
-    };
+      const results = {
+        totalFiles: 0,
+        successfulFiles: 0,
+        failedFiles: [],
+        totalWords: 0,
+        totalGroupedWords: 0,
+        totalImported: 0,
+        allErrors: [],
+      };
 
-    try {
       // Get all JSON files in directory
       const files = fs
         .readdirSync(directoryPath)
@@ -265,6 +266,7 @@ class ImportService {
         .sort();
 
       results.totalFiles = files.length;
+      this.log("info", `Found ${files.length} JSON files in ${directoryPath}`);
 
       for (const file of files) {
         try {
@@ -277,22 +279,25 @@ class ImportService {
           results.totalImported += fileResult.imported;
           results.allErrors.push(...fileResult.errors);
 
-          console.log(
-            `✅ Imported ${file}: ${fileResult.imported}/${fileResult.totalWords} words grouped into ${fileResult.groupedWords} entries`
+          this.log(
+            "info",
+            `Imported ${file}: ${fileResult.imported}/${fileResult.totalWords} words grouped into ${fileResult.groupedWords} entries`
           );
         } catch (error) {
           results.failedFiles.push({
             file,
             error: error.message,
           });
-          console.error(`❌ Failed to import ${file}: ${error.message}`);
+          this.log("error", `Failed to import ${file}: ${error.message}`);
         }
       }
 
+      this.log(
+        "info",
+        `Batch import completed: ${results.successfulFiles}/${results.totalFiles} files imported`
+      );
       return results;
-    } catch (error) {
-      throw new Error(`Failed to import multiple JSON files: ${error.message}`);
-    }
+    }, "importMultipleJsonFiles");
   }
 }
 

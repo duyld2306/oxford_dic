@@ -1,11 +1,37 @@
 import express from "express";
 import TranslateController from "../controllers/TranslateController.js";
-import asyncHandler from "../middleware/asyncHandler.js";
+import { validateBody } from "../validators/index.js";
+import Joi from "joi";
 
 const router = express.Router();
-const ctrl = new TranslateController();
+const translateController = new TranslateController();
 
-router.post("/", asyncHandler(ctrl.translate.bind(ctrl)));
-router.post("/bulk", asyncHandler(ctrl.translateBulk.bind(ctrl)));
+// Validation schemas
+const translateValidation = {
+  translate: Joi.object({
+    text: Joi.string().required(),
+    context: Joi.string().allow("").optional(),
+    type: Joi.string().valid("example", "definition").default("example"),
+  }),
+  translateBulk: Joi.object({
+    texts: Joi.array().items(Joi.string()).min(1).required(),
+    context: Joi.string().allow("").optional(),
+    type: Joi.string().valid("example", "definition").default("example"),
+  }),
+};
+
+// POST /api/translate
+router.post(
+  "/",
+  validateBody(translateValidation.translate),
+  translateController.translate
+);
+
+// POST /api/translate/bulk
+router.post(
+  "/bulk",
+  validateBody(translateValidation.translateBulk),
+  translateController.translateBulk
+);
 
 export default router;

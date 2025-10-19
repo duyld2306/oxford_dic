@@ -1,92 +1,49 @@
+import { BaseController } from "./BaseController.js";
 import WordService from "../services/WordService.js";
-import CategoryModel from "../models/Category.js";
+import CategoryRepository from "../repositories/CategoryRepository.js";
 
-class WordController {
-  constructor() {
-    this.wordService = new WordService();
-    this.categoryModel = new CategoryModel();
+class WordController extends BaseController {
+  constructor(wordService = null, categoryRepository = null) {
+    super();
+    this.wordService = wordService || new WordService();
+    this.categoryRepository = categoryRepository || new CategoryRepository();
   }
 
   // GET /api/lookup?word=hang
-  async lookup(req, res) {
-    const { word } = req.query;
-    if (!word) {
-      const err = new Error("Word parameter is required");
-      err.status = 400;
-      throw err;
-    }
-
-    const validatedWord = this.wordService.validateWord(word);
-    if (!validatedWord) {
-      const err = new Error("Invalid word format");
-      err.status = 400;
-      throw err;
-    }
-
-    const result = await this.wordService.getWord(validatedWord);
-    // result: { word, quantity, data, source, variants? }
-    return res.apiSuccess({ data: result }, 200);
-  }
+  lookup = this.asyncHandler(async (req, res) => {
+    const { word } = this.getQuery(req);
+    const result = await this.wordService.getWord(word);
+    return this.sendSuccess(res, result);
+  });
 
   // POST /api/examples/vi
-  async getExamplesVi(req, res) {
-    const { ids } = req.body || {};
-    if (!Array.isArray(ids) || ids.length === 0) {
-      const err = new Error("ids array is required");
-      err.status = 400;
-      throw err;
-    }
+  getExamplesVi = this.asyncHandler(async (req, res) => {
+    const { ids } = this.getBody(req);
     const data = await this.wordService.getExampleViByIds(ids);
-    return res.apiSuccess({ data }, 200);
-  }
+    return this.sendSuccess(res, data);
+  });
 
   // POST /api/examples/vi/update
-  async updateExamplesVi(req, res) {
-    const { updates } = req.body || {};
-    if (!Array.isArray(updates) || updates.length === 0) {
-      const err = new Error("updates array is required");
-      err.status = 400;
-      throw err;
-    }
+  updateExamplesVi = this.asyncHandler(async (req, res) => {
+    const { updates } = this.getBody(req);
     const result = await this.wordService.updateExampleViIfMissing(updates);
-    // result contains { updated, skipped }
-    return res.apiSuccess({ data: null, meta: result }, 200);
-  }
+    return this.sendSuccess(res, null, result);
+  });
 
   // GET /api/search?q=hang&type=prefix
-  async search(req, res) {
-    const { q, current = 1, limit = 20, type = "word" } = req.query;
-    if (!q) {
-      const err = new Error("Query parameter 'q' is required");
-      err.status = 400;
-      throw err;
-    }
-
-    if (!["word", "idiom"].includes(type)) {
-      const err = new Error("type must be either 'word' or 'idiom'");
-      err.status = 400;
-      throw err;
-    }
-
-    const validatedQuery = this.wordService.validateWord(q);
-    if (!validatedQuery) {
-      const err = new Error("Invalid query format");
-      err.status = 400;
-      throw err;
-    }
+  search = this.asyncHandler(async (req, res) => {
+    const { q, page = 1, per_page = 100, type = "word" } = this.getQuery(req);
 
     const result = await this.wordService.searchByPrefix(
-      validatedQuery,
-      parseInt(current),
-      parseInt(limit),
+      q,
+      parseInt(page),
+      parseInt(per_page),
       type
     );
-    // result: { prefix, total, words } where words is an array of { _id, word, isIdiom, documentId }
 
     // Format the response as required
     let formattedData;
     if (type === "idiom") {
-      // For idiom search or default, we need to use documentId as _id
       formattedData = result.words.map((item) => ({
         _id: item.documentId,
         word: item.word,
@@ -94,41 +51,27 @@ class WordController {
         isIdiom: item.isIdiom,
       }));
     } else {
-      // For word search, the _id is already the word itself
       formattedData = result.words;
     }
 
-    return res.apiSuccess(
-      {
-        data: formattedData,
-        meta: {
-          prefix: result.prefix,
-          total: result.total,
-          page: parseInt(current),
-          per_page: parseInt(limit),
-        },
-      },
-      200
-    );
-  }
+    return this.sendSuccess(res, formattedData, {
+      prefix: result.prefix,
+      total: result.total,
+      page: parseInt(page),
+      per_page: parseInt(per_page),
+    });
+  });
 
   // GET /api/all?page=&per_page=
-  async listAll(req, res) {
-    let {
+  listAll = this.asyncHandler(async (req, res) => {
+    const {
       page = 1,
       per_page = 100,
       q = "",
       symbol = "",
       parts_of_speech = "",
-    } = req.query || {};
-    if (String(q).trim() !== "") q = String(q).trim();
-    if (symbol && !["a1", "a2", "b1", "b2", "c1", "other"].includes(symbol)) {
-      const err = new Error("sym phải thuộc [a1, a2, b1, b2, c1, other]");
-      err.status = 400;
-      throw err;
-    }
+    } = this.getQuery(req);
 
-    // parts_of_speech expected as JSON.stringify(sortedArray)
     const result = await this.wordService.getAll({
       page,
       per_page,
@@ -136,18 +79,20 @@ class WordController {
       symbol,
       parts_of_speech,
     });
-    // result: { total, page, per_page, data }
-    // Attach category_ids for each word similar to favorites endpoint
+
     const docs = result.data || [];
     let wordsWithCategories = docs;
 
-    // If request is authenticated, attach category_ids for that user
+    // If request is authenticated, attach category_ids for that user using repository
     if (req.userId) {
       const wordIdsInPage = docs.map((w) => w._id);
-      const wordCategoryMap = await this.categoryModel.getCategoriesByWordIds(
-        wordIdsInPage,
-        req.userId
-      );
+
+      // Use repository method to get all category mappings in one query
+      const wordCategoryMap =
+        await this.categoryRepository.getCategoriesByWordIds(
+          wordIdsInPage,
+          req.userId
+        );
 
       wordsWithCategories = docs.map((word) => ({
         ...word,
@@ -155,23 +100,16 @@ class WordController {
       }));
     }
 
-    return res.apiSuccess(
-      {
-        data: wordsWithCategories,
-        meta: {
-          total: result.total,
-          page: result.page,
-          per_page: result.per_page,
-        },
-      },
-      200
-    );
-  }
+    return this.sendSuccess(res, wordsWithCategories, {
+      total: result.total,
+      page: result.page,
+      per_page: result.per_page,
+    });
+  });
 
   // GET /api/list-words-for-search?q=&page=&per_page=
-  async listWordsForSearch(req, res) {
-    let { page = 1, per_page = 100, q = "" } = req.query || {};
-    if (String(q).trim() !== "") q = String(q).trim();
+  listWordsForSearch = this.asyncHandler(async (req, res) => {
+    const { page = 1, per_page = 100, q = "" } = this.getQuery(req);
 
     const result = await this.wordService.getAllForSearch({
       page,
@@ -181,57 +119,33 @@ class WordController {
 
     const ids = result.data ?? [];
 
-    return res.apiSuccess(
-      {
-        data: ids,
-        meta: {
-          total: result.total,
-          page: result.page,
-          per_page: result.per_page,
-        },
-      },
-      200
-    );
-  }
+    return this.sendSuccess(res, ids, {
+      total: result.total,
+      page: result.page,
+      per_page: result.per_page,
+    });
+  });
 
   // GET /api/get-parts-of-speech
-  async getPartsOfSpeech(req, res) {
+  getPartsOfSpeech = this.asyncHandler(async (_req, res) => {
     const list = await this.wordService.getDistinctPartsOfSpeech();
-    return res.apiSuccess({ data: list }, 200);
-  }
+    return this.sendSuccess(res, list);
+  });
 
   // POST /api/senses/definition
-  async updateSenseDefinitions(req, res) {
-    const payload = req.body;
-    if (!payload) {
-      const err = new Error("Request body is required");
-      err.status = 400;
-      throw err;
-    }
-
+  updateSenseDefinitions = this.asyncHandler(async (req, res) => {
+    const payload = this.getBody(req);
     const updates = Array.isArray(payload) ? payload : [payload];
-    if (updates.length === 0) {
-      const err = new Error("No updates provided");
-      err.status = 400;
-      throw err;
-    }
-
     const result = await this.wordService.updateSenseDefinitions(updates);
-    return res.apiSuccess({ data: null, meta: result }, 200);
-  }
+    return this.sendSuccess(res, null, result);
+  });
 
   // POST /api/senses/definition/short
-  async getSenseDefinitionShort(req, res) {
-    const { ids } = req.body || {};
-    if (!Array.isArray(ids) || ids.length === 0) {
-      const err = new Error("ids array is required");
-      err.status = 400;
-      throw err;
-    }
-
+  getSenseDefinitionShort = this.asyncHandler(async (req, res) => {
+    const { ids } = this.getBody(req);
     const data = await this.wordService.getSenseDefinitionShortByIds(ids);
-    return res.apiSuccess({ data }, 200);
-  }
+    return this.sendSuccess(res, data);
+  });
 }
 
 export default WordController;

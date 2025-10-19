@@ -1,144 +1,107 @@
 {
-  "_id": "abandon",
-  "createdAt": "2025-09-25T17:36:28.946Z",
+  "_id": "hang",
+  "createdAt": "2025-10-05T14:05:38.685Z",
   "data": [
     {
-      "word": "abandon",
+      "word": "hang",
       "pos": "verb",
-      "symbol": "b2",
-      "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/a/aba/aband/abandon__gb_2.mp3",
-      "phonetic_text": "/əˈbændən/",
-      "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/a/aba/aband/abandon__us_2.mp3",
-      "phonetic_am_text": "/əˈbændən/",
+      "symbol": "b1",
+      "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/h/han/hang_/hang__gb_1.mp3",
+      "phonetic_text": "/hæŋ/",
+      "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/h/han/hang_/hang__us_1.mp3",
+      "phonetic_am_text": "/hæŋ/",
       "variants": {},
       "grammar": "",
       "labels": "",
       "senses": [
         {
-          "symbol": "b2",
+          "symbol": "b1",
           "labels": "",
           "dis_g": "",
           "variants": {},
-          "grammar": "",
+          "grammar": "[transitive, intransitive]",
           "cf": "",
-          "definition": "to leave somebody, especially somebody you are responsible for, with no intention of returning",
+          "definition": "to attach something, or to be attached, at the top so that the lower part is free or loose",
           "synonyms": [],
           "opposites": [],
           "see_alsos": [],
           "examples": [
             {
-              "cf": "abandon somebody",
+              "cf": "hang something + adv./prep.",
               "labels": "",
-              "en": "The baby had been abandoned by its mother.",
-              "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f54" }
+              "en": "Hang your coat on the hook.",
+              "vi": "Treo áo khoác của bạn lên móc.",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae0c"
+              }
             },
             {
               "cf": "",
               "labels": "",
-              "en": "People often simply abandon their pets when they go abroad.",
+              "en": "Activists hung a banner from the roof of the building.",
               "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f55" }
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae0d"
+              }
             },
             {
-              "cf": "abandon somebody to something",
+              "cf": "hang something up",
               "labels": "",
-              "en": "‘We have been abandoned to our fate,’ said one resident.",
+              "en": "Shall I hang your coat up?",
+              "vi": "Tôi có nên treo áo khoác của bạn lên không?",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae0e"
+              }
+            },
+            {
+              "cf": "hang something (out)",
+              "labels": "(British English)",
+              "en": "Have you hung out the washing?",
               "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f56" }
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae0f"
+              }
+            },
+            {
+              "cf": "",
+              "labels": "(North American English)",
+              "en": "Have you hung the wash?",
+              "vi": "",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae10"
+              }
+            },
+            {
+              "cf": "hang adv./prep.",
+              "labels": "",
+              "en": "There were several expensive suits hanging in the wardrobe.",
+              "vi": "",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae11"
+              }
             },
             {
               "cf": "",
               "labels": "",
-              "en": "The study showed a deep fear among the elderly of being abandoned to the care of strangers.",
+              "en": "Clothes hung from hooks on the walls.",
+              "vi": "Quần áo được treo trên những móc ở tường.",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae12"
+              }
+            },
+            {
+              "cf": "",
+              "labels": "",
+              "en": "His school bag was still hanging on the back of the door.",
               "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f57" }
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae13"
+              }
             }
           ],
-          "_id": { "$oid": "68d57d9c4a0aa01019541f53" },
-          "definition_vi": "",
-          "definition_vi_short": ""
-        },
-        {
-          "symbol": "b2",
-          "labels": "",
-          "dis_g": "",
-          "variants": {},
-          "grammar": "",
-          "cf": "",
-          "definition": "to leave a thing or place, especially because it is impossible or dangerous to stay",
-          "synonyms": ["leave"],
-          "opposites": [],
-          "see_alsos": [],
-          "examples": [
-            {
-              "cf": "abandon something",
-              "labels": "",
-              "en": "Snow forced many drivers to abandon their vehicles.",
-              "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f59" }
-            },
-            {
-              "cf": "",
-              "labels": "",
-              "en": "He gave the order to abandon ship (= to leave the ship because it was sinking).",
-              "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f5a" }
-            },
-            {
-              "cf": "abandon something to somebody/something",
-              "labels": "",
-              "en": "They had to abandon their lands to the invading forces.",
-              "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f5b" }
-            }
-          ],
-          "_id": { "$oid": "68d57d9c4a0aa01019541f58" },
-          "definition_vi": "",
-          "definition_vi_short": ""
-        },
-        {
-          "symbol": "b2",
-          "labels": "",
-          "dis_g": "",
-          "variants": {},
-          "grammar": "",
-          "cf": "abandon something",
-          "definition": "to stop doing something, especially before it is finished; to stop having something",
-          "synonyms": [],
-          "opposites": [],
-          "see_alsos": [],
-          "examples": [
-            {
-              "cf": "",
-              "labels": "",
-              "en": "They abandoned the match because of rain.",
-              "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f5d" }
-            },
-            {
-              "cf": "",
-              "labels": "",
-              "en": "The plans for reform were quietly abandoned.",
-              "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f5e" }
-            },
-            {
-              "cf": "",
-              "labels": "",
-              "en": "She abandoned hope of any reconciliation.",
-              "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f5f" }
-            },
-            {
-              "cf": "",
-              "labels": "",
-              "en": "We had to abandon any further attempt at negotiation.",
-              "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f60" }
-            }
-          ],
-          "_id": { "$oid": "68d57d9c4a0aa01019541f5c" },
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae0b"
+          },
           "definition_vi": "",
           "definition_vi_short": ""
         },
@@ -147,89 +110,101 @@
           "labels": "",
           "dis_g": "",
           "variants": {},
-          "grammar": "",
-          "cf": "",
-          "definition": "to stop supporting or helping somebody; to stop believing in something",
+          "grammar": "[intransitive]",
+          "cf": "hang adv./prep.",
+          "definition": "when something hangs in a particular way, it falls in that way",
           "synonyms": [],
           "opposites": [],
           "see_alsos": [],
           "examples": [
             {
-              "cf": "abandon somebody",
+              "cf": "",
               "labels": "",
-              "en": "The country abandoned its political leaders after the war.",
+              "en": "Her hair hung down to her waist.",
               "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f62" }
-            },
-            {
-              "cf": "abandon something",
-              "labels": "",
-              "en": "Critics accused him of abandoning his principles.",
-              "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f63" }
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae15"
+              }
             },
             {
               "cf": "",
               "labels": "",
-              "en": "This principle has now been effectively abandoned.",
+              "en": "He had lost weight and the suit hung loosely on him.",
               "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f64" }
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae16"
+              }
             }
           ],
-          "_id": { "$oid": "68d57d9c4a0aa01019541f61" },
-          "definition_vi": "",
-          "definition_vi_short": ""
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae14"
+          },
+          "definition_vi": "Khi một vật treo theo một cách cụ thể, nó sẽ rơi theo cách đó.",
+          "definition_vi_short": "treo, rơi theo kiểu, treo lơ lửng"
         },
-        {
-          "symbol": "",
-          "labels": "(literary)",
-          "dis_g": "",
-          "variants": {},
-          "grammar": "",
-          "cf": "abandon yourself to something",
-          "definition": "to feel an emotion so strongly that you can feel nothing else",
-          "synonyms": [],
-          "opposites": [],
-          "see_alsos": [],
-          "examples": [
-            {
-              "cf": "",
-              "labels": "",
-              "en": "He abandoned himself to despair.",
-              "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f66" }
-            }
-          ],
-          "_id": { "$oid": "68d57d9c4a0aa01019541f65" },
-          "definition_vi": "",
-          "definition_vi_short": ""
-        }
-      ],
-      "idioms": [],
-      "phrasal_verbs": [],
-      "_id": { "$oid": "68d57d9c4a0aa01019541f52" },
-      "phrasal_verb_senses": []
-    },
-    {
-      "word": "abandon",
-      "pos": "noun",
-      "symbol": "",
-      "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/a/aba/aband/abandon__gb_2.mp3",
-      "phonetic_text": "/əˈbændən/",
-      "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/a/aba/aband/abandon__us_2.mp3",
-      "phonetic_am_text": "/əˈbændən/",
-      "variants": {},
-      "grammar": "[uncountable]",
-      "labels": "(formal)",
-      "senses": [
         {
           "symbol": "",
           "labels": "",
           "dis_g": "",
           "variants": {},
-          "grammar": "",
+          "grammar": "[intransitive, transitive]",
           "cf": "",
-          "definition": "a way of behaving that is not sensible and shows that you do not care about the possible results of your actions or what other people think",
+          "definition": "to bend or let something bend downwards",
+          "synonyms": [],
+          "opposites": [],
+          "see_alsos": [],
+          "examples": [
+            {
+              "cf": "hang adv./prep.",
+              "labels": "",
+              "en": "The dog's tongue was hanging out.",
+              "vi": "",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae18"
+              }
+            },
+            {
+              "cf": "",
+              "labels": "",
+              "en": "Children hung (= were leaning) over the gate.",
+              "vi": "",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae19"
+              }
+            },
+            {
+              "cf": "",
+              "labels": "",
+              "en": "Her injured arm hung uselessly at her side.",
+              "vi": "",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae1a"
+              }
+            },
+            {
+              "cf": "hang something",
+              "labels": "",
+              "en": "She hung her head in shame.",
+              "vi": "",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae1b"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae17"
+          },
+          "definition_vi": "bẻ hoặc để một cái gì đó cong xuống dưới.",
+          "definition_vi_short": "bẻ cong, làm cong, gập xuống"
+        },
+        {
+          "symbol": "",
+          "labels": "",
+          "dis_g": "",
+          "variants": {},
+          "grammar": "[transitive, intransitive]",
+          "cf": "hang (somebody/yourself)",
+          "definition": "to kill somebody by tying a rope around their neck and allowing them to drop; to be killed in this way",
           "synonyms": [],
           "opposites": [],
           "see_alsos": [],
@@ -237,19 +212,255 @@
             {
               "cf": "",
               "labels": "",
-              "en": "He spent money with careless abandon.",
+              "en": "He was the last man to be hanged for murder in this country.",
               "vi": "",
-              "_id": { "$oid": "68d57d9c4a0aa01019541f69" }
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae1d"
+              }
+            },
+            {
+              "cf": "",
+              "labels": "",
+              "en": "She had tried to hang herself.",
+              "vi": "",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae1e"
+              }
+            },
+            {
+              "cf": "",
+              "labels": "",
+              "en": "At that time you could hang for stealing.",
+              "vi": "",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae1f"
+              }
             }
           ],
-          "_id": { "$oid": "68d57d9c4a0aa01019541f68" },
-          "definition_vi": "",
-          "definition_vi_short": ""
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae1c"
+          }
+        },
+        {
+          "symbol": "",
+          "labels": "(especially North American English, informal)",
+          "dis_g": "",
+          "variants": {},
+          "grammar": "[intransitive]",
+          "cf": "",
+          "definition": "to spend time relaxing or enjoying yourself",
+          "synonyms": [],
+          "opposites": [],
+          "see_alsos": [],
+          "examples": [
+            {
+              "cf": "",
+              "labels": "",
+              "en": "‘What are you all doing?’ ‘Just hanging.’",
+              "vi": "",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae21"
+              }
+            },
+            {
+              "cf": "hang with somebody",
+              "labels": "",
+              "en": "Do you wanna come hang with us?",
+              "vi": "",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae22"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae20"
+          }
+        },
+        {
+          "symbol": "",
+          "labels": "",
+          "dis_g": "",
+          "variants": {},
+          "grammar": "[transitive, intransitive]",
+          "cf": "hang (something)",
+          "definition": "to attach something, especially a picture, to a hook (= a curved piece of metal) on a wall; to be attached in this way",
+          "synonyms": [],
+          "opposites": [],
+          "see_alsos": [],
+          "examples": [
+            {
+              "cf": "",
+              "labels": "",
+              "en": "We hung her portrait above the fireplace.",
+              "vi": "",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae24"
+              }
+            },
+            {
+              "cf": "",
+              "labels": "",
+              "en": "Several of his paintings hang in the Tate Gallery.",
+              "vi": "",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae25"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae23"
+          }
+        },
+        {
+          "symbol": "",
+          "labels": "",
+          "dis_g": "",
+          "variants": {},
+          "grammar": "[transitive, usually passive]",
+          "cf": "",
+          "definition": "to decorate a place by placing paintings, etc. on a wall",
+          "synonyms": [],
+          "opposites": [],
+          "see_alsos": [],
+          "examples": [
+            {
+              "cf": "be hung with something",
+              "labels": "",
+              "en": "The rooms were hung with tapestries.",
+              "vi": "",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae27"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae26"
+          }
+        },
+        {
+          "symbol": "",
+          "labels": "",
+          "dis_g": "",
+          "variants": {},
+          "grammar": "[transitive]",
+          "cf": "hang something",
+          "definition": "to stick wallpaper to a wall",
+          "synonyms": [],
+          "opposites": [],
+          "see_alsos": [],
+          "examples": [],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae28"
+          }
+        },
+        {
+          "symbol": "",
+          "labels": "",
+          "dis_g": "",
+          "variants": {},
+          "grammar": "[transitive]",
+          "cf": "hang something",
+          "definition": "to attach a door or gate to a post so that it moves freely",
+          "synonyms": [],
+          "opposites": [],
+          "see_alsos": [],
+          "examples": [],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae29"
+          }
+        },
+        {
+          "symbol": "",
+          "labels": "",
+          "dis_g": "",
+          "variants": {},
+          "grammar": "[intransitive]",
+          "cf": "+ adv./prep.",
+          "definition": "to stay in the air",
+          "synonyms": [],
+          "opposites": [],
+          "see_alsos": [],
+          "examples": [
+            {
+              "cf": "",
+              "labels": "",
+              "en": "Smoke hung in the air above the city.",
+              "vi": "Khói lơ lửng trong không khí trên thành phố.",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae2b"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae2a"
+          }
         }
       ],
       "idioms": [
         {
-          "word": "with gay abandon",
+          "word": "hang something",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "(British English, informal)",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "used to say that you are not going to worry about something",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [
+                {
+                  "en": "Oh, let's get two and hang the expense!",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae2e"
+                  }
+                }
+              ],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae2d"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae2c"
+          },
+          "normalized_word": "hang something"
+        },
+        {
+          "word": "hang by a hair/thread",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "",
+              "dis_g": "(of a person’s life)",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "to be in great danger",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae30"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae2f"
+          },
+          "normalized_word": "hang by a hair thread"
+        },
+        {
+          "word": "hang/hold fire",
           "labels": "",
           "variants": {},
           "senses": [
@@ -260,24 +471,640 @@
               "variants": {},
               "grammar": "",
               "cf": "",
-              "definition": "without thinking about the results or effects of a particular action",
+              "definition": "to delay or be delayed in taking action",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [
+                {
+                  "en": "The project had hung fire for several years for lack of funds.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae33"
+                  }
+                }
+              ],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae32"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae31"
+          },
+          "normalized_word": "hang hold fire"
+        },
+        {
+          "word": "hang your hat",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "(North American English, informal)",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "to live in a particular place",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [
+                {
+                  "en": "These multimillion-dollar homes are more than just a place to hang your hat.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae36"
+                  }
+                }
+              ],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae35"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae34"
+          },
+          "normalized_word": "hang your hat"
+        },
+        {
+          "word": "hang your hat on something",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "(North American English, informal)",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "to depend or rely on something",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [
+                {
+                  "en": "The research is interesting, but you cannot hang your hat on it.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae39"
+                  }
+                }
+              ],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae38"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae37"
+          },
+          "normalized_word": "hang your hat on something"
+        },
+        {
+          "word": "hang/lie heavy",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "",
+              "dis_g": "(of a feeling or something in the air)",
+              "variants": {},
+              "grammar": "",
+              "cf": "hang/lie heavy (on/in something)",
+              "definition": "to be very easy to notice in a particular place in a way that is unpleasant",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [
+                {
+                  "en": "Smoke lay heavy on the far side of the water.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae3c"
+                  }
+                },
+                {
+                  "en": "Despair hangs heavy in the stifling air.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae3d"
+                  }
+                }
+              ],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae3b"
+              }
+            },
+            {
+              "symbol": "",
+              "labels": "",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "hang/lie heavy on somebody/something",
+              "definition": "to cause somebody/something to feel uncomfortable or anxious",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [
+                {
+                  "en": "The crime lay heavy on her conscience.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae3f"
+                  }
+                }
+              ],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae3e"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae3a"
+          },
+          "normalized_word": "hang lie heavy"
+        },
+        {
+          "word": "hang (on) in there",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "(informal)",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "to remain determined to succeed even when a situation is difficult",
               "synonyms": [],
               "opposites": [],
               "see_alsos": [],
               "examples": [],
-              "_id": { "$oid": "68d57d9c4a0aa01019541f6b" },
-              "definition_vi": "",
-              "definition_vi_short": ""
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae41"
+              }
             }
           ],
-          "_id": { "$oid": "68d57d9c4a0aa01019541f6a" }
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae40"
+          },
+          "normalized_word": "hang on in there"
+        },
+        {
+          "word": "hang a left/right",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "(informal)",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "to take a left/right turn",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae43"
+              },
+              "definition_vi": "rẽ trái/phải",
+              "definition_vi_short": "rẽ trái, rẽ phải, chuyển hướng trái, chuyển hướng phải"
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae42"
+          },
+          "normalized_word": "hang a left right"
+        },
+        {
+          "word": "hang/stay loose",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "(especially North American English, informal)",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "to remain calm; to not worry",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [
+                {
+                  "en": "It's OK—hang loose and stay cool.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae46"
+                  }
+                }
+              ],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae45"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae44"
+          },
+          "normalized_word": "hang stay loose"
+        },
+        {
+          "word": "hang/hold on for/like grim death",
+          "labels": "(British English)",
+          "variants": {
+            "text": "(also hang/hold on for dear life North American English, British English)",
+            "html": "(also <span class=\"v-g\" id=\"hang_vg_2\"><span class=\"v\" id=\"hang_v_1\">hang/hold on for dear life</span> <span class=\"labels\" hclass=\"labels\" htag=\"span\">North American English, British English</span></span>)"
+          },
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "(informal)",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "to hold somebody/something very tightly or keep something in a very determined way because you are afraid",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [
+                {
+                  "en": "You get a job, then you get a mortgage and then you hang on like grim death to your job to pay off the mortgage.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae49"
+                  }
+                }
+              ],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae48"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae47"
+          },
+          "normalized_word": "hang hold on for like grim death"
+        },
+        {
+          "word": "hang on somebody’s words/on somebody’s every word",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "to listen with great attention to somebody you admire",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [
+                {
+                  "en": "The journalists hung on his every word as he spoke of his ordeal.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae4c"
+                  }
+                }
+              ],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae4b"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae4a"
+          },
+          "normalized_word": "hang on somebody s words on somebody s every word"
+        },
+        {
+          "word": "hang somebody out to dry",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "(informal)",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "to put somebody in a difficult situation",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [
+                {
+                  "en": "She is being hung out to dry for one silly mistake.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae4f"
+                  }
+                }
+              ],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae4e"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae4d"
+          },
+          "normalized_word": "hang somebody out to dry"
+        },
+        {
+          "word": "hang tough",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "(North American English, informal)",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "to be determined and refuse to change your attitude or ideas",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae51"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae50"
+          },
+          "normalized_word": "hang tough"
+        },
+        {
+          "word": "(be/hang) in the balance",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "if the future of something/somebody, or the result of something is/hangs in the balance, it is not certain",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [
+                {
+                  "en": "The long-term future of the space programme hangs in the balance.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae54"
+                  }
+                },
+                {
+                  "en": "Tom’s life hung in the balance for two weeks as he lay in a coma.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae55"
+                  }
+                }
+              ],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae53"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae52"
+          },
+          "normalized_word": "be hang in the balance"
+        },
+        {
+          "word": "let it all hang out",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "(informal)",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "to express your feelings freely",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae57"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae56"
+          },
+          "normalized_word": "let it all hang out"
+        },
+        {
+          "word": "(you, etc.) may/might as well be hanged/hung for a sheep as (for) a lamb",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "(saying)",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "if you are going to be punished for doing something wrong, whether it is a big or small thing, you may as well do the big thing",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae59"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae58"
+          },
+          "normalized_word": "you etc may might as well be hanged hung for a sheep as for a lamb"
+        },
+        {
+          "word": "a peg to hang something on",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "something that gives you an excuse or opportunity to discuss or explain something",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [
+                {
+                  "en": "The character provides a peg to hang the writer’s political ideas on.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae5c"
+                  }
+                }
+              ],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae5b"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae5a"
+          },
+          "normalized_word": "a peg to hang something on"
+        }
+      ],
+      "phrasal_verbs": [
+        "hang about",
+        "hang around",
+        "hang around with",
+        "hang back",
+        "hang on",
+        "hang on to",
+        "hang out",
+        "hang over",
+        "hang together",
+        "hang up",
+        "hang up on"
+      ],
+      "_id": {
+        "$oid": "68e27b31cb578e33282fae0a"
+      },
+      "phrasal_verb_senses": []
+    },
+    {
+      "word": "hang",
+      "pos": "noun",
+      "symbol": "",
+      "phonetic": "https://www.oxfordlearnersdictionaries.com/media/english/uk_pron/h/han/hang_/hang__gb_1.mp3",
+      "phonetic_text": "/hæŋ/",
+      "phonetic_am": "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/h/han/hang_/hang__us_1.mp3",
+      "phonetic_am_text": "/hæŋ/",
+      "variants": {},
+      "grammar": "[singular]",
+      "labels": "",
+      "senses": [
+        {
+          "symbol": "",
+          "labels": "",
+          "dis_g": "",
+          "variants": {},
+          "grammar": "",
+          "cf": "",
+          "definition": "the way in which a dress, piece of cloth, etc. falls or moves",
+          "synonyms": [],
+          "opposites": [],
+          "see_alsos": [],
+          "examples": [
+            {
+              "cf": "",
+              "labels": "",
+              "en": "Small weights sewn into the hems will improve the hang of your curtains.",
+              "vi": "",
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae5f"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae5e"
+          }
+        }
+      ],
+      "idioms": [
+        {
+          "word": "get the hang of something",
+          "labels": "",
+          "variants": {},
+          "senses": [
+            {
+              "symbol": "",
+              "labels": "(informal)",
+              "dis_g": "",
+              "variants": {},
+              "grammar": "",
+              "cf": "",
+              "definition": "to learn how to do or to use something; to understand something",
+              "synonyms": [],
+              "opposites": [],
+              "see_alsos": [],
+              "examples": [
+                {
+                  "en": "It's not difficult once you get the hang of it.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae62"
+                  }
+                },
+                {
+                  "en": "I can’t seem to get the hang of this game.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae63"
+                  }
+                },
+                {
+                  "en": "I never got the hang of negative numbers.",
+                  "vi": "",
+                  "_id": {
+                    "$oid": "68e27b31cb578e33282fae64"
+                  }
+                }
+              ],
+              "_id": {
+                "$oid": "68e27b31cb578e33282fae61"
+              }
+            }
+          ],
+          "_id": {
+            "$oid": "68e27b31cb578e33282fae60"
+          },
+          "normalized_word": "get the hang of something"
         }
       ],
       "phrasal_verbs": [],
-      "_id": { "$oid": "68d57d9c4a0aa01019541f67" },
+      "_id": {
+        "$oid": "68e27b31cb578e33282fae5d"
+      },
       "phrasal_verb_senses": []
     }
   ],
-  "updatedAt": "2025-09-25T17:36:28.946Z",
-  "variant": []
+  "parts_of_speech": ["noun", "verb"],
+  "symbol": "b1",
+  "updatedAt": "2025-10-15T15:22:57.718Z",
+  "variants": ["hang"]
 }

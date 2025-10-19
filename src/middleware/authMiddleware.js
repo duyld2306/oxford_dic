@@ -1,9 +1,10 @@
 import jwt from "jsonwebtoken";
-import UserModel from "../models/User.js";
+import { UserRepository } from "../repositories/UserRepository.js";
 import env from "../config/env.js";
 import { respond } from "../utils/respond.js";
+import logger from "../config/logger.js";
 
-const userModel = new UserModel();
+const userRepository = new UserRepository();
 
 const authMiddleware = async (req, res, next) => {
   try {
@@ -21,7 +22,7 @@ const authMiddleware = async (req, res, next) => {
     // Verify the JWT token
     const jwtSecret = env.JWT_SECRET;
     if (!jwtSecret) {
-      console.error("JWT_SECRET not configured");
+      logger.error("JWT_SECRET not configured");
       return respond.error(res, "SYSTEM.SERVER_CONFIG_ERROR");
     }
 
@@ -39,7 +40,8 @@ const authMiddleware = async (req, res, next) => {
     }
 
     // Get user from database
-    const user = await userModel.findByIdSafe(decoded.userId);
+    await userRepository.init();
+    const user = await userRepository.findById(decoded.userId);
 
     if (!user) {
       return respond.error(res, "USER.USER_NOT_FOUND");
@@ -55,7 +57,7 @@ const authMiddleware = async (req, res, next) => {
 
     next();
   } catch (error) {
-    console.error("Auth middleware error:", error);
+    logger.error("Auth middleware error:", error);
     return respond.error(res, "AUTH.AUTH_MIDDLEWARE_ERROR");
   }
 };
@@ -82,7 +84,8 @@ const optionalAuthMiddleware = async (req, res, next) => {
 
     try {
       const decoded = jwt.verify(token, jwtSecret);
-      const user = await userModel.findByIdSafe(decoded.userId);
+      await userRepository.init();
+      const user = await userRepository.findById(decoded.userId);
 
       if (user && user.isVerified) {
         req.user = user;
@@ -94,7 +97,7 @@ const optionalAuthMiddleware = async (req, res, next) => {
 
     next();
   } catch (error) {
-    console.error("Optional auth middleware error:", error);
+    logger.error("Optional auth middleware error:", error);
     next(); // Continue without authentication
   }
 };

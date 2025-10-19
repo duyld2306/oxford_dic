@@ -2,19 +2,6 @@ import axios from "axios";
 import { load } from "cheerio";
 import { ObjectId } from "mongodb";
 
-// Priority order for symbol selection
-const SYMBOL_ORDER = ["a1", "a2", "b1", "b2", "c1"];
-
-function chooseTopSymbol(arr) {
-  if (!Array.isArray(arr) || arr.length === 0) return "";
-  const cleaned = arr.map((s) => (s || "").trim()).filter((s) => s !== "");
-  if (cleaned.length === 0) return "";
-  for (const s of SYMBOL_ORDER) {
-    if (cleaned.includes(s)) return s;
-  }
-  return cleaned[0] || "";
-}
-
 async function crawlWordDirect(word, maxSuffix = 5) {
   const words = [];
 

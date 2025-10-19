@@ -1,59 +1,69 @@
-import UserModel from "../models/User.js";
+import { BaseService } from "./BaseService.js";
+import { UserRepository } from "../repositories/UserRepository.js";
+import bcrypt from "bcryptjs";
 
-const userModel = new UserModel();
+class InitService extends BaseService {
+  constructor(userRepository = null, dependencies = {}) {
+    super(userRepository || new UserRepository(), dependencies);
+  }
 
-class InitService {
   async initializeDefaultAdmin() {
-    try {
-      const adminEmail = "admin@admin.com";
-      const adminPassword = "123456";
+    return this.execute(
+      async () => {
+        const adminEmail = "admin@admin.com";
+        const adminPassword = "123456";
 
-      // Check if admin account already exists
-      const existingAdmin = await userModel.findByEmail(adminEmail);
+        // Check if admin account already exists
+        const existingAdmin = await this.repository.findOne({
+          email: adminEmail,
+        });
 
-      if (existingAdmin) {
-        // If exists but not superadmin, upgrade to superadmin
-        if (existingAdmin.role !== "superadmin") {
-          console.log("🔧 Upgrading admin account to superadmin...");
-          await userModel.updateById(existingAdmin._id, { role: "superadmin" });
-          console.log("✅ Admin account upgraded to superadmin");
-        } else {
-          console.log("✅ Default superadmin account already exists");
+        if (existingAdmin) {
+          // If exists but not superadmin, upgrade to superadmin
+          if (existingAdmin.role !== "superadmin") {
+            this.log("info", "Upgrading admin account to superadmin...");
+            await this.repository.updateById(existingAdmin._id, {
+              role: "superadmin",
+            });
+            this.log("info", "Admin account upgraded to superadmin");
+          } else {
+            this.log("info", "Default superadmin account already exists");
+          }
+          return;
         }
-        return;
-      }
 
-      // Create default superadmin account
-      console.log("🔧 Creating default superadmin account...");
+        // Create default superadmin account
+        this.log("info", "Creating default superadmin account...");
 
-      const adminUser = await userModel.create({
-        email: adminEmail,
-        password: adminPassword,
-        role: "superadmin",
-        fullname: "System Administrator",
-      });
+        const hashedPassword = await bcrypt.hash(adminPassword, 12);
 
-      // Auto-verify the admin account
-      await userModel.verifyUser(adminUser._id);
+        const adminUser = await this.repository.insertOne({
+          email: adminEmail,
+          password: hashedPassword,
+          role: "superadmin",
+          fullname: "System Administrator",
+          isVerified: true,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        });
 
-      console.log("✅ Default superadmin account created successfully");
-      console.log(`   Email: ${adminEmail}`);
-      console.log(`   Password: ${adminPassword}`);
-      console.log(`   Role: superadmin`);
-      console.log("   ⚠️  Please change the password after first login!");
-    } catch (error) {
-      console.error(
-        "❌ Failed to create default superadmin account:",
-        error.message
-      );
-      // Don't throw - allow the application to continue even if admin creation fails
-    }
+        this.log("info", "Default superadmin account created successfully");
+        this.log("info", `Email: ${adminEmail}`);
+        this.log("info", `Password: ${adminPassword}`);
+        this.log("info", `Role: superadmin`);
+        this.log("warn", "Please change the password after first login!");
+
+        return adminUser;
+      },
+      "initializeDefaultAdmin",
+      false
+    ); // Don't throw on error
   }
 
   async initialize() {
-    console.log("🚀 Running initialization tasks...");
+    this.log("info", "Running initialization tasks...");
     await this.initializeDefaultAdmin();
-    console.log("✅ Initialization completed\n");
+    this.log("info", "Initialization completed");
   }
 }
 
