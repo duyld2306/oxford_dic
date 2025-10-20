@@ -166,7 +166,7 @@ export class WordRepository extends BaseRepository {
 
     // 🔍 Chuyển các khoảng trắng thành ".*" để match đa token
     const regexPattern = searchPrefix.replace(/\s+/g, ".*");
-    const regex = new RegExp(regexPattern, "i"); // "i" => không phân biệt hoa/thường
+    const regex = new RegExp(regexPattern, "i");
 
     const pipeline = [
       { $unwind: "$data" },
@@ -178,24 +178,26 @@ export class WordRepository extends BaseRepository {
       },
       {
         $project: {
-          _id: 1,
+          _id: "$_id",
           word: "$data.idioms.word",
           pos: "$data.pos",
           isIdiom: { $literal: true },
           documentId: "$_id",
         },
       },
+      // Sort theo: documentId -> pos -> word
       {
-        $group: {
-          _id: "$word",
-          doc: { $first: "$$ROOT" },
+        $sort: {
+          documentId: 1, // 1. Group theo _id
+          pos: 1, // 2. Group theo pos
+          word: 1, // 3. Sort theo word trong mỗi group
         },
       },
-      { $sort: { _id: 1 } },
+      // Count total và phân trang
       {
         $group: {
           _id: null,
-          words: { $push: "$doc" },
+          words: { $push: "$$ROOT" },
           total: { $sum: 1 },
         },
       },
