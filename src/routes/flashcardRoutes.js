@@ -24,11 +24,11 @@ router.post(
 // DELETE /api/flashcard-groups/flashcards/:flashcard_id - Remove flashcard
 router.delete("/flashcards/:flashcard_id", flashcardController.removeFlashcard);
 
-// PUT /api/flashcard-groups/flashcards/:flashcard_id/status - Update flashcard status
-router.put(
-  "/flashcards/:flashcard_id/status",
-  validateBody(flashcardSchemas.updateStatus),
-  flashcardController.updateFlashcardStatus
+// POST /api/flashcard-groups/flashcards/:flashcard_id/review - Review flashcard
+router.post(
+  "/flashcards/:flashcard_id/review",
+  validateBody(flashcardSchemas.review),
+  flashcardController.reviewFlashcard
 );
 
 export default router;

@@ -41,17 +41,17 @@ class FlashcardController extends BaseController {
   });
 
   /**
-   * PUT /:flashcard_id/status - Update flashcard status
+   * POST /flashcards/:flashcard_id/review - Review flashcard
    */
-  updateFlashcardStatus = this.asyncHandler(async (req, res) => {
+  reviewFlashcard = this.asyncHandler(async (req, res) => {
     const userId = this.getUserId(req);
     const { flashcard_id } = this.getParams(req);
-    const { status } = this.getBody(req);
+    const { action } = this.getBody(req);
 
-    const result = await this.flashcardService.updateFlashcardStatus(
+    const result = await this.flashcardService.reviewFlashcard(
       flashcard_id,
       userId,
-      status
+      action
     );
     return this.sendSuccess(res, result);
   });

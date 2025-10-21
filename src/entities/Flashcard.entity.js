@@ -18,7 +18,9 @@ export class FlashcardEntity {
     this.progress = data.progress || {
       times_shown: 0,
       times_correct: 0,
+      accuracy: 0,
       last_reviewed_at: null,
+      next_review_at: null,
     };
     this.createdAt = data.createdAt || new Date();
     this.updatedAt = data.updatedAt || new Date();
@@ -52,10 +54,7 @@ export class FlashcardEntity {
       errors.push("Word ID is required and must be a string");
     }
 
-    if (
-      this.status &&
-      !Object.values(FlashcardStatus).includes(this.status)
-    ) {
+    if (this.status && !Object.values(FlashcardStatus).includes(this.status)) {
       errors.push(
         `Status must be one of: ${Object.values(FlashcardStatus).join(", ")}`
       );
@@ -71,4 +70,3 @@ export class FlashcardEntity {
     };
   }
 }
-

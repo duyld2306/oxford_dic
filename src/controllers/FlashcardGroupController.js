@@ -80,15 +80,13 @@ class FlashcardGroupController extends BaseController {
   });
 
   /**
-   * POST /:id/sync - Sync flashcards from group word
+   * POST /sync - Sync flashcards from group word
    */
   syncFromGroupWord = this.asyncHandler(async (req, res) => {
     const userId = this.getUserId(req);
-    const { id } = this.getParams(req);
     const { group_word_id } = this.getBody(req);
 
     const result = await this.flashcardGroupService.syncFromGroupWord(
-      id,
       userId,
       group_word_id
     );
@@ -97,4 +95,3 @@ class FlashcardGroupController extends BaseController {
 }
 
 export default FlashcardGroupController;
-

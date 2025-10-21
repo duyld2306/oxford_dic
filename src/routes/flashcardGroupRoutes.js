@@ -13,9 +13,9 @@ router.use(authMiddleware);
 // GET /api/flashcard-groups - Get all flashcard groups
 router.get("/", flashcardGroupController.getFlashcardGroups);
 
-// POST /api/flashcard-groups/:id/sync - Sync from group_word
+// POST /api/flashcard-groups/sync - Sync from group_word
 router.post(
-  "/:id/sync",
+  "/sync",
   validateBody(
     Joi.object({
       group_word_id: Joi.string().required(),
@@ -45,4 +45,3 @@ router.put(
 router.delete("/:id", flashcardGroupController.deleteFlashcardGroup);
 
 export default router;
-

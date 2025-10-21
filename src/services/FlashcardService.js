@@ -177,25 +177,16 @@ export class FlashcardService extends BaseService {
   }
 
   /**
-   * Update flashcard status
+   * Review flashcard - Update progress with spaced repetition
    * @param {string|ObjectId} flashcardId - Flashcard ID
    * @param {string|ObjectId} userId - User ID
-   * @param {string} status - New status
+   * @param {string} action - "remember" or "forget"
    * @returns {Promise<Object>}
    */
-  async updateFlashcardStatus(flashcardId, userId, status) {
+  async reviewFlashcard(flashcardId, userId, action) {
     return this.execute(async () => {
       await this.repository.init();
       await this.flashcardGroupRepository.init();
-
-      const ALLOWED_STATUSES = ["new", "learning", "mastered"];
-      if (!ALLOWED_STATUSES.includes(status)) {
-        const error = new Error(
-          `Invalid status. Allowed values: ${ALLOWED_STATUSES.join(", ")}`
-        );
-        error.status = 400;
-        throw error;
-      }
 
       // Get flashcard
       const flashcard = await this.repository.findById(flashcardId);
@@ -217,18 +208,91 @@ export class FlashcardService extends BaseService {
         throw error;
       }
 
-      // Update status
+      // Initialize progress if not exists
+      const progress = flashcard.progress || {
+        times_shown: 0,
+        times_correct: 0,
+        accuracy: 0,
+        last_reviewed_at: null,
+        next_review_at: null,
+      };
+
+      // Increment times_shown
+      progress.times_shown += 1;
+
+      // Spaced repetition intervals (in days)
+      const intervals = [1, 2, 4, 7, 15, 30];
+
+      if (action === "remember") {
+        // Increment times_correct
+        progress.times_correct += 1;
+
+        // Calculate accuracy
+        progress.accuracy =
+          Math.round(
+            (progress.times_correct / progress.times_shown) * 100 * 100
+          ) / 100; // Round to 2 decimal places
+
+        // Determine next interval
+        const intervalDays =
+          intervals[Math.min(progress.times_correct - 1, intervals.length - 1)];
+
+        // Calculate next_review_at at 00:00:00 of the due date
+        const next = new Date();
+        next.setDate(next.getDate() + intervalDays);
+        next.setHours(0, 0, 0, 0);
+        progress.next_review_at = next;
+
+        // Update status based on progress
+        if (progress.times_correct >= 5) {
+          flashcard.status = "mastered";
+        } else if (progress.times_correct >= 1) {
+          flashcard.status = "learning";
+        }
+      } else if (action === "forget") {
+        // Reset times_correct
+        progress.times_correct = 0;
+
+        // Calculate accuracy
+        progress.accuracy = 0;
+
+        // Set next_review_at to 00:00:00 of the next day
+        const next = new Date();
+        next.setDate(next.getDate() + 1);
+        next.setHours(0, 0, 0, 0);
+        progress.next_review_at = next;
+
+        // Reset status to learning
+        flashcard.status = "learning";
+      }
+
+      // Set last_reviewed_at to current time
+      progress.last_reviewed_at = new Date();
+
+      // Update flashcard
       await this.repository.updateById(flashcardId, {
         $set: {
-          status,
+          progress,
+          status: flashcard.status,
           updatedAt: new Date(),
         },
       });
 
-      // Return updated flashcard
-      const updatedFlashcard = await this.repository.findById(flashcardId);
-      return new FlashcardDTO(updatedFlashcard).transform();
-    }, "updateFlashcardStatus");
+      this.log("info", `Flashcard reviewed: ${flashcardId} - ${action}`);
+
+      // Return updated flashcard with progress
+      return {
+        flashcard_id: flashcardId,
+        progress: {
+          times_shown: progress.times_shown,
+          times_correct: progress.times_correct,
+          accuracy: progress.accuracy,
+          last_reviewed_at: progress.last_reviewed_at,
+          next_review_at: progress.next_review_at,
+        },
+        status: flashcard.status,
+      };
+    }, "reviewFlashcard");
   }
 }
 

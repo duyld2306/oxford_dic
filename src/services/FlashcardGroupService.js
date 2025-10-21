@@ -35,12 +35,28 @@ export class FlashcardGroupService extends BaseService {
   async getFlashcardGroups(userId) {
     return this.execute(async () => {
       await this.repository.init();
+      await this.flashcardRepository.init();
 
       const groups = await this.repository.find({
         user_id: this.repository.toObjectId(userId),
       });
 
-      return groups.map((group) => new FlashcardGroupDTO(group).transform());
+      // Fetch flashcards for each group to calculate is_due_for_review
+      const groupsWithFlashcards = await Promise.all(
+        groups.map(async (group) => {
+          const flashcards = await this.flashcardRepository.find({
+            flashcard_group_id: group._id,
+          });
+          return {
+            ...group,
+            flashcards_data: flashcards,
+          };
+        })
+      );
+
+      return groupsWithFlashcards.map((group) =>
+        new FlashcardGroupDTO(group).transform()
+      );
     }, "getFlashcardGroups");
   }
 
@@ -195,28 +211,15 @@ export class FlashcardGroupService extends BaseService {
 
   /**
    * Sync flashcard group from group_word
-   * @param {string|ObjectId} groupId - Flashcard group ID
    * @param {string|ObjectId} userId - User ID
    * @param {string|ObjectId} groupWordId - Group word ID to sync from
    * @returns {Promise<Object>}
    */
-  async syncFromGroupWord(groupId, userId, groupWordId) {
+  async syncFromGroupWord(userId, groupWordId) {
     return this.execute(async () => {
       await this.repository.init();
       await this.groupWordRepository.init();
       await this.flashcardRepository.init();
-
-      // Check if flashcard group exists and belongs to user
-      const flashcardGroup = await this.repository.findOne({
-        _id: this.repository.toObjectId(groupId),
-        user_id: this.repository.toObjectId(userId),
-      });
-
-      if (!flashcardGroup) {
-        const error = new Error("Flashcard group not found");
-        error.status = 404;
-        throw error;
-      }
 
       // Check if group_word exists and belongs to user
       const groupWord = await this.groupWordRepository.findOne({
@@ -230,16 +233,36 @@ export class FlashcardGroupService extends BaseService {
         throw error;
       }
 
-      // Update flashcard group source
-      await this.repository.updateById(groupId, {
+      // Find existing flashcard group with this source_id
+      let flashcardGroup = await this.repository.findOne({
+        user_id: this.repository.toObjectId(userId),
         source_type: "group_word",
         source_id: this.repository.toObjectId(groupWordId),
-        updatedAt: new Date(),
       });
+
+      let isFirstSync = false;
+
+      // If not exists, create new flashcard group
+      if (!flashcardGroup) {
+        isFirstSync = true;
+        flashcardGroup = await this.repository.create({
+          user_id: this.repository.toObjectId(userId),
+          name: groupWord.name,
+          description: groupWord.description || "",
+          source_type: "group_word",
+          source_id: this.repository.toObjectId(groupWordId),
+          flashcards: [],
+        });
+
+        this.log(
+          "info",
+          `Created new flashcard group from group_word: ${groupWord.name}`
+        );
+      }
 
       // Get existing flashcards in this group
       const existingFlashcards = await this.flashcardRepository.find({
-        flashcard_group_id: this.repository.toObjectId(groupId),
+        flashcard_group_id: flashcardGroup._id,
       });
 
       const existingWordIds = new Set(
@@ -252,16 +275,37 @@ export class FlashcardGroupService extends BaseService {
         (wordId) => !existingWordIds.has(wordId)
       );
 
+      let newFlashcardIds = [];
+
       if (newWordIds.length > 0) {
         const flashcardsToInsert = newWordIds.map((wordId) => ({
-          flashcard_group_id: this.repository.toObjectId(groupId),
+          flashcard_group_id: flashcardGroup._id,
           word_id: wordId,
           status: "new",
+          progress: {
+            times_shown: 0,
+            times_correct: 0,
+            accuracy: 0,
+            last_reviewed_at: null,
+            next_review_at: null,
+          },
           createdAt: new Date(),
           updatedAt: new Date(),
         }));
 
-        await this.flashcardRepository.insertMany(flashcardsToInsert);
+        const result = await this.flashcardRepository.collection.insertMany(
+          flashcardsToInsert
+        );
+        newFlashcardIds = Object.values(result.insertedIds);
+
+        // Update flashcard_group.flashcards array
+        await this.repository.collection.updateOne(
+          { _id: flashcardGroup._id },
+          {
+            $addToSet: { flashcards: { $each: newFlashcardIds } },
+            $set: { updatedAt: new Date() },
+          }
+        );
       }
 
       this.log(
@@ -269,10 +313,7 @@ export class FlashcardGroupService extends BaseService {
         `Synced ${newWordIds.length} new flashcards from group_word: ${groupWord.name}`
       );
 
-      return {
-        message: `Synced ${newWordIds.length} new flashcards`,
-        added: newWordIds.length,
-      };
+      return flashcardGroup;
     }, "syncFromGroupWord");
   }
 }

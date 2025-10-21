@@ -195,6 +195,10 @@ export const flashcardSchemas = {
       .valid(...Object.values(FLASHCARD_STATUS))
       .required(),
   }),
+
+  review: Joi.object({
+    action: Joi.string().valid("remember", "forget").required(),
+  }),
 };
 
 // ============================================
