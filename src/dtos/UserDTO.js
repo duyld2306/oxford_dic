@@ -17,12 +17,12 @@ export class UserDTO extends BaseDTO {
       email: data.email,
       fullname: data.fullname,
       gender: data.gender,
-      phone: data.phone,
+      phone_number: data.phone_number,
       avatar: data.avatar,
       role: data.role,
-      is_verified: data.isVerified || false,
-      created_at: this.formatDate(data.createdAt),
-      updated_at: this.formatDate(data.updatedAt),
+      isVerified: data.isVerified || false,
+      createdAt: this.formatDate(data.createdAt),
+      updatedAt: this.formatDate(data.updatedAt),
     });
   }
 }
@@ -39,12 +39,12 @@ export class UserProfileDTO extends BaseDTO {
       email: data.email,
       fullname: data.fullname,
       gender: data.gender,
-      phone: data.phone,
+      phone_number: data.phone_number,
       avatar: data.avatar,
       role: data.role,
-      is_verified: data.isVerified || false,
-      created_at: this.formatDate(data.createdAt),
-      updated_at: this.formatDate(data.updatedAt),
+      isVerified: data.isVerified || false,
+      createdAt: this.formatDate(data.createdAt),
+      updatedAt: this.formatDate(data.updatedAt),
     });
   }
 }
@@ -61,8 +61,8 @@ export class UserListDTO extends BaseDTO {
       email: data.email,
       fullname: data.fullname,
       role: data.role,
-      is_verified: data.isVerified || false,
-      created_at: this.formatDate(data.createdAt),
+      isVerified: data.isVerified || false,
+      createdAt: this.formatDate(data.createdAt),
     });
   }
 }

@@ -11,7 +11,9 @@ import { DatabaseError } from "../errors/AppError.js";
 export class BaseRepository {
   constructor(collectionName) {
     if (new.target === BaseRepository) {
-      throw new Error("BaseRepository is an abstract class and cannot be instantiated directly");
+      throw new Error(
+        "BaseRepository is an abstract class and cannot be instantiated directly"
+      );
     }
 
     this.collectionName = collectionName;
@@ -28,7 +30,9 @@ export class BaseRepository {
         this.collection = database.db.collection(this.collectionName);
         await this.createIndexes();
       } catch (error) {
-        throw new DatabaseError(`Failed to initialize ${this.collectionName} collection: ${error.message}`);
+        throw new DatabaseError(
+          `Failed to initialize ${this.collectionName} collection: ${error.message}`
+        );
       }
     }
   }
@@ -47,7 +51,7 @@ export class BaseRepository {
   toObjectId(value) {
     if (!value) return null;
     if (value instanceof ObjectId) return value;
-    
+
     try {
       return new ObjectId(value);
     } catch (error) {
@@ -60,7 +64,7 @@ export class BaseRepository {
    */
   toObjectIds(values) {
     if (!Array.isArray(values)) return [];
-    return values.map(v => this.toObjectId(v)).filter(Boolean);
+    return values.map((v) => this.toObjectId(v)).filter(Boolean);
   }
 
   /**
@@ -69,11 +73,13 @@ export class BaseRepository {
   async findById(id, projection = {}) {
     await this.init();
     const objectId = this.toObjectId(id);
-    
+
     try {
       return await this.collection.findOne({ _id: objectId }, { projection });
     } catch (error) {
-      throw new DatabaseError(`Failed to find document by ID: ${error.message}`);
+      throw new DatabaseError(
+        `Failed to find document by ID: ${error.message}`
+      );
     }
   }
 
@@ -82,7 +88,7 @@ export class BaseRepository {
    */
   async findOne(query, projection = {}) {
     await this.init();
-    
+
     try {
       return await this.collection.findOne(query, { projection });
     } catch (error) {
@@ -95,14 +101,14 @@ export class BaseRepository {
    */
   async find(query = {}, options = {}) {
     await this.init();
-    
+
     try {
       const cursor = this.collection.find(query, options);
-      
+
       if (options.sort) cursor.sort(options.sort);
       if (options.skip) cursor.skip(options.skip);
       if (options.limit) cursor.limit(options.limit);
-      
+
       return await cursor.toArray();
     } catch (error) {
       throw new DatabaseError(`Failed to find documents: ${error.message}`);
@@ -114,7 +120,7 @@ export class BaseRepository {
    */
   async count(query = {}) {
     await this.init();
-    
+
     try {
       return await this.collection.countDocuments(query);
     } catch (error) {
@@ -127,7 +133,7 @@ export class BaseRepository {
    */
   async insertOne(document) {
     await this.init();
-    
+
     try {
       const result = await this.collection.insertOne(document);
       return { ...document, _id: result.insertedId };
@@ -141,7 +147,7 @@ export class BaseRepository {
    */
   async insertMany(documents) {
     await this.init();
-    
+
     try {
       const result = await this.collection.insertMany(documents);
       return result;
@@ -155,16 +161,23 @@ export class BaseRepository {
    */
   async updateOne(query, update, options = {}) {
     await this.init();
-    
+
     try {
-      // Always update the updatedAt field
-      if (update.$set) {
-        update.$set.updatedAt = new Date();
-      } else {
-        update.$set = { updatedAt: new Date() };
+      // Ensure update has $set operator
+      let updateOp = update;
+      if (!update.$set && !update.$inc && !update.$push && !update.$pull) {
+        // If no operator provided, wrap in $set
+        updateOp = { $set: update };
       }
-      
-      return await this.collection.updateOne(query, update, options);
+
+      // Always update the updatedAt field
+      if (updateOp.$set) {
+        updateOp.$set.updatedAt = new Date();
+      } else {
+        updateOp.$set = { updatedAt: new Date() };
+      }
+
+      return await this.collection.updateOne(query, updateOp, options);
     } catch (error) {
       throw new DatabaseError(`Failed to update document: ${error.message}`);
     }
@@ -175,16 +188,23 @@ export class BaseRepository {
    */
   async updateMany(query, update, options = {}) {
     await this.init();
-    
+
     try {
-      // Always update the updatedAt field
-      if (update.$set) {
-        update.$set.updatedAt = new Date();
-      } else {
-        update.$set = { updatedAt: new Date() };
+      // Ensure update has $set operator
+      let updateOp = update;
+      if (!update.$set && !update.$inc && !update.$push && !update.$pull) {
+        // If no operator provided, wrap in $set
+        updateOp = { $set: update };
       }
-      
-      return await this.collection.updateMany(query, update, options);
+
+      // Always update the updatedAt field
+      if (updateOp.$set) {
+        updateOp.$set.updatedAt = new Date();
+      } else {
+        updateOp.$set = { updatedAt: new Date() };
+      }
+
+      return await this.collection.updateMany(query, updateOp, options);
     } catch (error) {
       throw new DatabaseError(`Failed to update documents: ${error.message}`);
     }
@@ -196,7 +216,7 @@ export class BaseRepository {
   async updateById(id, update, options = {}) {
     await this.init();
     const objectId = this.toObjectId(id);
-    
+
     return await this.updateOne({ _id: objectId }, update, options);
   }
 
@@ -205,7 +225,7 @@ export class BaseRepository {
    */
   async deleteOne(query) {
     await this.init();
-    
+
     try {
       return await this.collection.deleteOne(query);
     } catch (error) {
@@ -218,7 +238,7 @@ export class BaseRepository {
    */
   async deleteMany(query) {
     await this.init();
-    
+
     try {
       return await this.collection.deleteMany(query);
     } catch (error) {
@@ -232,7 +252,7 @@ export class BaseRepository {
   async deleteById(id) {
     await this.init();
     const objectId = this.toObjectId(id);
-    
+
     return await this.deleteOne({ _id: objectId });
   }
 
@@ -241,12 +261,14 @@ export class BaseRepository {
    */
   async aggregate(pipeline, options = {}) {
     await this.init();
-    
+
     try {
       const cursor = this.collection.aggregate(pipeline, options);
       return await cursor.toArray();
     } catch (error) {
-      throw new DatabaseError(`Failed to execute aggregation: ${error.message}`);
+      throw new DatabaseError(
+        `Failed to execute aggregation: ${error.message}`
+      );
     }
   }
 
@@ -255,12 +277,14 @@ export class BaseRepository {
    */
   async exists(query) {
     await this.init();
-    
+
     try {
       const count = await this.collection.countDocuments(query, { limit: 1 });
       return count > 0;
     } catch (error) {
-      throw new DatabaseError(`Failed to check document existence: ${error.message}`);
+      throw new DatabaseError(
+        `Failed to check document existence: ${error.message}`
+      );
     }
   }
 
@@ -269,7 +293,7 @@ export class BaseRepository {
    */
   async paginate(query = {}, page = 1, perPage = 100, options = {}) {
     await this.init();
-    
+
     const safePage = Math.max(1, parseInt(page, 10) || 1);
     const safePerPage = Math.max(1, parseInt(perPage, 10) || 100);
     const skip = (safePage - 1) * safePerPage;
@@ -292,4 +316,3 @@ export class BaseRepository {
     }
   }
 }
-

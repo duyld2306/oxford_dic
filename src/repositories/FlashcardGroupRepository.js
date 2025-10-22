@@ -5,7 +5,7 @@
 
 import { BaseRepository } from "./BaseRepository.js";
 import { FlashcardGroupEntity } from "../entities/FlashcardGroup.entity.js";
-import { COLLECTIONS, ERROR_MESSAGES } from "../constants/index.js";
+import { COLLECTIONS } from "../constants/index.js";
 import { ValidationError } from "../errors/AppError.js";
 
 export class FlashcardGroupRepository extends BaseRepository {
@@ -40,7 +40,7 @@ export class FlashcardGroupRepository extends BaseRepository {
     const validation = entity.validate();
     if (!validation.isValid) {
       throw new ValidationError(
-        ERROR_MESSAGES.VALIDATION_ERROR,
+        "FlashcardGroup validation failed",
         validation.errors
       );
     }

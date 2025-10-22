@@ -39,13 +39,13 @@ class UserController extends BaseController {
   // POST /api/users/change-password
   changePassword = this.asyncHandler(async (req, res) => {
     const userId = this.getUserId(req);
-    const { old_password, new_password } = this.getBody(req);
+    const { currentPassword, newPassword } = this.getBody(req);
 
     try {
       const result = await this.userService.changePassword(
         userId,
-        old_password,
-        new_password
+        currentPassword,
+        newPassword
       );
       return this.sendSuccess(res, result);
     } catch (error) {

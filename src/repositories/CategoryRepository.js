@@ -5,7 +5,7 @@
 
 import { BaseRepository } from "./BaseRepository.js";
 import { CategoryEntity } from "../entities/Category.entity.js";
-import { COLLECTIONS, LIMITS, ERROR_MESSAGES } from "../constants/index.js";
+import { COLLECTIONS, LIMITS } from "../constants/index.js";
 import { ValidationError, BusinessLogicError } from "../errors/AppError.js";
 
 export class CategoryRepository extends BaseRepository {
@@ -39,7 +39,7 @@ export class CategoryRepository extends BaseRepository {
     // Check limit
     const count = await this.countByUserId(userObjectId);
     if (count >= LIMITS.MAX_CATEGORIES_PER_USER) {
-      throw new BusinessLogicError(ERROR_MESSAGES.MAX_CATEGORIES_REACHED);
+      throw new BusinessLogicError("Cannot create more than 20 categories");
     }
 
     // Create entity
@@ -52,7 +52,10 @@ export class CategoryRepository extends BaseRepository {
     // Validate
     const validation = entity.validate();
     if (!validation.isValid) {
-      throw new ValidationError(ERROR_MESSAGES.VALIDATION_ERROR, validation.errors);
+      throw new ValidationError(
+        "Category validation failed",
+        validation.errors
+      );
     }
 
     return await this.insertOne(entity.toDocument());
@@ -239,4 +242,3 @@ export class CategoryRepository extends BaseRepository {
 }
 
 export default CategoryRepository;
-

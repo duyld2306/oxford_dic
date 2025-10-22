@@ -60,15 +60,21 @@ export const userSchemas = {
     gender: Joi.string()
       .valid(...Object.values(USER_GENDERS))
       .optional(),
-    phone: Joi.string()
+    phone_number: Joi.string()
       .pattern(/^[0-9]{10,15}$/)
       .optional(),
     avatar: Joi.string().uri().optional(),
   }),
 
   changePassword: Joi.object({
-    old_password: Joi.string().required(),
-    new_password: commonSchemas.password.required(),
+    currentPassword: Joi.string().required(),
+    newPassword: commonSchemas.password.required(),
+    confirmPassword: Joi.string()
+      .required()
+      .valid(Joi.ref("newPassword"))
+      .messages({
+        "any.only": "Confirm password must match new password",
+      }),
   }),
 
   updateUser: Joi.object({

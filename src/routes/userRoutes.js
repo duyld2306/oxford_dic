@@ -3,7 +3,12 @@ import UserController from "../controllers/UserController.js";
 import authMiddleware, {
   superadminMiddleware,
 } from "../middleware/authMiddleware.js";
-import { validateBody, userSchemas } from "../validators/index.js";
+import {
+  validateBody,
+  validateParams,
+  userSchemas,
+  commonSchemas,
+} from "../validators/index.js";
 import Joi from "joi";
 
 const router = express.Router();
@@ -36,6 +41,7 @@ router.post(
 router.put(
   "/:id/role",
   superadminMiddleware,
+  validateParams(Joi.object({ id: commonSchemas.objectId.required() })),
   validateBody(
     Joi.object({
       role: Joi.string().valid("user", "admin", "superadmin").required(),
@@ -48,6 +54,7 @@ router.put(
 router.put(
   "/:id/verified",
   superadminMiddleware,
+  validateParams(Joi.object({ id: commonSchemas.objectId.required() })),
   validateBody(
     Joi.object({
       isVerified: Joi.boolean().required(),

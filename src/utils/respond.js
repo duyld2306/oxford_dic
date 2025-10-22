@@ -1,4 +1,4 @@
-import API_RESPONSES from "../constants/apiResponses.js";
+import { API_RESPONSES } from "../constants/index.js";
 
 /**
  * Helper to send unified API responses.

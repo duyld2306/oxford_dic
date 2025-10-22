@@ -5,7 +5,7 @@
 
 import { BaseRepository } from "./BaseRepository.js";
 import { GroupWordEntity } from "../entities/GroupWord.entity.js";
-import { COLLECTIONS, LIMITS, ERROR_MESSAGES } from "../constants/index.js";
+import { COLLECTIONS, LIMITS } from "../constants/index.js";
 import { ValidationError, BusinessLogicError } from "../errors/AppError.js";
 
 export class GroupWordRepository extends BaseRepository {
@@ -38,7 +38,7 @@ export class GroupWordRepository extends BaseRepository {
     // Check limit
     const count = await this.countByUserId(userObjectId);
     if (count >= LIMITS.MAX_GROUP_WORDS_PER_USER) {
-      throw new BusinessLogicError(ERROR_MESSAGES.MAX_GROUP_WORDS_REACHED);
+      throw new BusinessLogicError("Cannot create more than 20 group words");
     }
 
     // Create entity
@@ -51,7 +51,10 @@ export class GroupWordRepository extends BaseRepository {
     // Validate
     const validation = entity.validate();
     if (!validation.isValid) {
-      throw new ValidationError(ERROR_MESSAGES.VALIDATION_ERROR, validation.errors);
+      throw new ValidationError(
+        "GroupWord validation failed",
+        validation.errors
+      );
     }
 
     return await this.insertOne(entity.toDocument());
@@ -211,4 +214,3 @@ export class GroupWordRepository extends BaseRepository {
 }
 
 export default GroupWordRepository;
-

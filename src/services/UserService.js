@@ -3,6 +3,11 @@ import { BaseService } from "./BaseService.js";
 import { UserRepository } from "../repositories/UserRepository.js";
 import { RefreshTokenRepository } from "../repositories/RefreshTokenRepository.js";
 import { UserProfileDTO, UserListDTO } from "../dtos/UserDTO.js";
+import {
+  ValidationError,
+  AuthorizationError,
+  NotFoundError,
+} from "../errors/AppError.js";
 
 /**
  * UserService
@@ -28,9 +33,7 @@ export class UserService extends BaseService {
     return this.execute(async () => {
       const user = await this.repository.findById(userId);
       if (!user) {
-        const error = new Error("User not found");
-        error.status = 404;
-        throw error;
+        throw new NotFoundError("User");
       }
 
       return new UserProfileDTO(user).transform();
@@ -48,9 +51,9 @@ export class UserService extends BaseService {
     return this.execute(async () => {
       // Do not allow updating profile fields for superadmin accounts
       if (userRole === "superadmin") {
-        const error = new Error("Updating profile for superadmin is forbidden");
-        error.status = 403;
-        throw error;
+        throw new AuthorizationError(
+          "Updating profile for superadmin is forbidden"
+        );
       }
 
       const { fullname, gender, phone_number } = updates;
@@ -59,11 +62,11 @@ export class UserService extends BaseService {
       const ALLOWED_GENDERS = ["male", "female", "other"];
       if (gender !== undefined && gender !== null) {
         if (!ALLOWED_GENDERS.includes(gender)) {
-          const error = new Error(
-            `Invalid gender value. Allowed values: ${ALLOWED_GENDERS.join(", ")}`
+          throw new ValidationError(
+            `Invalid gender value. Allowed values: ${ALLOWED_GENDERS.join(
+              ", "
+            )}`
           );
-          error.status = 400;
-          throw error;
         }
       }
 
@@ -73,9 +76,7 @@ export class UserService extends BaseService {
       if (phone_number !== undefined) updateData.phone_number = phone_number;
 
       if (Object.keys(updateData).length === 0) {
-        const error = new Error("No valid fields to update");
-        error.status = 400;
-        throw error;
+        throw new ValidationError("No valid fields to update");
       }
 
       updateData.updatedAt = new Date();
@@ -83,9 +84,7 @@ export class UserService extends BaseService {
       const result = await this.repository.updateById(userId, updateData);
 
       if (result.matchedCount === 0) {
-        const error = new Error("User not found");
-        error.status = 404;
-        throw error;
+        throw new NotFoundError("User");
       }
 
       const updatedUser = await this.repository.findById(userId);
@@ -105,30 +104,15 @@ export class UserService extends BaseService {
    */
   async changePassword(userId, currentPassword, newPassword) {
     return this.execute(async () => {
-      this.validateRequired(
-        { currentPassword, newPassword },
-        ["currentPassword", "newPassword"]
-      );
-
-      if (newPassword.length < 6) {
-        const error = new Error("Password must be at least 6 characters long");
-        error.status = 400;
-        throw error;
-      }
-
       const user = await this.repository.findById(userId);
       if (!user) {
-        const error = new Error("User not found");
-        error.status = 404;
-        throw error;
+        throw new NotFoundError("User");
       }
 
       // Verify current password
       const isMatch = await bcrypt.compare(currentPassword, user.password);
       if (!isMatch) {
-        const error = new Error("Current password is incorrect");
-        error.status = 401;
-        throw error;
+        throw new ValidationError("Current password is incorrect");
       }
 
       // Hash new password
@@ -229,22 +213,20 @@ export class UserService extends BaseService {
       // Prevent changing verification for superadmin accounts
       const targetUser = await this.repository.findById(userId);
       if (!targetUser) {
-        const error = new Error("User not found");
-        error.status = 404;
-        throw error;
+        throw new NotFoundError("User");
       }
 
       if (targetUser.role === "superadmin") {
-        const error = new Error(
+        throw new AuthorizationError(
           "Cannot change verification status of superadmin"
         );
-        error.status = 403;
-        throw error;
       }
 
       await this.repository.updateById(userId, {
-        isVerified: Boolean(isVerified),
-        updatedAt: new Date(),
+        $set: {
+          isVerified: Boolean(isVerified),
+          updatedAt: new Date(),
+        },
       });
 
       this.log(
@@ -252,7 +234,8 @@ export class UserService extends BaseService {
         `Verification status set to ${isVerified} for user: ${targetUser.email}`
       );
 
-      return { message: "User verification status updated successfully" };
+      const updatedUser = await this.repository.findById(userId);
+      return new UserListDTO(updatedUser).transform();
     }, "setVerified");
   }
 
@@ -268,31 +251,32 @@ export class UserService extends BaseService {
 
       const ALLOWED_ROLES = ["user", "admin", "superadmin"];
       if (!ALLOWED_ROLES.includes(role)) {
-        const error = new Error(
+        throw new ValidationError(
           `Invalid role. Allowed values: ${ALLOWED_ROLES.join(", ")}`
         );
-        error.status = 400;
-        throw error;
       }
 
       const targetUser = await this.repository.findById(userId);
       if (!targetUser) {
-        const error = new Error("User not found");
-        error.status = 404;
-        throw error;
+        throw new NotFoundError("User");
       }
 
       await this.repository.updateById(userId, {
-        role,
-        updatedAt: new Date(),
+        $set: {
+          role,
+          updatedAt: new Date(),
+        },
       });
 
-      this.log("info", `Role assigned to ${role} for user: ${targetUser.email}`);
+      this.log(
+        "info",
+        `Role assigned to ${role} for user: ${targetUser.email}`
+      );
 
-      return { message: "User role updated successfully" };
+      const updatedUser = await this.repository.findById(userId);
+      return new UserListDTO(updatedUser).transform();
     }, "assignRole");
   }
 }
 
 export default UserService;
-
