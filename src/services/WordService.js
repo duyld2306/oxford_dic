@@ -109,8 +109,14 @@ class WordService extends BaseService {
         throw err;
       }
 
+      // Add isTranslated: false to each data entry
+      const crawledPagesWithFlag = crawledPages.map((page) => ({
+        ...page,
+        isTranslated: false,
+      }));
+
       // Build top-level variants array from crawled pages (preserve original casing)
-      const finalVariants = buildVariantsFromPages(crawledPages);
+      const finalVariants = buildVariantsFromPages(crawledPagesWithFlag);
 
       // canonical key: first crawled page's found word normalized
       const canonicalRaw =
@@ -118,14 +124,14 @@ class WordService extends BaseService {
       const canonicalKey = normalizeKey(canonicalRaw);
 
       // Compute top-level symbol from page-level symbols collected during crawl
-      const topSymbol = buildTopSymbolFromPages(crawledPages);
+      const topSymbol = buildTopSymbolFromPages(crawledPagesWithFlag);
 
       // Build parts_of_speech array from crawledPages
-      const partsOfSpeech = buildPartsOfSpeechFromPages(crawledPages);
+      const partsOfSpeech = buildPartsOfSpeechFromPages(crawledPagesWithFlag);
 
       // Save to database for future use
       await this.repository.upsert(canonicalKey, {
-        data: crawledPages,
+        data: crawledPagesWithFlag,
         variants: finalVariants,
         symbol: topSymbol,
         parts_of_speech: partsOfSpeech,
@@ -135,8 +141,8 @@ class WordService extends BaseService {
 
       const result = {
         word: canonicalKey,
-        quantity: crawledPages.length,
-        data: crawledPages,
+        quantity: crawledPagesWithFlag.length,
+        data: crawledPagesWithFlag,
         variants: finalVariants,
         symbol: topSymbol,
         parts_of_speech: partsOfSpeech,
@@ -428,6 +434,35 @@ class WordService extends BaseService {
 
       return { total, page: p, per_page: per, data: ids };
     }, "getAllForSearch");
+  }
+
+  // Update isTranslated flag for a data entry
+  async updateIsTranslated(dataId, isTranslated) {
+    return this.execute(async () => {
+      if (!dataId) {
+        const error = new Error("Missing dataId");
+        error.status = 400;
+        throw error;
+      }
+
+      this.log(
+        "info",
+        `Updating isTranslated to ${isTranslated} for data._id: ${dataId}`
+      );
+
+      const result = await this.repository.updateIsTranslated(
+        dataId,
+        isTranslated
+      );
+
+      if (result.modifiedCount === 0) {
+        const error = new Error("Data entry not found or already updated");
+        error.status = 404;
+        throw error;
+      }
+
+      return { success: true, modifiedCount: result.modifiedCount };
+    }, "updateIsTranslated");
   }
 }
 

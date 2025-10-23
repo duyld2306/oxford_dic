@@ -323,6 +323,27 @@ export class WordRepository extends BaseRepository {
 
     return { updated, skipped };
   }
+
+  /**
+   * Update isTranslated flag for a data entry by its _id
+   * @param {string} dataId - The _id of the data entry (e.g., data[0]._id)
+   * @param {boolean} isTranslated - The new value for isTranslated
+   * @returns {Promise<Object>}
+   */
+  async updateIsTranslated(dataId, isTranslated) {
+    await this.init();
+
+    const result = await this.collection.updateOne(
+      { "data._id": dataId },
+      {
+        $set: {
+          "data.$.isTranslated": isTranslated,
+        },
+      }
+    );
+
+    return result;
+  }
 }
 
 export default WordRepository;

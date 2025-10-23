@@ -254,6 +254,11 @@ export const wordSchemas = {
       .min(1)
       .required(),
   }),
+
+  updateIsTranslated: Joi.object({
+    _id: Joi.string().trim().required(),
+    isTranslated: Joi.boolean().required(),
+  }),
 };
 
 // ============================================

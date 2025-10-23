@@ -146,6 +146,7 @@ class ImportService extends BaseService {
           const wordData = wordDataRaw.map((entry) => ({
             ...entry,
             phrasal_verb_senses: [],
+            isTranslated: false, // Add isTranslated flag
           }));
 
           // Check if word already exists

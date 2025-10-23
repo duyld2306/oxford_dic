@@ -26,6 +26,13 @@ const translateValidation = {
       .required(),
     globalContext: Joi.string().allow("").optional(),
   }),
+  translateWord: Joi.object({
+    word: Joi.string().required(),
+    pos: Joi.string().allow("").optional(),
+    senses: Joi.array().default([]),
+    idioms: Joi.array().default([]),
+    phrasal_verb_senses: Joi.array().default([]),
+  }).unknown(true), // Allow other fields from word object
 };
 
 // POST /api/translate
@@ -40,6 +47,13 @@ router.post(
   "/bulk",
   validateBody(translateValidation.translateBulk),
   translateController.translateBulk
+);
+
+// POST /api/translate/word
+router.post(
+  "/word",
+  validateBody(translateValidation.translateWord),
+  translateController.translateWord
 );
 
 export default router;

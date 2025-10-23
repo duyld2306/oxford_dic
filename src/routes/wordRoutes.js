@@ -54,4 +54,11 @@ router.post("/senses/definition", wordController.updateSenseDefinitions);
 // POST /api/senses/definition/short
 router.post("/senses/definition/short", wordController.getSenseDefinitionShort);
 
+// POST /api/words/is-translated - Update isTranslated flag manually
+router.post(
+  "/words/is-translated",
+  validateBody(wordSchemas.updateIsTranslated),
+  wordController.updateIsTranslated
+);
+
 export default router;

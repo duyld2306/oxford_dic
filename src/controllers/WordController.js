@@ -146,6 +146,13 @@ class WordController extends BaseController {
     const data = await this.wordService.getSenseDefinitionShortByIds(ids);
     return this.sendSuccess(res, data);
   });
+
+  // POST /api/words/is-translated - Update isTranslated flag manually
+  updateIsTranslated = this.asyncHandler(async (req, res) => {
+    const { _id, isTranslated } = this.getBody(req);
+    const result = await this.wordService.updateIsTranslated(_id, isTranslated);
+    return this.sendSuccess(res, result);
+  });
 }
 
 export default WordController;
