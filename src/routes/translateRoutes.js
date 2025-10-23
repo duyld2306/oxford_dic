@@ -14,9 +14,17 @@ const translateValidation = {
     type: Joi.string().valid("example", "definition").default("example"),
   }),
   translateBulk: Joi.object({
-    texts: Joi.array().items(Joi.string()).min(1).required(),
-    context: Joi.string().allow("").optional(),
-    type: Joi.string().valid("example", "definition").default("example"),
+    items: Joi.array()
+      .items(
+        Joi.object({
+          _id: Joi.string().required(),
+          text: Joi.string().required(),
+          context: Joi.string().allow("").optional(),
+        })
+      )
+      .min(1)
+      .required(),
+    globalContext: Joi.string().allow("").optional(),
   }),
 };
 
