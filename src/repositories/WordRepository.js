@@ -291,31 +291,52 @@ export class WordRepository extends BaseRepository {
 
       const objectId = _id instanceof ObjectId ? _id : new ObjectId(_id);
 
-      const result = await this.collection.updateMany(
+      // Update main sense examples
+      const mainResult = await this.collection.updateMany(
         {
-          $or: [
-            {
-              "data.senses.examples": {
-                $elemMatch: { _id: objectId, vi: { $in: [null, ""] } },
-              },
-            },
-            {
-              "data.idioms.senses.examples": {
-                $elemMatch: { _id: objectId, vi: { $in: [null, ""] } },
-              },
-            },
-          ],
-        },
-        {
-          $set: {
-            "data.$[].senses.$[].examples.$[ex].vi": vi,
-            "data.$[].idioms.$[].senses.$[].examples.$[ex].vi": vi,
+          "data.senses.examples": {
+            $elemMatch: { _id: objectId, vi: { $in: [null, ""] } },
           },
         },
         {
-          arrayFilters: [{ "ex._id": objectId }],
+          $set: {
+            "data.$[d].senses.$[s].examples.$[ex].vi": vi,
+          },
+        },
+        {
+          arrayFilters: [
+            { "d.senses.examples._id": objectId },
+            { "s.examples._id": objectId },
+            { "ex._id": objectId, "ex.vi": { $in: [null, ""] } },
+          ],
         }
       );
+
+      // Update idiom sense examples
+      const idiomResult = await this.collection.updateMany(
+        {
+          "data.idioms.senses.examples": {
+            $elemMatch: { _id: objectId, vi: { $in: [null, ""] } },
+          },
+        },
+        {
+          $set: {
+            "data.$[d].idioms.$[i].senses.$[s].examples.$[ex].vi": vi,
+          },
+        },
+        {
+          arrayFilters: [
+            { "d.idioms.senses.examples._id": objectId },
+            { "i.senses.examples._id": objectId },
+            { "s.examples._id": objectId },
+            { "ex._id": objectId, "ex.vi": { $in: [null, ""] } },
+          ],
+        }
+      );
+
+      const result = {
+        modifiedCount: mainResult.modifiedCount + idiomResult.modifiedCount,
+      };
 
       if (result.modifiedCount > 0) updated++;
       else skipped++;

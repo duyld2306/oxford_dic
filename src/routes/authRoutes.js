@@ -1,6 +1,10 @@
 import express from "express";
 import AuthController from "../controllers/AuthController.js";
-import { validateBody, userSchemas } from "../validators/index.js";
+import {
+  validateBody,
+  userSchemas,
+  validateParams,
+} from "../validators/index.js";
 import Joi from "joi";
 
 const router = express.Router();
@@ -71,6 +75,7 @@ router.post(
 // POST /api/auth/reset-password/:token - Reset password with token
 router.post(
   "/reset-password/:token",
+  validateParams(Joi.object({ token: Joi.string().required() })),
   validateBody(authValidation.resetPassword),
   authController.resetPassword
 );

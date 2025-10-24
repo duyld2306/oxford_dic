@@ -101,10 +101,6 @@ class AuthController extends BaseController {
   logout = this.asyncHandler(async (req, res) => {
     const { refreshToken } = req.body;
 
-    if (!refreshToken) {
-      return respond.error(res, "VALIDATION.REQUIRE_REFRESH_TOKEN");
-    }
-
     await this.authService.logout(refreshToken);
 
     return this.sendSuccess(res, {
@@ -115,11 +111,6 @@ class AuthController extends BaseController {
   // POST /api/auth/forgot-password
   forgotPassword = this.asyncHandler(async (req, res) => {
     const { email } = req.body;
-
-    if (!email) {
-      return respond.error(res, "VALIDATION.REQUIRE_EMAIL");
-    }
-
     const result = await this.authService.forgotPassword(email);
     return this.sendSuccess(res, result);
   });
@@ -128,14 +119,6 @@ class AuthController extends BaseController {
   resetPassword = this.asyncHandler(async (req, res) => {
     const { token } = req.params;
     const { password } = req.body;
-
-    if (!token) {
-      return respond.error(res, "VALIDATION.REQUIRE_RESET_TOKEN");
-    }
-
-    if (!password) {
-      return respond.error(res, "VALIDATION.REQUIRE_PASSWORD");
-    }
 
     try {
       await this.authService.resetPassword(token, password);
@@ -158,11 +141,6 @@ class AuthController extends BaseController {
   // POST /api/auth/resend-verification
   resendVerification = this.asyncHandler(async (req, res) => {
     const { email } = req.body;
-
-    if (!email) {
-      return respond.error(res, "VALIDATION.REQUIRE_EMAIL");
-    }
-
     try {
       await this.authService.resendVerification(email);
       return this.sendSuccess(res, { message: "Verification email resent" });
