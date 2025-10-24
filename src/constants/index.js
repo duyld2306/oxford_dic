@@ -102,10 +102,6 @@ export const ERROR_CODES = {
   // Validation
   VALIDATION_ERROR: "VALIDATION_ERROR",
   MISSING_TOKEN: "MISSING_TOKEN",
-  REQUIRED_FIELDS: "REQUIRED_FIELDS",
-  INVALID_ID: "INVALID_ID",
-  INVALID_ROLE: "INVALID_ROLE",
-  INVALID_GENDER: "INVALID_GENDER",
 
   // Auth
   TOKEN_EXPIRED: "TOKEN_EXPIRED",
@@ -121,31 +117,10 @@ export const ERROR_CODES = {
   USER_NOT_FOUND: "USER_NOT_FOUND",
   USER_ALREADY_EXISTS: "USER_ALREADY_EXISTS",
 
-  // Group Word
-  GROUP_WORD_NOT_FOUND: "GROUP_WORD_NOT_FOUND",
-  GROUP_WORD_LIMIT_REACHED: "GROUP_WORD_LIMIT_REACHED",
-  GROUP_WORD_NOT_EMPTY: "GROUP_WORD_NOT_EMPTY",
-
-  // Category
-  CATEGORY_NOT_FOUND: "CATEGORY_NOT_FOUND",
-  CATEGORY_LIMIT_REACHED: "CATEGORY_LIMIT_REACHED",
-  CATEGORY_NOT_EMPTY: "CATEGORY_NOT_EMPTY",
-
-  // Word
-  WORD_NOT_FOUND: "WORD_NOT_FOUND",
-
-  // Flashcard
-  FLASHCARD_NOT_FOUND: "FLASHCARD_NOT_FOUND",
-  FLASHCARD_GROUP_NOT_FOUND: "FLASHCARD_GROUP_NOT_FOUND",
-  FLASHCARD_ALREADY_EXISTS: "FLASHCARD_ALREADY_EXISTS",
-  INVALID_FLASHCARD_STATUS: "INVALID_FLASHCARD_STATUS",
-
   // System
   TOO_MANY_REQUESTS: "TOO_MANY_REQUESTS",
   SERVER_CONFIG_ERROR: "SERVER_CONFIG_ERROR",
   UNKNOWN_ERROR: "UNKNOWN_ERROR",
-  INTERNAL_ERROR: "INTERNAL_ERROR",
-  PERMISSION_DENIED: "PERMISSION_DENIED",
 };
 
 // Note: ERROR_MESSAGES and SUCCESS_MESSAGES are deprecated
@@ -212,27 +187,9 @@ export const ERROR_RESPONSE_CODES = {
   SUPERADMIN_ACCESS_REQUIRED: "SUPERADMIN_ACCESS_REQUIRED",
   // User
   USER_NOT_FOUND: "USER_NOT_FOUND",
-  // Group Word
-  GROUP_WORD_NOT_FOUND: "GROUP_WORD_NOT_FOUND",
-  GROUP_WORD_LIMIT_REACHED: "GROUP_WORD_LIMIT_REACHED",
-  GROUP_WORD_NOT_EMPTY: "GROUP_WORD_NOT_EMPTY",
-  // Category
-  CATEGORY_NOT_FOUND: "CATEGORY_NOT_FOUND",
-  CATEGORY_LIMIT_REACHED: "CATEGORY_LIMIT_REACHED",
-  CATEGORY_NOT_EMPTY: "CATEGORY_NOT_EMPTY",
-  // Word
-  WORD_NOT_FOUND: "WORD_NOT_FOUND",
   // Validation
   VALIDATION_ERROR: "VALIDATION_ERROR",
   MISSING_TOKEN: "MISSING_TOKEN",
-  REQUIRE_EMAIL: "REQUIRE_EMAIL",
-  REQUIRE_PASSWORD: "REQUIRE_PASSWORD",
-  REQUIRE_REFRESH_TOKEN: "REQUIRE_REFRESH_TOKEN",
-  REQUIRE_RESET_TOKEN: "REQUIRE_RESET_TOKEN",
-  REQUIRE_VERIFICATION_TOKEN: "REQUIRE_VERIFICATION_TOKEN",
-  REQUIRED_FIELDS: "REQUIRED_FIELDS",
-  INVALID_ID: "INVALID_ID",
-  INVALID_ROLE: "INVALID_ROLE",
   // System
   TOO_MANY_REQUESTS: "TOO_MANY_REQUESTS",
   SERVER_CONFIG_ERROR: "SERVER_CONFIG_ERROR",
@@ -244,128 +201,80 @@ export const ERROR_RESPONSES = {
   [ERROR_RESPONSE_CODES.TOKEN_EXPIRED]: {
     message: "Access token expired",
     status_code: 401,
+    error_code: "TOKEN_EXPIRED",
   },
   [ERROR_RESPONSE_CODES.INVALID_TOKEN]: {
     message: "Invalid access token",
     status_code: 401,
+    error_code: "INVALID_TOKEN",
   },
   [ERROR_RESPONSE_CODES.TOKEN_VERIFICATION_FAILED]: {
     message: "Token verification failed",
     status_code: 401,
+    error_code: "TOKEN_VERIFICATION_FAILED",
   },
   [ERROR_RESPONSE_CODES.EMAIL_NOT_VERIFIED]: {
     message: "Email not verified",
     status_code: 401,
+    error_code: "EMAIL_NOT_VERIFIED",
   },
   [ERROR_RESPONSE_CODES.EMAIL_ALREADY_VERIFIED]: {
     message: "Email already verified",
     status_code: 400,
+    error_code: "EMAIL_ALREADY_VERIFIED",
   },
   [ERROR_RESPONSE_CODES.INVALID_CREDENTIALS]: {
     message: "Invalid email or password",
     status_code: 401,
+    error_code: "INVALID_CREDENTIALS",
   },
   [ERROR_RESPONSE_CODES.AUTH_MIDDLEWARE_ERROR]: {
     message: "Authentication middleware error",
     status_code: 500,
+    error_code: "AUTH_MIDDLEWARE_ERROR",
   },
   [ERROR_RESPONSE_CODES.ADMIN_ACCESS_REQUIRED]: {
     message: "Admin access required",
     status_code: 403,
+    error_code: "ADMIN_ACCESS_REQUIRED",
   },
   [ERROR_RESPONSE_CODES.SUPERADMIN_ACCESS_REQUIRED]: {
     message: "Superadmin access required",
     status_code: 403,
+    error_code: "SUPERADMIN_ACCESS_REQUIRED",
   },
   // User
   [ERROR_RESPONSE_CODES.USER_NOT_FOUND]: {
     message: "User not found",
     status_code: 404,
-  },
-  // Group Word
-  [ERROR_RESPONSE_CODES.GROUP_WORD_NOT_FOUND]: {
-    message: "Group word not found",
-    status_code: 404,
-  },
-  [ERROR_RESPONSE_CODES.GROUP_WORD_LIMIT_REACHED]: {
-    message: "Cannot create more than 20 group words",
-    status_code: 400,
-  },
-  [ERROR_RESPONSE_CODES.GROUP_WORD_NOT_EMPTY]: {
-    message: "Cannot delete group word with words in it",
-    status_code: 400,
-  },
-  // Category
-  [ERROR_RESPONSE_CODES.CATEGORY_NOT_FOUND]: {
-    message: "Category not found",
-    status_code: 404,
-  },
-  [ERROR_RESPONSE_CODES.CATEGORY_LIMIT_REACHED]: {
-    message: "Cannot create more than 20 categories",
-    status_code: 400,
-  },
-  [ERROR_RESPONSE_CODES.CATEGORY_NOT_EMPTY]: {
-    message: "Cannot delete category with words in it",
-    status_code: 400,
-  },
-  // Word
-  [ERROR_RESPONSE_CODES.WORD_NOT_FOUND]: {
-    message: "Word not found",
-    status_code: 404,
+    error_code: "USER_NOT_FOUND",
   },
   // Validation
   [ERROR_RESPONSE_CODES.VALIDATION_ERROR]: {
     message: "Validation failed",
     status_code: 400,
+    error_code: "VALIDATION_ERROR",
   },
   [ERROR_RESPONSE_CODES.MISSING_TOKEN]: {
     message: "Access token required",
     status_code: 400,
-  },
-  [ERROR_RESPONSE_CODES.REQUIRE_EMAIL]: {
-    message: "Email is required",
-    status_code: 400,
-  },
-  [ERROR_RESPONSE_CODES.REQUIRE_PASSWORD]: {
-    message: "Password is required",
-    status_code: 400,
-  },
-  [ERROR_RESPONSE_CODES.REQUIRE_REFRESH_TOKEN]: {
-    message: "Refresh token is required",
-    status_code: 400,
-  },
-  [ERROR_RESPONSE_CODES.REQUIRE_RESET_TOKEN]: {
-    message: "Reset token is required",
-    status_code: 400,
-  },
-  [ERROR_RESPONSE_CODES.REQUIRE_VERIFICATION_TOKEN]: {
-    message: "Verification token is required",
-    status_code: 400,
-  },
-  [ERROR_RESPONSE_CODES.REQUIRED_FIELDS]: {
-    message: "Required fields are missing",
-    status_code: 400,
-  },
-  [ERROR_RESPONSE_CODES.INVALID_ID]: {
-    message: "Invalid ID format",
-    status_code: 400,
-  },
-  [ERROR_RESPONSE_CODES.INVALID_ROLE]: {
-    message: "Invalid role. Must be 'admin' or 'user'",
-    status_code: 400,
+    error_code: "MISSING_TOKEN",
   },
   // System
   [ERROR_RESPONSE_CODES.TOO_MANY_REQUESTS]: {
     message: "Too many requests",
     status_code: 429,
+    error_code: "TOO_MANY_REQUESTS",
   },
   [ERROR_RESPONSE_CODES.SERVER_CONFIG_ERROR]: {
     message: "Server configuration error",
     status_code: 500,
+    error_code: "SERVER_CONFIG_ERROR",
   },
   [ERROR_RESPONSE_CODES.UNKNOWN_ERROR]: {
     message: "An unexpected error occurred",
     status_code: 500,
+    error_code: "UNKNOWN_ERROR",
   },
 };
 
@@ -407,35 +316,9 @@ export const API_RESPONSES = {
     USER: {
       USER_NOT_FOUND: ERROR_RESPONSES[ERROR_RESPONSE_CODES.USER_NOT_FOUND],
     },
-    GROUP_WORD: {
-      NOT_FOUND: ERROR_RESPONSES[ERROR_RESPONSE_CODES.GROUP_WORD_NOT_FOUND],
-      LIMIT_REACHED:
-        ERROR_RESPONSES[ERROR_RESPONSE_CODES.GROUP_WORD_LIMIT_REACHED],
-      NOT_EMPTY: ERROR_RESPONSES[ERROR_RESPONSE_CODES.GROUP_WORD_NOT_EMPTY],
-    },
-    CATEGORY: {
-      NOT_FOUND: ERROR_RESPONSES[ERROR_RESPONSE_CODES.CATEGORY_NOT_FOUND],
-      LIMIT_REACHED:
-        ERROR_RESPONSES[ERROR_RESPONSE_CODES.CATEGORY_LIMIT_REACHED],
-      NOT_EMPTY: ERROR_RESPONSES[ERROR_RESPONSE_CODES.CATEGORY_NOT_EMPTY],
-    },
-    WORD: {
-      NOT_FOUND: ERROR_RESPONSES[ERROR_RESPONSE_CODES.WORD_NOT_FOUND],
-    },
     VALIDATION: {
       VALIDATION_ERROR: ERROR_RESPONSES[ERROR_RESPONSE_CODES.VALIDATION_ERROR],
       MISSING_TOKEN: ERROR_RESPONSES[ERROR_RESPONSE_CODES.MISSING_TOKEN],
-      REQUIRE_EMAIL: ERROR_RESPONSES[ERROR_RESPONSE_CODES.REQUIRE_EMAIL],
-      REQUIRE_PASSWORD: ERROR_RESPONSES[ERROR_RESPONSE_CODES.REQUIRE_PASSWORD],
-      REQUIRE_REFRESH_TOKEN:
-        ERROR_RESPONSES[ERROR_RESPONSE_CODES.REQUIRE_REFRESH_TOKEN],
-      REQUIRE_RESET_TOKEN:
-        ERROR_RESPONSES[ERROR_RESPONSE_CODES.REQUIRE_RESET_TOKEN],
-      REQUIRE_VERIFICATION_TOKEN:
-        ERROR_RESPONSES[ERROR_RESPONSE_CODES.REQUIRE_VERIFICATION_TOKEN],
-      REQUIRED_FIELDS: ERROR_RESPONSES[ERROR_RESPONSE_CODES.REQUIRED_FIELDS],
-      INVALID_ID: ERROR_RESPONSES[ERROR_RESPONSE_CODES.INVALID_ID],
-      INVALID_ROLE: ERROR_RESPONSES[ERROR_RESPONSE_CODES.INVALID_ROLE],
     },
     SYSTEM: {
       TOO_MANY_REQUESTS:

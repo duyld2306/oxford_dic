@@ -6,40 +6,34 @@ import Joi from "joi";
 const router = express.Router();
 const translateController = new TranslateController();
 
-// Validation schemas
-const translateValidation = {
-  translate: Joi.object({
-    text: Joi.string().required(),
-    context: Joi.string().allow("").optional(),
-    type: Joi.string().valid("example", "definition").default("example"),
-  }),
-  translateBulk: Joi.object({
-    items: Joi.array()
-      .items(
-        Joi.object({
-          _id: Joi.string().required(),
-          text: Joi.string().required(),
-          context: Joi.string().allow("").optional(),
-        })
-      )
-      .min(1)
-      .required(),
-    globalContext: Joi.string().allow("").optional(),
-  }),
-};
+// Validation schema - same for all translate endpoints
+const translateValidation = Joi.object({
+  word: Joi.string().required(),
+  pos: Joi.string().allow("").optional(),
+  senses: Joi.array().default([]),
+  idioms: Joi.array().default([]),
+  phrasal_verb_senses: Joi.array().default([]),
+}).unknown(true); // Allow other fields from word object
 
-// POST /api/translate
+// POST /api/translate/definition - Translate only definitions
 router.post(
-  "/",
-  validateBody(translateValidation.translate),
-  translateController.translate
+  "/definition",
+  validateBody(translateValidation),
+  translateController.translateDefinition
 );
 
-// POST /api/translate/bulk
+// POST /api/translate/example - Translate only examples
 router.post(
-  "/bulk",
-  validateBody(translateValidation.translateBulk),
-  translateController.translateBulk
+  "/example",
+  validateBody(translateValidation),
+  translateController.translateExample
+);
+
+// POST /api/translate/parallel - Translate definitions and examples in parallel (2 API calls)
+router.post(
+  "/parallel",
+  validateBody(translateValidation),
+  translateController.translateParallel
 );
 
 export default router;

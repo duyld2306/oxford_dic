@@ -24,7 +24,6 @@ export class UserEntity {
     this.fullname = data.fullname || null;
     this.gender = data.gender || null;
     this.phone_number = data.phone_number || null;
-    this.favorites = data.favorites || [];
     this.isVerified = data.isVerified || false;
     this.lastVerificationSent = data.lastVerificationSent || null;
     this.createdAt = data.createdAt || new Date();
@@ -42,7 +41,6 @@ export class UserEntity {
       fullname: this.fullname,
       gender: this.gender,
       phone_number: this.phone_number,
-      favorites: this.favorites,
       isVerified: this.isVerified,
       lastVerificationSent: this.lastVerificationSent,
       createdAt: this.createdAt,
@@ -105,4 +103,3 @@ export class UserEntity {
     };
   }
 }
-

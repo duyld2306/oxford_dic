@@ -143,9 +143,30 @@ class ImportService extends BaseService {
         try {
           const nowIso = new Date().toISOString();
 
+          // Helper function to add definition_vi and definition_vi_short to senses
+          const addTranslationFieldsToSenses = (senses) => {
+            if (!Array.isArray(senses)) return senses;
+            return senses.map((sense) => ({
+              ...sense,
+              definition_vi: sense.definition_vi || "",
+              definition_vi_short: sense.definition_vi_short || "",
+            }));
+          };
+
           const wordData = wordDataRaw.map((entry) => ({
             ...entry,
             phrasal_verb_senses: [],
+            senses: addTranslationFieldsToSenses(entry.senses),
+            idioms: (entry.idioms || []).map((idiom) => ({
+              ...idiom,
+              senses: addTranslationFieldsToSenses(idiom.senses),
+            })),
+            phrasal_verb_senses: (entry.phrasal_verb_senses || []).map(
+              (pv) => ({
+                ...pv,
+                senses: addTranslationFieldsToSenses(pv.senses),
+              })
+            ),
           }));
 
           // Check if word already exists

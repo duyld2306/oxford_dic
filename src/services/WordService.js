@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { BaseService } from "./BaseService.js";
 import { WordRepository } from "../repositories/WordRepository.js";
 import { crawlWordDirect } from "../utils/crawl.js";
@@ -219,43 +220,88 @@ class WordService extends BaseService {
 
       this.log("info", `Updating ${list.length} sense definitions`);
 
-      // This method needs to be added to WordRepository
-      // For now, keep using wordModel directly
       await this.repository.init();
       let updated = 0;
       let skipped = 0;
 
       for (const { _id, definition_vi, definition_vi_short } of list) {
-        if (!_id) {
+        if (!_id || !ObjectId.isValid(_id)) {
           skipped++;
           continue;
         }
 
-        const result = await this.repository.collection.updateMany(
-          {
-            $or: [
-              { "data.senses._id": _id },
-              { "data.idioms.senses._id": _id },
-            ],
-          },
+        // Convert to ObjectId if needed
+        const senseId =
+          _id instanceof ObjectId ? _id : new ObjectId(String(_id));
+
+        // Update main senses
+        const mainSenseResult = await this.repository.collection.updateMany(
+          { "data.senses._id": senseId },
           {
             $set: {
-              "data.$[].senses.$[sense].definition_vi": definition_vi,
-              "data.$[].senses.$[sense].definition_vi_short":
-                definition_vi_short,
-              "data.$[].idioms.$[].senses.$[sense].definition_vi":
-                definition_vi,
-              "data.$[].idioms.$[].senses.$[sense].definition_vi_short":
+              "data.$[d].senses.$[s].definition_vi": definition_vi,
+              "data.$[d].senses.$[s].definition_vi_short": definition_vi_short,
+            },
+          },
+          {
+            arrayFilters: [{ "d.senses._id": senseId }, { "s._id": senseId }],
+          }
+        );
+
+        // Update idiom senses
+        const idiomSenseResult = await this.repository.collection.updateMany(
+          { "data.idioms.senses._id": senseId },
+          {
+            $set: {
+              "data.$[d].idioms.$[i].senses.$[s].definition_vi": definition_vi,
+              "data.$[d].idioms.$[i].senses.$[s].definition_vi_short":
                 definition_vi_short,
             },
           },
           {
-            arrayFilters: [{ "sense._id": _id }],
+            arrayFilters: [
+              { "d.idioms.senses._id": senseId },
+              { "i.senses._id": senseId },
+              { "s._id": senseId },
+            ],
           }
         );
 
-        if (result.modifiedCount > 0) updated++;
-        else skipped++;
+        // Update phrasal verb senses
+        const pvSenseResult = await this.repository.collection.updateMany(
+          { "data.phrasal_verb_senses.senses._id": senseId },
+          {
+            $set: {
+              "data.$[d].phrasal_verb_senses.$[p].senses.$[s].definition_vi":
+                definition_vi,
+              "data.$[d].phrasal_verb_senses.$[p].senses.$[s].definition_vi_short":
+                definition_vi_short,
+            },
+          },
+          {
+            arrayFilters: [
+              { "d.phrasal_verb_senses.senses._id": senseId },
+              { "p.senses._id": senseId },
+              { "s._id": senseId },
+            ],
+          }
+        );
+
+        const totalModified =
+          mainSenseResult.modifiedCount +
+          idiomSenseResult.modifiedCount +
+          pvSenseResult.modifiedCount;
+
+        if (totalModified > 0) {
+          updated++;
+          this.log(
+            "info",
+            `Updated sense ${_id}: ${totalModified} document(s) modified`
+          );
+        } else {
+          skipped++;
+          this.log("warn", `Sense ${_id} not found in any document`);
+        }
       }
 
       return { updated, skipped };

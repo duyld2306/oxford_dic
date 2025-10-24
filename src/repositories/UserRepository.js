@@ -91,7 +91,7 @@ export class UserRepository extends BaseRepository {
     const objectId = this.toObjectId(id);
     return await this.findOne(
       { _id: objectId },
-      { projection: { password: 0, favorites: 0 } }
+      { projection: { password: 0 } }
     );
   }
 

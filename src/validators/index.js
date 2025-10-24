@@ -248,7 +248,7 @@ export const wordSchemas = {
       .items(
         Joi.object({
           id: Joi.string().trim().required(),
-          example_vi: Joi.string().trim().required(),
+          vi: Joi.string().trim().required(),
         })
       )
       .min(1)

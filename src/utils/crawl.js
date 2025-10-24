@@ -373,6 +373,8 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         arr.map((s) => ({
           _id: new ObjectId(),
           ...s,
+          definition_vi: "",
+          definition_vi_short: "",
           examples: (s.examples || []).map((ex) => ({
             _id: new ObjectId(),
             ...ex,
