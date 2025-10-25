@@ -69,54 +69,57 @@ export class TranslateService extends BaseService {
       const definitions = [];
 
       // Helper to process senses
-      const processSenses = (sensesArray, sourceType = "sense") => {
+      const processSenses = (sensesArray) => {
         sensesArray.forEach((sense) => {
           if (sense._id && sense.definition) {
             definitions.push({
               _id: sense._id,
-              definition: sense.definition,
-              context: sourceType === "idiom" ? `[idiom]` : "",
+              definition: sense.definition
             });
           }
         });
       };
 
       // Process all sense types
-      processSenses(senses, "sense");
-
-      // Process idioms
-      idioms.forEach((idiom) => {
-        if (idiom.senses && Array.isArray(idiom.senses)) {
-          processSenses(idiom.senses, "idiom");
-        }
-      });
+      processSenses(senses);
 
       // Process phrasal verbs
       phrasal_verb_senses.forEach((pv) => {
         if (pv.senses && Array.isArray(pv.senses)) {
-          processSenses(pv.senses, "phrasal verb");
+          processSenses(pv.senses);
         }
       });
 
-      if (definitions.length === 0) {
-        return {
-          definitions: [],
-          usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 },
-        };
+      // Build compact user prompt - only definitions
+      let userPrompt = `Context: ${word}${pos ? ` (${pos})` : ""}\n`;
+      
+      if(definitions.length > 0) {
+        userPrompt += `\nDEFINITIONS:\n`;
+        definitions.forEach((def, idx) => {
+          userPrompt += `• [${def._id}] ${def.definition}\n`;
+        });
       }
 
-      // Build compact user prompt - only definitions
-      let userPrompt = `Word: ${word}${pos ? ` (${pos})` : ""}\n`;
-      userPrompt += `DEFINITIONS:\n`;
-      definitions.forEach((def, idx) => {
-        userPrompt += `${idx + 1}. ${def.context ? `${def.context}: ` : ""}[${
-          def._id
-        }] ${def.definition}\n`;
-      });
+      if (idioms.length > 0) {
+        userPrompt += `\nIDIOMS:\n`;
+        idioms.forEach((idiom) => {
+          if (idiom.word) {
+            userPrompt += `- Context: ${idiom.word}:\n`;
+          }
+
+          if (idiom.senses && Array.isArray(idiom.senses)) {
+            idiom.senses.forEach((sense) => {
+              if (sense._id && sense.definition) {
+                userPrompt += `• [${sense._id}] ${sense.definition}\n`;
+              }
+            });
+          }
+        });
+      }
 
       // System prompt for definitions only
       const systemPrompt = `Bạn là dịch giả Anh–Việt chuyên nghiệp.
-Dịch tự nhiên, rõ ràng theo ngữ cảnh.
+Dịch tự nhiên theo ngữ cảnh. Nếu nghĩa thuộc IDIOMS, phải dịch theo nghĩa thành ngữ.
 Trả về JSON hợp lệ parse được bằng JSON.parse(), không thêm markdown, không giải thích:
 {
  "definitions": [{"_id": "...","definition_vi": "...","definition_vi_short": "..."}]
@@ -126,10 +129,6 @@ definition_vi_short: 3–4 nghĩa ngắn (từ/cụm từ, cách nhau dấu ph�
 
       // Log full prompt
       const fullPrompt = `=== SYSTEM PROMPT ===\n${systemPrompt}\n\n=== USER PROMPT ===\n${userPrompt}`;
-      this.log(
-        "info",
-        `Translating definitions only: ${word}, ${definitions.length} definitions`
-      );
       this.log("info", `Full prompt:\n${fullPrompt}`);
 
       // Call Google AI
@@ -137,7 +136,7 @@ definition_vi_short: 3–4 nghĩa ngắn (từ/cụm từ, cách nhau dấu ph�
         contents: [
           {
             role: "user",
-            parts: [{ text: `${systemPrompt}\n${userPrompt}` }],
+            parts: [{ text: `${systemPrompt}\n\n${userPrompt}` }],
           },
         ],
         generationConfig: {
@@ -192,10 +191,6 @@ definition_vi_short: 3–4 nghĩa ngắn (từ/cụm từ, cách nhau dấu ph�
 
       const translatedDefinitions = result.definitions || [];
 
-      this.log(
-        "info",
-        `Translated ${translatedDefinitions.length} definitions`
-      );
       this.log(
         "info",
         `Token usage: ${usage.prompt_tokens} prompt + ${usage.completion_tokens} completion = ${usage.total_tokens} total`
@@ -269,21 +264,19 @@ definition_vi_short: 3–4 nghĩa ngắn (từ/cụm từ, cách nhau dấu ph�
 
       // Collect all examples grouped by definition (same as translateBulk)
       const definitionExamplesMap = new Map(); // Map<definition_id, {definition, examples[]}>
-      const allExamples = []; // Flat list for response
 
       // Helper to process senses
-      const processSenses = (sensesArray, sourceType = "sense") => {
+      const processSenses = (sensesArray) => {
         sensesArray.forEach((sense) => {
           if (sense.examples && Array.isArray(sense.examples)) {
             const senseExamples = [];
             sense.examples.forEach((ex) => {
-              if (ex._id && ex.en && !ex.vi) {
+              if (ex._id && ex.en) {
                 const exampleData = {
                   _id: ex._id,
                   text: ex.en,
                 };
                 senseExamples.push(exampleData);
-                allExamples.push(exampleData);
               }
             });
 
@@ -292,7 +285,6 @@ definition_vi_short: 3–4 nghĩa ngắn (từ/cụm từ, cách nhau dấu ph�
               definitionExamplesMap.set(sense._id, {
                 definition: sense.definition,
                 examples: senseExamples,
-                context: sourceType === "idiom" ? `[idiom]` : "",
               });
             }
           }
@@ -302,57 +294,75 @@ definition_vi_short: 3–4 nghĩa ngắn (từ/cụm từ, cách nhau dấu ph�
       // Process all sense types
       processSenses(senses);
 
-      // Process idioms
-      idioms.forEach((idiom) => {
-        if (idiom.senses && Array.isArray(idiom.senses)) {
-          processSenses(idiom.senses, "idiom");
-        }
-      });
-
       // Process phrasal verbs
       phrasal_verb_senses.forEach((pv) => {
         if (pv.senses && Array.isArray(pv.senses)) {
-          processSenses(pv.senses, "phrasal verb");
+          processSenses(pv.senses);
         }
       });
 
-      if (allExamples.length === 0) {
-        return {
-          examples: [],
-          usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 },
-        };
-      }
-
       // Build compact user prompt - group examples by definition (same as translateBulk)
       let userPrompt = `Word: ${word}${pos ? ` (${pos})` : ""}\n`;
-      userPrompt += `EXAMPLES (grouped by definition):\n`;
+      if(definitionExamplesMap.size > 0) {
+        userPrompt += `\nEXAMPLES (grouped by definition):\n`;
 
-      let exampleIndex = 1;
-      definitionExamplesMap.forEach((data, defId) => {
-        userPrompt += `${data.context ? `${data.context}: ` : ""}[${defId}] ${
-          data.definition
-        }\n`;
-        data.examples.forEach((ex) => {
-          userPrompt += `${exampleIndex}. [${ex._id}] "${ex.text}"\n`;
-          exampleIndex++;
+        let exampleIndex = 1;
+        definitionExamplesMap.forEach((data, defId) => {
+          userPrompt += `Context: ${data.definition}\n`;
+          data.examples.forEach((ex) => {
+            userPrompt += `• ${exampleIndex}. [${ex._id}] "${ex.text}"\n`;
+            exampleIndex++;
+          });
         });
-      });
+      }
+
+      if (idioms.length > 0) {
+        userPrompt += `\nIDIOMS EXAMPLES(grouped by definition):\n`;
+
+        idioms.forEach((idiom) => {
+          let baseContext = "Context: ";
+          if (idiom.word) {
+            baseContext += `${idiom.word}: `;
+          }
+
+          if (Array.isArray(idiom.senses)) {
+            idiom.senses.forEach((sense) => {
+              let context = baseContext; // Reset context per sense
+              if (sense._id && sense.definition) {
+                context += sense.definition;
+                userPrompt += `${context}\n`;
+
+                if (Array.isArray(sense.examples)) {
+                  sense.examples.forEach((ex) => {
+                    if (ex._id && ex.en) {
+                      userPrompt += `• [${ex._id}] "${ex.en}"\n`;
+                    }
+                  });
+                }
+              }
+            });
+          }
+        });
+      }
 
       // System prompt for examples only
       const systemPrompt = `Bạn là dịch giả Anh–Việt chuyên nghiệp.
-Dịch tự nhiên, rõ ràng theo ngữ cảnh.
-Trả về JSON hợp lệ parse được bằng JSON.parse(), không thêm markdown, không giải thích:
+
+Chỉ nhiệm vụ sau:
+- Dịch tự nhiên (không word-by-word) các câu ví dụ bắt đầu bằng "•".
+- Với IDIOMS EXAMPLES: dịch theo nghĩa thành ngữ.
+- Mỗi dòng "•" có dạng: • [id] text → output giữ nguyên "_id" và dịch phần text.
+- Không dịch / không trả về bất kỳ nội dung nào khác (word, definition, context…).
+- Không tự tạo ví dụ; nếu không có dòng "•" thì không trả output.
+- Trả về JSON hợp lệ duy nhất, không markdown, không giải thích:
 {
- "examples": [{"_id": "...","vi": "..."}]
+ "examples": [{"_id": "...", "vi": "..."}]
 }
-vi: dịch ví dụ theo ngữ cảnh.`;
+
+"vi": nghĩa tiếng Việt tự nhiên theo ngữ cảnh.`;
 
       // Log full prompt
       const fullPrompt = `=== SYSTEM PROMPT ===\n${systemPrompt}\n\n=== USER PROMPT ===\n${userPrompt}`;
-      this.log(
-        "info",
-        `Translating examples only: ${word}, ${allExamples.length} examples`
-      );
       this.log("info", `Full prompt:\n${fullPrompt}`);
 
       // Call Google AI
