@@ -1,12 +1,14 @@
 import { BaseController } from "./BaseController.js";
 import GroupWordService from "../services/GroupWordService.js";
 import WordService from "../services/WordService.js";
+import CategoryService from "../services/CategoryService.js";
 
 class GroupWordController extends BaseController {
-  constructor(groupWordService = null, wordService = null) {
+  constructor(groupWordService = null, wordService = null, categoryService = null) {
     super();
     this.groupWordService = groupWordService || new GroupWordService();
     this.wordService = wordService || new WordService();
+    this.categoryService = categoryService || new CategoryService();
   }
 
   // GET /api/group-words - Get all group_words
@@ -109,44 +111,54 @@ class GroupWordController extends BaseController {
       return this.sendSuccess(res, [], { total: 0, page: 1, per_page: 100 });
     }
 
-    // Build query for WordService.getAll
-    let queryParams = {
-      page,
-      per_page,
-      q: "",
-      symbol: "",
-      parts_of_speech: "",
+    // Build Mongo filter
+    const query = {
+      _id: { $in: uniqueWordIds },
     };
 
-    // Apply filters
-    if (q) queryParams.q = q;
-    if (symbol) queryParams.symbol = symbol;
-    if (parts_of_speech) queryParams.parts_of_speech = parts_of_speech;
+    // Escape regex helper
+    const escapeForRegex = (s) =>
+      String(s || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-    // Get words using WordService
-    const result = await this.wordService.getAll(queryParams);
+    // 🔍 Search filter applied to _id (định dạng string)
+    if (q) {
+      query._id = { $regex: escapeForRegex(q), $options: "i" };
+    }
 
-    // Filter only words that are in uniqueWordIds
-    const filteredWords = result.data.filter((word) =>
-      uniqueWordIds.includes(word._id)
-    );
+    // 🧩 parts_of_speech filter
+    if (parts_of_speech && String(parts_of_speech).trim() !== "") {
+      try {
+        const parsed = JSON.parse(parts_of_speech);
+        if (Array.isArray(parsed)) {
+          query.parts_of_speech = parsed;
+        }
+      } catch (e) {}
+    }
 
-    // Attach group_word_ids for each word
-    const wordsWithGroupIds = await Promise.all(
-      filteredWords.map(async (word) => {
-        const groupIds = await this.groupWordService.getGroupWordsByWordId(
-          word._id,
-          userId
-        );
-        return { ...word, group_word_ids: groupIds };
+    // 🔠 symbol filter
+    const SYMBOL_ORDER = ["a1", "a2", "b1", "b2", "c1"];
+    if (symbol === "other") {
+      query.symbol = { $nin: SYMBOL_ORDER };
+    } else if (SYMBOL_ORDER.includes(symbol)) {
+      query.symbol = symbol;
+    }
+
+    // ✅ Lấy dữ liệu trực tiếp từ DB theo uniqueWordIds + filters
+    const words = await this.wordService.repository.find(query);
+
+    const wordsWithCategories = await Promise.all(
+      words.map(async (word) => {
+        const categoryIds =
+          await this.categoryService.getCategoriesByWordId(word._id, userId);
+
+        return {
+          ...word,
+          category_ids: categoryIds || [],
+        };
       })
     );
 
-    return this.sendSuccess(res, wordsWithGroupIds, {
-      total: wordsWithGroupIds.length,
-      page: parseInt(page),
-      per_page: parseInt(per_page),
-    });
+    return this.sendSuccess(res, wordsWithCategories);
   });
 
   // POST /api/group-words/favorites - Add word to group

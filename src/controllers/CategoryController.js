@@ -113,33 +113,42 @@ class CategoryController extends BaseController {
       return this.sendSuccess(res, [], { total: 0, page: 1, per_page: 100 });
     }
 
-    // Build query for WordService.getAll
-    let queryParams = {
-      page,
-      per_page,
-      q: "",
-      symbol: "",
-      parts_of_speech: "",
+    // Build Mongo filter
+    const query = {
+      _id: { $in: wordIds },
     };
 
-    // Apply filters
-    if (q) queryParams.q = q;
-    if (symbol) queryParams.symbol = symbol;
-    if (parts_of_speech) queryParams.parts_of_speech = parts_of_speech;
+    // Escape regex helper
+    const escapeForRegex = (s) =>
+      String(s || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-    // Get words using WordService
-    const result = await this.wordService.getAll(queryParams);
+    // 🔍 Search filter applied to _id (định dạng string)
+    if (q) {
+      query._id = { $regex: escapeForRegex(q), $options: "i" };
+    }
 
-    // Filter only words that are in wordIds
-    const filteredWords = result.data.filter((word) =>
-      wordIds.includes(word._id)
-    );
+    // 🧩 parts_of_speech filter
+    if (parts_of_speech && String(parts_of_speech).trim() !== "") {
+      try {
+        const parsed = JSON.parse(parts_of_speech);
+        if (Array.isArray(parsed)) {
+          query.parts_of_speech = parsed;
+        }
+      } catch (e) {}
+    }
 
-    return this.sendSuccess(res, filteredWords, {
-      total: filteredWords.length,
-      page: parseInt(page),
-      per_page: parseInt(per_page),
-    });
+    // 🔠 symbol filter
+    const SYMBOL_ORDER = ["a1", "a2", "b1", "b2", "c1"];
+    if (symbol === "other") {
+      query.symbol = { $nin: SYMBOL_ORDER };
+    } else if (SYMBOL_ORDER.includes(symbol)) {
+      query.symbol = symbol;
+    }
+
+    // ✅ Lấy dữ liệu trực tiếp từ DB theo uniqueWordIds + filters
+    const words = await this.wordService.repository.find(query);
+
+    return this.sendSuccess(res, words);
   });
 
   // DELETE /api/categories/:id/words - Remove words from category
