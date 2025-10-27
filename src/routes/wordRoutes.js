@@ -31,27 +31,21 @@ router.get(
 // GET /api/parts-of-speech
 router.get("/parts-of-speech", wordController.getPartsOfSpeech);
 
-// POST /api/examples/vi
-router.post(
-  "/examples/vi",
-  validateBody(wordSchemas.getExamplesVi),
-  wordController.getExamplesVi
-);
-
-// POST /api/examples/vi/update
-router.post(
-  "/examples/vi/update",
-  validateBody(wordSchemas.updateExamplesVi),
-  wordController.updateExamplesVi
-);
-
 // GET /api/search?q=hang&current=1&limit=20&type=word
 router.get("/search", validateQuery(wordSchemas.search), wordController.search);
 
-// POST /api/senses/definition
-router.post("/senses/definition", wordController.updateSenseDefinitions);
+// POST /api/words/assign-root
+router.post(
+  "/words/assign-root",
+  validateBody(wordSchemas.assignRoot),
+  wordController.assignRoot
+);
 
-// POST /api/senses/definition/short
-router.post("/senses/definition/short", wordController.getSenseDefinitionShort);
+// GET /api/words?root=<word_id>
+router.get(
+  "/words",
+  validateQuery(wordSchemas.getByRoot),
+  wordController.getWordsByRoot
+);
 
 export default router;

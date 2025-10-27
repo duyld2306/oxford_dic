@@ -220,56 +220,49 @@ export class WordRepository extends BaseRepository {
   }
 
   /**
-   * Get example vi by ids
-   * @param {Array<ObjectId>} ids - Array of example IDs
-   * @returns {Promise<Array>}
+   * Assign or remove root field for a word document
+   * @param {string} wordId
+   * @param {string|null} rootId - if null/empty, root will be unset
    */
-  async getExampleViByIds(ids) {
+  async assignRoot(wordId, rootId) {
     await this.init();
 
-    if (!Array.isArray(ids) || ids.length === 0) return [];
+    const key = String(wordId || "")
+      .toLowerCase()
+      .trim();
+    if (!key) return { modifiedCount: 0 };
 
-    const objectIds = ids.map((id) =>
-      id instanceof ObjectId ? id : new ObjectId(id)
+    if (
+      rootId === null ||
+      rootId === undefined ||
+      String(rootId).trim() === ""
+    ) {
+      const res = await this.collection.updateOne(
+        { _id: key },
+        { $unset: { root: "" } }
+      );
+      return res;
+    }
+
+    const rootKey = String(rootId).toLowerCase().trim();
+    const res = await this.collection.updateOne(
+      { _id: key },
+      { $set: { root: rootKey } }
     );
+    return res;
+  }
 
-    const pipeline = [
-      { $unwind: "$data" },
-      { $unwind: "$data.senses" },
-      { $unwind: "$data.senses.examples" },
-      { $match: { "data.senses.examples._id": { $in: objectIds } } },
-      {
-        $project: {
-          _id: "$data.senses.examples._id",
-          vi: "$data.senses.examples.vi",
-        },
-      },
-      {
-        $unionWith: {
-          coll: this.collection.collectionName,
-          pipeline: [
-            { $unwind: "$data" },
-            { $unwind: "$data.idioms" },
-            { $unwind: "$data.idioms.senses" },
-            { $unwind: "$data.idioms.senses.examples" },
-            {
-              $match: {
-                "data.idioms.senses.examples._id": { $in: objectIds },
-              },
-            },
-            {
-              $project: {
-                _id: "$data.idioms.senses.examples._id",
-                vi: "$data.idioms.senses.examples.vi",
-              },
-            },
-          ],
-        },
-      },
-    ];
-
-    const results = await this.aggregate(pipeline, { allowDiskUse: true });
-    return results.map((r) => ({ _id: r._id, vi: r.vi || "" }));
+  /**
+   * Find documents that have root equal to given rootId
+   * @param {string} rootId
+   * @returns {Promise<Array>} array of documents
+   */
+  async findByRoot(rootId) {
+    await this.init();
+    if (!rootId) return [];
+    const key = String(rootId).toLowerCase().trim();
+    const cursor = this.collection.find({ root: key }).sort({ _id: 1 });
+    return await cursor.toArray();
   }
 
   /**

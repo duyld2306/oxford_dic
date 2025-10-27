@@ -8,13 +8,7 @@ import {
   buildTopSymbolFromPages,
   buildPartsOfSpeechFromPages,
 } from "../utils/variants.js";
-import {
-  WordDTO,
-  WordLookupDTO,
-  ExampleViDTO,
-  SenseDefinitionDTO,
-  PartsOfSpeechDTO,
-} from "../dtos/WordDTO.js";
+import { WordLookupDTO, PartsOfSpeechDTO } from "../dtos/WordDTO.js";
 
 class WordService extends BaseService {
   constructor(wordRepository = null, dependencies = {}) {
@@ -177,7 +171,7 @@ class WordService extends BaseService {
 
         // Transform the result to match the expected format
         const formattedWords = result.words.map((word) => ({
-          _id: word, // For word search, the word itself is the _id
+          _id: word,
           word: word,
           isIdiom: false,
         }));
@@ -189,16 +183,6 @@ class WordService extends BaseService {
         };
       }
     }, "searchByPrefix");
-  }
-
-  // Lấy example vi theo ids
-  async getExampleViByIds(ids) {
-    return this.execute(async () => {
-      if (!Array.isArray(ids) || ids.length === 0) return [];
-
-      const results = await this.repository.getExampleViByIds(ids);
-      return results.map((item) => new ExampleViDTO(item).transform());
-    }, "getExampleViByIds");
   }
 
   // Update example vi nếu đang rỗng
@@ -308,63 +292,6 @@ class WordService extends BaseService {
     }, "updateSenseDefinitions");
   }
 
-  // Get definition_vi_short for sense ids
-  async getSenseDefinitionShortByIds(ids) {
-    return this.execute(async () => {
-      if (!Array.isArray(ids) || ids.length === 0) return [];
-
-      // This method needs to be added to WordRepository
-      // For now, keep using repository directly
-      await this.repository.init();
-
-      const pipeline = [
-        { $unwind: "$data" },
-        { $unwind: "$data.senses" },
-        { $match: { "data.senses._id": { $in: ids } } },
-        {
-          $project: {
-            _id: "$data.senses._id",
-            definition_vi_short: "$data.senses.definition_vi_short",
-            definition_vi: "$data.senses.definition_vi",
-          },
-        },
-        {
-          $unionWith: {
-            coll: this.repository.collection.collectionName,
-            pipeline: [
-              { $unwind: "$data" },
-              { $unwind: "$data.idioms" },
-              { $unwind: "$data.idioms.senses" },
-              { $match: { "data.idioms.senses._id": { $in: ids } } },
-              {
-                $project: {
-                  _id: "$data.idioms.senses._id",
-                  definition_vi_short:
-                    "$data.idioms.senses.definition_vi_short",
-                  definition_vi: "$data.idioms.senses.definition_vi",
-                },
-              },
-            ],
-          },
-        },
-      ];
-
-      const results = await this.repository.aggregate(pipeline, {
-        allowDiskUse: true,
-      });
-
-      return results.map((item) => new SenseDefinitionDTO(item).transform());
-    }, "getSenseDefinitionShortByIds");
-  }
-
-  // Validate word input
-  validateWord(word) {
-    if (!word || typeof word !== "string") return null;
-    const cleaned = word.trim().toLowerCase();
-    if (!cleaned.match(/^[a-z\s-]+$/i)) return null;
-    return cleaned;
-  }
-
   // Get all documents with pagination
   async getAll({
     page = 1,
@@ -377,38 +304,46 @@ class WordService extends BaseService {
       const p = Math.max(1, parseInt(page, 10) || 1);
       const per = Math.max(1, parseInt(per_page, 10) || 100);
 
-      // build mongo query
-      const query = {};
+      // Build Mongo query
+      const baseConditions = [];
 
       // helper to escape user input for regex
       const escapeForRegex = (s) =>
         String(s || "").replace(/[.*+?^${}()|[\\]\\]/g, "\\$&");
 
       if (q) {
-        query._id = { $regex: escapeForRegex(q), $options: "i" };
+        baseConditions.push({
+          _id: { $regex: escapeForRegex(q), $options: "i" },
+        });
       }
 
-      // parts_of_speech filter: expected as JSON.stringify(sortedArray)
       if (parts_of_speech && String(parts_of_speech).trim() !== "") {
         try {
           const parsed = JSON.parse(parts_of_speech);
           if (Array.isArray(parsed)) {
-            // exact match of top-level array (order matters)
-            query.parts_of_speech = parsed;
+            baseConditions.push({ parts_of_speech: parsed });
           }
         } catch (e) {
-          // ignore parse errors and do not filter
+          // ignore parse errors
         }
       }
 
       const SYMBOL_ORDER = ["a1", "a2", "b1", "b2", "c1"];
       if (symbol === "other") {
-        query.symbol = { $nin: SYMBOL_ORDER };
+        baseConditions.push({ symbol: { $nin: SYMBOL_ORDER } });
       } else if (SYMBOL_ORDER.includes(symbol)) {
-        query.symbol = symbol;
+        baseConditions.push({ symbol });
       }
 
-      // Use repository for filtered pagination
+      // ✅ Always enforce root filter:
+      // Only include documents with no root OR root = null
+      baseConditions.push({
+        $or: [{ root: { $exists: false } }, { root: null }],
+      });
+
+      // Final query
+      const query = baseConditions.length > 0 ? { $and: baseConditions } : {};
+
       await this.repository.init();
       const skip = (p - 1) * per;
 
@@ -419,6 +354,7 @@ class WordService extends BaseService {
         createdAt: 1,
         updatedAt: 1,
         symbol: 1,
+        root: 1,
         parts_of_speech: 1,
       };
 
@@ -431,13 +367,112 @@ class WordService extends BaseService {
       const docs = await cursor.toArray();
       const total = await this.repository.collection.countDocuments(query);
 
-      return {
-        total,
-        page: p,
-        per_page: per,
-        data: docs,
-      };
+      return { total, page: p, per_page: per, data: docs };
     }, "getAll");
+  }
+
+  /**
+   * Assign or remove root for a given word
+   * @param {string} wordId
+   * @param {string|null|undefined} rootId
+   */
+  async assignRoot(wordId, rootId) {
+    return this.execute(async () => {
+      await this.repository.init();
+
+      const nowIso = new Date().toISOString();
+
+      // Read current document
+      const currentDoc = await this.repository.collection.findOne({
+        _id: wordId,
+      });
+      if (!currentDoc) {
+        const err = new Error("Word not found");
+        err.status = 404;
+        throw err;
+      }
+
+      if (currentDoc.root === null) {
+        const err = new Error(
+          "Cannot assign root to a root word that has children"
+        );
+        err.status = 400;
+        throw err;
+      }
+
+      const oldRoot = currentDoc.root;
+      const newRoot = rootId;
+
+      // Helper
+      const unsetRootField = async (wordKey) =>
+        this.repository.collection.updateOne(
+          { _id: wordKey },
+          { $unset: { root: "" } }
+        );
+
+      const setWordRootField = async (wordKey, value) => {
+        if (value === undefined) {
+          return unsetRootField(wordKey);
+        }
+        return this.repository.collection.updateOne(
+          { _id: wordKey },
+          { $set: { root: value, updatedAt: nowIso } }
+        );
+      };
+
+      const ensureWordIsRoot = async (wordKey) => {
+        return this.repository.collection.updateOne(
+          { _id: wordKey },
+          {
+            $set: { root: null, updatedAt: nowIso },
+            $setOnInsert: { createdAt: nowIso },
+          },
+          { upsert: true }
+        );
+      };
+
+      // Apply update to target word
+      const targetUpdate = await setWordRootField(wordId, newRoot);
+
+      // If newRoot is a string => ensure the root word exists and is marked as root
+      if (typeof newRoot === "string") {
+        await ensureWordIsRoot(newRoot);
+      }
+
+      // Reconcile old root if changed
+      if (oldRoot !== undefined && oldRoot !== newRoot) {
+        const remain = await this.repository.collection.countDocuments({
+          root: oldRoot,
+        });
+
+        if (remain === 0) {
+          // Old root no longer has children → remove root flag
+          await unsetRootField(oldRoot);
+        } else {
+          // Still has children → ensure oldRoot is marked as root
+          await this.repository.collection.updateOne(
+            { _id: oldRoot },
+            { $set: { root: null, updatedAt: nowIso } }
+          );
+        }
+      }
+
+      return { modifiedCount: targetUpdate.modifiedCount || 0 };
+    }, "assignRoot");
+  }
+
+  /**
+   * Get all words whose root equals given word id
+   * @param {string} rootId
+   * @returns {Promise<Array>} array of word documents
+   */
+  async getByRoot(rootId) {
+    return this.execute(async () => {
+      if (!rootId) return [];
+      await this.repository.init();
+      const docs = await this.repository.findByRoot(rootId);
+      return docs || [];
+    }, "getByRoot");
   }
 
   // Specialized, lightweight search for UI search/autocomplete
@@ -452,9 +487,7 @@ class WordService extends BaseService {
         String(s || "").replace(/[.*+?^${}()|[\\]\\]/g, "\\$&");
 
       // prefix-only anchored, case-insensitive
-      const query = {
-        _id: { $regex: `^${escapeForRegex(q)}`, $options: "i" },
-      };
+      const query = { _id: { $regex: `^${escapeForRegex(q)}`, $options: "i" } };
 
       await this.repository.init();
       const skip = (p - 1) * per;

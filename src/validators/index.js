@@ -239,6 +239,26 @@ export const wordSchemas = {
     parts_of_speech: Joi.string().optional(), // JSON string
   }),
 
+  // Validation for assign-root endpoint
+  assignRoot: Joi.object({
+    word_id: Joi.string().trim().lowercase().min(1).required(),
+    root_id: Joi.string().trim().lowercase().allow(null).optional(),
+  })
+    .custom((value, helpers) => {
+      if (value.root_id && value.word_id === value.root_id) {
+        return helpers.error("root.same.as.word_id");
+      }
+      return value;
+    })
+    .messages({
+      "root.same.as.word_id": `"word_id" và "root_id" không được trùng nhau`,
+    }),
+
+  // Validation for getting words by root (query param)
+  getByRoot: Joi.object({
+    root: Joi.string().trim().allow("").optional(),
+  }),
+
   getExamplesVi: Joi.object({
     ids: Joi.array().items(Joi.string().trim()).min(1).required(),
   }),

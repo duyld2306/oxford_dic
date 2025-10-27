@@ -16,20 +16,6 @@ class WordController extends BaseController {
     return this.sendSuccess(res, result);
   });
 
-  // POST /api/examples/vi
-  getExamplesVi = this.asyncHandler(async (req, res) => {
-    const { ids } = this.getBody(req);
-    const data = await this.wordService.getExampleViByIds(ids);
-    return this.sendSuccess(res, data);
-  });
-
-  // POST /api/examples/vi/update
-  updateExamplesVi = this.asyncHandler(async (req, res) => {
-    const { updates } = this.getBody(req);
-    const result = await this.wordService.updateExampleViIfMissing(updates);
-    return this.sendSuccess(res, null, result);
-  });
-
   // GET /api/search?q=hang&type=prefix
   search = this.asyncHandler(async (req, res) => {
     const { q, page = 1, per_page = 100, type = "word" } = this.getQuery(req);
@@ -132,19 +118,21 @@ class WordController extends BaseController {
     return this.sendSuccess(res, list);
   });
 
-  // POST /api/senses/definition
-  updateSenseDefinitions = this.asyncHandler(async (req, res) => {
-    const payload = this.getBody(req);
-    const updates = Array.isArray(payload) ? payload : [payload];
-    const result = await this.wordService.updateSenseDefinitions(updates);
-    return this.sendSuccess(res, null, result);
+  // POST /api/words/assign-root
+  assignRoot = this.asyncHandler(async (req, res) => {
+    const { word_id, root_id } = req.validatedBody || req.body;
+
+    const result = await this.wordService.assignRoot(word_id, root_id);
+
+    return this.sendSuccess(res, { modifiedCount: result.modifiedCount });
   });
 
-  // POST /api/senses/definition/short
-  getSenseDefinitionShort = this.asyncHandler(async (req, res) => {
-    const { ids } = this.getBody(req);
-    const data = await this.wordService.getSenseDefinitionShortByIds(ids);
-    return this.sendSuccess(res, data);
+  // GET /api/words?root=<word_id>
+  // Return all words whose root equals given word id
+  getWordsByRoot = this.asyncHandler(async (req, res) => {
+    const { root = "" } = this.getQuery(req);
+    const docs = await this.wordService.getByRoot(root);
+    return this.sendSuccess(res, docs);
   });
 }
 
