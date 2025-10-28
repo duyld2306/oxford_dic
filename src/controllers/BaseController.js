@@ -49,6 +49,19 @@ export class BaseController {
   }
 
   /**
+   * Extract request metadata: user agent and IP address
+   */
+  getRequestMetadata(req) {
+    const userAgent = req.headers["user-agent"] || null;
+    const ipAddress =
+      req.headers["x-forwarded-for"] || req.socket.remoteAddress || null;
+    return {
+      ipAddress,
+      userAgent,
+    };
+  }
+
+  /**
    * Get validated body (set by validateBody middleware)
    * Falls back to req.body if validation middleware not used
    */

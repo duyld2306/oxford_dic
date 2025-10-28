@@ -232,10 +232,8 @@ export class AuthService extends BaseService {
    * @param {string} refreshToken - Refresh token
    * @returns {Promise<Object>}
    */
-  async refreshToken(refreshToken) {
+  async refreshToken(refreshToken, metadata = {}) {
     return this.execute(async () => {
-      this.validateRequired({ refreshToken }, ["refreshToken"]);
-
       // Verify JWT token
       let decoded;
       try {
@@ -256,6 +254,7 @@ export class AuthService extends BaseService {
       if (decoded.type !== "refresh") {
         const error = new Error("Invalid refresh token");
         error.status = 401;
+        error.errorCode = "INVALID_TOKEN";
         throw error;
       }
 
@@ -266,6 +265,7 @@ export class AuthService extends BaseService {
       if (!storedToken) {
         const error = new Error("Refresh token not found");
         error.status = 401;
+        error.errorCode = "TOKEN_NOT_FOUND";
         throw error;
       }
 
@@ -296,12 +296,22 @@ export class AuthService extends BaseService {
         { expiresIn: env.REFRESH_TOKEN_EXPIRE }
       );
 
+      // ✅ Remove old refresh token
+      await this.refreshTokenRepository.deleteByToken(refreshToken);
+
+      // ✅ Store new refresh token
+      await this.refreshTokenRepository.create({
+        user: user._id,
+        token: newRefreshToken,
+        userAgent: metadata.userAgent || null,
+        ipAddress: metadata.ipAddress || null,
+      });
+
       this.log("info", `Token refreshed for user: ${user.email}`);
 
       return {
-        message: "Token refreshed successfully",
-        accessToken: newAccessToken,
-        refreshToken: newRefreshToken,
+        access_token: newAccessToken,
+        refresh_token: newRefreshToken,
       };
     }, "refreshToken");
   }

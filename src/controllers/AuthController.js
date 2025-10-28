@@ -57,9 +57,7 @@ class AuthController extends BaseController {
     const { email, password } = this.getBody(req);
 
     // Extract user agent and IP address
-    const userAgent = req.headers["user-agent"] || null;
-    const ipAddress =
-      req.headers["x-forwarded-for"] || req.socket.remoteAddress || null;
+    const { userAgent, ipAddress } = this.getRequestMetadata(req);
 
     try {
       const result = await this.authService.login(email, password, {
@@ -81,17 +79,36 @@ class AuthController extends BaseController {
   // POST /api/auth/refresh
   refresh = this.asyncHandler(async (req, res) => {
     const { refreshToken } = this.getBody(req);
+    const { userAgent, ipAddress } = this.getRequestMetadata(req);
 
     try {
-      const result = await this.authService.refreshToken(refreshToken);
+      const result = await this.authService.refreshToken(refreshToken, {
+        userAgent,
+        ipAddress,
+      });
       return this.sendSuccess(res, result);
     } catch (error) {
       if (error.name === "TokenExpiredError") {
-        return this.sendError(res, "Refresh token has expired", 401);
+        return this.sendError(
+          res,
+          "Refresh token has expired",
+          401,
+          "REFRESH_TOKEN_EXPIRED"
+        );
       } else if (error.name === "JsonWebTokenError") {
-        return this.sendError(res, "Invalid refresh token", 401);
+        return this.sendError(
+          res,
+          "Invalid refresh token",
+          401,
+          "INVALID_TOKEN"
+        );
       } else if (error.status) {
-        return this.sendError(res, error.message, error.status);
+        return this.sendError(
+          res,
+          error.message,
+          error.status,
+          error.errorCode
+        );
       }
       throw error;
     }
