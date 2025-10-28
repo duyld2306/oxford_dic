@@ -358,16 +358,42 @@ class WordService extends BaseService {
         parts_of_speech: 1,
       };
 
-      const cursor = this.repository.collection
+      // ✅ Step 1: Fetch parent documents
+      const parents = await this.repository.collection
         .find(query, { projection })
         .sort({ _id: 1 })
         .skip(skip)
-        .limit(per);
+        .limit(per)
+        .toArray();
 
-      const docs = await cursor.toArray();
+      const parentIds = parents.map((d) => d._id);
+
+      // ✅ Step 2: Fetch related children in one query
+      const children = await this.repository.collection
+        .find({ root: { $in: parentIds } }, { projection })
+        .toArray();
+
+      // ✅ Step 3: Map children to their parent
+      const childrenMap = parentIds.reduce((acc, id) => {
+        acc[id] = [];
+        return acc;
+      }, {});
+
+      for (const child of children) {
+        if (childrenMap[child.root]) {
+          childrenMap[child.root].push(child);
+        }
+      }
+
+      // ✅ Step 4: Append children to the parent objects
+      const result = parents.map((p) => ({
+        ...p,
+        children: childrenMap[p._id] ?? [],
+      }));
+
       const total = await this.repository.collection.countDocuments(query);
 
-      return { total, page: p, per_page: per, data: docs };
+      return { total, page: p, per_page: per, data: result };
     }, "getAll");
   }
 
