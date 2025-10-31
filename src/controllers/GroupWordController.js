@@ -4,7 +4,11 @@ import WordService from "../services/WordService.js";
 import CategoryService from "../services/CategoryService.js";
 
 class GroupWordController extends BaseController {
-  constructor(groupWordService = null, wordService = null, categoryService = null) {
+  constructor(
+    groupWordService = null,
+    wordService = null,
+    categoryService = null
+  ) {
     super();
     this.groupWordService = groupWordService || new GroupWordService();
     this.wordService = wordService || new WordService();
@@ -74,14 +78,7 @@ class GroupWordController extends BaseController {
   // GET /api/group-words/favorites - Get favorites
   getFavorites = this.asyncHandler(async (req, res) => {
     const userId = this.getUserId(req);
-    const {
-      group_word_id,
-      q,
-      symbol,
-      parts_of_speech,
-      page = 1,
-      per_page = 100,
-    } = this.getQuery(req);
+    const { group_word_id, q, symbol, parts_of_speech } = this.getQuery(req);
 
     // Get all group words for user (with full data including words array)
     const groupWords = await this.groupWordService.repository.find({
@@ -122,7 +119,11 @@ class GroupWordController extends BaseController {
 
     // 🔍 Search filter applied to _id (định dạng string)
     if (q) {
-      query._id = { $regex: escapeForRegex(q), $options: "i" };
+      query._id = {
+        $in: uniqueWordIds,
+        $regex: escapeForRegex(q),
+        $options: "i",
+      };
     }
 
     // 🧩 parts_of_speech filter
@@ -148,8 +149,10 @@ class GroupWordController extends BaseController {
 
     const wordsWithCategories = await Promise.all(
       words.map(async (word) => {
-        const categoryIds =
-          await this.categoryService.getCategoriesByWordId(word._id, userId);
+        const categoryIds = await this.categoryService.getCategoriesByWordId(
+          word._id,
+          userId
+        );
 
         return {
           ...word,

@@ -90,13 +90,7 @@ class CategoryController extends BaseController {
   getWordsFromCategory = this.asyncHandler(async (req, res) => {
     const userId = this.getUserId(req);
     const { id } = this.getParams(req);
-    const {
-      q,
-      symbol,
-      parts_of_speech,
-      page = 1,
-      per_page = 100,
-    } = this.getQuery(req);
+    const { q, symbol, parts_of_speech } = this.getQuery(req);
 
     // Get category to verify ownership and get word list (with full data)
     const category = await this.categoryService.repository.findOne({
@@ -124,7 +118,11 @@ class CategoryController extends BaseController {
 
     // 🔍 Search filter applied to _id (định dạng string)
     if (q) {
-      query._id = { $regex: escapeForRegex(q), $options: "i" };
+      query._id = {
+        $in: wordIds,
+        $regex: escapeForRegex(q),
+        $options: "i",
+      };
     }
 
     // 🧩 parts_of_speech filter
