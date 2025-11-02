@@ -34,6 +34,9 @@ router.get("/parts-of-speech", wordController.getPartsOfSpeech);
 // GET /api/search?q=hang&current=1&limit=20&type=word
 router.get("/search", validateQuery(wordSchemas.search), wordController.search);
 
+// POST /api/senses/definition
+router.post("/senses/definition", wordController.updateSenseDefinitions);
+
 // POST /api/words/assign-root
 router.post(
   "/words/assign-root",

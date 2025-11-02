@@ -118,6 +118,14 @@ class WordController extends BaseController {
     return this.sendSuccess(res, list);
   });
 
+  // POST /api/senses/definition
+  updateSenseDefinitions = this.asyncHandler(async (req, res) => {
+    const payload = this.getBody(req);
+    const updates = Array.isArray(payload) ? payload : [payload];
+    const result = await this.wordService.updateSenseDefinitions(updates);
+    return this.sendSuccess(res, null, result);
+  });
+
   // POST /api/words/assign-root
   assignRoot = this.asyncHandler(async (req, res) => {
     const { word_id, root_id } = req.validatedBody || req.body;
