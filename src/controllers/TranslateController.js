@@ -29,11 +29,9 @@ class TranslateController extends BaseController {
       // Return summary with token usage
       return this.sendSuccess(res, {
         word: wordData.word,
-        definitions: definitionsResult,
-        total_definitions: definitions.length,
-        prompt_tokens: usage.prompt_tokens,
-        completion_tokens: usage.completion_tokens,
-        total_tokens: usage.total_tokens,
+        definitions,
+        result: definitionsResult,
+        usage,
       });
     } catch (error) {
       if (error.status) {
@@ -63,11 +61,9 @@ class TranslateController extends BaseController {
       // Return summary with token usage
       return this.sendSuccess(res, {
         word: wordData.word,
-        examples: examplesResult,
-        total_examples: examples.length,
-        prompt_tokens: usage.prompt_tokens,
-        completion_tokens: usage.completion_tokens,
-        total_tokens: usage.total_tokens,
+        examples,
+        result: examplesResult,
+        usage,
       });
     } catch (error) {
       if (error.status) {
@@ -103,14 +99,13 @@ class TranslateController extends BaseController {
 
       return this.sendSuccess(res, {
         word: wordData.word,
-        definitions: definitionsResult,
-        examples: examplesResult,
-        total_definitions: definitions.length,
-        total_examples: examples.length,
-        prompt_tokens: usage.prompt_tokens,
-        completion_tokens: usage.completion_tokens,
-        total_tokens: usage.total_tokens,
-        mode: "parallel",
+        definitions,
+        examples,
+        result: {
+          definition: definitionsResult,
+          example: examplesResult,
+        },
+        usage,
       });
     } catch (error) {
       if (error.status) {

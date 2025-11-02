@@ -13,6 +13,7 @@ import categoryRoutes from "./routes/categoryRoutes.js";
 import errorHandler from "./middleware/errorHandler.js";
 import responseHandler from "./middleware/responseHandler.js";
 import { logRequest } from "./config/logger.js";
+import database from "./config/database.js";
 
 const createApp = () => {
   const app = express();
@@ -56,8 +57,15 @@ const createApp = () => {
   app.use("/api/categories", categoryRoutes);
 
   // Keep-alive ping endpoint
-  app.get("/api/ping", (req, res) => {
-    res.status(200).json({ status: "ok", time: new Date().toISOString() });
+  app.get("/api/ping", async (req, res) => {
+    try {
+      const collection = database.getCollection();
+      await collection.findOne({});
+      res.status(200).json({ status: "ok", time: new Date().toISOString() });
+    } catch (err) {
+      console.error("Ping error:", err.message || err);
+      res.status(500).json({ status: "error", message: err.message });
+    }
   });
 
   app.get("/", (req, res) => res.send("Welcome!"));

@@ -1,10 +1,12 @@
-// Utility helpers for building and normalizing variants
-function escapeString(s) {
-  return String(s || "");
-}
-
 function normalizeKey(s) {
-  return escapeString(s).replace(/\s+/g, " ").toLowerCase();
+  if (typeof s !== "string") return "";
+  return s
+    .replace(/[^a-zA-Z\s-]+/g, "") // ❌ loại bỏ mọi ký tự KHÔNG phải chữ; giữ nguyên khoảng trắng, '-'
+    .replace(/-{2,}/g, "-") // ✅ gộp nhiều dấu '-' liên tiếp thành một
+    .replace(/^-+|-+$/g, "") // ✅ bỏ '-' ở đầu hoặc cuối
+    .replace(/\s+/g, " ") // ✅ chuẩn hóa khoảng trắng
+    .toLowerCase() // ✅ viết thường
+    .trim(); // ✅ bỏ khoảng trắng đầu/cuối
 }
 
 function appendCounterpart(s) {
@@ -18,7 +20,10 @@ function buildVariantsFromPages(pages) {
   const raw = [];
   if (!Array.isArray(pages)) return raw;
   for (const p of pages) {
-    if (p && p.word) raw.push(p.word);
+    if (p && p.word) {
+      const cleaned = normalizeKey(p.word);
+      if (cleaned) raw.push(cleaned);
+    }
   }
   // dedupe preserving order
   const uniq = [];

@@ -72,11 +72,7 @@ class WordService extends BaseService {
   // Get word by exact match with caching
   async getWord(word) {
     return this.execute(async () => {
-      const normalizedWord = String(word || "")
-        .toLowerCase()
-        .trim();
-
-      this.validateRequired({ word: normalizedWord }, ["word"]);
+      const normalizedWord = normalizeKey(word);
 
       // Try to get from database first
       const dbResult = await this.repository.findByWord(normalizedWord);
@@ -108,9 +104,8 @@ class WordService extends BaseService {
       const finalVariants = buildVariantsFromPages(crawledPages);
 
       // canonical key: first crawled page's found word normalized
-      const canonicalRaw =
+      const canonicalKey =
         (finalVariants && finalVariants[0]) || normalizedWord;
-      const canonicalKey = normalizeKey(canonicalRaw);
 
       // Compute top-level symbol from page-level symbols collected during crawl
       const topSymbol = buildTopSymbolFromPages(crawledPages);

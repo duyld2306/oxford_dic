@@ -59,7 +59,6 @@ export class WordRepository extends BaseRepository {
    */
   async upsert(word, data) {
     await this.init();
-    const key = String(word || "").toLowerCase();
     const nowIso = new Date().toISOString();
 
     // Accept two shapes: legacy `data` is array, or new shape { data: [...], variants: [...] }
@@ -74,7 +73,7 @@ export class WordRepository extends BaseRepository {
     }
 
     const result = await this.collection.updateOne(
-      { _id: key },
+      { _id: word },
       {
         $set: {
           data: dbData,
@@ -106,11 +105,9 @@ export class WordRepository extends BaseRepository {
     const regex = new RegExp(`^${escapeForRegex(searchPrefix)}`, "i");
 
     const pipeline = [
-      { $unwind: "$data" },
       {
         $match: {
           $or: [
-            { "data.word": { $regex: regex } },
             { _id: { $regex: regex } },
             { variants: { $elemMatch: { $regex: regex } } },
           ],
@@ -119,19 +116,32 @@ export class WordRepository extends BaseRepository {
       {
         $group: {
           _id: null,
-          words: { $addToSet: "$data.word" },
+          // gom tất cả _id + variants thành mảng words
+          words: { $addToSet: "$_id" },
+          variants: { $addToSet: "$variants" },
         },
       },
       {
         $project: {
           _id: 0,
+          // nối _id và variants (flatten)
+          words: {
+            $reduce: {
+              input: "$variants",
+              initialValue: "$words",
+              in: { $setUnion: ["$$value", "$$this"] },
+            },
+          },
+        },
+      },
+      {
+        $project: {
           words: { $sortArray: { input: "$words", sortBy: -1 } },
           total: { $size: "$words" },
         },
       },
       {
         $project: {
-          _id: 0,
           total: 1,
           words: {
             $slice: ["$words", (page - 1) * per_page, per_page],
