@@ -74,7 +74,7 @@ export class TranslateService extends BaseService {
           if (sense._id && sense.definition) {
             definitions.push({
               _id: sense._id,
-              definition: sense.definition
+              definition: sense.definition,
             });
           }
         });
@@ -92,8 +92,8 @@ export class TranslateService extends BaseService {
 
       // Build compact user prompt - only definitions
       let userPrompt = `Context: ${word}${pos ? ` (${pos})` : ""}\n`;
-      
-      if(definitions.length > 0) {
+
+      if (definitions.length > 0) {
         userPrompt += `\nDEFINITIONS:\n`;
         definitions.forEach((def, idx) => {
           userPrompt += `• [${def._id}] ${def.definition}\n`;
@@ -124,6 +124,7 @@ Trả về JSON hợp lệ parse được bằng JSON.parse(), không thêm mark
 {
  "definitions": [{"_id": "...","definition_vi": "...","definition_vi_short": "..."}]
 }
+ _id: giữ nguyên từ dòng "• [id] ...";
 definition_vi: bản dịch tự nhiên;
 definition_vi_short: 3–4 nghĩa ngắn (từ/cụm từ, cách nhau dấu phẩy);`;
 
@@ -303,7 +304,7 @@ definition_vi_short: 3–4 nghĩa ngắn (từ/cụm từ, cách nhau dấu ph�
 
       // Build compact user prompt - group examples by definition (same as translateBulk)
       let userPrompt = `Word: ${word}${pos ? ` (${pos})` : ""}\n`;
-      if(definitionExamplesMap.size > 0) {
+      if (definitionExamplesMap.size > 0) {
         userPrompt += `\nEXAMPLES (grouped by definition):\n`;
 
         let exampleIndex = 1;
@@ -358,7 +359,6 @@ Chỉ nhiệm vụ sau:
 {
  "examples": [{"_id": "...", "vi": "..."}]
 }
-
 "vi": nghĩa tiếng Việt tự nhiên theo ngữ cảnh.`;
 
       // Log full prompt
