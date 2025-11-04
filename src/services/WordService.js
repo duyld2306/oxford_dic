@@ -4,7 +4,6 @@ import { WordRepository } from "../repositories/WordRepository.js";
 import { crawlWordDirect } from "../utils/crawl.js";
 import {
   normalizeKey,
-  buildVariantsFromPages,
   buildTopSymbolFromPages,
   buildPartsOfSpeechFromPages,
 } from "../utils/variants.js";
@@ -99,13 +98,14 @@ class WordService extends BaseService {
         err.status = 404;
         throw err;
       }
-
-      // Build top-level variants array from crawled pages (preserve original casing)
-      const finalVariants = buildVariantsFromPages(crawledPages);
+      const finalVariants = crawledPages
+        .map((item) => item.word)
+        .filter(Boolean);
 
       // canonical key: first crawled page's found word normalized
-      const canonicalKey =
-        (finalVariants && finalVariants[0]) || normalizedWord;
+      const canonicalKey = finalVariants[0]
+        ? normalizeKey(finalVariants[0])
+        : normalizedWord;
 
       // Compute top-level symbol from page-level symbols collected during crawl
       const topSymbol = buildTopSymbolFromPages(crawledPages);

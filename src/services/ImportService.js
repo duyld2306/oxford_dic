@@ -6,7 +6,6 @@ import { WordRepository } from "../repositories/WordRepository.js";
 import {
   buildTopSymbolFromPages,
   buildPartsOfSpeechFromPages,
-  buildVariantsFromPages,
 } from "../utils/variants.js";
 
 class ImportService extends BaseService {
@@ -189,7 +188,9 @@ class ImportService extends BaseService {
             if (newWordData.length > 0) {
               // Compute merged data to determine top symbol and parts_of_speech
               const mergedData = existingData.concat(newWordData);
-              const variants = buildVariantsFromPages(mergedData);
+              const variants = mergedData
+                .map((item) => item.word)
+                .filter(Boolean);
               const topSymbol = buildTopSymbolFromPages(mergedData);
               const partsOfSpeech = buildPartsOfSpeechFromPages(mergedData);
 
@@ -219,7 +220,7 @@ class ImportService extends BaseService {
           } else {
             // Word doesn't exist, create new entry
             // Compute symbol and parts_of_speech from the incoming wordData
-            const variants = buildVariantsFromPages(wordData);
+            const variants = wordData.map((item) => item.word).filter(Boolean);
             const topSymbol = buildTopSymbolFromPages(wordData);
             const partsOfSpeech = buildPartsOfSpeechFromPages(wordData);
 
