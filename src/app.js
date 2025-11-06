@@ -10,6 +10,7 @@ import flashcardRoutes from "./routes/flashcardRoutes.js";
 import flashcardGroupRoutes from "./routes/flashcardGroupRoutes.js";
 import groupWordRoutes from "./routes/groupWordRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
+import notesRoutes from "./routes/notesRoutes.js";
 import errorHandler from "./middleware/errorHandler.js";
 import responseHandler from "./middleware/responseHandler.js";
 import { logRequest } from "./config/logger.js";
@@ -55,6 +56,7 @@ const createApp = () => {
   app.use("/api/flashcard-groups", flashcardRoutes);
   app.use("/api/group-words", groupWordRoutes);
   app.use("/api/categories", categoryRoutes);
+  app.use("/api/notes", notesRoutes);
 
   // Keep-alive ping endpoint
   app.get("/api/ping", async (req, res) => {
