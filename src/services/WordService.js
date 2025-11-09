@@ -307,8 +307,9 @@ class WordService extends BaseService {
         String(s || "").replace(/[.*+?^${}()|[\\]\\]/g, "\\$&");
 
       if (q) {
+        // anchor to start so we only match prefixes (case-insensitive)
         baseConditions.push({
-          _id: { $regex: escapeForRegex(q), $options: "i" },
+          _id: { $regex: `^${escapeForRegex(q)}`, $options: "i" },
         });
       }
 

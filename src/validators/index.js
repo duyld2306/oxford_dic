@@ -274,6 +274,25 @@ export const wordSchemas = {
       .min(1)
       .required(),
   }),
+  // Notes validation
+  noteCreate: Joi.object({
+    words: Joi.array().items(Joi.string().trim().min(1)).default([]),
+    content: Joi.object().required(),
+  }),
+
+  noteUpdate: Joi.object({
+    words: Joi.array().items(Joi.string().trim().min(1)).optional(),
+    content: Joi.object().optional(),
+  }),
+
+  noteIdParam: Joi.object({
+    id: commonSchemas.objectId.required(),
+  }),
+  noteList: Joi.object({
+    page: Joi.number().integer().min(1).default(1),
+    per_page: Joi.number().integer().min(1).max(1000).default(100),
+    q: Joi.string().trim().allow("").optional(),
+  }),
 };
 
 // ============================================
