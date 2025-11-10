@@ -293,6 +293,10 @@ export const wordSchemas = {
     per_page: Joi.number().integer().min(1).max(1000).default(100),
     q: Joi.string().trim().allow("").optional(),
   }),
+  // Backup validation
+  backupKey: Joi.object({
+    key: Joi.string().trim().min(1).required(),
+  }),
 };
 
 // ============================================

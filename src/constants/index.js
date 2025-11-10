@@ -260,6 +260,11 @@ export const ERROR_RESPONSES = {
     status_code: 400,
     error_code: "MISSING_TOKEN",
   },
+  [ERROR_RESPONSE_CODES.INVALID_BACKUP_KEY]: {
+    message: "Invalid backup key",
+    status_code: 403,
+    error_code: "INVALID_BACKUP_KEY",
+  },
   // System
   [ERROR_RESPONSE_CODES.TOO_MANY_REQUESTS]: {
     message: "Too many requests",
@@ -319,6 +324,8 @@ export const API_RESPONSES = {
     VALIDATION: {
       VALIDATION_ERROR: ERROR_RESPONSES[ERROR_RESPONSE_CODES.VALIDATION_ERROR],
       MISSING_TOKEN: ERROR_RESPONSES[ERROR_RESPONSE_CODES.MISSING_TOKEN],
+      INVALID_BACKUP_KEY:
+        ERROR_RESPONSES[ERROR_RESPONSE_CODES.INVALID_BACKUP_KEY],
     },
     SYSTEM: {
       TOO_MANY_REQUESTS:
