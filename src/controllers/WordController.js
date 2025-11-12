@@ -64,29 +64,10 @@ class WordController extends BaseController {
       q,
       symbol,
       parts_of_speech,
+      userId: req.userId || null,
     });
 
-    const docs = result.data || [];
-    let wordsWithCategories = docs;
-
-    // If request is authenticated, attach category_ids for that user using repository
-    if (req.userId) {
-      const wordIdsInPage = docs.map((w) => w._id);
-
-      // Use repository method to get all category mappings in one query
-      const wordCategoryMap =
-        await this.categoryRepository.getCategoriesByWordIds(
-          wordIdsInPage,
-          req.userId
-        );
-
-      wordsWithCategories = docs.map((word) => ({
-        ...word,
-        category_ids: wordCategoryMap[word._id] || [],
-      }));
-    }
-
-    return this.sendSuccess(res, wordsWithCategories, {
+    return this.sendSuccess(res, result.data, {
       total: result.total,
       page: result.page,
       per_page: result.per_page,

@@ -8,6 +8,7 @@ import {
   buildPartsOfSpeechFromPages,
 } from "../utils/variants.js";
 import { WordLookupDTO, PartsOfSpeechDTO } from "../dtos/WordDTO.js";
+import { COLLECTIONS } from "../constants/index.js";
 
 class WordService extends BaseService {
   constructor(wordRepository = null, dependencies = {}) {
@@ -289,41 +290,38 @@ class WordService extends BaseService {
 
   // Get all documents with pagination
   async getAll({
-    page = 1,
+    lastId = null,
     per_page = 100,
     q = "",
     symbol = "",
     parts_of_speech = "",
+    userId = null,
   }) {
     return this.execute(async () => {
-      const p = Math.max(1, parseInt(page, 10) || 1);
-      const per = Math.max(1, parseInt(per_page, 10) || 100);
+      await this.repository.init();
 
-      // Build Mongo query
       const baseConditions = [];
 
-      // helper to escape user input for regex
       const escapeForRegex = (s) =>
         String(s || "").replace(/[.*+?^${}()|[\\]\\]/g, "\\$&");
 
+      // 🔹 Prefix search trên _id (root)
       if (q) {
-        // anchor to start so we only match prefixes (case-insensitive)
-        baseConditions.push({
-          _id: { $regex: `^${escapeForRegex(q)}`, $options: "i" },
-        });
+        const safeQ = escapeForRegex(q.trim());
+        baseConditions.push({ _id: { $regex: `^${safeQ}` } });
       }
 
-      if (parts_of_speech && String(parts_of_speech).trim() !== "") {
+      // 🔹 parts_of_speech filter
+      if (parts_of_speech) {
         try {
           const parsed = JSON.parse(parts_of_speech);
-          if (Array.isArray(parsed)) {
-            baseConditions.push({ parts_of_speech: parsed });
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            baseConditions.push({ parts_of_speech: { $in: parsed } });
           }
-        } catch (e) {
-          // ignore parse errors
-        }
+        } catch {}
       }
 
+      // 🔹 symbol filter
       const SYMBOL_ORDER = ["a1", "a2", "b1", "b2", "c1"];
       if (symbol === "other") {
         baseConditions.push({ symbol: { $nin: SYMBOL_ORDER } });
@@ -331,65 +329,97 @@ class WordService extends BaseService {
         baseConditions.push({ symbol });
       }
 
-      // ✅ Always enforce root filter:
-      // Only include documents with no root OR root = null
-      baseConditions.push({
-        $or: [{ root: { $exists: false } }, { root: null }],
-      });
+      // 🔹 root filter: chỉ lấy root
+      baseConditions.push({ root: null });
 
-      // Final query
-      const query = baseConditions.length > 0 ? { $and: baseConditions } : {};
-
-      await this.repository.init();
-      const skip = (p - 1) * per;
-
-      const projection = {
-        _id: 1,
-        data: 1,
-        variants: 1,
-        createdAt: 1,
-        updatedAt: 1,
-        symbol: 1,
-        root: 1,
-        parts_of_speech: 1,
-      };
-
-      // ✅ Step 1: Fetch parent documents
-      const parents = await this.repository.collection
-        .find(query, { projection })
-        .sort({ _id: 1 })
-        .skip(skip)
-        .limit(per)
-        .toArray();
-
-      const parentIds = parents.map((d) => d._id);
-
-      // ✅ Step 2: Fetch related children in one query
-      const children = await this.repository.collection
-        .find({ root: { $in: parentIds } }, { projection })
-        .toArray();
-
-      // ✅ Step 3: Map children to their parent
-      const childrenMap = parentIds.reduce((acc, id) => {
-        acc[id] = [];
-        return acc;
-      }, {});
-
-      for (const child of children) {
-        if (childrenMap[child.root]) {
-          childrenMap[child.root].push(child);
-        }
+      // 🔹 cursor paging
+      if (lastId) {
+        baseConditions.push({ _id: { $gt: lastId } });
       }
 
-      // ✅ Step 4: Append children to the parent objects
-      const result = parents.map((p) => ({
-        ...p,
-        children: childrenMap[p._id] ?? [],
-      }));
+      const query = baseConditions.length ? { $and: baseConditions } : {};
 
+      // 🔹 total count
       const total = await this.repository.collection.countDocuments(query);
 
-      return { total, page: p, per_page: per, data: result };
+      // 🔹 aggregation
+      const aggregationPipeline = [
+        { $match: query },
+        { $sort: { _id: 1 } },
+        { $limit: per_page },
+
+        // 🔹 Lookup children + join category cho children luôn
+        {
+          $lookup: {
+            from: this.repository.collectionName,
+            let: { parentId: "$_id" },
+            pipeline: [
+              { $match: { $expr: { $eq: ["$root", "$$parentId"] } } },
+              ...(userId
+                ? [
+                    {
+                      $lookup: {
+                        from: "categories",
+                        let: { wordId: "$_id" },
+                        pipeline: [
+                          {
+                            $match: {
+                              $expr: {
+                                $and: [
+                                  { $in: ["$$wordId", "$words"] },
+                                  { $eq: ["$user_id", new ObjectId(userId)] },
+                                ],
+                              },
+                            },
+                          },
+                          { $project: { name: 1, _id: 1 } },
+                        ],
+                        as: "categories",
+                      },
+                    },
+                    { $addFields: { category_ids: "$categories._id" } },
+                  ]
+                : []),
+            ],
+            as: "children",
+          },
+        },
+
+        // 🔹 Join category cho root word
+        ...(userId
+          ? [
+              {
+                $lookup: {
+                  from: "categories",
+                  let: { wordId: "$_id" },
+                  pipeline: [
+                    {
+                      $match: {
+                        $expr: {
+                          $and: [
+                            { $in: ["$$wordId", "$words"] },
+                            { $eq: ["$user_id", new ObjectId(userId)] },
+                          ],
+                        },
+                      },
+                    },
+                    { $project: { _id: 1, name: 1 } },
+                  ],
+                  as: "categories",
+                },
+              },
+              { $addFields: { category_ids: "$categories._id" } },
+            ]
+          : []),
+      ];
+
+      const data = await this.repository.collection
+        .aggregate(aggregationPipeline)
+        .toArray();
+
+      const nextLastId = data.length ? data[data.length - 1]._id : null;
+
+      return { total, lastId: nextLastId, per_page, data };
     }, "getAll");
   }
 

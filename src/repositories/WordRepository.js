@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import { BaseRepository } from "./BaseRepository.js";
-import database from "../config/database.js";
+import { COLLECTIONS } from "../constants/index.js";
 
 /**
  * WordRepository
@@ -8,18 +8,7 @@ import database from "../config/database.js";
  */
 export class WordRepository extends BaseRepository {
   constructor() {
-    super("words"); // Collection name from database.getCollection()
-  }
-
-  /**
-   * Override init to use database.getCollection() instead of db.collection()
-   */
-  async init() {
-    if (!this.collection) {
-      await database.connect();
-      this.collection = database.getCollection(); // Words collection
-      await this.createIndexes();
-    }
+    super(COLLECTIONS.WORDS);
   }
 
   /**
@@ -27,11 +16,10 @@ export class WordRepository extends BaseRepository {
    */
   async createIndexes() {
     try {
-      await this.collection.createIndex({ _id: 1 });
       await this.collection.createIndex({ variants: 1 });
       await this.collection.createIndex({ symbol: 1 });
       await this.collection.createIndex({ parts_of_speech: 1 });
-      await this.collection.createIndex({ createdAt: 1 });
+      await this.collection.createIndex({ root: 1 });
       console.log("✅ Word indexes created successfully");
     } catch (error) {
       console.error("⚠️ Word index creation failed:", error.message);
