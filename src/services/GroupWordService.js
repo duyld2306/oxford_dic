@@ -15,6 +15,8 @@ export class GroupWordService extends BaseService {
     dependencies = {}
   ) {
     super(groupWordRepository || new GroupWordRepository(), dependencies);
+    // Ensure we keep an explicit reference to the groupWordRepository
+    this.groupWordRepository = groupWordRepository || new GroupWordRepository();
     this.wordRepository = wordRepository || new WordRepository();
   }
 
@@ -239,6 +241,92 @@ export class GroupWordService extends BaseService {
 
       return { message: "Word removed from group successfully" };
     }, "removeWord");
+  }
+
+  async getFavorites({
+    userId,
+    group_word_id,
+    q,
+    symbol,
+    parts_of_speech,
+    page,
+    per_page,
+  }) {
+    return this.execute(async () => {
+      await this.repository.init();
+      await this.groupWordRepository.init();
+      await this.wordRepository.init();
+
+      // 1️⃣ Lấy groupWords của user
+      const groupFilter = { user_id: this.repository.toObjectId(userId) };
+      if (group_word_id)
+        groupFilter._id = this.repository.toObjectId(group_word_id);
+
+      const groupWords = await this.groupWordRepository.find(groupFilter);
+
+      // 2️⃣ Gom tất cả wordIds
+      const allWordIds = [
+        ...new Set(groupWords.flatMap((gw) => gw.words || [])),
+      ];
+
+      if (!allWordIds.length) return { total: 0, data: [] };
+
+      // 3️⃣ Tạo điều kiện truy vấn words
+      const query = { _id: { $in: allWordIds } };
+
+      if (q) {
+        const regex = new RegExp(this.escapeForRegex(q), "i");
+        query._id = { $in: allWordIds.filter((id) => regex.test(id)) };
+      }
+
+      if (parts_of_speech) {
+        try {
+          const parsed = JSON.parse(parts_of_speech);
+          if (Array.isArray(parsed)) query.parts_of_speech = { $in: parsed };
+        } catch {}
+      }
+
+      const SYMBOL_ORDER = ["a1", "a2", "b1", "b2", "c1"];
+      if (symbol === "other") query.symbol = { $nin: SYMBOL_ORDER };
+      else if (SYMBOL_ORDER.includes(symbol)) query.symbol = symbol;
+
+      // 4️⃣ Lookup categories 1 lần duy nhất
+      const pipeline = [
+        { $match: query },
+        {
+          $lookup: {
+            from: "categories",
+            let: { wordId: "$_id" },
+            pipeline: [
+              {
+                $match: {
+                  $expr: {
+                    $and: [
+                      { $in: ["$$wordId", "$words"] },
+                      { $eq: ["$user_id", this.repository.toObjectId(userId)] },
+                    ],
+                  },
+                },
+              },
+              { $project: { _id: 1 } },
+            ],
+            as: "categories",
+          },
+        },
+        {
+          $addFields: { category_ids: "$categories._id" },
+        },
+        { $skip: (page - 1) * per_page },
+        { $limit: per_page },
+      ];
+
+      const data = await this.wordRepository.collection
+        .aggregate(pipeline)
+        .toArray();
+      const total = allWordIds.length;
+
+      return { total, data };
+    }, "getFavorites");
   }
 }
 
