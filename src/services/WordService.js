@@ -198,10 +198,11 @@ class WordService extends BaseService {
       const list = Array.isArray(updates) ? updates : [updates];
       if (list.length === 0) return { updated: 0, skipped: 0 };
 
-      this.log("info", `Updating ${list.length} sense definitions`);
+      this.log("info", `Preparing to update ${list.length} sense definitions`);
 
       await this.repository.init();
-      let updated = 0;
+
+      const operations = [];
       let skipped = 0;
 
       for (const { _id, definition_vi, definition_vi_short } of list) {
@@ -210,79 +211,85 @@ class WordService extends BaseService {
           continue;
         }
 
-        // Convert to ObjectId if needed
         const senseId =
           _id instanceof ObjectId ? _id : new ObjectId(String(_id));
 
-        // Update main senses
-        const mainSenseResult = await this.repository.collection.updateMany(
-          { "data.senses._id": senseId },
-          {
-            $set: {
-              "data.$[d].senses.$[s].definition_vi": definition_vi,
-              "data.$[d].senses.$[s].definition_vi_short": definition_vi_short,
+        // Main senses
+        operations.push({
+          updateMany: {
+            filter: { "data.senses._id": senseId },
+            update: {
+              $set: {
+                "data.$[d].senses.$[s].definition_vi": definition_vi,
+                "data.$[d].senses.$[s].definition_vi_short":
+                  definition_vi_short,
+              },
             },
-          },
-          {
             arrayFilters: [{ "d.senses._id": senseId }, { "s._id": senseId }],
-          }
-        );
-
-        // Update idiom senses
-        const idiomSenseResult = await this.repository.collection.updateMany(
-          { "data.idioms.senses._id": senseId },
-          {
-            $set: {
-              "data.$[d].idioms.$[i].senses.$[s].definition_vi": definition_vi,
-              "data.$[d].idioms.$[i].senses.$[s].definition_vi_short":
-                definition_vi_short,
-            },
           },
-          {
+        });
+
+        // Idiom senses
+        operations.push({
+          updateMany: {
+            filter: { "data.idioms.senses._id": senseId },
+            update: {
+              $set: {
+                "data.$[d].idioms.$[i].senses.$[s].definition_vi":
+                  definition_vi,
+                "data.$[d].idioms.$[i].senses.$[s].definition_vi_short":
+                  definition_vi_short,
+              },
+            },
             arrayFilters: [
               { "d.idioms.senses._id": senseId },
               { "i.senses._id": senseId },
               { "s._id": senseId },
             ],
-          }
-        );
-
-        // Update phrasal verb senses
-        const pvSenseResult = await this.repository.collection.updateMany(
-          { "data.phrasal_verb_senses.senses._id": senseId },
-          {
-            $set: {
-              "data.$[d].phrasal_verb_senses.$[p].senses.$[s].definition_vi":
-                definition_vi,
-              "data.$[d].phrasal_verb_senses.$[p].senses.$[s].definition_vi_short":
-                definition_vi_short,
-            },
           },
-          {
+        });
+
+        // Phrasal verb senses
+        operations.push({
+          updateMany: {
+            filter: { "data.phrasal_verb_senses.senses._id": senseId },
+            update: {
+              $set: {
+                "data.$[d].phrasal_verb_senses.$[p].senses.$[s].definition_vi":
+                  definition_vi,
+                "data.$[d].phrasal_verb_senses.$[p].senses.$[s].definition_vi_short":
+                  definition_vi_short,
+              },
+            },
             arrayFilters: [
               { "d.phrasal_verb_senses.senses._id": senseId },
               { "p.senses._id": senseId },
               { "s._id": senseId },
             ],
-          }
-        );
-
-        const totalModified =
-          mainSenseResult.modifiedCount +
-          idiomSenseResult.modifiedCount +
-          pvSenseResult.modifiedCount;
-
-        if (totalModified > 0) {
-          updated++;
-          this.log(
-            "info",
-            `Updated sense ${_id}: ${totalModified} document(s) modified`
-          );
-        } else {
-          skipped++;
-          this.log("warn", `Sense ${_id} not found in any document`);
-        }
+          },
+        });
       }
+
+      if (operations.length === 0) {
+        this.log("warn", "No valid updates to perform");
+        return { updated: 0, skipped };
+      }
+
+      // Execute all updates in bulk
+      const result = await this.repository.collection.bulkWrite(operations, {
+        ordered: false,
+      });
+
+      // Calculate total updated
+      const updated = Object.values(result).reduce((sum, val) => {
+        if (typeof val === "number") return sum + val;
+        return sum;
+      }, 0);
+
+      this.log(
+        "info",
+        `Bulk update completed: updated ${updated} operations, skipped ${skipped} invalid items`
+      );
 
       return { updated, skipped };
     }, "updateSenseDefinitions");

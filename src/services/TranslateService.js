@@ -171,12 +171,13 @@ definition_vi_short: 3–4 nghĩa ngắn (từ/cụm từ, cách nhau dấu ph�
         total_tokens: resp?.response?.usageMetadata?.totalTokenCount || 0,
       };
 
-      // Parse JSON response
-      let jsonText = content;
-      jsonText = jsonText
+      // Robust JSON parsing
+      let jsonText = content
         .replace(/```json\s*/gi, "")
         .replace(/```\s*/g, "")
         .trim();
+      // Remove problematic non-printable/control characters
+      jsonText = jsonText.replace(/[\u0000-\u001F]+/g, "");
 
       let result;
       try {
@@ -199,11 +200,7 @@ definition_vi_short: 3–4 nghĩa ngắn (từ/cụm từ, cách nhau dấu ph�
 
       return {
         definitions: translatedDefinitions,
-        usage: {
-          prompt_tokens: usage.prompt_tokens,
-          completion_tokens: usage.completion_tokens,
-          total_tokens: usage.total_tokens,
-        },
+        usage,
       };
     }, "translateDefinitionsOnly");
   }
@@ -404,12 +401,13 @@ Chỉ nhiệm vụ sau:
         total_tokens: resp?.response?.usageMetadata?.totalTokenCount || 0,
       };
 
-      // Parse JSON response
-      let jsonText = content;
-      jsonText = jsonText
+      // Robust JSON parsing
+      let jsonText = content
         .replace(/```json\s*/gi, "")
         .replace(/```\s*/g, "")
         .trim();
+      // Remove problematic non-printable/control characters
+      jsonText = jsonText.replace(/[\u0000-\u001F]+/g, "");
 
       let result;
       try {
@@ -433,11 +431,7 @@ Chỉ nhiệm vụ sau:
 
       return {
         examples: translatedExamples,
-        usage: {
-          prompt_tokens: usage.prompt_tokens,
-          completion_tokens: usage.completion_tokens,
-          total_tokens: usage.total_tokens,
-        },
+        usage,
       };
     }, "translateExamplesOnly");
   }

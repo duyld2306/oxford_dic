@@ -271,7 +271,11 @@ export class WordRepository extends BaseRepository {
   async updateExampleViIfMissing(updates) {
     await this.init();
 
-    let updated = 0;
+    if (!Array.isArray(updates) || updates.length === 0) {
+      return { updated: 0, skipped: 0 };
+    }
+
+    const operations = [];
     let skipped = 0;
 
     for (const { _id, vi } of updates) {
@@ -283,81 +287,83 @@ export class WordRepository extends BaseRepository {
       const objectId =
         _id instanceof ObjectId ? _id : new ObjectId(String(_id));
 
-      // Update main sense examples
-      const mainResult = await this.collection.updateMany(
-        {
-          "data.senses.examples": {
-            $elemMatch: { _id: objectId, vi: { $in: [null, ""] } },
+      // Main sense examples
+      operations.push({
+        updateMany: {
+          filter: {
+            "data.senses.examples": {
+              $elemMatch: { _id: objectId, vi: { $in: [null, ""] } },
+            },
           },
-        },
-        {
-          $set: {
-            "data.$[d].senses.$[s].examples.$[ex].vi": vi,
+          update: {
+            $set: { "data.$[d].senses.$[s].examples.$[ex].vi": vi },
           },
-        },
-        {
           arrayFilters: [
             { "d.senses.examples._id": objectId },
             { "s.examples._id": objectId },
             { "ex._id": objectId, "ex.vi": { $in: [null, ""] } },
           ],
-        }
-      );
+        },
+      });
 
-      // Update idiom sense examples
-      const idiomResult = await this.collection.updateMany(
-        {
-          "data.idioms.senses.examples": {
-            $elemMatch: { _id: objectId, vi: { $in: [null, ""] } },
+      // Idiom sense examples
+      operations.push({
+        updateMany: {
+          filter: {
+            "data.idioms.senses.examples": {
+              $elemMatch: { _id: objectId, vi: { $in: [null, ""] } },
+            },
           },
-        },
-        {
-          $set: {
-            "data.$[d].idioms.$[i].senses.$[s].examples.$[ex].vi": vi,
+          update: {
+            $set: { "data.$[d].idioms.$[i].senses.$[s].examples.$[ex].vi": vi },
           },
-        },
-        {
           arrayFilters: [
             { "d.idioms.senses.examples._id": objectId },
             { "i.senses.examples._id": objectId },
             { "s.examples._id": objectId },
             { "ex._id": objectId, "ex.vi": { $in: [null, ""] } },
           ],
-        }
-      );
+        },
+      });
 
-      // Update phrasal verb sense examples
-      const pvResult = await this.collection.updateMany(
-        {
-          "data.phrasal_verb_senses.senses.examples": {
-            $elemMatch: { _id: objectId, vi: { $in: [null, ""] } },
+      // Phrasal verb sense examples
+      operations.push({
+        updateMany: {
+          filter: {
+            "data.phrasal_verb_senses.senses.examples": {
+              $elemMatch: { _id: objectId, vi: { $in: [null, ""] } },
+            },
           },
-        },
-        {
-          $set: {
-            "data.$[d].phrasal_verb_senses.$[pv].senses.$[s].examples.$[ex].vi":
-              vi,
+          update: {
+            $set: {
+              "data.$[d].phrasal_verb_senses.$[pv].senses.$[s].examples.$[ex].vi":
+                vi,
+            },
           },
-        },
-        {
           arrayFilters: [
             { "d.phrasal_verb_senses.senses.examples._id": objectId },
             { "pv.senses.examples._id": objectId },
             { "s.examples._id": objectId },
             { "ex._id": objectId, "ex.vi": { $in: [null, ""] } },
           ],
-        }
-      );
+        },
+      });
+    }
 
-      const result = {
-        modifiedCount:
-          mainResult.modifiedCount +
-          idiomResult.modifiedCount +
-          pvResult.modifiedCount,
-      };
+    if (operations.length === 0) {
+      return { updated: 0, skipped };
+    }
 
-      if (result.modifiedCount > 0) updated++;
-      else skipped++;
+    const result = await this.collection.bulkWrite(operations, {
+      ordered: false,
+    });
+
+    // Tính tổng số modifiedCount
+    let updated = 0;
+    for (const key in result) {
+      if (typeof result[key] === "number") {
+        updated += result[key];
+      }
     }
 
     return { updated, skipped };
