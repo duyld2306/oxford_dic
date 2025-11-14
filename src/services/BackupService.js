@@ -1,29 +1,56 @@
 import fs from "fs";
 import path from "path";
 import zlib from "zlib";
-import { MongoClient, ObjectId } from "mongodb";
+import { MongoClient } from "mongodb";
 import googleDriveService from "./GoogleDriveService.js";
+import { EJSON } from "bson";
+import mongoose from "mongoose";
 
 const DEFAULT_COLLECTION = "words";
 
-// Recursively convert BSON types (ObjectId, Date) to JSON-friendly values
-function normalizeValue(value) {
-  if (value === null || value === undefined) return value;
+// Recursive convert Mongoose ObjectId to MongoDB ObjectId
+function normalizeObjectIds(doc) {
+  if (doc === null || doc === undefined) return doc;
 
-  if (value instanceof ObjectId) return value.toString();
-  if (value instanceof Date) return value.toISOString();
-  if (Array.isArray(value)) return value.map((v) => normalizeValue(v));
-  if (typeof value === "object") return normalizeDoc(value);
-  return value;
-}
+  if (Array.isArray(doc)) return doc.map(normalizeObjectIds);
 
-function normalizeDoc(doc) {
-  if (!doc || typeof doc !== "object") return doc;
-  const out = {};
-  for (const [k, v] of Object.entries(doc)) {
-    out[k] = normalizeValue(v);
+  if (typeof doc === "object") {
+    const out = {};
+    for (const [key, value] of Object.entries(doc)) {
+      // detect mongoose ObjectId, native/bson ObjectId-like, or objects that
+      // expose a toHexString()/toString() for hex id
+      const isMongooseOid = value && value instanceof mongoose.Types.ObjectId;
+      const isBsonOid = value && value?._bsontype === "ObjectID";
+      const hasHex = value && typeof value.toHexString === "function";
+
+      if (isMongooseOid || isBsonOid || hasHex) {
+        // convert to plain Extended JSON representation so EJSON.stringify
+        // emits { "$oid": "..." } instead of embedding a Binary/Buffer
+        // object. Use toString()/toHexString() to get the hex value.
+        let hex = null;
+        try {
+          if (typeof value.toHexString === "function")
+            hex = value.toHexString();
+          else hex = value.toString();
+        } catch (e) {
+          hex = String(value);
+        }
+
+        // ensure hex is a 24-char hex string when possible
+        if (typeof hex === "string") {
+          out[key] = { $oid: hex };
+        } else {
+          // fallback to original normalization if something odd happened
+          out[key] = normalizeObjectIds(value);
+        }
+      } else {
+        out[key] = normalizeObjectIds(value);
+      }
+    }
+    return out;
   }
-  return out;
+
+  return doc; // primitive
 }
 
 class BackupService {
@@ -60,9 +87,10 @@ class BackupService {
 
       while (await cursor.hasNext()) {
         const raw = await cursor.next();
-        const doc = normalizeDoc(raw);
 
-        const json = JSON.stringify(doc);
+        // Convert Mongoose ObjectId -> MongoDB ObjectId recursively
+        const converted = normalizeObjectIds(raw);
+        const json = EJSON.stringify(converted, { relaxed: false });
 
         const chunk = (first ? "  " : ",\n  ") + json.replace(/\n/g, "\n  ");
         first = false;
