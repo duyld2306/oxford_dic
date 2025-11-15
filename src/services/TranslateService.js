@@ -120,7 +120,7 @@ export class TranslateService extends BaseService {
       // System prompt for definitions only
       const systemPrompt = `Bạn là dịch giả Anh–Việt chuyên nghiệp.
 Dịch tự nhiên theo ngữ cảnh. Nếu nghĩa thuộc IDIOMS, phải dịch theo nghĩa thành ngữ.
-Trả về JSON hợp lệ parse được bằng JSON.parse(), không thêm markdown, không giải thích:
+Trả về JSON hợp lệ duy nhất, escape tất cả " \ \n \t và các ký tự đặc biệt trong chuỗi, không thêm markdown, không giải thích:
 {
  "definitions": [{"_id": "...","definition_vi": "...","definition_vi_short": "..."}]
 }
@@ -141,7 +141,7 @@ definition_vi_short: 3–4 nghĩa ngắn (từ/cụm từ, cách nhau dấu ph�
           },
         ],
         generationConfig: {
-          maxOutputTokens: 15000,
+          maxOutputTokens: 20000,
           temperature: 0.2,
         },
       });
@@ -352,7 +352,7 @@ Chỉ nhiệm vụ sau:
 - Mỗi dòng "•" có dạng: • [id] text → output giữ nguyên "_id" và dịch phần text.
 - Không dịch / không trả về bất kỳ nội dung nào khác (word, definition, context…).
 - Không tự tạo ví dụ; nếu không có dòng "•" thì không trả output.
-- Trả về JSON hợp lệ duy nhất, không markdown, không giải thích:
+- Trả về JSON hợp lệ duy nhất, escape tất cả " \ \n \t và các ký tự đặc biệt trong chuỗi, không markdown, không giải thích:
 {
  "examples": [{"_id": "...", "vi": "..."}]
 }
@@ -371,7 +371,7 @@ Chỉ nhiệm vụ sau:
           },
         ],
         generationConfig: {
-          maxOutputTokens: 15000,
+          maxOutputTokens: 20000,
           temperature: 0.2,
         },
       });
