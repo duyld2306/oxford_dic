@@ -74,8 +74,37 @@ async function crawlWordDirect(word, maxSuffix = 5) {
         )
         .each((_, el) => {
           const $el = $(el);
-          const def = $el.find("span.def").first();
-          if (!def || !def.text()) return;
+          let def = $el.find("span.def").first();
+          if (!def || !def.text()) {
+            const past_tense_of = [];
+            $el.find("span.xrefs").each((_, xr) => {
+              const $xr = $(xr);
+              const type = $xr.find("span.prefix").first().text();
+              if (type.startsWith("past tense")) {
+                $xr
+                  .find("a")
+                  .each((_, a) => past_tense_of.push(`"${$(a).text()}"`));
+              }
+            });
+            if (past_tense_of.join(", ")) {
+              senses.push({
+                symbol: "",
+                labels: "",
+                dis_g: "",
+                variants: {},
+                grammar: "",
+                cf: "",
+                definition: `Past tense, past participle of ${past_tense_of.join(
+                  ", "
+                )}`,
+                synonyms: [],
+                opposites: [],
+                see_alsos: [],
+                examples: [],
+              });
+              return;
+            }
+          }
           const s = {
             symbol:
               $el
@@ -241,6 +270,7 @@ async function crawlWordDirect(word, maxSuffix = 5) {
               synonyms: [],
               opposites: [],
               see_alsos: [],
+              past_tense_of: [],
               examples: [],
             };
             $sEl.find("span.xrefs").each((_, xr) => {
@@ -409,7 +439,7 @@ async function crawlWordDirect(word, maxSuffix = 5) {
 
       words.push(wordDoc);
     } catch (e) {
-      throw new Error("crawl_request_error");
+      throw new Error("crawl request error");
     }
   }
   return words;
