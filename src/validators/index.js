@@ -232,6 +232,7 @@ export const wordSchemas = {
   listWords: Joi.object({
     page: Joi.number().integer().min(1).default(1),
     per_page: Joi.number().integer().min(1).max(1000).default(100),
+    type: Joi.string().valid("all", "word-family").optional(),
     q: Joi.string().trim().allow("").optional(),
     symbol: Joi.string()
       .valid(...Object.values(WORD_SYMBOLS))

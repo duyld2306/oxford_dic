@@ -53,6 +53,7 @@ class WordController extends BaseController {
     const {
       page = 1,
       per_page = 100,
+      type = "all",
       q = "",
       symbol = "",
       parts_of_speech = "",
@@ -61,6 +62,7 @@ class WordController extends BaseController {
     const result = await this.wordService.getAll({
       page,
       per_page,
+      type,
       q,
       symbol,
       parts_of_speech,

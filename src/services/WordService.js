@@ -299,6 +299,7 @@ class WordService extends BaseService {
   async getAll({
     lastId = null,
     per_page = 100,
+    type = "all",
     q = "",
     symbol = "",
     parts_of_speech = "",
@@ -337,7 +338,9 @@ class WordService extends BaseService {
       }
 
       // 🔹 root filter: chỉ lấy root
-      baseConditions.push({ root: null });
+      if (type === "word-family") {
+        baseConditions.push({ root: null });
+      }
 
       // 🔹 cursor paging
       if (lastId) {
@@ -354,14 +357,20 @@ class WordService extends BaseService {
         { $match: query },
         { $sort: { _id: 1 } },
         { $limit: per_page },
+      ];
 
-        // 🔹 Lookup children + join category cho children luôn
-        {
+      // ---------------------------------------------------------------------------
+      // 🔹 1) Lookup CHILDREN (chỉ chạy khi type = "word-family")
+      // ---------------------------------------------------------------------------
+      if (type === "word-family") {
+        aggregationPipeline.push({
           $lookup: {
             from: this.repository.collectionName,
             let: { parentId: "$_id" },
             pipeline: [
               { $match: { $expr: { $eq: ["$root", "$$parentId"] } } },
+
+              // Join categories cho children
               ...(userId
                 ? [
                     {
@@ -390,35 +399,42 @@ class WordService extends BaseService {
             ],
             as: "children",
           },
-        },
+        });
+      } else {
+        // type = all → không lookup children
+        aggregationPipeline.push({
+          $addFields: { children: [] },
+        });
+      }
 
-        // 🔹 Join category cho root word
-        ...(userId
-          ? [
-              {
-                $lookup: {
-                  from: "categories",
-                  let: { wordId: "$_id" },
-                  pipeline: [
-                    {
-                      $match: {
-                        $expr: {
-                          $and: [
-                            { $in: ["$$wordId", "$words"] },
-                            { $eq: ["$user_id", new ObjectId(userId)] },
-                          ],
-                        },
-                      },
+      // ---------------------------------------------------------------------------
+      // 🔹 2) Lookup categories cho root word (mọi type đều cần nếu userId có)
+      // ---------------------------------------------------------------------------
+      if (userId) {
+        aggregationPipeline.push(
+          {
+            $lookup: {
+              from: "categories",
+              let: { wordId: "$_id" },
+              pipeline: [
+                {
+                  $match: {
+                    $expr: {
+                      $and: [
+                        { $in: ["$$wordId", "$words"] },
+                        { $eq: ["$user_id", new ObjectId(userId)] },
+                      ],
                     },
-                    { $project: { _id: 1, name: 1 } },
-                  ],
-                  as: "categories",
+                  },
                 },
-              },
-              { $addFields: { category_ids: "$categories._id" } },
-            ]
-          : []),
-      ];
+                { $project: { _id: 1, name: 1 } },
+              ],
+              as: "categories",
+            },
+          },
+          { $addFields: { category_ids: "$categories._id" } }
+        );
+      }
 
       const data = await this.repository.collection
         .aggregate(aggregationPipeline)
